@@ -6,6 +6,12 @@ public class ShipController : MonoBehaviour
 {
     public int PlayerNumber = 0;
     public float speed = 1f;
+
+    public float health;
+    public float damage;
+
+    public GameObject bulletPrefab;
+
     Vector2 moveDirection;
     Vector2 aimDirection;
 
@@ -30,7 +36,8 @@ public class ShipController : MonoBehaviour
     void HandleInput()
     {
         string horizontalMovementAxis, verticalMovementAxis,
-               horizontalAimAxis, verticalAimAxis;
+               horizontalAimAxis, verticalAimAxis,
+               fireAxis;
 
         if(PlayerNumber == 0)
         {
@@ -38,6 +45,7 @@ public class ShipController : MonoBehaviour
             verticalMovementAxis = "KeyboardVertical";
             horizontalAimAxis = "MouseHorizontal";
             verticalAimAxis = "MouseVertical";
+            fireAxis = "MouseLeftClick";
         }
         else
         {
@@ -49,6 +57,7 @@ public class ShipController : MonoBehaviour
                 + PlayerNumber;
             verticalAimAxis = "RightJoystickVertical_P"
                 + PlayerNumber;
+            fireAxis = "RightJoystickVertical_P1";
         }
 
         float xMovementAxis = Input.GetAxis(horizontalMovementAxis);
@@ -58,5 +67,33 @@ public class ShipController : MonoBehaviour
         float xAimAxis = Input.GetAxis(horizontalAimAxis);
         float yAimAxis = Input.GetAxis(verticalAimAxis);
         aimDirection = new Vector2(xAimAxis, yAimAxis);
+
+        if(Input.GetAxis(fireAxis) > 0)
+        {
+            Fire();
+        }
+    }
+
+    void Fire()
+    {
+        Transform bulletSpawn = transform.GetChild(0);
+
+        var bullet = (GameObject)Instantiate (
+                bulletPrefab,
+                bulletSpawn.position,
+                bulletSpawn.rotation);
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.bulletDamage = damage;
+
+        //Add velocity to the bullet
+        bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+            Destroy(gameObject);
     }
 }
