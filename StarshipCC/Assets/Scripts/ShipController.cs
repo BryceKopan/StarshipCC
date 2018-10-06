@@ -15,10 +15,15 @@ public class ShipController : MonoBehaviour
     Vector2 moveDirection;
     Vector2 aimDirection;
 
+    //InputAxes
+    string horizontalMovementAxis, verticalMovementAxis, 
+           horizontalAimAxis, verticalAimAxis, fireAxis;
+    
+
 	// Use this for initialization
 	void Start () 
     {
-		
+	    SetInputAxes();	
 	}
 	
 	// Update is called once per frame
@@ -26,8 +31,10 @@ public class ShipController : MonoBehaviour
     {
         HandleInput();
 
+        //Move Along moveDirection
         transform.position += new Vector3(moveDirection.x, moveDirection.y, 0).normalized * speed * Time.deltaTime;
 
+        //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 2);
@@ -35,37 +42,13 @@ public class ShipController : MonoBehaviour
 
     void HandleInput()
     {
-        string horizontalMovementAxis, verticalMovementAxis,
-               horizontalAimAxis, verticalAimAxis,
-               fireAxis;
-
-        if(PlayerNumber == 0)
-        {
-            horizontalMovementAxis = "KeyboardHorizontal";
-            verticalMovementAxis = "KeyboardVertical";
-            horizontalAimAxis = "MouseHorizontal";
-            verticalAimAxis = "MouseVertical";
-            fireAxis = "MouseLeftClick";
-        }
-        else
-        {
-            horizontalMovementAxis = "LeftJoystickHorizontal_P" 
-                + PlayerNumber;
-            verticalMovementAxis = "LeftJoystickVertical_P"
-                + PlayerNumber;
-            horizontalAimAxis = "RightJoystickHorizontal_P"
-                + PlayerNumber;
-            verticalAimAxis = "RightJoystickVertical_P"
-                + PlayerNumber;
-            fireAxis = "RightJoystickVertical_P1";
-        }
-
         float xMovementAxis = Input.GetAxis(horizontalMovementAxis);
         float yMovementAxis = Input.GetAxis(verticalMovementAxis);
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
 
         float xAimAxis = Input.GetAxis(horizontalAimAxis);
         float yAimAxis = Input.GetAxis(verticalAimAxis);
+
         aimDirection = new Vector2(xAimAxis, yAimAxis);
 
         if(Input.GetAxis(fireAxis) > 0)
@@ -95,5 +78,29 @@ public class ShipController : MonoBehaviour
         health -= damage;
         if(health <= 0)
             Destroy(gameObject);
+    }
+
+    public void SetInputAxes()
+    {
+        if(PlayerNumber == 0)
+        {
+            horizontalMovementAxis = "KeyboardHorizontal";
+            verticalMovementAxis = "KeyboardVertical";
+            horizontalAimAxis = "ArrowKeysHorizontal";
+            verticalAimAxis = "ArrowKeysVertical";
+            fireAxis = "KeyboardFire";
+        }
+        else
+        {
+            horizontalMovementAxis = "LeftJoystickHorizontal_P" 
+                + PlayerNumber;
+            verticalMovementAxis = "LeftJoystickVertical_P"
+                + PlayerNumber;
+            horizontalAimAxis = "RightJoystickHorizontal_P"
+                + PlayerNumber;
+            verticalAimAxis = "RightJoystickVertical_P"
+                + PlayerNumber;
+            fireAxis = "RightJoystickVertical_P1";
+        }
     }
 }
