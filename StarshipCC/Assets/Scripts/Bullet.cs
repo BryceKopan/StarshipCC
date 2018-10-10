@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour {
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            ShipController ship = other.gameObject.GetComponent<ShipController>();
+            PlayerController ship = other.gameObject.GetComponent<PlayerController>();
             if (ship)
             {
                 ship.TakeDamage(bulletDamage);
