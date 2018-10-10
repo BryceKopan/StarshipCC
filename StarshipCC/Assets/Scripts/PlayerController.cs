@@ -30,10 +30,24 @@ public class PlayerController : MonoBehaviour
 
     XboxController controller;
 
+    List<Transform> bulletSpawns;
+
 	// Use this for initialization
 	void Start () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+
+        // Find all bullet spawns attached to the ship
+        bulletSpawns = new List<Transform>();
+        Transform[] children = gameObject.GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in children)
+        {
+            if (child.gameObject.tag == "BulletSpawn")
+            {
+                bulletSpawns.Add(child);
+            }
+        }
 
         InitInput();
 	}
@@ -110,19 +124,19 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        Transform bulletSpawn = transform.GetChild(0);
+        foreach (Transform bulletSpawn in bulletSpawns)
+        {
+            var bullet = (GameObject)Instantiate(
+                    bulletPrefab,
+                    bulletSpawn.position,
+                    bulletSpawn.rotation);
 
-        var bullet = (GameObject)Instantiate (
-                bulletPrefab,
-                bulletSpawn.position,
-                bulletSpawn.rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.bulletDamage = damage;
 
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.bulletDamage = damage;
-
-        //Add velocity to the bullet
-        bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
-
+            //Add velocity to the bullet
+            bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+        }
         canFire = false;
         Invoke("EnableFiring", fireDelay);
     }
