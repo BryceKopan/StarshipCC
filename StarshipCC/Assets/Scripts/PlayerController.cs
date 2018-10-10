@@ -6,10 +6,17 @@ using XboxCtrlrInput;
 public class PlayerController : MonoBehaviour 
 {
     public int PlayerNumber = 0;
+    public float joystickDeadzone = 0.1f;
     public float speed = 1f;
+    public float turnSpeed = 0.5f;
 
     public float health;
     public float damage;
+
+    public float fireDelay = 1;
+    bool canFire = true;
+
+    Rigidbody2D rigidbody;
 
     public GameObject bulletPrefab;
 
@@ -21,21 +28,23 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        rigidbody = GetComponent<Rigidbody2D>();
+
         InitInput();
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	// FixedUpdate is independent of framerate
+	void FixedUpdate () 
     {
         HandleInput();
 
         //Move Along moveDirection
-        transform.position += new Vector3(moveDirection.x, moveDirection.y, 0).normalized * speed * Time.deltaTime;
+        rigidbody.AddForce(moveDirection * speed);
 
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 2);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
     }
 
     void HandleInput()
@@ -73,11 +82,14 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
-        aimDirection = new Vector2(xAimAxis, yAimAxis);
-        
-        if (fire)
+        // Implement joystick deadzone
+        if (Mathf.Abs(xAimAxis) > joystickDeadzone || Mathf.Abs(yAimAxis) > joystickDeadzone)
         {
-            Debug.Log("Player " + PlayerNumber + " firing!");
+            aimDirection = new Vector2(xAimAxis, yAimAxis);
+        }
+        
+        if (fire && canFire)
+        {
             Fire();
         }
     }
@@ -96,6 +108,9 @@ public class PlayerController : MonoBehaviour
 
         //Add velocity to the bullet
         bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+
+        canFire = false;
+        Invoke("EnableFiring", fireDelay);
     }
 
     public void TakeDamage(float damage)
@@ -129,5 +144,10 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void EnableFiring()
+    {
+        canFire = true;
     }
 }
