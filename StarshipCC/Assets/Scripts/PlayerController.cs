@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public int PlayerNumber = 0;
     public float joystickDeadzone = 0.1f;
     public float speed = 1f;
-    public float turnSpeed = 0.5f;
+    public float turnSpeed = 1f;
 
     public float health;
     public float damage;
