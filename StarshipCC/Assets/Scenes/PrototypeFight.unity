@@ -240,7 +240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -101
   m_Sprite: {fileID: 21300000, guid: 4149927b618744b49a9ee56483f4075b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -341,7 +341,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: 754b707c7d3974b2399263be64a4bdd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -360,7 +360,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1102512546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 40.2, z: 0}
+  m_LocalPosition: {x: 0, y: 42.5, z: 0}
   m_LocalScale: {x: 250, y: 10, z: 1}
   m_Children:
   - {fileID: 1753032112}
@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1753032112}
   - component: {fileID: 1753032114}
   - component: {fileID: 1753032113}
+  - component: {fileID: 1753032115}
   m_Layer: 0
   m_Name: LaserGun
   m_TagString: Untagged
@@ -433,8 +434,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1753032111}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: -0.68, z: 0}
-  m_LocalScale: {x: 0.020000001, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.351, y: -1.22, z: 0}
+  m_LocalScale: {x: 0.04, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1102512549}
   m_RootOrder: 0
@@ -498,7 +499,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d8e424f2d176b48c7a212f35041cc492, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -510,3 +511,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1753032115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753032111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d9238b3c2aa464b864e0341e92aac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 30
+  ChargeTime: 1
+  AttackTime: 0.25
+  MoveDistance: 20
+  AttackPrefab: {fileID: 1986667676845470, guid: 74d3d2fdabdc24c9fb6823ab4ebcb8eb,
+    type: 2}
+  ChargePrefab: {fileID: 1976587580857768, guid: 0f2ac38757bf944ec89f66e80813eb3d,
+    type: 2}
+  LeftBound: {x: -85, y: 0, z: 0}
+  RightBound: {x: 85, y: 0, z: 0}
