@@ -51,7 +51,8 @@ public class ShipController : MonoBehaviour
 
         aimDirection = new Vector2(xAimAxis, yAimAxis);
 
-        if(Input.GetAxis(fireAxis) > 0)
+        Debug.Log(Input.GetAxis(fireAxis));
+        if(Input.GetAxis(fireAxis) != 0)
         {
             Fire();
         }
@@ -100,7 +101,7 @@ public class ShipController : MonoBehaviour
                 + PlayerNumber;
             verticalAimAxis = "RightJoystickVertical_P"
                 + PlayerNumber;
-            fireAxis = "RightJoystickVertical_P1";
+            fireAxis = "Trigger_P1";
         }
     }
 }
