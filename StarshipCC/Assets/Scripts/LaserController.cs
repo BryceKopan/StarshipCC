@@ -1,51 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LaserController : MonoBehaviour {
-    public float Speed, ChargeTime, AttackDistance;
+    public float Speed, ChargeTime, AttackTime, MoveDistance;
     public GameObject AttackPrefab, ChargePrefab;
+    public Vector3 LeftBound, RightBound;
 
-    bool charging;
+    bool moving = true;
     float chargeStartTime;
-    Vector2 targetPosition;
+    Vector3 targetPosition;
 
 	// Use this for initialization
 	void Start () 
     {
-		
+        float startX = (((RightBound.x - LeftBound.x) / 2) + LeftBound.x);
+        transform.position = new Vector3(startX, transform.position.y, transform.position.z);
+		targetPosition = transform.position + new Vector3(MoveDistance, 0, 0);
 	}
 	
 	// Update is called once per frame
-	void Update () 
+    void Update () 
     {
-		if(chargeStartTime + ChargeTime <= Time.time && charging)
+        if(moving)
         {
-            charging = false;
-            Attack();
-        }
+            if((transform.position.x > RightBound.x && MoveDistance > 0)
+                || transform.position.x < LeftBound.x && MoveDistance < 0)
+                MoveDistance = -MoveDistance;
 
-        if(!charging)
-        {
-            transform.position += new Vector3(1, 0, 0) * Speed * Time.deltaTime;
-            if(transform.position.x % AttackDistance == 0)
+            transform.position += (targetPosition - transform.position).normalized * Speed * Time.deltaTime;
+
+            if(Math.Abs(targetPosition.x - transform.position.x) < .25)
             {
-                Debug.Log("Charging");
+	            targetPosition = transform.position + new Vector3(MoveDistance, 0, 0);
+                moving = false;
                 ChargeAttack();
             }
         }
-	}
+    }
 
     void ChargeAttack()
     {
-        charging = true;
-        chargeStartTime = Time.time;
         var charge = (GameObject)Instantiate (
-                AttackPrefab,
+                ChargePrefab,
                 transform.position,
                 transform.rotation);
 
         Destroy(charge, ChargeTime);
+        Invoke("Attack", ChargeTime);
     }
 
     void Attack()
@@ -54,5 +57,13 @@ public class LaserController : MonoBehaviour {
                 AttackPrefab,
                 transform.position,
                 transform.rotation);
+
+        Destroy(attack, AttackTime);
+        Invoke("Move", AttackTime);
+    }
+
+    void Move()
+    {
+        moving = true;
     }
 }
