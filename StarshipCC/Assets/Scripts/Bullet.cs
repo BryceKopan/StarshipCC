@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
         public Vector3 moveVector;
-        public float bulletMoveSpeed = 20f;
+        public float bulletMoveSpeed = 40f;
         public float bulletDamage = 1f;
         public float lifeTime = 5f;
         public Material material;
@@ -24,11 +24,22 @@ public class Bullet : MonoBehaviour {
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            PlayerController ship = other.gameObject.GetComponent<PlayerController>();
-            if (ship)
+            string thisTag = gameObject.tag;
+            string otherTag = other.gameObject.tag;
+
+            if (thisTag.Equals(Tags.FRIENDLY_BULLET) && otherTag.Equals(Tags.ENEMY))
             {
-                ship.TakeDamage(bulletDamage);
-                Destroy(gameObject);
+                //TODO deal damage to enemy here
+            }
+            else if (thisTag.Equals(Tags.ENEMY_BULLET) && otherTag.Equals(Tags.PLAYER))
+            {
+                PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
+                if(player)
+                {
+                    player.TakeDamage(bulletDamage);
+                    Destroy(gameObject);
+                }
             }
         }
 }
