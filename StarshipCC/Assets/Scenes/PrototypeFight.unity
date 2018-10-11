@@ -409,7 +409,7 @@ Prefab:
     - target: {fileID: 114859194628393482, guid: 3cdf6322a2a564917b1ec3a7aa91a908,
         type: 2}
       propertyPath: PlayerNumber
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114859194628393482, guid: 3cdf6322a2a564917b1ec3a7aa91a908,
         type: 2}
@@ -430,9 +430,10 @@ GameObject:
   - component: {fileID: 1753032114}
   - component: {fileID: 1753032113}
   - component: {fileID: 1753032115}
+  - component: {fileID: 1753032116}
   m_Layer: 0
   m_Name: LaserGun
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543,3 +544,23 @@ MonoBehaviour:
     type: 2}
   LeftBound: {x: -85, y: 0, z: 0}
   RightBound: {x: 85, y: 0, z: 0}
+--- !u!50 &1753032116
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1753032111}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

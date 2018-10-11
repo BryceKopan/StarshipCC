@@ -29,7 +29,13 @@ public class Bullet : MonoBehaviour {
 
             if (thisTag.Equals(Tags.FRIENDLY_BULLET) && otherTag.Equals(Tags.ENEMY))
             {
-                //TODO deal damage to enemy here
+                Debug.Log("Hit enemy");
+                LaserController laser = other.gameObject.GetComponent<LaserController>();
+                if(laser)
+                {
+                    laser.TakeDamage(bulletDamage);
+                    Destroy(gameObject);
+                }
             }
             else if (thisTag.Equals(Tags.ENEMY_BULLET) && otherTag.Equals(Tags.PLAYER))
             {
