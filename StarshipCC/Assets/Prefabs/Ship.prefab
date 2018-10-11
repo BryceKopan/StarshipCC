@@ -30,6 +30,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1460101327023182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4462511352412592}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: BulletSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1761031526589374
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +55,7 @@ GameObject:
   - component: {fileID: 4760516592968376}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: Untagged
+  m_TagString: BulletSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,11 +68,25 @@ Transform:
   m_GameObject: {fileID: 1021119624659050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.51, y: 0.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4760516592968376}
+  - {fileID: 4462511352412592}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4462511352412592
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460101327023182}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.56, y: 0.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4044227065205260}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4760516592968376
 Transform:
@@ -66,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761031526589374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.24, z: 0}
+  m_LocalPosition: {x: -0.56, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4044227065205260}
@@ -84,7 +113,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -108,17 +137,17 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.3, y: 7.64}
-    newSize: {x: 9.3, y: 7.64}
+    oldSize: {x: 1.42, y: 2.3}
+    newSize: {x: 1.42, y: 2.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.00000071525574, y: 3.8028936}
-      - {x: -4.676694, y: -3.8347008}
-      - {x: 4.6385727, y: -3.8089023}
+    - - {x: -0.0022068024, y: 1.1556109}
+      - {x: -0.84047556, y: -1.151183}
+      - {x: 0.84866536, y: -1.1510978}
 --- !u!114 &114859194628393482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,10 +159,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a06ef4b040e74bc385590736cd4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: 0
-  speed: 15
+  PlayerNumber: 1
+  joystickDeadzone: 0.1
+  speed: 80
+  dashSpeed: 300
+  turnSpeed: 5
   health: 10
   damage: 1
+  dashLength: 0.1
+  fireDelay: 0.1
+  dashDelay: 2
   bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
     type: 2}
 --- !u!212 &212421511914163430
@@ -171,12 +206,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 52544dd789fb6ac48a0d231642db4fd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 661102b271869804abecd9979577ad4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.3, y: 7.64}
+  m_Size: {x: 1.42, y: 2.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
