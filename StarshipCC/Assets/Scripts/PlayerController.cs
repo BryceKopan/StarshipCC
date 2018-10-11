@@ -81,12 +81,12 @@ public class PlayerController : MonoBehaviour
             xMovementAxis = Input.GetAxis("KeyboardX");
             yMovementAxis = Input.GetAxis("KeyboardY");
 
-            Debug.Log("KeyboardX: " + xMovementAxis);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            xAimAxis = Input.GetAxis("MouseX");
-            yAimAxis = Input.GetAxis("MouseY");
+            xAimAxis = mousePos.x - transform.localPosition.x;
+            yAimAxis = mousePos.y - transform.localPosition.y;
 
-            fire = Input.GetButton("MousePrimaryClick");
+            fire = Input.GetMouseButton(0);
             dash = Input.GetButton("KeyboardDash");
         }
         // Controller input
