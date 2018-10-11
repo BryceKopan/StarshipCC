@@ -82,6 +82,7 @@ MonoBehaviour:
   bulletMoveSpeed: 20
   bulletDamage: 1
   lifeTime: 20
+  material: {fileID: 0}
 --- !u!212 &212636820686270190
 SpriteRenderer:
   m_ObjectHideFlags: 1

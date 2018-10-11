@@ -7,11 +7,12 @@ public class Bullet : MonoBehaviour {
         public float bulletMoveSpeed = 20f;
         public float bulletDamage = 1f;
         public float lifeTime = 5f;
+        public Material material;
 
         void Start()
         {
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            gameObject.GetComponent<Renderer>().material = material;
             Destroy(gameObject, lifeTime);
         }
 

@@ -7,14 +7,18 @@ public class PlayerController : MonoBehaviour
 {
     public int PlayerNumber = 0;
     public float joystickDeadzone = 0.1f;
-    public float speed = 1f;
-    public float turnSpeed = 0.5f;
+    public float speed = 80f;
+    public float dashSpeed = 200f;
+    public float turnSpeed = 5f;
 
     public float health;
     public float damage;
 
-    public float fireDelay = 1;
+    public float dashLength = 0.3f;
+    public float fireDelay = 0.1f;
+    public float dashDelay = 2f;
     bool canFire = true;
+    bool canDash = true;
 
     Rigidbody2D rigidbody;
 
@@ -22,13 +26,28 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveDirection;
     Vector2 aimDirection;
+    Vector2 dashDirection;
 
     XboxController controller;
+
+    List<Transform> bulletSpawns;
 
 	// Use this for initialization
 	void Start () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+
+        // Find all bullet spawns attached to the ship
+        bulletSpawns = new List<Transform>();
+        Transform[] children = gameObject.GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in children)
+        {
+            if (child.gameObject.tag == "BulletSpawn")
+            {
+                bulletSpawns.Add(child);
+            }
+        }
 
         InitInput();
 	}
@@ -40,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         //Move Along moveDirection
         rigidbody.AddForce(moveDirection * speed);
-
+        
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -54,6 +73,7 @@ public class PlayerController : MonoBehaviour
         float xAimAxis;
         float yAimAxis;
         bool fire;
+        bool dash;
 
         // Keyboard input
         if(PlayerNumber == 0)
@@ -67,6 +87,7 @@ public class PlayerController : MonoBehaviour
             yAimAxis = Input.GetAxis("MouseY");
 
             fire = Input.GetButton("MousePrimaryClick");
+            dash = Input.GetButton("KeyboardDash");
         }
         // Controller input
         else
@@ -79,6 +100,8 @@ public class PlayerController : MonoBehaviour
 
             float fireAxis = XCI.GetAxis(XboxAxis.RightTrigger, controller);
             fire = fireAxis > 0;
+
+            dash = XCI.GetButton(XboxButton.LeftBumper, controller);
         }
 
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
@@ -92,25 +115,39 @@ public class PlayerController : MonoBehaviour
         {
             Fire();
         }
+
+        if (dash && canDash)
+        {
+            Dash();
+        }
     }
 
     void Fire()
     {
-        Transform bulletSpawn = transform.GetChild(0);
+        foreach (Transform bulletSpawn in bulletSpawns)
+        {
+            var bullet = (GameObject)Instantiate(
+                    bulletPrefab,
+                    bulletSpawn.position,
+                    bulletSpawn.rotation);
 
-        var bullet = (GameObject)Instantiate (
-                bulletPrefab,
-                bulletSpawn.position,
-                bulletSpawn.rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.bulletDamage = damage;
 
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.bulletDamage = damage;
-
-        //Add velocity to the bullet
-        bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
-
+            //Add velocity to the bullet
+            bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+        }
         canFire = false;
         Invoke("EnableFiring", fireDelay);
+    }
+
+    void Dash()
+    {
+        rigidbody.AddForce(moveDirection * dashSpeed, ForceMode2D.Impulse);
+        dashDirection = moveDirection;
+        canDash = false;
+        Invoke("EndDash", dashLength);
+        Invoke("EnableDash", dashDelay);
     }
 
     public void TakeDamage(float damage)
@@ -146,8 +183,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void EndDash()
+    {
+        rigidbody.velocity = rigidbody.velocity * 0.1f;
+    }
+
     void EnableFiring()
     {
         canFire = true;
+    }
+
+    void EnableDash()
+    {
+        canDash = true;
     }
 }
