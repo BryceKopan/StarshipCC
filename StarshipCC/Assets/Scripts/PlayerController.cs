@@ -131,6 +131,8 @@ public class PlayerController : MonoBehaviour
                     bulletSpawn.position,
                     bulletSpawn.rotation);
 
+            bullet.tag = Tags.FRIENDLY_BULLET;
+
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.bulletDamage = damage;
 
