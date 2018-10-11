@@ -406,6 +406,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114859194628393482, guid: 3cdf6322a2a564917b1ec3a7aa91a908,
+        type: 2}
+      propertyPath: PlayerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114859194628393482, guid: 3cdf6322a2a564917b1ec3a7aa91a908,
+        type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdf6322a2a564917b1ec3a7aa91a908, type: 2}
   m_IsPrefabAsset: 0
@@ -522,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d9238b3c2aa464b864e0341e92aac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
   Speed: 30
   ChargeTime: 1
   AttackTime: 0.25

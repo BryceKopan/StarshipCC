@@ -20,7 +20,8 @@ public class Laser : MonoBehaviour {
 
         if(otherObject.tag == "Player")
         {
-            Destroy(otherObject);
+            PlayerController pc = otherObject.GetComponent<PlayerController>();
+            pc.TakeDamage(1);
         }
     }
 }

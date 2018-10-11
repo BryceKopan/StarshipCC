@@ -4,12 +4,12 @@ using UnityEngine;
 using System;
 
 public class LaserController : MonoBehaviour {
-    public float Speed, ChargeTime, AttackTime, MoveDistance;
+    public float Health, Speed, ChargeTime, AttackTime, MoveDistance;
     public GameObject AttackPrefab, ChargePrefab;
     public Vector3 LeftBound, RightBound;
 
     bool moving = true;
-    float chargeStartTime;
+    float currentHealth;
     Vector3 targetPosition;
 
 	// Use this for initialization
@@ -18,6 +18,8 @@ public class LaserController : MonoBehaviour {
         float startX = (((RightBound.x - LeftBound.x) / 2) + LeftBound.x);
         transform.position = new Vector3(startX, transform.position.y, transform.position.z);
 		targetPosition = transform.position + new Vector3(MoveDistance, 0, 0);
+
+        currentHealth = Health;
 	}
 	
 	// Update is called once per frame
@@ -65,5 +67,18 @@ public class LaserController : MonoBehaviour {
     void Move()
     {
         moving = true;
+    }
+
+    void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
