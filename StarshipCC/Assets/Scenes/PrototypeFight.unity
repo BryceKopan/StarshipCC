@@ -293,6 +293,11 @@ Prefab:
       propertyPath: RightBound.x
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 114877193580734542, guid: 72acba861f9cb49158e8d512fd8039d7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72acba861f9cb49158e8d512fd8039d7, type: 2}
   m_IsPrefabAsset: 0
@@ -471,6 +476,7 @@ Transform:
   m_Children:
   - {fileID: 1753032112}
   - {fileID: 1822667059}
+  - {fileID: 1980209042}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -487,7 +493,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4044227065205260, guid: 3cdf6322a2a564917b1ec3a7aa91a908, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4044227065205260, guid: 3cdf6322a2a564917b1ec3a7aa91a908, type: 2}
       propertyPath: m_LocalPosition.z
@@ -542,3 +548,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4161009071528888, guid: 72acba861f9cb49158e8d512fd8039d7,
     type: 2}
   m_PrefabInternal: {fileID: 314029419}
+--- !u!1 &1980209041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1980209042}
+  - component: {fileID: 1980209043}
+  m_Layer: 0
+  m_Name: ShipSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1980209042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1980209041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1102512549}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1980209043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1980209041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d2941eaec3b496ba610b67146eedf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShipPrefab: {fileID: 1251781118443250, guid: 811d46895bdd144a39eac928d881f4a0, type: 2}
+  TimeBetweenSpawns: 5
+  LeftXSpawn: {x: -95, y: 0, z: 0}
+  RightXSpawn: {x: 95, y: 0, z: 0}
+  TopYSpawn: {x: 0, y: 35, z: 0}
+  BotYSpawn: {x: 0, y: -35, z: 0}

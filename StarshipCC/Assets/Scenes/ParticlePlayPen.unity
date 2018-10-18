@@ -113,6 +113,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &99324034
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -69.68521
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -26.444338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9.6006975
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541815640984144, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198079474602434516, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198069591208494838, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198952497488380650, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &212243393
 GameObject:
   m_ObjectHideFlags: 0

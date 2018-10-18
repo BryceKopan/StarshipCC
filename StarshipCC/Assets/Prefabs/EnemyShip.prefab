@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039760949d42d461ebbb425f86b58c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 30
   turnSpeed: 5
-  speed: 40
+  speed: 60
   ExplosionPrefab: {fileID: 1097273593181028, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 2}
 --- !u!212 &212354301031712928

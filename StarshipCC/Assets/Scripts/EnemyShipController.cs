@@ -40,6 +40,11 @@ public class EnemyShipController : MonoBehaviour {
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+
+        if(Vector3.Distance(transform.position, attackPosition) < 10)
+        {
+            Death();
+        }
     }
 
     Vector3 GetAttackPosition()

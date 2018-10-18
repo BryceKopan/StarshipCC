@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d9238b3c2aa464b864e0341e92aac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 200
   Speed: 25
   ChargeTime: 0.5
   AttackTime: 0.25
