@@ -82,7 +82,9 @@ MonoBehaviour:
   bulletMoveSpeed: 40
   bulletDamage: 1
   lifeTime: 20
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 60756ad0a8a26f24c9848005b3c8c004, type: 2}
+  ExplosionPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
+    type: 2}
 --- !u!212 &212636820686270190
 SpriteRenderer:
   m_ObjectHideFlags: 1

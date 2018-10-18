@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4161009071528888}
   - component: {fileID: 212131084047245028}
-  - component: {fileID: 61064739112536524}
   - component: {fileID: 114877193580734542}
   - component: {fileID: 50956930321474258}
+  - component: {fileID: 60445076269557290}
   m_Layer: 0
   m_Name: LaserGun
   m_TagString: Enemy
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510750038997238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.351, y: -1.22, z: 0}
+  m_LocalPosition: {x: 0.303, y: -1.22, z: 0}
   m_LocalScale: {x: 0.03, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61064739112536524
-BoxCollider2D:
+--- !u!60 &60445076269557290
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -85,9 +85,43 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.45999998, y: 0.12}
+      - {x: -0.57, y: 0.34}
+      - {x: -0.58, y: 0.53}
+      - {x: -0.48999998, y: 0.76}
+      - {x: -0.32999998, y: 0.90999997}
+      - {x: -0.13, y: 0.96}
+      - {x: -0.12, y: 1}
+      - {x: -0.12, y: 1.17}
+      - {x: -1.15, y: 1.17}
+      - {x: -1.17, y: 1.16}
+      - {x: -1.17, y: 0.51}
+      - {x: -0.7, y: -0.48999998}
+      - {x: -0.59, y: -0.72999996}
+      - {x: -0.47, y: -0.98999995}
+      - {x: -0.35999998, y: -1.23}
+      - {x: -0.29999998, y: -1.23}
+      - {x: -0.28, y: -1.2099999}
+      - {x: -0.28, y: -0.03}
+      - {x: -0.31, y: 0}
+    - - {x: 1.17, y: 1.14}
+      - {x: 1.14, y: 1.17}
+      - {x: 0.14, y: 1.17}
+      - {x: 0.12, y: 1.15}
+      - {x: 0.12, y: 0.98999995}
+      - {x: 0.37, y: 0.85999995}
+      - {x: 0.52, y: 0.71}
+      - {x: 0.55, y: 0.28}
+      - {x: 0.45, y: 0.13}
+      - {x: 0.28, y: -0.03}
+      - {x: 0.28, y: -1.2099999}
+      - {x: 0.29999998, y: -1.23}
+      - {x: 0.37, y: -1.23}
+      - {x: 0.53999996, y: -0.87}
+      - {x: 1, y: 0.14}
+      - {x: 1.17, y: 0.53999996}
 --- !u!114 &114877193580734542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,8 +143,8 @@ MonoBehaviour:
     type: 2}
   ExplosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
-  LeftBound: {x: 0, y: 0, z: 0}
-  RightBound: {x: 0, y: 0, z: 0}
+  LeftBound: {x: 10, y: 0, z: 0}
+  RightBound: {x: 80, y: 0, z: 0}
 --- !u!212 &212131084047245028
 SpriteRenderer:
   m_ObjectHideFlags: 1
