@@ -71,7 +71,7 @@ public class LaserController : MonoBehaviour {
         foreach(GameObject target in targets)
         {
             float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
-            if(distanceToTarget < distanceToTargetPosition);
+            if(distanceToTarget < distanceToTargetPosition)
             {
                 targetPosition = target.transform.position;
                 distanceToTargetPosition = distanceToTarget;

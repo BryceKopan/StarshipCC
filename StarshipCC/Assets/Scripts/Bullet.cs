@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
         public float bulletDamage = 1f;
         public float lifeTime = 5f;
         public Material material;
+        public GameObject ExplosionPrefab;
 
         void Start()
         {
@@ -29,11 +30,12 @@ public class Bullet : MonoBehaviour {
 
             if (thisTag.Equals(Tags.FRIENDLY_BULLET) && otherTag.Equals(Tags.ENEMY))
             {
-                Debug.Log("Hit enemy");
+                //Debug.Log("Hit enemy");
                 LaserController laser = other.gameObject.GetComponent<LaserController>();
                 if(laser)
                 {
                     laser.TakeDamage(bulletDamage);
+                    Explode(gameObject.transform.position);
                     Destroy(gameObject);
                 }
             }
@@ -47,5 +49,13 @@ public class Bullet : MonoBehaviour {
                     Destroy(gameObject);
                 }
             }
+        }
+
+        void Explode(Vector3 point)
+        {
+            Instantiate(
+                    ExplosionPrefab,
+                    point,
+                    gameObject.transform.rotation);
         }
 }
