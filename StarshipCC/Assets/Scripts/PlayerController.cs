@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody;
 
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
 
     Vector2 moveDirection;
     Vector2 aimDirection;
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         if(health <= 0)
-            Destroy(gameObject);
+            Death();
     }
 
     void InitInput()
@@ -198,5 +199,15 @@ public class PlayerController : MonoBehaviour
     void EnableDash()
     {
         canDash = true;
+    }
+
+    void Death()
+    {
+        Instantiate(
+                explosionPrefab,
+                transform.position,
+                transform.rotation);
+
+        Destroy(gameObject);
     }
 }
