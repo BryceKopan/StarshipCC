@@ -38,6 +38,15 @@ public class Bullet : MonoBehaviour {
                     Explode(gameObject.transform.position);
                     Destroy(gameObject);
                 }
+
+                EnemyShipController ship = 
+                    other.gameObject.GetComponent<EnemyShipController>();
+                if(ship)
+                {
+                    ship.TakeDamage(bulletDamage);
+                    Explode(gameObject.transform.position);
+                    Destroy(gameObject);
+                }
             }
             else if (thisTag.Equals(Tags.ENEMY_BULLET) && otherTag.Equals(Tags.PLAYER))
             {
