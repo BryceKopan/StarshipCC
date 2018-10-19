@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LaserController : MonoBehaviour, Hittable
-{
-    public float Health, Speed, ChargeTime, AttackTime, MoveDistance;
-    public GameObject AttackPrefab, ChargePrefab;
+
+public class LaserController : MonoBehaviour, Hittable {
+    public float Health, Speed, ChargeTime, AttackTime;
+    public GameObject AttackPrefab, ChargePrefab, ExplosionPrefab;
     public Vector3 LeftBound, RightBound;
 
     bool moving = true;
     float currentHealth;
-    Vector3 targetPosition;
+    private GameObject[] targets;
 
 	// Use this for initialization
 	void Start () 
     {
         float startX = (((RightBound.x - LeftBound.x) / 2) + LeftBound.x);
         transform.position = new Vector3(startX, transform.position.y, transform.position.z);
-		targetPosition = transform.position + new Vector3(MoveDistance, 0, 0);
 
         currentHealth = Health;
+
+        targets = GameObject.FindGameObjectsWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -28,19 +29,57 @@ public class LaserController : MonoBehaviour, Hittable
     {
         if(moving)
         {
-            if((transform.position.x > RightBound.x && MoveDistance > 0)
-                || transform.position.x < LeftBound.x && MoveDistance < 0)
-                MoveDistance = -MoveDistance;
+            Vector3 movementVector, attackPosition;
 
-            transform.position += (targetPosition - transform.position).normalized * Speed * Time.deltaTime;
-
-            if(Math.Abs(targetPosition.x - transform.position.x) < .25)
+            attackPosition = GetAttackPosition();
+            if(attackPosition.x > LeftBound.x && attackPosition.x < RightBound.x)
             {
-	            targetPosition = transform.position + new Vector3(MoveDistance, 0, 0);
+                movementVector = GetMovementVectorToAttack(attackPosition);    
+            }
+            else
+            {
+                movementVector = new Vector3(0, 0, 0);
+            }
+
+            transform.position += movementVector * Speed * Time.deltaTime;
+
+            if(Math.Abs(attackPosition.x - transform.position.x) < .5)
+            {
                 moving = false;
                 ChargeAttack();
             }
         }
+    }
+
+    Vector3 GetMovementVectorToAttack(Vector3 attackPosition)
+    {
+        Vector3 movementVector;
+
+        movementVector = attackPosition - transform.position;
+        movementVector.y = 0;
+        movementVector.z = 0;
+        movementVector.Normalize();
+
+        return movementVector;
+    }
+
+    Vector3 GetAttackPosition()
+    {
+        Vector3 targetPosition = targets[0].transform.position;
+        float distanceToTargetPosition = 
+            Vector3.Distance(targetPosition, transform.position);
+
+        foreach(GameObject target in targets)
+        {
+            float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+            if(distanceToTarget < distanceToTargetPosition)
+            {
+                targetPosition = target.transform.position;
+                distanceToTargetPosition = distanceToTarget;
+            }
+        }
+
+        return targetPosition;
     }
 
     void ChargeAttack()
@@ -75,11 +114,16 @@ public class LaserController : MonoBehaviour, Hittable
         currentHealth -= damage;
 
         if(currentHealth <= 0)
-            Die();
+            Death();
     }
 
-    void Die()
+    void Death()
     {
+        Instantiate(
+                ExplosionPrefab,
+                transform.position,
+                transform.rotation);
+
         Destroy(gameObject);
     }
 

@@ -231,6 +231,8 @@ MonoBehaviour:
   parryCooldown: 0.1
   bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
     type: 2}
+  explosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
+    type: 2}
 --- !u!212 &212421511914163430
 SpriteRenderer:
   m_ObjectHideFlags: 1

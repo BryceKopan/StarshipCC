@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, Hittable
     Rigidbody2D rigidbody;
 
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
 
     ParryShield parryShield;
 
@@ -181,7 +182,7 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         health -= damage;
         if(health <= 0)
-            Destroy(gameObject);
+            Death();
     }
 
     void InitInput()
@@ -241,5 +242,15 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         TakeDamage(p.damage);
         Destroy(p.gameObject);
+    }
+
+    void Death()
+    {
+        Instantiate(
+                explosionPrefab,
+                transform.position,
+                transform.rotation);
+
+        Destroy(gameObject);
     }
 }
