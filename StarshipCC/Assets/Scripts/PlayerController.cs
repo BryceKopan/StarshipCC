@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour, Hittable 
 {
     public int PlayerNumber = 0;
     public float joystickDeadzone = 0.1f;
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
             bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
         }
         canFire = false;
-        Invoke("EnableFiring", fireCooldown);
+        Invoke("EnableFire", fireCooldown);
     }
 
     void Dash()
@@ -235,5 +235,11 @@ public class PlayerController : MonoBehaviour
         canParry = true;
         canDash = true;
         canFire = true;
+    }
+
+    void Hittable.OnHit(Projectile p)
+    {
+        TakeDamage(p.damage);
+        Destroy(p.gameObject);
     }
 }
