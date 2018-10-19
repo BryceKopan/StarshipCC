@@ -32,7 +32,6 @@ public class Bullet : Projectile {
 
             string thisTag = gameObject.tag;
             string otherTag = other.gameObject.tag;
-
             //if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER)))
             //{ 
             Hittable hittable = other.gameObject.GetComponent<Hittable>();
@@ -43,6 +42,14 @@ public class Bullet : Projectile {
                     hittable.OnHit(this);
                 }
             //}
+        }
+
+        void Explode(Vector3 point)
+        {
+            Instantiate(
+                    ExplosionPrefab,
+                    point,
+                    gameObject.transform.rotation);
         }
 
         void Explode(Vector3 point)
