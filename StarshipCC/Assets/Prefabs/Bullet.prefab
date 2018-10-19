@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVector: {x: 0, y: 0, z: 0}
-  bulletMoveSpeed: 40
+  bulletMoveSpeed: 80
   bulletDamage: 1
   lifeTime: 20
   material: {fileID: 2100000, guid: 60756ad0a8a26f24c9848005b3c8c004, type: 2}

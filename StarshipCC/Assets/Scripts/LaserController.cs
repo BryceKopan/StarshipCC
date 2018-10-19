@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LaserController : MonoBehaviour {
+public class LaserController : MonoBehaviour, Hittable {
     public float Health, Speed, ChargeTime, AttackTime;
     public GameObject AttackPrefab, ChargePrefab, ExplosionPrefab;
     public Vector3 LeftBound, RightBound;
@@ -124,5 +124,11 @@ public class LaserController : MonoBehaviour {
                 transform.rotation);
 
         Destroy(gameObject);
+    }
+
+    void Hittable.OnHit(Projectile p)
+    {
+        TakeDamage(p.damage);
+        Destroy(p.gameObject);
     }
 }
