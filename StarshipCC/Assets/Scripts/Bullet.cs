@@ -28,20 +28,18 @@ public class Bullet : Projectile {
 
         void OnTriggerEnter2D(Collider2D other)
         {
-        Debug.Log("Collision");
 
             string thisTag = gameObject.tag;
             string otherTag = other.gameObject.tag;
-            //if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER)))
-            //{ 
-            Hittable hittable = other.gameObject.GetComponent<Hittable>();
+            if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER)))
+            { 
+                Hittable hittable = other.gameObject.GetComponent<Hittable>();
 
                 if (hittable != null)
                 {
-            Debug.Log("Hittable");
                     hittable.OnHit(this);
                 }
-            //}
+            }
         }
 
         void Explode(Vector3 point)

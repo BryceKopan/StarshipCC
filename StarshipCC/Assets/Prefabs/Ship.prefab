@@ -226,7 +226,7 @@ MonoBehaviour:
   damage: 1
   dashLength: 0.1
   parryLength: 0.3
-  fireCooldown: 0.1
+  fireCooldown: 0.3
   dashCooldown: 2
   parryCooldown: 0.1
   bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
