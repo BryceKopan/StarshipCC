@@ -51,12 +51,4 @@ public class Bullet : Projectile {
                     point,
                     gameObject.transform.rotation);
         }
-
-        void Explode(Vector3 point)
-        {
-            Instantiate(
-                    ExplosionPrefab,
-                    point,
-                    gameObject.transform.rotation);
-        }
 }
