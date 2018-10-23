@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour, Hittable 
 {
     public int PlayerNumber = 0;
     public float joystickDeadzone = 0.1f;
@@ -15,15 +15,20 @@ public class PlayerController : MonoBehaviour
     public float damage;
 
     public float dashLength = 0.3f;
-    public float fireDelay = 0.1f;
-    public float dashDelay = 2f;
+    public float parryLength = 0.3f;
+    public float fireCooldown = 0.1f;
+    public float dashCooldown = 1f;
+    public float parryCooldown = 0.1f;
     bool canFire = true;
     bool canDash = true;
+    bool canParry = true;
 
     Rigidbody2D rigidbody;
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    
+    ParryShield parryShield;
 
     Vector2 moveDirection;
     Vector2 aimDirection;
@@ -37,6 +42,8 @@ public class PlayerController : MonoBehaviour
 	void Start () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        parryShield = GetComponentInChildren<ParryShield>();
+        parryShield.gameObject.SetActive(false);
 
         // Find all bullet spawns attached to the ship
         bulletSpawns = new List<Transform>();
@@ -75,6 +82,7 @@ public class PlayerController : MonoBehaviour
         float yAimAxis;
         bool fire;
         bool dash;
+        bool parry;
 
         // Keyboard input
         if(PlayerNumber == 0)
@@ -89,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
             fire = Input.GetMouseButton(0);
             dash = Input.GetButton("KeyboardDash");
+            parry = Input.GetMouseButton(1);
         }
         // Controller input
         else
@@ -103,6 +112,7 @@ public class PlayerController : MonoBehaviour
             fire = fireAxis > 0;
 
             dash = XCI.GetButton(XboxButton.LeftBumper, controller);
+            parry = XCI.GetButton(XboxButton.RightBumper, controller);
         }
 
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
@@ -120,6 +130,11 @@ public class PlayerController : MonoBehaviour
         if (dash && canDash)
         {
             Dash();
+        }
+
+        if (parry && canParry)
+        {
+            Parry();
         }
     }
 
@@ -141,7 +156,7 @@ public class PlayerController : MonoBehaviour
             bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
         }
         canFire = false;
-        Invoke("EnableFiring", fireDelay);
+        Invoke("EnableFire", fireCooldown);
     }
 
     void Dash()
@@ -150,7 +165,17 @@ public class PlayerController : MonoBehaviour
         dashDirection = moveDirection;
         canDash = false;
         Invoke("EndDash", dashLength);
-        Invoke("EnableDash", dashDelay);
+        Invoke("EnableDash", dashLength + dashCooldown);
+    }
+
+    void Parry()
+    {
+        canParry = false;
+        canDash = false;
+        canFire = false;
+        Invoke("EndParry", parryLength);
+        Invoke("EnableParry", parryLength + parryCooldown);
+        parryShield.gameObject.SetActive(true);
     }
 
     public void TakeDamage(float damage)
@@ -191,7 +216,12 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = rigidbody.velocity * 0.1f;
     }
 
-    void EnableFiring()
+    void EndParry()
+    {
+        parryShield.gameObject.SetActive(false);
+    }
+
+    void EnableFire()
     {
         canFire = true;
     }
@@ -199,6 +229,19 @@ public class PlayerController : MonoBehaviour
     void EnableDash()
     {
         canDash = true;
+    }
+
+    void EnableParry()
+    {
+        canParry = true;
+        canDash = true;
+        canFire = true;
+    }
+
+    void Hittable.OnHit(Projectile p)
+    {
+        TakeDamage(p.damage);
+        Destroy(p.gameObject);
     }
 
     void Death()
