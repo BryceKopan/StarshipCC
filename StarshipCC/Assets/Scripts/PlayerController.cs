@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject SetActiveOnDeath;
     
     ParryShield parryShield;
 
@@ -251,6 +252,7 @@ public class PlayerController : MonoBehaviour, Hittable
                 transform.position,
                 transform.rotation);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        SetActiveOnDeath.SetActive(true);
     }
 }
