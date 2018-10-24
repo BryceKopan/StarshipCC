@@ -42,6 +42,12 @@ public class Bullet : Projectile {
             }
         }
 
+        public override void Death()
+        {
+            Explode(gameObject.transform.position);
+            Destroy(gameObject);
+        }
+
         void Explode(Vector3 point)
         {
             Instantiate(

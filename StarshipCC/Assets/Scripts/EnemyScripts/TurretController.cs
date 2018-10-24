@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TurretController : MonoBehaviour {
-    public float Health, RotationSpeed, ChargeTime, AttackTime;
-    public GameObject AttackPrefab, ChargePrefab, ExplosionPrefab;
+public class TurretController : MonoBehaviour, Hittable {
+    public float Health, RotationSpeed, numberOfShots, timeBetweenShots, shotScale;
+    public GameObject AttackPrefab, ExplosionPrefab;
 
     bool moving = true;
     float currentHealth;
@@ -35,7 +35,7 @@ public class TurretController : MonoBehaviour {
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * RotationSpeed);
 
-            if(false)
+            if(moving && Quaternion.Angle(q, transform.rotation) < 5)
             {
                 moving = false;
                 Attack();
@@ -64,6 +64,56 @@ public class TurretController : MonoBehaviour {
 
     void Attack()
     {
-        Debug.Log("Fire");
+        for(int i = 0; i < numberOfShots; i++)
+        {
+            Invoke("Fire", i * timeBetweenShots);
+        }
+        Invoke("Move", numberOfShots * timeBetweenShots);
+    }
+
+    void Move()
+    {
+        moving = true;
+    }
+
+    void Fire()
+    {
+        var bullet = (GameObject) Instantiate(
+                AttackPrefab,
+                transform.position,
+                transform.rotation);
+
+        bullet.transform.localScale = new Vector3(1 * shotScale, 1 * shotScale, 1);
+
+        bullet.tag = Tags.ENEMY_BULLET;
+        
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        //Add velocity to the bullet
+        bulletScript.moveVector = -transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+            Death();
+    }
+
+    void Death()
+    {
+        Instantiate(
+                ExplosionPrefab,
+                transform.position,
+                transform.rotation);
+
+        Destroy(gameObject);
+    }
+
+    void Hittable.OnHit(Projectile p)
+    {
+        TakeDamage(p.damage);
+        p.Death();
     }
 }
