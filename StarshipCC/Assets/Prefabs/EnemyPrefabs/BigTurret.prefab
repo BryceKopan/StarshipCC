@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 60144645611635320}
   - component: {fileID: 114502016862840278}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: BigTurret
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,11 +124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 500
   RotationSpeed: 1
-  ChargeTime: 0
-  AttackTime: 0
+  numberOfShots: 3
+  timeBetweenShots: 0.25
+  shotScale: 4
   AttackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
-  ChargePrefab: {fileID: 0}
   ExplosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
 --- !u!212 &212411107357161736

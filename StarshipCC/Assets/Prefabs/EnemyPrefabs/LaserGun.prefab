@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1510750038997238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.303, y: -1.22, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.75, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,8 +143,6 @@ MonoBehaviour:
     type: 2}
   ExplosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
-  LeftBound: {x: 10, y: 0, z: 0}
-  RightBound: {x: 80, y: 0, z: 0}
 --- !u!212 &212131084047245028
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -124,11 +124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 500
   RotationSpeed: 1
-  ChargeTime: 0
-  AttackTime: 0
+  numberOfShots: 6
+  timeBetweenShots: 0.1
+  shotScale: 1
   AttackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
-  ChargePrefab: {fileID: 0}
   ExplosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
 --- !u!212 &212919077028246828
