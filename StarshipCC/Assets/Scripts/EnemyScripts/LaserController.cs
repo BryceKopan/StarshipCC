@@ -6,8 +6,8 @@ using System;
 public class LaserController : MonoBehaviour, Hittable {
     public float Health, Speed, ChargeTime, AttackTime;
     public GameObject AttackPrefab, ChargePrefab, ExplosionPrefab;
-    public Vector3 LeftBound, RightBound;
-
+    
+    private Vector3 leftBound, rightBound;
     bool moving = true;
     float currentHealth;
     private GameObject[] targets;
@@ -15,12 +15,13 @@ public class LaserController : MonoBehaviour, Hittable {
 	// Use this for initialization
 	void Start () 
     {
-        float startX = (((RightBound.x - LeftBound.x) / 2) + LeftBound.x);
-        transform.position = new Vector3(startX, transform.position.y, transform.position.z);
-
         currentHealth = Health;
 
         targets = GameObject.FindGameObjectsWithTag("Player");
+
+        leftBound = rightBound = transform.position;
+        leftBound.x -= 33;
+        rightBound.x += 33;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +32,7 @@ public class LaserController : MonoBehaviour, Hittable {
             Vector3 movementVector, attackPosition;
 
             attackPosition = GetAttackPosition();
-            if(attackPosition.x > LeftBound.x && attackPosition.x < RightBound.x)
+            if(attackPosition.x > leftBound.x && attackPosition.x < rightBound.x)
             {
                 movementVector = GetMovementVectorToAttack(attackPosition);    
             }
@@ -129,6 +130,6 @@ public class LaserController : MonoBehaviour, Hittable {
     void Hittable.OnHit(Projectile p)
     {
         TakeDamage(p.damage);
-        Destroy(p.gameObject);
+        p.Death();
     }
 }

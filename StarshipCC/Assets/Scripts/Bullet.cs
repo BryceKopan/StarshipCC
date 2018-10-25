@@ -28,6 +28,10 @@ public class Bullet : Projectile {
 
         void OnTriggerEnter2D(Collider2D other)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             string thisTag = gameObject.tag;
             string otherTag = other.gameObject.tag;
             if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER)))
@@ -39,6 +43,15 @@ public class Bullet : Projectile {
                     hittable.OnHit(this);
                 }
             }
+<<<<<<< HEAD
+=======
+        }
+
+        public override void Death()
+        {
+            Explode(gameObject.transform.position);
+            Destroy(gameObject);
+>>>>>>> master
         }
 
         void Explode(Vector3 point)

@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021119624659050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.51, y: 0.33, z: 0}
+  m_LocalPosition: {x: -69.5, y: -25.8, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4760516592968376}
@@ -222,11 +222,11 @@ MonoBehaviour:
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
-  health: 10
+  health: 3
   damage: 1
   dashLength: 0.1
   parryLength: 0.3
-  fireCooldown: 0.1
+  fireCooldown: 0.3
   dashCooldown: 2
   parryCooldown: 0.1
   bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
