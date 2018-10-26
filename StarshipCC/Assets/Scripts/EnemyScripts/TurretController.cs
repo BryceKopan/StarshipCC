@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public class TurretController : MonoBehaviour, Hittable {
-    public float Health, RotationSpeed, numberOfShots, timeBetweenShots, shotScale;
+    public float Health, RotationSpeed, numberOfShots, timeBetweenShots, pauseAfterShooting, shotScale;
     public GameObject AttackPrefab, ExplosionPrefab;
 
     bool moving = true, aiming = true;
@@ -96,7 +96,7 @@ public class TurretController : MonoBehaviour, Hittable {
         {
             Invoke("Fire", i * timeBetweenShots);
         }
-        Invoke("Move", numberOfShots * timeBetweenShots);
+        Invoke("Move", (numberOfShots * timeBetweenShots) + pauseAfterShooting);
     }
 
     void Move()
