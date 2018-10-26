@@ -176,8 +176,6 @@ public class PlayerController : MonoBehaviour, Hittable
     void Parry()
     {
         canParry = false;
-        canDash = false;
-        canFire = false;
         Invoke("EndParry", parryLength);
         Invoke("EnableParry", parryLength + parryCooldown);
         parryShield.gameObject.SetActive(true);
@@ -252,8 +250,6 @@ public class PlayerController : MonoBehaviour, Hittable
     void EnableParry()
     {
         canParry = true;
-        canDash = true;
-        canFire = true;
     }
 
     void Hittable.OnHit(Projectile p)
