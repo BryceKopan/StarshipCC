@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 60995270646689540}
   - component: {fileID: 50401391063598296}
   - component: {fileID: 114196128573437156}
+  - component: {fileID: 95725222069644388}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -271,6 +272,24 @@ PolygonCollider2D:
     - - {x: -0.0022068024, y: 1.1556109}
       - {x: -0.84047556, y: -1.151183}
       - {x: 0.84866536, y: -1.1510978}
+--- !u!95 &95725222069644388
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794796194468514}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 001b96bb0833c234e8f5a56d221ff0e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114196128573437156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +310,7 @@ MonoBehaviour:
   damage: 1
   dashLength: 0.1
   parryLength: 0.3
+  invincibilityLength: 1
   fireCooldown: 0.3
   dashCooldown: 2
   parryCooldown: 0.1
