@@ -16,14 +16,18 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public float dashLength = 0.3f;
     public float parryLength = 0.3f;
+    public float invincibilityLength = 1f;
     public float fireCooldown = 0.1f;
     public float dashCooldown = 1f;
     public float parryCooldown = 0.1f;
     bool canFire = true;
     bool canDash = true;
     bool canParry = true;
+    bool invincible = false;
 
     Rigidbody2D rigidbody;
+
+    Animator animator;
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour, Hittable
 	void Start () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         parryShield = GetComponentInChildren<ParryShield>();
         parryShield.gameObject.SetActive(false);
 
@@ -181,7 +186,7 @@ public class PlayerController : MonoBehaviour, Hittable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        if (health <= 0)
             Death();
     }
 
@@ -221,6 +226,19 @@ public class PlayerController : MonoBehaviour, Hittable
         parryShield.gameObject.SetActive(false);
     }
 
+    void StartInvincibility()
+    {
+        invincible = true;
+        animator.SetBool("Invincible", true);
+        Invoke("EndInvincibility", invincibilityLength);
+    }
+
+    void EndInvincibility()
+    {
+        animator.SetBool("Invincible", false);
+        invincible = false;
+    }
+
     void EnableFire()
     {
         canFire = true;
@@ -240,8 +258,12 @@ public class PlayerController : MonoBehaviour, Hittable
 
     void Hittable.OnHit(Projectile p)
     {
-        TakeDamage(p.damage);
-        Destroy(p.gameObject);
+        if (!invincible)
+        {
+            TakeDamage(p.damage);
+            Destroy(p.gameObject);
+            StartInvincibility();
+        }
     }
 
     void Death()

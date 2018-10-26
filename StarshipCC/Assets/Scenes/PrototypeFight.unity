@@ -114,7 +114,6 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1001 &125937545
-
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -234,7 +233,6 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &314029419
-
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 60816845801630302}
   - component: {fileID: 50023343243606102}
   - component: {fileID: 114859194628393482}
+  - component: {fileID: 95994501824255488}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -85,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021119624659050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.5, y: -25.8, z: 0}
+  m_LocalPosition: {x: -2.51, y: 0.33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4760516592968376}
@@ -195,6 +196,24 @@ PolygonCollider2D:
     - - {x: -0.0022068024, y: 1.1556109}
       - {x: -0.84047556, y: -1.151183}
       - {x: 0.84866536, y: -1.1510978}
+--- !u!95 &95994501824255488
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021119624659050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 001b96bb0833c234e8f5a56d221ff0e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114484637764920670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +245,7 @@ MonoBehaviour:
   damage: 1
   dashLength: 0.1
   parryLength: 0.3
+  invincibilityLength: 1
   fireCooldown: 0.3
   dashCooldown: 2
   parryCooldown: 0.1
