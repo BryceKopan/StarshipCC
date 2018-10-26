@@ -252,7 +252,12 @@ public class PlayerController : MonoBehaviour, Hittable
                 transform.position,
                 transform.rotation);
 
-        gameObject.SetActive(false);
         SetActiveOnDeath.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    public void Revive()
+    {
+        health = 1;
     }
 }
