@@ -6,10 +6,12 @@ using System;
 public class TurretController : MonoBehaviour, Hittable {
     public float Health, RotationSpeed, numberOfShots, timeBetweenShots, pauseAfterShooting, shotScale;
     public GameObject AttackPrefab, ExplosionPrefab;
-
+    public List<Sprite> healthSprites;
+    
     bool moving = true, aiming = true;
     float currentHealth;
     private GameObject[] targets;
+    private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () 
@@ -17,6 +19,8 @@ public class TurretController : MonoBehaviour, Hittable {
         currentHealth = Health;
 
         targets = GameObject.FindGameObjectsWithTag("Player");
+
+        sr = gameObject.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -125,6 +129,7 @@ public class TurretController : MonoBehaviour, Hittable {
     {
         currentHealth -= damage;
 
+        CheckSprite();
         if(currentHealth <= 0)
             Death();
     }
@@ -143,5 +148,21 @@ public class TurretController : MonoBehaviour, Hittable {
     {
         TakeDamage(p.damage);
         p.Death();
+    }
+
+    void CheckSprite()
+    {
+        float healthPercentage = currentHealth/Health;
+        int numberOfHealthSprites = healthSprites.Count;
+        float stepSize = 1f / numberOfHealthSprites;
+
+        for(int i = 0; i < numberOfHealthSprites; i++)
+        {
+            if(healthPercentage < 1f - (i * stepSize) &&
+                    healthPercentage > 1f - ((i + 1) * stepSize))
+            {
+                sr.sprite = healthSprites[i];
+            }
+        }
     }
 }
