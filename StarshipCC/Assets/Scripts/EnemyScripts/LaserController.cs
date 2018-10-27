@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -8,7 +8,7 @@ public class LaserController : MonoBehaviour, Hittable {
     public GameObject AttackPrefab, ChargePrefab, ExplosionPrefab;
     
     private Vector3 leftBound, rightBound;
-    bool moving = true;
+    bool moving = true, aiming = true;
     float currentHealth;
     private GameObject[] targets;
 
@@ -17,11 +17,11 @@ public class LaserController : MonoBehaviour, Hittable {
     {
         currentHealth = Health;
 
-        targets = GameObject.FindGameObjectsWithTag("Player");
-
         leftBound = rightBound = transform.position;
         leftBound.x -= 33;
         rightBound.x += 33;
+
+        targets = GameObject.FindGameObjectsWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -46,9 +46,30 @@ public class LaserController : MonoBehaviour, Hittable {
             if(Math.Abs(attackPosition.x - transform.position.x) < .5)
             {
                 moving = false;
-                ChargeAttack();
+                if(aiming)
+                    ChargeAttack();
             }
         }
+    }
+
+    void LateUpdate()
+    {
+        if(GetActiveTargetCount() == 0)
+            aiming = false;
+        else
+            aiming = true;
+    }
+
+    int GetActiveTargetCount()
+    {
+        int count = 0;
+        for(int i = 0; i < targets.Length; i++)
+        {
+            if(targets[i].activeSelf)
+                count++;
+        }
+
+        return count;
     }
 
     Vector3 GetMovementVectorToAttack(Vector3 attackPosition)
@@ -71,11 +92,14 @@ public class LaserController : MonoBehaviour, Hittable {
 
         foreach(GameObject target in targets)
         {
-            float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
-            if(distanceToTarget < distanceToTargetPosition)
+            if(target.activeSelf)
             {
-                targetPosition = target.transform.position;
-                distanceToTargetPosition = distanceToTarget;
+                float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+                if(distanceToTarget < distanceToTargetPosition)
+                {
+                    targetPosition = target.transform.position;
+                    distanceToTargetPosition = distanceToTarget;
+                }
             }
         }
 

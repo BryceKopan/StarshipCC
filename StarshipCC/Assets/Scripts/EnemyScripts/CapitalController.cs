@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +22,6 @@ public class CapitalController : MonoBehaviour {
 
     void InstantiateHardPoint(Vector3 hardPoint, GameObject hardPointPrefab)
     {
-        Debug.Log("test");
         Instantiate(
                 hardPointPrefab,
                 hardPoint,

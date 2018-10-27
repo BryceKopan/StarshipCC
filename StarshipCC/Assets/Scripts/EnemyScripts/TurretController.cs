@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 
 public class TurretController : MonoBehaviour, Hittable {
-    public float Health, RotationSpeed, numberOfShots, timeBetweenShots, shotScale;
+    public float Health, RotationSpeed, numberOfShots, timeBetweenShots, pauseAfterShooting, shotScale;
     public GameObject AttackPrefab, ExplosionPrefab;
 
-    bool moving = true;
+    bool moving = true, aiming = true;
     float currentHealth;
     private GameObject[] targets;
 
@@ -25,11 +25,18 @@ public class TurretController : MonoBehaviour, Hittable {
         if(moving)
         {
             Vector3 rotationVector, attackPosition;
+            
+            if(aiming)
+            {
+                attackPosition = GetAttackPosition();
 
-            attackPosition = GetAttackPosition();
-
-            rotationVector = transform.position - attackPosition;
-            rotationVector.Normalize();
+                rotationVector = transform.position - attackPosition;
+                rotationVector.Normalize();
+            }
+            else
+            {
+                rotationVector = new Vector3(0, 1, 0);
+            }
 
             float angle = Mathf.Atan2(rotationVector.y, rotationVector.x) * Mathf.Rad2Deg - 90;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -38,9 +45,18 @@ public class TurretController : MonoBehaviour, Hittable {
             if(moving && Quaternion.Angle(q, transform.rotation) < 5)
             {
                 moving = false;
-                Attack();
+                if(aiming)
+                    Attack();
             }
         }
+    }
+
+    void LateUpdate()
+    {
+        if(GetActiveTargetCount() == 0)
+            aiming = false;
+        else
+            aiming = true;
     }
 
     Vector3 GetAttackPosition()
@@ -62,13 +78,25 @@ public class TurretController : MonoBehaviour, Hittable {
         return targetPosition;
     }
 
+    int GetActiveTargetCount()
+    {
+        int count = 0;
+        for(int i = 0; i < targets.Length; i++)
+        {
+            if(targets[i].activeSelf)
+                count++;
+        }
+
+        return count;
+    }
+
     void Attack()
     {
         for(int i = 0; i < numberOfShots; i++)
         {
             Invoke("Fire", i * timeBetweenShots);
         }
-        Invoke("Move", numberOfShots * timeBetweenShots);
+        Invoke("Move", (numberOfShots * timeBetweenShots) + pauseAfterShooting);
     }
 
     void Move()
@@ -86,7 +114,7 @@ public class TurretController : MonoBehaviour, Hittable {
         bullet.transform.localScale = new Vector3(1 * shotScale, 1 * shotScale, 1);
 
         bullet.tag = Tags.ENEMY_BULLET;
-        
+
         Bullet bulletScript = bullet.GetComponent<Bullet>();
 
         //Add velocity to the bullet
