@@ -16,23 +16,27 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public float dashLength = 0.3f;
     public float parryLength = 0.3f;
+    public float invincibilityLength = 1f;
     public float fireCooldown = 0.1f;
     public float dashCooldown = 1f;
     public float parryCooldown = 0.1f;
     bool canFire = true;
     bool canDash = true;
     bool canParry = true;
+    bool invincible = false;
 
     Rigidbody2D rigidbody;
 
+    Animator animator;
+
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject SetActiveOnDeath;
     
     ParryShield parryShield;
 
     Vector2 moveDirection;
     Vector2 aimDirection;
-    Vector2 dashDirection;
 
     XboxController controller;
 
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour, Hittable
 	void Start () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         parryShield = GetComponentInChildren<ParryShield>();
         parryShield.gameObject.SetActive(false);
 
@@ -70,8 +75,7 @@ public class PlayerController : MonoBehaviour, Hittable
         
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+        rigidbody.MoveRotation(Mathf.LerpAngle(rigidbody.rotation, angle, turnSpeed * Time.deltaTime));
     }
 
     void HandleInput()
@@ -116,6 +120,7 @@ public class PlayerController : MonoBehaviour, Hittable
         }
 
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
+
         // Implement joystick deadzone
         if (Mathf.Abs(xAimAxis) > joystickDeadzone || Mathf.Abs(yAimAxis) > joystickDeadzone)
         {
@@ -162,7 +167,6 @@ public class PlayerController : MonoBehaviour, Hittable
     void Dash()
     {
         rigidbody.AddForce(moveDirection * dashSpeed, ForceMode2D.Impulse);
-        dashDirection = moveDirection;
         canDash = false;
         Invoke("EndDash", dashLength);
         Invoke("EnableDash", dashLength + dashCooldown);
@@ -171,8 +175,6 @@ public class PlayerController : MonoBehaviour, Hittable
     void Parry()
     {
         canParry = false;
-        canDash = false;
-        canFire = false;
         Invoke("EndParry", parryLength);
         Invoke("EnableParry", parryLength + parryCooldown);
         parryShield.gameObject.SetActive(true);
@@ -181,7 +183,7 @@ public class PlayerController : MonoBehaviour, Hittable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        if (health <= 0)
             Death();
     }
 
@@ -221,6 +223,19 @@ public class PlayerController : MonoBehaviour, Hittable
         parryShield.gameObject.SetActive(false);
     }
 
+    void StartInvincibility()
+    {
+        invincible = true;
+        animator.SetBool("Invincible", true);
+        Invoke("EndInvincibility", invincibilityLength);
+    }
+
+    void EndInvincibility()
+    {
+        animator.SetBool("Invincible", false);
+        invincible = false;
+    }
+
     void EnableFire()
     {
         canFire = true;
@@ -234,14 +249,16 @@ public class PlayerController : MonoBehaviour, Hittable
     void EnableParry()
     {
         canParry = true;
-        canDash = true;
-        canFire = true;
     }
 
     void Hittable.OnHit(Projectile p)
     {
-        TakeDamage(p.damage);
-        Destroy(p.gameObject);
+        if (!invincible)
+        {
+            TakeDamage(p.damage);
+            Destroy(p.gameObject);
+            StartInvincibility();
+        }
     }
 
     void Death()
@@ -251,6 +268,12 @@ public class PlayerController : MonoBehaviour, Hittable
                 transform.position,
                 transform.rotation);
 
-        Destroy(gameObject);
+        SetActiveOnDeath.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    public void Revive()
+    {
+        health = 1;
     }
 }

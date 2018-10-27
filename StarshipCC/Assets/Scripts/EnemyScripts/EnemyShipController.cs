@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShipController : MonoBehaviour {
+public class EnemyShipController : MonoBehaviour, Hittable {
 
     public float health = 20f;
     public float turnSpeed = 5f;
@@ -81,5 +81,11 @@ public class EnemyShipController : MonoBehaviour {
                 transform.rotation);
 
         Destroy(gameObject);
+    }
+
+    void Hittable.OnHit(Projectile p)
+    {
+        TakeDamage(p.damage);
+        Destroy(p.gameObject);
     }
 }

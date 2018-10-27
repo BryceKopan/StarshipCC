@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1282677256414914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.394179, y: 7.7955227, z: -0.578125}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,10 +78,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ef6ca8b35de4451840b82e10575979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVector: {x: 0, y: 0, z: 0}
-  bulletMoveSpeed: 80
-  bulletDamage: 1
+  damage: 0
   lifeTime: 20
+  moveVector: {x: 0, y: 0, z: 0}
+  bulletDamage: 1
+  bulletMoveSpeed: 100
+  bulletLife: 5
   material: {fileID: 2100000, guid: 60756ad0a8a26f24c9848005b3c8c004, type: 2}
   ExplosionPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
     type: 2}
