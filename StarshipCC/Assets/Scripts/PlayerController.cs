@@ -11,16 +11,15 @@ public class PlayerController : MonoBehaviour, Hittable
     public float dashSpeed = 200f;
     public float turnSpeed = 5f;
 
+    public GameObject startingWeapon;
+
     public float health;
-    public float damage;
 
     public float dashLength = 0.3f;
     public float parryLength = 0.3f;
     public float invincibilityLength = 1f;
-    public float fireCooldown = 0.1f;
     public float dashCooldown = 1f;
     public float parryCooldown = 0.1f;
-    bool canFire = true;
     bool canDash = true;
     bool canParry = true;
     bool invincible = false;
@@ -29,18 +28,17 @@ public class PlayerController : MonoBehaviour, Hittable
 
     Animator animator;
 
-    public GameObject bulletPrefab;
     public GameObject explosionPrefab;
     public GameObject SetActiveOnDeath;
     
     ParryShield parryShield;
 
+    List<Weapon> weapons;
+
     Vector2 moveDirection;
     Vector2 aimDirection;
 
     XboxController controller;
-
-    List<Transform> bulletSpawns;
 
 	// Use this for initialization
 	void Start () 
@@ -50,17 +48,9 @@ public class PlayerController : MonoBehaviour, Hittable
         parryShield = GetComponentInChildren<ParryShield>();
         parryShield.gameObject.SetActive(false);
 
-        // Find all bullet spawns attached to the ship
-        bulletSpawns = new List<Transform>();
-        Transform[] children = gameObject.GetComponentsInChildren<Transform>();
-
-        foreach (Transform child in children)
-        {
-            if (child.gameObject.tag == "BulletSpawn")
-            {
-                bulletSpawns.Add(child);
-            }
-        }
+        // Attach starting weapon to the ship
+        weapons = new List<Weapon>();
+        AddWeapon(GameObject.Instantiate(startingWeapon).GetComponent<Weapon>());
 
         InitInput();
 	}
@@ -127,7 +117,7 @@ public class PlayerController : MonoBehaviour, Hittable
             aimDirection = new Vector2(xAimAxis, yAimAxis);
         }
         
-        if (fire && canFire)
+        if (fire)
         {
             Fire();
         }
@@ -145,23 +135,10 @@ public class PlayerController : MonoBehaviour, Hittable
 
     void Fire()
     {
-        foreach (Transform bulletSpawn in bulletSpawns)
+        foreach (Weapon weapon in weapons)
         {
-            var bullet = (GameObject)Instantiate(
-                    bulletPrefab,
-                    bulletSpawn.position,
-                    bulletSpawn.rotation);
-
-            bullet.tag = Tags.FRIENDLY_BULLET;
-
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
-            bulletScript.bulletDamage = damage;
-
-            //Add velocity to the bullet
-            bulletScript.moveVector = transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+            weapon.Fire();
         }
-        canFire = false;
-        Invoke("EnableFire", fireCooldown);
     }
 
     void Dash()
@@ -236,11 +213,6 @@ public class PlayerController : MonoBehaviour, Hittable
         invincible = false;
     }
 
-    void EnableFire()
-    {
-        canFire = true;
-    }
-
     void EnableDash()
     {
         canDash = true;
@@ -275,5 +247,27 @@ public class PlayerController : MonoBehaviour, Hittable
     public void Revive()
     {
         health = 1;
+    }
+
+    public void AddWeapon(Weapon weapon)
+    {
+        if(weapons != null)
+        {
+            weapons.Add(weapon);
+            weapon.transform.SetParent(transform.Find("Weapons"));
+            weapon.transform.localPosition = new Vector2(0, 0);
+            weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            weapon.OnEquip(this);
+        }
+    }
+
+    public void RemoveWeapon(Weapon weapon)
+    {
+        if (weapons != null)
+        {
+            weapons.Remove(weapon);
+
+            weapon.OnUnequip(this);
+        }
     }
 }

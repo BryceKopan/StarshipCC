@@ -9,6 +9,7 @@ public class TurretController : MonoBehaviour, Hittable {
 
     bool moving = true, aiming = true;
     float currentHealth;
+    float bulletMoveSpeed = 40f;
     private GameObject[] targets;
 
 	// Use this for initialization
@@ -118,7 +119,7 @@ public class TurretController : MonoBehaviour, Hittable {
         Bullet bulletScript = bullet.GetComponent<Bullet>();
 
         //Add velocity to the bullet
-        bulletScript.moveVector = -transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
+        bulletScript.moveVector = -transform.up * bulletMoveSpeed * Time.deltaTime;
     }
 
     public void TakeDamage(float damage)
