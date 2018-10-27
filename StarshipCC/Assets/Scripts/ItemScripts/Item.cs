@@ -16,4 +16,18 @@ public abstract class Item : MonoBehaviour {
 
     public abstract void OnEquip(PlayerController player);
     public abstract void OnUnequip(PlayerController player);
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject other = collision.gameObject;
+        if(other.tag == Tags.PLAYER)
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if(player)
+            {
+                this.OnEquip(player);
+            }
+        }
+    }
 }
+

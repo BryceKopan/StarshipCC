@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bullet : Projectile {
 
         public float bulletDamage = 1f;
-        public float bulletMoveSpeed = 40f;
         public float bulletLife = 5f;
         public Material material;
         public GameObject ExplosionPrefab;
