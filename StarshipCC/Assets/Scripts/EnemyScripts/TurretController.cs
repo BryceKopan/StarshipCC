@@ -6,11 +6,13 @@ using System;
 public class TurretController : MonoBehaviour, Hittable {
     public float Health, RotationSpeed, numberOfShots, timeBetweenShots, pauseAfterShooting, shotScale;
     public GameObject AttackPrefab, ExplosionPrefab;
-
+    public List<Sprite> healthSprites;
+    
     bool moving = true, aiming = true;
     float currentHealth;
     float bulletMoveSpeed = 40f;
     private GameObject[] targets;
+    private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () 
@@ -18,6 +20,8 @@ public class TurretController : MonoBehaviour, Hittable {
         currentHealth = Health;
 
         targets = GameObject.FindGameObjectsWithTag("Player");
+
+        sr = gameObject.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -68,11 +72,14 @@ public class TurretController : MonoBehaviour, Hittable {
 
         foreach(GameObject target in targets)
         {
-            float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
-            if(distanceToTarget < distanceToTargetPosition)
+            if(target.activeSelf)
             {
-                targetPosition = target.transform.position;
-                distanceToTargetPosition = distanceToTarget;
+                float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+                if(distanceToTarget < distanceToTargetPosition)
+                {
+                    targetPosition = target.transform.position;
+                    distanceToTargetPosition = distanceToTarget;
+                }
             }
         }
 
@@ -119,13 +126,14 @@ public class TurretController : MonoBehaviour, Hittable {
         Bullet bulletScript = bullet.GetComponent<Bullet>();
 
         //Add velocity to the bullet
-        bulletScript.moveVector = -transform.up * bulletMoveSpeed * Time.deltaTime;
+        bulletScript.moveVector = -transform.up * bulletScript.bulletMoveSpeed * Time.deltaTime;
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
+        CheckSprite();
         if(currentHealth <= 0)
             Death();
     }
@@ -144,5 +152,21 @@ public class TurretController : MonoBehaviour, Hittable {
     {
         TakeDamage(p.damage);
         p.Death();
+    }
+
+    void CheckSprite()
+    {
+        float healthPercentage = currentHealth/Health;
+        int numberOfHealthSprites = healthSprites.Count;
+        float stepSize = 1f / numberOfHealthSprites;
+
+        for(int i = 0; i < numberOfHealthSprites; i++)
+        {
+            if(healthPercentage < 1f - (i * stepSize) &&
+                    healthPercentage > 1f - ((i + 1) * stepSize))
+            {
+                sr.sprite = healthSprites[i];
+            }
+        }
     }
 }
