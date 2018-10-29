@@ -17,11 +17,17 @@ public abstract class EnemyController : MonoBehaviour, Hittable
 
     private float currentHealth;
 
+    private DegradingSprite ds;
+
 	// Use this for initialization
 	void Start () 
     {
         targets = FindTargets();
         currentHealth = maxHealth;
+
+        ds = gameObject.GetComponent<DegradingSprite>();
+        if(ds)
+            ds.SetMaxHealth(maxHealth);
 
         OnStart();
 	}
@@ -134,6 +140,9 @@ public abstract class EnemyController : MonoBehaviour, Hittable
     void Hittable.OnHit(Projectile p)
     {
         currentHealth -= p.damage;
+
+        if(ds)
+            ds.SetSprite(currentHealth);
 
         if(currentHealth <= 0)
             Death();
