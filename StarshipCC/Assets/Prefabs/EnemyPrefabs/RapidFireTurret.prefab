@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212919077028246828}
   - component: {fileID: 50661888653227148}
   - component: {fileID: 60721989951366710}
-  - component: {fileID: 114697841985606562}
+  - component: {fileID: 114901617767024802}
   m_Layer: 0
   m_Name: RapidFireTurret
   m_TagString: Enemy
@@ -111,7 +111,7 @@ PolygonCollider2D:
       - {x: 0.53999996, y: -0.93}
       - {x: 0.53, y: -0.53}
       - {x: 0.7, y: -0.34}
---- !u!114 &114697841985606562
+--- !u!114 &114901617767024802
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,25 +119,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802794303437438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19e0e324e0484f83840a7655171028b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9562bb35b056040688c2b557813a7073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 150
-  RotationSpeed: 2
+  moveSpeed: 20
+  rotationSpeed: 2
+  maxHealth: 150
+  deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
+    type: 2}
   numberOfShots: 6
   timeBetweenShots: 0.1
   pauseAfterShooting: 0.5
   shotScale: 1
-  AttackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
+  bulletMoveSpeed: 40
+  attackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
-  ExplosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
-    type: 2}
-  healthSprites:
-  - {fileID: 21300000, guid: 029b4bdf208f94fdbaa281c18fe1f265, type: 3}
-  - {fileID: 21300000, guid: ce833e66e24c54b1f83147fa53879b15, type: 3}
-  - {fileID: 21300000, guid: 3884ea04b5a444bc6b829f691f21de0f, type: 3}
-  - {fileID: 21300000, guid: 69f1a0ff39f044c9d918ccc929b3e7b7, type: 3}
-  - {fileID: 21300000, guid: ba9ad4a4c64f84443a77d8c7de14828b, type: 3}
 --- !u!212 &212919077028246828
 SpriteRenderer:
   m_ObjectHideFlags: 1
