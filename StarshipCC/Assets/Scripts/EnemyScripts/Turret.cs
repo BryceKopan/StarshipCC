@@ -8,6 +8,20 @@ public class Turret : EnemyController
            shotScale, bulletMoveSpeed;
     public GameObject attackPrefab;
 
+    private List<Transform> bulletSpawns;
+
+    protected override void OnStart()
+    {
+        bulletSpawns = new List<Transform>();
+        foreach (Transform child in transform)
+        {
+            if(child.tag == Tags.BULLET_SPAWN)
+            {
+                bulletSpawns.Add(child);
+            }
+        }
+    }
+
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
     {
         SimpleTransform deltaTransform = new SimpleTransform();
@@ -44,18 +58,21 @@ public class Turret : EnemyController
 
     void Fire()
     {
-        var bullet = (GameObject) Instantiate(
-                attackPrefab,
-                transform.position,
-                transform.rotation);
+        foreach(Transform bulletSpawn in bulletSpawns)
+        {
+            var bullet = (GameObject) Instantiate(
+                    attackPrefab,
+                    bulletSpawn.position,
+                    bulletSpawn.rotation);
 
-        bullet.transform.localScale = new Vector3(1 * shotScale, 1 * shotScale, 1);
+            bullet.transform.localScale = new Vector3(1 * shotScale, 1 * shotScale, 1);
 
-        bullet.tag = Tags.ENEMY_BULLET;
+            bullet.tag = Tags.ENEMY_BULLET;
 
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-        //Add velocity to the bullet
-        bulletScript.moveVector = -transform.up * bulletMoveSpeed * Time.deltaTime;
+            //Add velocity to the bullet
+            bulletScript.moveVector = -bulletSpawn.up * bulletMoveSpeed * Time.deltaTime;
+        }
     }
 }
