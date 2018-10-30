@@ -6,6 +6,8 @@ public class CapitalController : MonoBehaviour {
     public List<Vector3> HardPoints;
     public List<GameObject> HardPointPrefabs;
 
+    private List<GameObject> turrets;
+
 	void Start ()
     {
         int r;
@@ -14,10 +16,18 @@ public class CapitalController : MonoBehaviour {
             r = Random.Range(0, HardPointPrefabs.Count);
             InstantiateHardPoint(HardPoints[i], HardPointPrefabs[r]);
         }
+
+        GameObject[] turretsArray;
+        turretsArray = GameObject.FindGameObjectsWithTag("Enemy");
+        turrets = new List<GameObject>(turretsArray);
 	}
 	
 	void Update () 
     {
+        if(!AreTurretsAlive())
+        {
+            Start();
+        }
 	}
 
     void InstantiateHardPoint(Vector3 hardPoint, GameObject hardPointPrefab)
@@ -26,5 +36,15 @@ public class CapitalController : MonoBehaviour {
                 hardPointPrefab,
                 hardPoint,
                 gameObject.transform.rotation);
+    }
+
+    bool AreTurretsAlive()
+    {
+        foreach(GameObject turret in turrets)
+        {
+            if(turret != null)
+                return true;
+        }
+        return false;
     }
 }
