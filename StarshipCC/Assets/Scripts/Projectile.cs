@@ -17,6 +17,10 @@ public class Projectile : MonoBehaviour {
 
     }
 
+    public virtual void FixedUpdate()
+    {
+    }
+
     public virtual void Death()
     {
     }

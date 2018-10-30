@@ -74,7 +74,6 @@ MonoBehaviour:
   lifeTime: 0
   moveVector: {x: 0, y: 0, z: 0}
   bulletDamage: 1
-  bulletMoveSpeed: 40
   bulletLife: 5
   material: {fileID: 2100000, guid: af604968962bb460982ea98e37457379, type: 2}
   ExplosionPrefab: {fileID: 0}

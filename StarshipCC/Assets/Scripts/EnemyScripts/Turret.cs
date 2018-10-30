@@ -71,8 +71,7 @@ public class Turret : EnemyController
 
             Bullet bulletScript = bullet.GetComponent<Bullet>();
 
-            //Add velocity to the bullet
-            bulletScript.moveVector = -bulletSpawn.up * bulletMoveSpeed * Time.deltaTime;
+            bulletScript.moveVector = -bulletSpawn.up * bulletMoveSpeed;
         }
     }
 }

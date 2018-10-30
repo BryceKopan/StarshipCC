@@ -158,10 +158,10 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   numberOfShots: 3
-  timeBetweenShots: 0.25
-  pauseAfterShooting: 1
+  timeBetweenShots: 0.75
+  pauseAfterShooting: 2
   shotScale: 4
-  bulletMoveSpeed: 40
+  bulletMoveSpeed: 20
   attackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
 --- !u!114 &114974289148555436

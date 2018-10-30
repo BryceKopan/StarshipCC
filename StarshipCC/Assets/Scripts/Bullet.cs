@@ -19,10 +19,9 @@ public class Bullet : Projectile {
             Destroy(gameObject, lifeTime);
         }
 
-        // Update is called once per frame
-        public override void Update()
+        public override void FixedUpdate()
         {
-            transform.position += moveVector;
+            transform.position += moveVector * Time.fixedDeltaTime;
         }
 
         void OnTriggerEnter2D(Collider2D other)

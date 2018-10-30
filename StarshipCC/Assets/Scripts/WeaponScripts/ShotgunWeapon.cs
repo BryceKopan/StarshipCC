@@ -22,7 +22,7 @@ public class ShotgunWeapon : Weapon {
                 bulletScript.bulletDamage = damage;
 
                 //Add velocity to the bullet
-                bulletScript.moveVector = bulletSpawn.transform.up * bulletSpeed * Time.deltaTime;
+                bulletScript.moveVector = bulletSpawn.transform.up * bulletSpeed;
             }
             canFire = false;
             Invoke("EnableFire", fireCooldown);
