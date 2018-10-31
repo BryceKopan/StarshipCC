@@ -37,9 +37,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4558174147899412}
-  - component: {fileID: 212707337358672280}
   - component: {fileID: 114325043185375414}
-  - component: {fileID: 58762742614153706}
+  - component: {fileID: 212687729929833200}
+  - component: {fileID: 58304303031111662}
   m_Layer: 0
   m_Name: Bouy
   m_TagString: Untagged
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1227614800812960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 4861398164566456}
   m_RootOrder: 1
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576271908653932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 26.7, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4528025222280804}
@@ -201,7 +201,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.000000007450581}
   serializedVersion: 2
   m_Radius: 2.2300003
---- !u!58 &58762742614153706
+--- !u!58 &58304303031111662
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,7 +215,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.25
+  m_Radius: 2.45
 --- !u!60 &60995270646689540
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -280,14 +280,11 @@ MonoBehaviour:
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}
   health: 3
-  damage: 1
   dashLength: 0.1
   parryLength: 0.3
   invincibilityLength: 1
   dashCooldown: 2
   parryCooldown: 0.1
-  bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
-    type: 2}
   explosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   SetActiveOnDeath: {fileID: 1227614800812960}
@@ -305,6 +302,9 @@ MonoBehaviour:
   chargeNeededForRevive: 100
   ship: {fileID: 1794796194468514}
   reviver: {fileID: 0}
+  greenSprite: {fileID: 21300000, guid: ea43c6b0f48a05a47b479b2daa8c3cc9, type: 3}
+  redSprite: {fileID: 21300000, guid: a0b50e83b31297d46b9d5a78140aa649, type: 3}
+  renderer: {fileID: 0}
 --- !u!114 &114789597842398766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,7 +362,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &212707337358672280
+--- !u!212 &212687729929833200
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,12 +397,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a71a383eec914710bfdd68b7818adf7, type: 3}
-  m_Color: {r: 0.95526004, g: 1, b: 0, a: 0.33333334}
+  m_Sprite: {fileID: 21300000, guid: a0b50e83b31297d46b9d5a78140aa649, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 4.96, y: 4.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
