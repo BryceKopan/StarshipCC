@@ -42,6 +42,10 @@ public class BouyController : MonoBehaviour
             charging = false;
             renderer.sprite = greenSprite;
         }
+        else
+        {
+            renderer.sprite = redSprite;
+        }
 
 		if(charge >= chargeNeededForRevive)
         {
