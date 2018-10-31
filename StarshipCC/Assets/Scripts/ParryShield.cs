@@ -18,7 +18,6 @@ public class ParryShield : MonoBehaviour, Hittable
 
     void Hittable.OnHit(Projectile p)
     {
-        p.moveVector *= -1;
         if(p.tag == Tags.ENEMY_BULLET)
         {
             p.tag = Tags.FRIENDLY_BULLET;
@@ -27,5 +26,9 @@ public class ParryShield : MonoBehaviour, Hittable
         {
             p.tag = Tags.ENEMY_BULLET;
         }
+
+        //Deflect projectile
+        Vector2 normal = (p.transform.position - transform.position);
+        p.moveVector = Vector2.Reflect(p.moveVector, normal).normalized;
     }
 }

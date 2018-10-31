@@ -11,6 +11,7 @@ public abstract class Weapon : MonoBehaviour {
     public float fireCooldown = 1f;
     public float damage = 1f;
     public float bulletSpeed = 40f;
+    public float bulletLife = 10f;
 
     public bool canFire = true;
 

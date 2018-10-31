@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class Bullet : Projectile {
 
-        public float bulletDamage = 1f;
-        public float bulletLife = 5f;
         public GameObject ExplosionPrefab;
 
         public override void Start()
         {
-            damage = bulletDamage;
-            lifeTime = bulletLife;
-
             Destroy(gameObject, lifeTime);
         }
 
         public override void FixedUpdate()
         {
-            transform.position += moveVector * Time.fixedDeltaTime;
+            transform.position += moveVector * speed * Time.fixedDeltaTime;
         }
 
         void OnTriggerEnter2D(Collider2D other)

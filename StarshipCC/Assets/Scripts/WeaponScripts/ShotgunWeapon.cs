@@ -19,7 +19,8 @@ public class ShotgunWeapon : Weapon {
                 bullet.tag = Tags.FRIENDLY_BULLET;
 
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
-                bulletScript.bulletDamage = damage;
+                bulletScript.damage = damage;
+                bulletScript.speed = bulletSpeed;
 
                 //Add velocity to the bullet
                 bulletScript.moveVector = bulletSpawn.transform.up * bulletSpeed;

@@ -70,11 +70,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ef6ca8b35de4451840b82e10575979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  lifeTime: 0
+  damage: 1
+  lifeTime: 20
+  speed: 20
   moveVector: {x: 0, y: 0, z: 0}
-  bulletDamage: 1
-  bulletLife: 10
   ExplosionPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 2}
 --- !u!198 &198666615765639278

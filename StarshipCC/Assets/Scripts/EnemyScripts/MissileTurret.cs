@@ -69,6 +69,7 @@ public class MissileTurret : EnemyController
         loadedMissile.transform.parent = null;
 
         Bullet missileScript = loadedMissile.GetComponent<Bullet>();
-        missileScript.moveVector = -transform.up * bulletMoveSpeed;
+        missileScript.moveVector = -transform.up;
+        missileScript.speed = bulletMoveSpeed;
     }
 }
