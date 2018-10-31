@@ -5,6 +5,7 @@ using UnityEngine;
 public class CapitalController : MonoBehaviour {
     public List<Vector3> HardPoints;
     public List<GameObject> HardPointPrefabs;
+    public List<GameObject> ItemPrefabs;
 
     private List<GameObject> turrets;
 
@@ -27,8 +28,19 @@ public class CapitalController : MonoBehaviour {
         if(!AreTurretsAlive())
         {
             Start();
+            SpawnItem();
         }
 	}
+
+    void SpawnItem()
+    {
+        int r = Random.Range(0, ItemPrefabs.Count);
+        
+        Instantiate(
+                ItemPrefabs[r],
+                new Vector3(),
+                Quaternion.identity);
+    }
 
     void InstantiateHardPoint(Vector3 hardPoint, GameObject hardPointPrefab)
     {
