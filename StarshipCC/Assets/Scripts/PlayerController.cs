@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour, Hittable
         if (!invincible)
         {
             TakeDamage(p.damage);
-            Destroy(p.gameObject);
+            p.Death();
             StartInvincibility();
         }
     }

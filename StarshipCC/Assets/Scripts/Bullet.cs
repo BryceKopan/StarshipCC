@@ -6,7 +6,6 @@ public class Bullet : Projectile {
 
         public float bulletDamage = 1f;
         public float bulletLife = 5f;
-        public Material material;
         public GameObject ExplosionPrefab;
 
         public override void Start()
@@ -14,8 +13,6 @@ public class Bullet : Projectile {
             damage = bulletDamage;
             lifeTime = bulletLife;
 
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            gameObject.GetComponent<Renderer>().material = material;
             Destroy(gameObject, lifeTime);
         }
 

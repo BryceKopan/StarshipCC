@@ -65,7 +65,11 @@ public abstract class EnemyController : MonoBehaviour, Hittable
                 Attack();
             }
         }
+
+        OnFixedUpdate();
     }
+
+    protected virtual void OnFixedUpdate(){}
 
     protected virtual List<GameObject> FindTargets()
     {
@@ -134,8 +138,11 @@ public abstract class EnemyController : MonoBehaviour, Hittable
                 transform.position,
                 transform.rotation);
 
+        OnDeath();
         Destroy(gameObject);
     }
+
+    protected virtual void OnDeath(){}
 
     void Hittable.OnHit(Projectile p)
     {
