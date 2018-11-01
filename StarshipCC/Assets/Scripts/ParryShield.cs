@@ -18,6 +18,31 @@ public class ParryShield : MonoBehaviour, Hittable
 
     void Hittable.OnHit(Projectile p)
     {
-        p.moveVector *= -1;
+        if(p.tag == Tags.ENEMY_BULLET)
+        {
+            p.tag = Tags.FRIENDLY_BULLET;
+        }
+        else if(p.tag == Tags.FRIENDLY_BULLET)
+        {
+            p.tag = Tags.ENEMY_BULLET;
+        }
+
+        //Deflect projectile
+        //Since we aren't given a collision point, we must calculate it ourselves
+        Collider2D collider = GetComponent<Collider2D>();
+        Collider2D pCollider = p.GetComponent<Collider2D>();
+        ColliderDistance2D collision = collider.Distance(pCollider);
+
+        Vector2 normal;
+        if (collision.isValid)
+        {
+            normal = collision.normal;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid collision during parry");
+            normal = (p.transform.position - transform.position);
+        }
+        p.moveVector = Vector2.Reflect(p.moveVector, normal).normalized;
     }
 }

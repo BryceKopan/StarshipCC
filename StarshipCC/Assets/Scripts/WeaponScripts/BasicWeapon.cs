@@ -19,10 +19,12 @@ public class BasicWeapon : Weapon
                 bullet.tag = Tags.FRIENDLY_BULLET;
 
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
-                bulletScript.bulletDamage = damage;
+                bulletScript.damage = damage;
+                bulletScript.speed = bulletSpeed;
+                bulletScript.lifeTime = bulletLife;
 
                 //Add velocity to the bullet
-                bulletScript.moveVector = bulletSpawn.transform.up * bulletSpeed;
+                bulletScript.moveVector = bulletSpawn.transform.up;
             }
             canFire = false;
             Invoke("EnableFire", fireCooldown);

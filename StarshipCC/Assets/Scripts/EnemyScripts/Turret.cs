@@ -70,8 +70,8 @@ public class Turret : EnemyController
             bullet.tag = Tags.ENEMY_BULLET;
 
             Bullet bulletScript = bullet.GetComponent<Bullet>();
-
-            bulletScript.moveVector = -bulletSpawn.up * bulletMoveSpeed;
+            bulletScript.moveVector = -bulletSpawn.up;
+            bulletScript.speed = bulletMoveSpeed;
         }
     }
 }

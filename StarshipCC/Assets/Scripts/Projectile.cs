@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
     public float damage;
     public float lifeTime;
+    public float speed;
     public Vector3 moveVector;
 
     public virtual void Start()
