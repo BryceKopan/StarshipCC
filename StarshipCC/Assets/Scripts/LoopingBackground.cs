@@ -23,6 +23,13 @@ public class LoopingBackground : MonoBehaviour
             if (r != null)
             {
                 backgroundPart.Add(r);
+
+                int spriteNum, colorNum;
+                spriteNum = Random.Range(0, possibleSprites.Count);
+                colorNum = Random.Range(0, possibleColors.Count);
+
+                r.sprite = possibleSprites[spriteNum];
+                r.color = possibleColors[colorNum];
             }
         }
 
@@ -55,6 +62,7 @@ public class LoopingBackground : MonoBehaviour
                     Vector3 lastSize = (lastChild.bounds.max - lastChild.bounds.min);
 
                     firstChild.transform.position = new Vector3(lastPosition.x + lastSize.x, firstChild.transform.position.y, firstChild.transform.position.z);
+
                     int spriteNum, colorNum;
                     spriteNum = Random.Range(0, possibleSprites.Count);
                     colorNum = Random.Range(0, possibleColors.Count);
