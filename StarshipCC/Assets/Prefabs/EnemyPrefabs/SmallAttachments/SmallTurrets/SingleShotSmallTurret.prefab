@@ -147,12 +147,11 @@ MonoBehaviour:
   moveSpeed: 20
   rotationSpeed: 1
   maxHealth: 20
-  spawnWeight: 1
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   numberOfShots: 1
   timeBetweenShots: 0.5
-  pauseAfterShooting: 1
+  pauseAfterShooting: 0.5
   shotScale: 1
   bulletMoveSpeed: 50
   attackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
