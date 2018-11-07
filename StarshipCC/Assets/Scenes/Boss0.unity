@@ -2499,5 +2499,6 @@ MonoBehaviour:
   LargeAttachmentPrefabs: []
   ItemPrefabs:
   - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 2}
+  - {fileID: 1420507362941186, guid: 4f1c47a8c6d5f7d4095af1666708a902, type: 2}
   leftBound: {x: -100, y: 0, z: 0}
   rightBound: {x: 100, y: 0, z: 0}
