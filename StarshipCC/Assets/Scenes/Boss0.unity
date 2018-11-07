@@ -435,7 +435,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 498176755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 1}
   m_LocalScale: {x: 33.350002, y: 33.350002, z: 0.66700006}
   m_Children:
   - {fileID: 1568445956}
@@ -603,7 +603,6 @@ GameObject:
   m_Component:
   - component: {fileID: 740397760}
   - component: {fileID: 740397759}
-  - component: {fileID: 740397758}
   m_Layer: 2
   m_Name: CapitalShipSprite
   m_TagString: Untagged
@@ -611,31 +610,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &740397758
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 740397757}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &740397759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -690,7 +664,7 @@ Transform:
   m_GameObject: {fileID: 740397757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 210, y: 10, z: 1}
+  m_LocalScale: {x: 210, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1948626013}
   m_RootOrder: 0
@@ -2490,7 +2464,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1948626012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 35, z: 0}
+  m_LocalPosition: {x: 0, y: 31.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 740397760}
@@ -2508,14 +2482,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ee96ea7ba79485e82fdd15c12c9af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardPoints:
-  - {x: -66, y: 35, z: 0}
-  - {x: 0, y: 35, z: 0}
-  - {x: 66, y: 35, z: 0}
-  HardPointPrefabs:
-  - {fileID: 1510750038997238, guid: 72acba861f9cb49158e8d512fd8039d7, type: 2}
-  - {fileID: 1606370714993306, guid: 6d7d27bdf8c4942e9ade69b9f541ab84, type: 2}
-  - {fileID: 1849013293799692, guid: 967a4abfad10e4d759844eb85a9f0251, type: 2}
-  - {fileID: 1001800318331206, guid: 38a0afe0ab2ea415cbf8bde41d46669e, type: 2}
+  difficultyLevel: 0.5
+  smallTurretDifficulty: 0.25
+  mediumTurretDifficulty: 0.5
+  largeTurretDifficulty: 1
+  SmallAttachmentPrefabs:
+  - {fileID: 1213275120181826, guid: e961399bc3f204d71b875b56b4f7a12c, type: 2}
+  - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 2}
+  - {fileID: 1298730895757544, guid: 594282944b4de43c6ac84ffc68775387, type: 2}
+  - {fileID: 1844422509037768, guid: 280c8061638f249568c32eb9085ac234, type: 2}
+  - {fileID: 1719486607222480, guid: 07e641154a18e4252b1e69f1c93466b7, type: 2}
+  - {fileID: 1553132729565884, guid: 66112ff17b36d4e3aae49ce301f7bb11, type: 2}
+  - {fileID: 1515690674005970, guid: da3c51f671ff7452a9a97eb7b8489d50, type: 2}
+  - {fileID: 1584899304651742, guid: 7b4b667541cbb48dcbec9a58752e0f05, type: 2}
+  MediumAttachmentPrefabs: []
+  LargeAttachmentPrefabs: []
   ItemPrefabs:
   - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 2}
+  leftBound: {x: -100, y: 0, z: 0}
+  rightBound: {x: 100, y: 0, z: 0}
