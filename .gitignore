@@ -35,5 +35,9 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+# Visual Studio
 *.DS_Store
 *.vscode/
+
+#Krita
+*.kra
