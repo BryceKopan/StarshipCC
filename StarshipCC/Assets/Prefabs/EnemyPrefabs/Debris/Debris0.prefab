@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212732143525579534}
   - component: {fileID: 60075990255111582}
   - component: {fileID: 50417478015245032}
+  - component: {fileID: 114023862114767388}
   m_Layer: 0
   m_Name: Debris0
   m_TagString: Untagged
@@ -108,6 +109,19 @@ PolygonCollider2D:
       - {x: 0.085, y: -0.275}
       - {x: 0.265, y: -0.175}
       - {x: 0.265, y: -0.125}
+--- !u!114 &114023862114767388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012593830852384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd59be7220f542949c468c724c24aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffectPrefab: {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95,
+    type: 2}
 --- !u!212 &212732143525579534
 SpriteRenderer:
   m_ObjectHideFlags: 1
