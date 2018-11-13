@@ -80,10 +80,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lifeTime: 20
+  speed: 0
   moveVector: {x: 0, y: 0, z: 0}
-  bulletDamage: 1
-  bulletLife: 5
-  ExplosionPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
+  DeathEffectPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
     type: 2}
 --- !u!212 &212636820686270190
 SpriteRenderer:

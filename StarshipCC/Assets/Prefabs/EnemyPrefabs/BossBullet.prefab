@@ -74,7 +74,7 @@ MonoBehaviour:
   lifeTime: 20
   speed: 20
   moveVector: {x: 0, y: 0, z: 0}
-  ExplosionPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+  DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 2}
 --- !u!198 &198666615765639278
 ParticleSystem:

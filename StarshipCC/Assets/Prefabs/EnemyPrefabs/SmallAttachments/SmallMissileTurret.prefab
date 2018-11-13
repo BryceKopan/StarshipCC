@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 4500820798944520}
   - component: {fileID: 212659934810069746}
   - component: {fileID: 50300424795183986}
+  - component: {fileID: 114238215369506412}
   m_Layer: 0
   m_Name: SmallMissileTurret
   m_TagString: Enemy
@@ -235,6 +236,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &114238215369506412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556759983795304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d121a5e6efc8448aaba850bb18fa6126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  rotationSpeed: 1
+  maxHealth: 150
+  deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
+    type: 2}
+  bulletMoveSpeed: 50
+  pauseAfterShooting: 1
+  attackPrefab: {fileID: 1397232196016244, guid: ce9f3c9d51d404a70a79950ceb7230c8,
+    type: 2}
 --- !u!212 &212659934810069746
 SpriteRenderer:
   m_ObjectHideFlags: 1

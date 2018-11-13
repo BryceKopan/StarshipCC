@@ -413,6 +413,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &440566524
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 28.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.3241686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500820798944520, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &498176755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2590,8 @@ MonoBehaviour:
   - {fileID: 1719486607222480, guid: 07e641154a18e4252b1e69f1c93466b7, type: 2}
   - {fileID: 1553132729565884, guid: 66112ff17b36d4e3aae49ce301f7bb11, type: 2}
   - {fileID: 1515690674005970, guid: da3c51f671ff7452a9a97eb7b8489d50, type: 2}
+  - {fileID: 1917514099257556, guid: ad5f7e29cfd1c4b969cad95b163ac008, type: 2}
+  - {fileID: 1556759983795304, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
   MediumAttachmentPrefabs: []
   LargeAttachmentPrefabs: []
   ItemPrefabs:

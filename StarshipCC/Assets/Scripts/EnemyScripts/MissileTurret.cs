@@ -7,16 +7,17 @@ public class MissileTurret : EnemyController
     public float bulletMoveSpeed, pauseAfterShooting;
     public GameObject attackPrefab;
 
-    private GameObject loadedMissile;
-    
+    private List<Transform> bulletSpawns;
     protected override void OnStart()
     {
-        Load();
-    }
-
-    protected override void OnDeath()
-    {
-        Destroy(loadedMissile);
+        bulletSpawns = new List<Transform>();
+        foreach (Transform child in transform)
+        {
+            if(child.tag == Tags.BULLET_SPAWN)
+            {
+                bulletSpawns.Add(child);
+            }
+        }
     }
 
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
@@ -47,29 +48,23 @@ public class MissileTurret : EnemyController
     protected override void Attack()
     {
         Fire();
-        Invoke("Load", pauseAfterShooting/2);
         Invoke("DoneAttacking", pauseAfterShooting);
-    }
-
-    void Load()
-    {
-        var missile = (GameObject) Instantiate(
-                attackPrefab,
-                transform.position,
-                transform.rotation);
-
-        missile.tag = Tags.ENEMY_BULLET;
-        missile.transform.parent = transform;
-
-        loadedMissile = missile;
     }
 
     void Fire()
     {
-        loadedMissile.transform.parent = null;
+        foreach(Transform bulletSpawn in bulletSpawns)
+        {
+            var bullet = (GameObject) Instantiate(
+                    attackPrefab,
+                    bulletSpawn.position,
+                    bulletSpawn.rotation);
 
-        Bullet missileScript = loadedMissile.GetComponent<Bullet>();
-        missileScript.moveVector = -transform.up;
-        missileScript.speed = bulletMoveSpeed;
+            bullet.tag = Tags.ENEMY_BULLET;
+
+            Missile missileScript = bullet.GetComponent<Missile>();
+            missileScript.moveVector = -bulletSpawn.up;
+            missileScript.speed = bulletMoveSpeed;
+        }
     }
 }

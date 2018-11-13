@@ -21,7 +21,10 @@ GameObject:
   - component: {fileID: 4584150920126682}
   - component: {fileID: 212044267368344416}
   - component: {fileID: 198341254090248562}
+  - component: {fileID: 114701703805866500}
   - component: {fileID: 199085541688331122}
+  - component: {fileID: 60061065849363064}
+  - component: {fileID: 50357912752151270}
   m_Layer: 0
   m_Name: Missile 1
   m_TagString: Untagged
@@ -36,12 +39,81 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397232196016244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.24, y: -29.7, z: 0}
+  m_LocalPosition: {x: 15.404562, y: -44.55468, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50357912752151270
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397232196016244}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &60061065849363064
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397232196016244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.2, y: 0.4}
+    newSize: {x: 0.2, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.07636973, y: 0.16792908}
+      - {x: -0.046243798, y: 0.06670482}
+      - {x: -0.04834169, y: -0.09998576}
+      - {x: -0.000418218, y: -0.18958181}
+      - {x: 0.031247394, y: -0.10457103}
+      - {x: 0.029488439, y: 0.064210765}
+      - {x: 0.06877518, y: 0.16556804}
+      - {x: -0.005322139, y: 0.19438757}
+--- !u!114 &114701703805866500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397232196016244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb549dc806fd46fb92c6cb8b34b30de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  lifeTime: 50
+  speed: 50
+  moveVector: {x: 0, y: 0, z: 0}
+  DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+    type: 2}
 --- !u!198 &198341254090248562
 ParticleSystem:
   m_ObjectHideFlags: 1
