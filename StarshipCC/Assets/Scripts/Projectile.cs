@@ -28,7 +28,9 @@ public class Projectile : MonoBehaviour {
     {
         string thisTag = gameObject.tag;
         string otherTag = other.gameObject.tag;
-        if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER)))
+        if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || 
+            (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER) || 
+            (thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY_BULLET)))
         { 
             Hittable hittable = other.gameObject.GetComponent<Hittable>();
 
