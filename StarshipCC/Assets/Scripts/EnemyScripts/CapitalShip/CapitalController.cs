@@ -103,8 +103,8 @@ public class CapitalController : MonoBehaviour {
                 attachmentPrefabs = LargeAttachmentPrefabs;
             }
 
-            //int r = Random.Range(0, attachmentPrefabs.Count);
-            int r = 8;
+            int r = Random.Range(0, attachmentPrefabs.Count);
+            //int r = 8;
             InstantiateAttachment(attachmentPrefabs[r], attachmentPositions[i]);
         }
     }

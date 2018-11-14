@@ -2550,6 +2550,10 @@ MonoBehaviour:
   - {fileID: 1515690674005970, guid: da3c51f671ff7452a9a97eb7b8489d50, type: 2}
   - {fileID: 1917514099257556, guid: ad5f7e29cfd1c4b969cad95b163ac008, type: 2}
   - {fileID: 1556759983795304, guid: 41b572bd57b974ec6a03c14cfd074203, type: 2}
+  - {fileID: 1050552598005886, guid: be2cddecb94c34be9994abeec80146ed, type: 2}
+  - {fileID: 1807889170463352, guid: 1d5f93c3f596a4d15b3f7eea7eadceca, type: 2}
+  - {fileID: 1242107570681986, guid: dafb382323cf84f16bd905da204517be, type: 2}
+  - {fileID: 1491568756345530, guid: 6f217e5c329054d11a5bcbbaa98c4ea6, type: 2}
   MediumAttachmentPrefabs: []
   LargeAttachmentPrefabs: []
   ItemPrefabs:
