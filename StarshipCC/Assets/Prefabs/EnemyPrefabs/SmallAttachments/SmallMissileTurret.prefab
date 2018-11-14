@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 212659934810069746}
   - component: {fileID: 50300424795183986}
   - component: {fileID: 114238215369506412}
+  - component: {fileID: 60926010230248168}
   m_Layer: 0
   m_Name: SmallMissileTurret
   m_TagString: Enemy
@@ -191,7 +192,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556759983795304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.87877, y: 22.114538, z: -1.3241686}
+  m_LocalPosition: {x: 28.1, y: -22.2, z: -1.3241686}
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children:
   - {fileID: 4015297759849784}
@@ -236,6 +237,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &60926010230248168
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556759983795304}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.25, y: 1.25}
+    newSize: {x: 1.25, y: 1.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.13572235, y: -0.09884632}
+      - {x: 0.1311081, y: -0.24499984}
+      - {x: 0.17096838, y: -0.24499996}
+      - {x: 0.60499996, y: -0.24499999}
+      - {x: 0.59171337, y: -0.2256246}
+      - {x: 0.60499996, y: 0.235}
+      - {x: 0.13499999, y: 0.235}
+      - {x: 0.124620825, y: 0.11341121}
+      - {x: 0.006421916, y: 0.16500004}
+      - {x: -0.119289026, y: 0.12513988}
+      - {x: -0.114999995, y: 0.235}
+      - {x: -0.59499997, y: 0.235}
+      - {x: -0.59499997, y: -0.24499999}
+      - {x: -0.125, y: -0.24499999}
+      - {x: -0.108286545, y: -0.11956889}
+      - {x: 0.00043118797, y: -0.17071114}
 --- !u!114 &114238215369506412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,9 +294,11 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   bulletMoveSpeed: 50
-  pauseAfterShooting: 1
+  timeBetweenShots: 0.1
+  pauseAfterShooting: 0.5
   attackPrefab: {fileID: 1397232196016244, guid: ce9f3c9d51d404a70a79950ceb7230c8,
     type: 2}
+  fireOrder: 000000000100000002000000030000000400000005000000
 --- !u!212 &212659934810069746
 SpriteRenderer:
   m_ObjectHideFlags: 1

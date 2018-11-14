@@ -13,16 +13,16 @@ public class Projectile : MonoBehaviour {
     public void Start()
     {
         Destroy(gameObject, lifeTime);
+
+        OnStart();
     }
 
-    public void FixedUpdate()
+    public virtual void OnStart(){}
+
+    public virtual void FixedUpdate()
     {
         transform.position += moveVector * speed * Time.fixedDeltaTime;
-
-        OnFixedUpdate();
     }
-
-    public virtual void OnFixedUpdate(){}
 
     void OnTriggerEnter2D(Collider2D other)
     {

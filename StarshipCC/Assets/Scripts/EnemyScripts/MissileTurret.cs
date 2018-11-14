@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MissileTurret : EnemyController
 {
-    public float bulletMoveSpeed, pauseAfterShooting;
+    public float bulletMoveSpeed, timeBetweenShots, pauseAfterShooting;
     public GameObject attackPrefab;
+
+    public List<int> fireOrder;
 
     private List<Transform> bulletSpawns;
     protected override void OnStart()
@@ -47,24 +49,26 @@ public class MissileTurret : EnemyController
 
     protected override void Attack()
     {
-        Fire();
-        Invoke("DoneAttacking", pauseAfterShooting);
+        StartCoroutine(Fire());
+        Invoke("DoneAttacking", pauseAfterShooting + (fireOrder.Count - 1) * timeBetweenShots);
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        foreach(Transform bulletSpawn in bulletSpawns)
+        foreach(int bulletSpawn in fireOrder)
         {
             var bullet = (GameObject) Instantiate(
                     attackPrefab,
-                    bulletSpawn.position,
-                    bulletSpawn.rotation);
+                    bulletSpawns[bulletSpawn].position,
+                    bulletSpawns[bulletSpawn].rotation);
 
             bullet.tag = Tags.ENEMY_BULLET;
 
-            Missile missileScript = bullet.GetComponent<Missile>();
-            missileScript.moveVector = -bulletSpawn.up;
-            missileScript.speed = bulletMoveSpeed;
+            Projectile projectileScript = bullet.GetComponent<Projectile>();
+            projectileScript.moveVector = -bulletSpawns[bulletSpawn].up;
+            projectileScript.speed = bulletMoveSpeed;
+
+            yield return new WaitForSeconds(timeBetweenShots);
         }
     }
 }

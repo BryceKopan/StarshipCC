@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4584150920126682}
   - component: {fileID: 212044267368344416}
   - component: {fileID: 198341254090248562}
-  - component: {fileID: 114701703805866500}
   - component: {fileID: 199085541688331122}
   - component: {fileID: 60061065849363064}
   - component: {fileID: 50357912752151270}
+  - component: {fileID: 114932667756243356}
   m_Layer: 0
   m_Name: Missile 1
   m_TagString: Untagged
@@ -97,7 +97,7 @@ PolygonCollider2D:
       - {x: 0.029488439, y: 0.064210765}
       - {x: 0.06877518, y: 0.16556804}
       - {x: -0.005322139, y: 0.19438757}
---- !u!114 &114701703805866500
+--- !u!114 &114932667756243356
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397232196016244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb549dc806fd46fb92c6cb8b34b30de, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aebceabb9b4f49b9b26850eb2d69b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
@@ -114,6 +114,7 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 2}
+  rotationSpeed: 1
 --- !u!198 &198341254090248562
 ParticleSystem:
   m_ObjectHideFlags: 1
