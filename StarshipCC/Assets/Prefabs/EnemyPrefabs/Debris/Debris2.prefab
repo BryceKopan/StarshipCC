@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd59be7220f542949c468c724c24aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
   deathEffectPrefab: {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95,
     type: 2}
 --- !u!212 &212057849520254062
