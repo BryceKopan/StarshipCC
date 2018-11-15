@@ -5,11 +5,12 @@ using UnityEngine;
 public enum AttachmentSize{Large, Medium, Small};
 
 public class CapitalController : MonoBehaviour {
-    public float difficultyLevel = .5f;
-    public float smallTurretDifficulty = .25f;
-    public float mediumTurretDifficulty = .5f;
-    public float largeTurretDifficulty = 1f;
+    // public float difficultyLevel = .5f;
+    // public float smallTurretDifficulty = .25f;
+    // public float mediumTurretDifficulty = .5f;
+    // public float largeTurretDifficulty = 1f;
 
+    public int level = 0;
     public List<GameObject> SmallAttachmentPrefabs;
     public List<GameObject> MediumAttachmentPrefabs;
     public List<GameObject> LargeAttachmentPrefabs;
@@ -18,6 +19,17 @@ public class CapitalController : MonoBehaviour {
     public Vector3 leftBound, rightBound;
 
     private List<GameObject> turrets;
+
+    private AttachmentSize[][] levelAttachmentSizes = new AttachmentSize[][] 
+    {
+        new AttachmentSize[] {AttachmentSize.Small},
+        new AttachmentSize[] {AttachmentSize.Small, AttachmentSize.Small},
+        new AttachmentSize[] {AttachmentSize.Small, AttachmentSize.Small, AttachmentSize.Small},
+        new AttachmentSize[] {AttachmentSize.Medium},
+        new AttachmentSize[] {AttachmentSize.Small, AttachmentSize.Medium, AttachmentSize.Small},
+        new AttachmentSize[] {AttachmentSize.Medium, AttachmentSize.Medium},
+        new AttachmentSize[] {AttachmentSize.Medium , AttachmentSize.Small, AttachmentSize.Medium}
+    };
 
 	void Start ()
     {
@@ -62,12 +74,14 @@ public class CapitalController : MonoBehaviour {
         var attachmentSizes = GenerateAttachmentSizes();
         var attachmentPositions = GenerateAttachmentPositions(attachmentSizes);
         CreateTurrets(attachmentSizes, attachmentPositions);
+
+        level++;
+
     }
 
     List<AttachmentSize> GenerateAttachmentSizes()
     {
-        AttachmentSize[] attachmentSizes = {AttachmentSize.Small, AttachmentSize.Small, AttachmentSize.Small};
-        return new List<AttachmentSize>(attachmentSizes);
+        return new List<AttachmentSize>(levelAttachmentSizes[level]);
     }
 
     List<Vector3> GenerateAttachmentPositions(List<AttachmentSize> attachmentSizes)
