@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunWeapon : Weapon {
+public class MissileWeapon : Weapon {
 
     public override void Fire()
     {
@@ -11,20 +11,20 @@ public class ShotgunWeapon : Weapon {
         {
             foreach (Transform bulletSpawn in bulletSpawns)
             {
-                var bullet = (GameObject)Instantiate(
+                var missile = (GameObject)Instantiate(
                         bulletPrefab,
                         bulletSpawn.position,
                         bulletSpawn.rotation);
 
-                bullet.tag = Tags.FRIENDLY_BULLET;
+                missile.tag = Tags.FRIENDLY_BULLET;
 
-                Projectile bulletScript = bullet.GetComponent<Projectile>();
-                bulletScript.damage = damage;
-                bulletScript.speed = bulletSpeed;
-                bulletScript.lifeTime = bulletLife;
+                Projectile missileScript = missile.GetComponent<Projectile>();
+                missileScript.damage = damage;
+                missileScript.speed = bulletSpeed;
+                missileScript.lifeTime = bulletLife;
 
                 //Add velocity to the bullet
-                bulletScript.moveVector = bulletSpawn.transform.up;
+                missileScript.moveVector = bulletSpawn.transform.up;
             }
             canFire = false;
             Invoke("EnableFire", fireCooldown);
