@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4289115921278978}
   - component: {fileID: 212549521639349744}
   - component: {fileID: 58286602833124248}
-  - component: {fileID: 114216811965430794}
+  - component: {fileID: 114334818210044838}
   m_Layer: 0
   m_Name: ShotgunItemPrefab
   m_TagString: Untagged
@@ -57,7 +57,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.27
---- !u!114 &114216811965430794
+--- !u!114 &114334818210044838
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,11 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559072985481644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04fe5315cc1450409bd71bb22b45d17, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c7c7180681d61428c4bc6d8c8eecc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgunWeapon: {fileID: 1970787510962240, guid: 36d8eae8260efa1409e9876dac01829e,
-    type: 2}
+  weapon: {fileID: 1970787510962240, guid: 36d8eae8260efa1409e9876dac01829e, type: 2}
 --- !u!212 &212549521639349744
 SpriteRenderer:
   m_ObjectHideFlags: 1

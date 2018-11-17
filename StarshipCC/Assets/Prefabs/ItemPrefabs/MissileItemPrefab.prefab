@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4900273659896510}
   - component: {fileID: 212444787408134422}
   - component: {fileID: 58406159856768340}
-  - component: {fileID: 114506210568439446}
+  - component: {fileID: 114335913069193638}
   m_Layer: 0
   m_Name: MissileItemPrefab
   m_TagString: Untagged
@@ -57,7 +57,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.27
---- !u!114 &114506210568439446
+--- !u!114 &114335913069193638
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,11 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076355341642580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da038d5b6cd133a4f8bebdfe6502059a, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c7c7180681d61428c4bc6d8c8eecc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileWeapon: {fileID: 1599500325109510, guid: a8482791a647ad545ab29749af25c222,
-    type: 2}
+  weapon: {fileID: 1599500325109510, guid: a8482791a647ad545ab29749af25c222, type: 2}
 --- !u!212 &212444787408134422
 SpriteRenderer:
   m_ObjectHideFlags: 1

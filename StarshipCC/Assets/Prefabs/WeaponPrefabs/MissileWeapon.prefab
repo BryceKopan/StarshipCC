@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4754140974833478}
-  - component: {fileID: 114447435305150670}
+  - component: {fileID: 114418963446897652}
   m_Layer: 0
   m_Name: MissileWeapon
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114447435305150670
+--- !u!114 &114418963446897652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +106,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1599500325109510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a65a9c852d01fd4399bf862f202a5c1, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1495939941620122, guid: e7135fb389ecb6f4fa18651093d4233a,
-    type: 2}
   bulletSpawns: []
   fireCooldown: 1
   damage: 10
-  bulletSpeed: 40
-  bulletLife: 10
   canFire: 1
+  projectilePrefab: {fileID: 1495939941620122, guid: e7135fb389ecb6f4fa18651093d4233a,
+    type: 2}
+  bulletSpeed: 30
+  bulletLife: 10

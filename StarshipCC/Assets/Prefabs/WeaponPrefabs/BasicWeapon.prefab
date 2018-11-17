@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176552938951516}
-  - component: {fileID: 114203448863180632}
+  - component: {fileID: 114614172202256250}
   m_Layer: 0
   m_Name: BasicWeapon
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_Father: {fileID: 4176552938951516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114203448863180632
+--- !u!114 &114614172202256250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,13 +106,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1689189574388330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc873389029c62848bc0b53e46c4a104, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
-    type: 2}
   bulletSpawns: []
   fireCooldown: 0.2
   damage: 1
-  bulletSpeed: 80
   canFire: 1
+  projectilePrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
+    type: 2}
+  bulletSpeed: 40
+  bulletLife: 10
