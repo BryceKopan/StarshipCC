@@ -21,9 +21,10 @@ public class ShotgunWeapon : Weapon {
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
                 bulletScript.damage = damage;
                 bulletScript.speed = bulletSpeed;
+                bulletScript.lifeTime = bulletLife;
 
                 //Add velocity to the bullet
-                bulletScript.moveVector = bulletSpawn.transform.up * bulletSpeed;
+                bulletScript.moveVector = bulletSpawn.transform.up;
             }
             canFire = false;
             Invoke("EnableFire", fireCooldown);
