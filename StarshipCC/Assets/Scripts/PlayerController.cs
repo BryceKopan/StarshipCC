@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class PlayerController : MonoBehaviour, Hittable 
+public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 {
     public int PlayerNumber = 0;
     public float joystickDeadzone = 0.1f;
@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public GameObject startingWeapon;
 
-    public float health;
+    public float maxHealth;
+    private float currentHealth;
 
     public float dashLength = 0.3f;
     public float parryLength = 0.3f;
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour, Hittable
         // Attach starting weapon to the ship
         weapons = new List<Weapon>();
         AddWeapon(GameObject.Instantiate(startingWeapon).GetComponent<Weapon>());
+
+        currentHealth = maxHealth;
 
         InitInput();
 	}
@@ -159,8 +162,8 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        currentHealth -= damage;
+        if (currentHealth <= 0)
             Death();
     }
 
@@ -223,16 +226,6 @@ public class PlayerController : MonoBehaviour, Hittable
         canParry = true;
     }
 
-    void Hittable.OnHit(Projectile p)
-    {
-        if (!invincible)
-        {
-            TakeDamage(p.damage);
-            p.Death();
-            StartInvincibility();
-        }
-    }
-
     void Death()
     {
         Instantiate(
@@ -246,7 +239,7 @@ public class PlayerController : MonoBehaviour, Hittable
 
     public void Revive()
     {
-        health = 1;
+        currentHealth = 1;
     }
 
     public void AddWeapon(Weapon weapon)
@@ -269,5 +262,33 @@ public class PlayerController : MonoBehaviour, Hittable
 
             weapon.OnUnequip(this);
         }
+    }
+
+    //Interface Methods
+    void Hittable.OnHit(Projectile p)
+    {
+        if (!invincible)
+        {
+            TakeDamage(p.damage);
+            p.Death();
+            StartInvincibility();
+        }
+    }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+	public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetMaxHealth(float health)
+    {
+        maxHealth = health;
+    }
+	public void SetCurrentHealth(float health)
+    {
+        currentHealth = health;
     }
 }

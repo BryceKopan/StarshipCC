@@ -9,7 +9,7 @@ public class HealthItem : Item {
     public override void OnEquip(PlayerController player)
     {
         gameObject.SetActive(false);
-        player.health += healthAdded;
+        player.SetCurrentHealth(player.GetCurrentHealth() + healthAdded);
         Destroy(gameObject);
     }
 
