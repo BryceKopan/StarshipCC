@@ -81,7 +81,7 @@ public class CapitalController : MonoBehaviour {
 
     List<AttachmentSize> GenerateAttachmentSizes()
     {
-        return new List<AttachmentSize>(levelAttachmentSizes[level]);
+        return new List<AttachmentSize>(levelAttachmentSizes[level/2]);
     }
 
     List<Vector3> GenerateAttachmentPositions(List<AttachmentSize> attachmentSizes)
