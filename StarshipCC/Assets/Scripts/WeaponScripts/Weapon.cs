@@ -4,14 +4,10 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour {
 
-    public GameObject bulletPrefab;
-
     public List<Transform> bulletSpawns;
 
     public float fireCooldown = 1f;
     public float damage = 1f;
-    public float bulletSpeed = 40f;
-    public float bulletLife = 10f;
 
     public bool canFire = true;
 
@@ -42,4 +38,6 @@ public abstract class Weapon : MonoBehaviour {
     public abstract void OnEquip(PlayerController player);
     public abstract void OnUnequip(PlayerController player);
     public abstract void Fire();
+    public abstract void OnFireStart();
+    public abstract void OnFireEnd();
 }

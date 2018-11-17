@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4014309775970786}
-  - component: {fileID: 114688141278299378}
+  - component: {fileID: 114342664500156800}
   m_Layer: 0
   m_Name: ShotgunWeapon
   m_TagString: Untagged
@@ -214,7 +214,7 @@ Transform:
   m_Father: {fileID: 4014309775970786}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10}
---- !u!114 &114688141278299378
+--- !u!114 &114342664500156800
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,13 +222,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970787510962240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c3b857a67fd24ab8558fcc37c851f, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
-    type: 2}
   bulletSpawns: []
-  fireCooldown: 1
+  fireCooldown: 0.5
   damage: 1
-  bulletSpeed: 100
   canFire: 1
+  projectilePrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
+    type: 2}
+  bulletSpeed: 50
+  bulletLife: 10
