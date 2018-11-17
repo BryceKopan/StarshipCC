@@ -240,6 +240,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     public void Revive()
     {
         currentHealth = 1;
+        StartInvincibility();
     }
 
     public void AddWeapon(Weapon weapon)
