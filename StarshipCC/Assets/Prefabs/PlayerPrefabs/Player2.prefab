@@ -279,7 +279,7 @@ MonoBehaviour:
   turnSpeed: 5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}
-  health: 3
+  maxHealth: 3
   dashLength: 0.1
   parryLength: 0.3
   invincibilityLength: 1

@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   rotationSpeed: 1
-  maxHealth: 20
+  maxHealth: 50
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   numberOfShots: 5
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 4c6c415254725494bab8115c800942a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
