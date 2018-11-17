@@ -115,5 +115,5 @@ MonoBehaviour:
   canFire: 1
   projectilePrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
     type: 2}
-  bulletSpeed: 40
+  bulletSpeed: 100
   bulletLife: 10
