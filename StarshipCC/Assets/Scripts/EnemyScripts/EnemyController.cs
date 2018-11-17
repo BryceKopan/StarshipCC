@@ -7,7 +7,7 @@ public enum State{Moving, Attacking, Idle};
 
 public struct SimpleTransform{public Vector3 position; public Quaternion rotation;}
 
-public abstract class EnemyController : MonoBehaviour, Hittable 
+public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealth
 {
     public float moveSpeed = 20f, rotationSpeed = 1f, maxHealth = 150;
     public GameObject deathEffectPrefab;
@@ -144,6 +144,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable
 
     protected virtual void OnDeath(){}
 
+    //Interface Methods
     void Hittable.OnHit(Projectile p)
     {
         currentHealth -= p.damage;
@@ -155,5 +156,23 @@ public abstract class EnemyController : MonoBehaviour, Hittable
             Death();
 
         p.Death();
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+	public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetMaxHealth(float health)
+    {
+        maxHealth = health;
+    }
+	public void SetCurrentHealth(float health)
+    {
+        currentHealth = health;
     }
 }

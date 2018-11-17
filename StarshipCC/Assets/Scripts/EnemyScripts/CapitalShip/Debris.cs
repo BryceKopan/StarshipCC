@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Debris : MonoBehaviour, Hittable
 {
+	public float health;
 	public GameObject deathEffectPrefab;
 
 	// Use this for initialization
@@ -18,17 +19,19 @@ public class Debris : MonoBehaviour, Hittable
 
 	void Death()
 	{
-		Destroy(gameObject);
-	}
-
-	void Hittable.OnHit(Projectile p)
-    {
 		Instantiate(
                 deathEffectPrefab,
                 transform.position,
                 transform.rotation);
 
-        Death();
+		Destroy(gameObject);
+	}
+
+	void Hittable.OnHit(Projectile p)
+    {
+		health -= p.damage;
+		if(health <= 0)
+			Death();
 
         p.Death();
     }
