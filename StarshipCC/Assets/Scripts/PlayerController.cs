@@ -89,8 +89,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            xAimAxis = mousePos.x - transform.localPosition.x;
-            yAimAxis = mousePos.y - transform.localPosition.y;
+            xAimAxis = mousePos.x - transform.position.x;
+            yAimAxis = mousePos.y - transform.position.y;
 
             fire = Input.GetMouseButton(0);
             dash = Input.GetButton("KeyboardDash");
