@@ -272,11 +272,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4006143349994086, guid: fa58c137316d3415ea5a3cf1d45e2812, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 4006143349994086, guid: fa58c137316d3415ea5a3cf1d45e2812, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -46.5
       objectReference: {fileID: 0}
     - target: {fileID: 4006143349994086, guid: fa58c137316d3415ea5a3cf1d45e2812, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2540,7 +2540,11 @@ MonoBehaviour:
   - {fileID: 1807889170463352, guid: 1d5f93c3f596a4d15b3f7eea7eadceca, type: 2}
   - {fileID: 1242107570681986, guid: dafb382323cf84f16bd905da204517be, type: 2}
   - {fileID: 1491568756345530, guid: 6f217e5c329054d11a5bcbbaa98c4ea6, type: 2}
-  MediumAttachmentPrefabs: []
+  MediumAttachmentPrefabs:
+  - {fileID: 1128243363848252, guid: 1c4f17c755cb140cc97d2b3d0b8429a5, type: 2}
+  - {fileID: 1840043981717014, guid: f01f37c8a40cd42f3bcc3a3cddad052b, type: 2}
+  - {fileID: 1725229249277432, guid: 8c2f6fdc3b6c3423d8f8ebd2f38a1b8d, type: 2}
+  - {fileID: 1577872750841516, guid: 7a1bae21dcbde4251a82a7f315343d16, type: 2}
   LargeAttachmentPrefabs: []
   ItemPrefabs:
   - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 2}
