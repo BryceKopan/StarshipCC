@@ -221,6 +221,7 @@ MonoBehaviour:
   maxHealth: 50
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   numberOfShots: 5
   timeBetweenShots: 0.5
   pauseAfterShooting: 1

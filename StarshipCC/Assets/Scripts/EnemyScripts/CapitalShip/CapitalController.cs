@@ -15,10 +15,11 @@ public class CapitalController : MonoBehaviour {
     public List<GameObject> MediumAttachmentPrefabs;
     public List<GameObject> LargeAttachmentPrefabs;
     public List<GameObject> ItemPrefabs;
-
     public Vector3 leftBound, rightBound;
 
     private List<GameObject> turrets;
+    private UnityEngine.UI.Text coinCounter;
+    private float coins;
 
     private AttachmentSize[][] levelAttachmentSizes = new AttachmentSize[][] 
     {
@@ -38,6 +39,8 @@ public class CapitalController : MonoBehaviour {
         GameObject[] turretsArray;
         turretsArray = GameObject.FindGameObjectsWithTag("Enemy");
         turrets = new List<GameObject>(turretsArray);
+
+        coinCounter = GameObject.Find("CoinCounter").GetComponent<UnityEngine.UI.Text>();
 	}
 	
 	void Update () 
@@ -129,5 +132,11 @@ public class CapitalController : MonoBehaviour {
                 attachmentPrefab,
                 attachmentPosition,
                 gameObject.transform.rotation);
+    }
+
+    public void AddCoins(int coin)
+    {
+        coins += coin;
+        coinCounter.text = "Coin: " + coins;
     }
 }
