@@ -145,7 +145,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
         float r = UnityEngine.Random.Range(-1000f,1000f);
         Vector2 force = new Vector2(r, -1000);
-        Debug.Log(force);
         coin.GetComponent<Rigidbody2D>().AddForce(force);
 
         OnDeath();

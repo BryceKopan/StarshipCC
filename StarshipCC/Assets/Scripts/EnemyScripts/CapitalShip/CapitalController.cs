@@ -48,17 +48,16 @@ public class CapitalController : MonoBehaviour {
         if(!AreTurretsAlive())
         {
             Start();
-            SpawnItem();
         }
 	}
 
-    void SpawnItem()
+    public void SpawnItem(Vector3 postion)
     {
         int r = Random.Range(0, ItemPrefabs.Count);
         
         Instantiate(
                 ItemPrefabs[r],
-                new Vector3(),
+                postion,
                 Quaternion.identity);
     }
 
@@ -79,7 +78,6 @@ public class CapitalController : MonoBehaviour {
         CreateTurrets(attachmentSizes, attachmentPositions);
 
         level++;
-
     }
 
     List<AttachmentSize> GenerateAttachmentSizes()
