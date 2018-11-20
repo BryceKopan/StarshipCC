@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 50654260647731366}
   - component: {fileID: 60585326355879736}
   - component: {fileID: 114142665075225244}
+  - component: {fileID: 114584806841107706}
   m_Layer: 0
   m_Name: PlayerMissile1
   m_TagString: Untagged
@@ -115,6 +116,17 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 2}
+--- !u!114 &114584806841107706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495939941620122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198985440595295584
 ParticleSystem:
   m_ObjectHideFlags: 1

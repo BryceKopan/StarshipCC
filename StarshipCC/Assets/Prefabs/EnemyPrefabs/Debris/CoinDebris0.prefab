@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212687494151541018}
   - component: {fileID: 60494388629145654}
   - component: {fileID: 50076712174710032}
-  - component: {fileID: 114824924345218368}
+  - component: {fileID: 114251402234945566}
   - component: {fileID: 114370101709775660}
   m_Layer: 0
   m_Name: CoinDebris0
@@ -110,6 +110,17 @@ PolygonCollider2D:
       - {x: 0.085, y: -0.275}
       - {x: 0.265, y: -0.175}
       - {x: 0.265, y: -0.125}
+--- !u!114 &114251402234945566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136530903590150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114370101709775660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,18 +138,6 @@ MonoBehaviour:
   coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   lowerCoinLimit: 0
   upperCoinLimit: 5
---- !u!114 &114824924345218368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136530903590150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103fe65aac3f49f2a224c59f0524f6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeUntilDestruction: 15
 --- !u!212 &212687494151541018
 SpriteRenderer:
   m_ObjectHideFlags: 1
