@@ -2717,5 +2717,6 @@ MonoBehaviour:
   - {fileID: 1076355341642580, guid: 6e11743cfba57764e93b6236e1186713, type: 2}
   leftBound: {x: -100, y: 0, z: 0}
   rightBound: {x: 100, y: 0, z: 0}
+  baseEdge: {fileID: 1766235766332706, guid: 4df07fbfd6a574182986a1d8fa80ee95, type: 2}
   smallEdge: {fileID: 1637299718570656, guid: 40d81095c799c4b15bbf03da163a4e68, type: 2}
   mediumEdge: {fileID: 1048991214549206, guid: aafb1cd4ab0bf449caf3e8ae95daf01a, type: 2}
