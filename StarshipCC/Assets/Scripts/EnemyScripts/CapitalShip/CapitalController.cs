@@ -16,10 +16,12 @@ public class CapitalController : MonoBehaviour {
     public List<GameObject> LargeAttachmentPrefabs;
     public List<GameObject> ItemPrefabs;
     public Vector3 leftBound, rightBound;
+    public GameObject smallEdge, mediumEdge;
 
     private List<GameObject> turrets;
     private UnityEngine.UI.Text coinCounter;
     private float coins;
+    private Transform parentObject;
 
     private AttachmentSize[][] levelAttachmentSizes = new AttachmentSize[][] 
     {
@@ -34,6 +36,8 @@ public class CapitalController : MonoBehaviour {
 
 	void Start ()
     {
+        parentObject = GameObject.Find("CapitalShip").transform;
+
         GenerateCapitalShip();
 
         GameObject[] turretsArray;
@@ -108,10 +112,12 @@ public class CapitalController : MonoBehaviour {
             if(attachmentSizes[i] == AttachmentSize.Small)
             {
                 attachmentPrefabs = SmallAttachmentPrefabs;
+                InstantiateAttachment(smallEdge, attachmentPositions[i]);
             }
             else if(attachmentSizes[i] == AttachmentSize.Medium)
             {
                 attachmentPrefabs = MediumAttachmentPrefabs;
+                InstantiateAttachment(mediumEdge, attachmentPositions[i]);
             }
             else if(attachmentSizes[i] == AttachmentSize.Large)
             {
@@ -126,10 +132,12 @@ public class CapitalController : MonoBehaviour {
 
     void InstantiateAttachment(GameObject attachmentPrefab, Vector3 attachmentPosition)
     {
-        Instantiate(
+        GameObject attachment = Instantiate(
                 attachmentPrefab,
                 attachmentPosition,
                 gameObject.transform.rotation);
+
+        attachment.transform.SetParent(parentObject); 
     }
 
     public void AddCoins(int coin)
