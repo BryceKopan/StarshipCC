@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 60110152309668844}
   - component: {fileID: 50923189992773790}
   - component: {fileID: 114119030068978354}
-  - component: {fileID: 114895598909980068}
+  - component: {fileID: 114838574083998090}
   m_Layer: 0
   m_Name: Debris2
   m_TagString: Untagged
@@ -117,7 +117,7 @@ MonoBehaviour:
   health: 10
   deathEffectPrefab: {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95,
     type: 2}
---- !u!114 &114895598909980068
+--- !u!114 &114838574083998090
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,10 +125,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261375576761774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103fe65aac3f49f2a224c59f0524f6a, type: 3}
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUntilDestruction: 15
 --- !u!212 &212057849520254062
 SpriteRenderer:
   m_ObjectHideFlags: 1

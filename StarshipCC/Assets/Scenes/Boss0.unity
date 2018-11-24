@@ -875,10 +875,10 @@ MonoBehaviour:
   - {fileID: 1261375576761774, guid: e44adf872ce534950a0ca5d04a2b23d9, type: 2}
   - {fileID: 1741942288551072, guid: 66080503fc2c2448990d86d657bb5736, type: 2}
   - {fileID: 1368183307696434, guid: f2e3908c894f54208af8359ff6e4b8c1, type: 2}
-  treasureChance: 0.05
+  treasureChance: 0.025
   treasurePrefabs:
   - {fileID: 1527606015615494, guid: 398f1fbad229f49478be6cbb9e353e6b, type: 2}
-  coinChance: 0.1
+  coinChance: 0.05
   coinPrefabs:
   - {fileID: 1136530903590150, guid: 86506384800944b03bdee1fa2015e971, type: 2}
   - {fileID: 1171451086559106, guid: faa7bd7786b0e472cb3882a2824447ba, type: 2}

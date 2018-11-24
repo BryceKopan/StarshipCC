@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4093323832427540}
   - component: {fileID: 212179070156349422}
   - component: {fileID: 50777787101555768}
-  - component: {fileID: 114249998361830154}
+  - component: {fileID: 114234183589174142}
   - component: {fileID: 114917192896329872}
   - component: {fileID: 60475559840674498}
   m_Layer: 0
@@ -94,7 +94,7 @@ PolygonCollider2D:
       - {x: 0.099999994, y: -0.099999994}
       - {x: 0.099999994, y: 0.089999996}
       - {x: 0.089999996, y: 0.099999994}
---- !u!114 &114249998361830154
+--- !u!114 &114234183589174142
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,10 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527606015615494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103fe65aac3f49f2a224c59f0524f6a, type: 3}
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUntilDestruction: 15
 --- !u!114 &114917192896329872
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114158280701858290}
   - component: {fileID: 60411820698017834}
   - component: {fileID: 50830995634205534}
-  - component: {fileID: 114324907901915792}
+  - component: {fileID: 114354980536338114}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cc178c3d1ef4263890ecdba1a3ca94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114324907901915792
+--- !u!114 &114354980536338114
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,10 +172,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1873637814858632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103fe65aac3f49f2a224c59f0524f6a, type: 3}
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUntilDestruction: 10
 --- !u!198 &198338003170485404
 ParticleSystem:
   m_ObjectHideFlags: 1
