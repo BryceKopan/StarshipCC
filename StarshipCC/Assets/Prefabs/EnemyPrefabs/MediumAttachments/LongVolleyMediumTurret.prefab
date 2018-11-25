@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 50416520019875958}
   - component: {fileID: 114586171131873074}
   - component: {fileID: 60620781962260610}
+  - component: {fileID: 114322136419730138}
   m_Layer: 0
   m_Name: LongVolleyMediumTurret
   m_TagString: Enemy
@@ -278,6 +279,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c7ab42bdf4c34bd9b3372c45e1362eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114322136419730138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840043981717014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114548715679013760

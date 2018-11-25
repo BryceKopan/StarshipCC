@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 60417108102180152}
   - component: {fileID: 50349598748433746}
   - component: {fileID: 114812720404313322}
+  - component: {fileID: 114762081435098030}
   m_Layer: 0
   m_Name: SmallTurret
   m_TagString: Enemy
@@ -174,6 +175,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446055433813341efb48ae0b4167c255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114762081435098030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213275120181826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114812720404313322

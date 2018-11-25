@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 50798710369920826}
   - component: {fileID: 114449024108111558}
   - component: {fileID: 60537154237208580}
+  - component: {fileID: 114726542516034208}
   m_Layer: 0
   m_Name: ShotgunMediumTurret
   m_TagString: Enemy
@@ -293,6 +294,17 @@ MonoBehaviour:
   bulletMoveSpeed: 50
   attackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
+--- !u!114 &114726542516034208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1725229249277432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114829544957446926
 MonoBehaviour:
   m_ObjectHideFlags: 1

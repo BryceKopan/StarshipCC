@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 50300424795183986}
   - component: {fileID: 114238215369506412}
   - component: {fileID: 60926010230248168}
+  - component: {fileID: 114822943453954956}
   m_Layer: 0
   m_Name: SmallMissileTurret
   m_TagString: Enemy
@@ -352,6 +353,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c7ab42bdf4c34bd9b3372c45e1362eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114822943453954956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1556759983795304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212298192106624790

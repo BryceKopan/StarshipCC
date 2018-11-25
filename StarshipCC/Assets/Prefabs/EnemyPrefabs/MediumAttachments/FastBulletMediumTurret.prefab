@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 50867826444456992}
   - component: {fileID: 114203991262671270}
   - component: {fileID: 60772356299326674}
+  - component: {fileID: 114899245170831536}
   m_Layer: 0
   m_Name: FastBulletMediumTurret
   m_TagString: Enemy
@@ -313,6 +314,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446055433813341efb48ae0b4167c255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114899245170831536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298742970657142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212206959068881116

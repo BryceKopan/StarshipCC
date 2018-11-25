@@ -26,6 +26,8 @@ public class MapHazard : MonoBehaviour {
 		float rType = Random.value;
 		float rYPosition = Random.Range(lowerSpawnPoint.y, upperSpawnPoint.y);
 		Vector3 position = new Vector3(lowerSpawnPoint.x, rYPosition, lowerSpawnPoint.z);
+		position += transform.position;
+		position.z = 0;
 
 		if(rType <= treasureChance)
 		{
