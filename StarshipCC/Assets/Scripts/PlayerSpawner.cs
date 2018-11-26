@@ -20,13 +20,7 @@ public class PlayerSpawner : MonoBehaviour {
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKey("joystick 1 button 0") && once0)
         {
