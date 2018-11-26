@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 60417108102180152}
   - component: {fileID: 50349598748433746}
   - component: {fileID: 114812720404313322}
+  - component: {fileID: 114762081435098030}
   m_Layer: 0
   m_Name: SmallTurret
   m_TagString: Enemy
@@ -176,6 +177,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446055433813341efb48ae0b4167c255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114762081435098030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213275120181826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114812720404313322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +204,7 @@ MonoBehaviour:
   maxHealth: 50
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   numberOfShots: 5
   timeBetweenShots: 0.5
   pauseAfterShooting: 1

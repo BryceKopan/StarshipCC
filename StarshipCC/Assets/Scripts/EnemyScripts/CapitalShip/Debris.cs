@@ -17,7 +17,7 @@ public class Debris : MonoBehaviour, Hittable
 		
 	}
 
-	void Death()
+	protected virtual void Death()
 	{
 		Instantiate(
                 deathEffectPrefab,

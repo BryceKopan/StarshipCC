@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 60061065849363064}
   - component: {fileID: 50357912752151270}
   - component: {fileID: 114932667756243356}
+  - component: {fileID: 114022227793266400}
   m_Layer: 0
   m_Name: Missile 1
   m_TagString: Untagged
@@ -97,6 +98,17 @@ PolygonCollider2D:
       - {x: 0.029488439, y: 0.064210765}
       - {x: 0.06877518, y: 0.16556804}
       - {x: -0.005322139, y: 0.19438757}
+--- !u!114 &114022227793266400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397232196016244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114932667756243356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,10 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifeTime: 50
   speed: 50
   moveVector: {x: 0, y: 0, z: 0}
   DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
+    type: 2}
+  explosionPrefab: {fileID: 1233381832279470, guid: 98450b02d20364ce08974eccc75c5bbc,
     type: 2}
   rotationSpeed: 1
 --- !u!198 &198341254090248562

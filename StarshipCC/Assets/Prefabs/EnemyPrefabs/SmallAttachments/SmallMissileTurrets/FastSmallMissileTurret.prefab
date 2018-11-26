@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50543342921634456}
   - component: {fileID: 114281641190368528}
   - component: {fileID: 60328080552341768}
+  - component: {fileID: 114536629490115106}
   m_Layer: 0
   m_Name: FastSmallMissileTurret
   m_TagString: Enemy
@@ -336,12 +337,24 @@ MonoBehaviour:
   maxHealth: 50
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   bulletMoveSpeed: 100
   timeBetweenShots: 0.1
   pauseAfterShooting: 0.5
   attackPrefab: {fileID: 1397232196016244, guid: ce9f3c9d51d404a70a79950ceb7230c8,
     type: 2}
   fireOrder: 000000000100000002000000030000000400000005000000
+--- !u!114 &114536629490115106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050552598005886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114960292221430046
 MonoBehaviour:
   m_ObjectHideFlags: 1

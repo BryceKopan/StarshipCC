@@ -8,7 +8,6 @@ public class ProjectileWeapon : Weapon {
     public GameObject projectilePrefab;
 
     public float bulletSpeed = 40f;
-    public float bulletLife = 10f;
 
     public override void Fire()
     {
@@ -26,7 +25,6 @@ public class ProjectileWeapon : Weapon {
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
                 projectileScript.damage = damage;
                 projectileScript.speed = bulletSpeed;
-                projectileScript.lifeTime = bulletLife;
 
                 //Add velocity to the bullet
                 projectileScript.moveVector = bulletSpawn.transform.up;
