@@ -560,7 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad90c9ab17554cef820127269a67c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 990811538}
 --- !u!1 &708917204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,7 +2717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ee96ea7ba79485e82fdd15c12c9af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
   SmallAttachmentPrefabs:
   - {fileID: 1213275120181826, guid: e961399bc3f204d71b875b56b4f7a12c, type: 2}
   - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 2}
@@ -2743,8 +2741,6 @@ MonoBehaviour:
   - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 2}
   - {fileID: 1420507362941186, guid: 4f1c47a8c6d5f7d4095af1666708a902, type: 2}
   - {fileID: 1076355341642580, guid: 6e11743cfba57764e93b6236e1186713, type: 2}
-  leftBound: {x: -100, y: 0, z: 0}
-  rightBound: {x: 100, y: 0, z: 0}
   baseEdge: {fileID: 1766235766332706, guid: 4df07fbfd6a574182986a1d8fa80ee95, type: 2}
   smallEdge: {fileID: 1637299718570656, guid: 40d81095c799c4b15bbf03da163a4e68, type: 2}
   mediumEdge: {fileID: 1048991214549206, guid: aafb1cd4ab0bf449caf3e8ae95daf01a, type: 2}
