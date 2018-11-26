@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
     public float damage;
-    public float lifeTime;
     public float speed;
     public Vector3 moveVector;
 
@@ -12,8 +11,6 @@ public class Projectile : MonoBehaviour {
 
     public void Start()
     {
-        Destroy(gameObject, lifeTime);
-
         OnStart();
     }
 
@@ -41,13 +38,15 @@ public class Projectile : MonoBehaviour {
         }
     }
 
-    public void Death()
+    public virtual void Death()
     {
-        Instantiate(
-                    DeathEffectPrefab,
-                    gameObject.transform.position,
-                    gameObject.transform.rotation);
+        if(DeathEffectPrefab)
+        {
+            Instantiate(
+            DeathEffectPrefab,
+            gameObject.transform.position,
+            gameObject.transform.rotation);
+        }
         Destroy(gameObject);
     }
-
 }
