@@ -4,20 +4,61 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 	public float speed;
-	public Vector3 direction = new Vector3(1, 0, 0);
+
+	private List<Vector3> cameraTargetPositions = new List<Vector3>();
+	private List<Vector3> targets = new List<Vector3>();
+	private List<bool> waitForNewTarget;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		foreach(Transform child in gameObject.transform)
+        {
+			if(child.name == "CameraTargetPosition")
+				cameraTargetPositions.Add(child.transform.position);
+		}
+
+		AddTargets(cameraTargetPositions, false);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+	{
+		if(targets[0] != new Vector3())
+		{
+			Vector3 targetPosition = targets[0];
+			targetPosition.z = transform.position.z;
+			transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+			if(transform.position == targetPosition)
+				targets.RemoveAt(0);
+		}
+
+		// Debug.Log("Targets");
+		// foreach(Vector3 t in targets)
+		// {
+		// 	Debug.Log(t);
+		// }
 	}
 
-	void FixedUpdate()
+	public void AddTargets(List<Vector3> targets, bool pauseAtLastTarget)
 	{
-		transform.position += direction * speed * Time.fixedDeltaTime;
+		//Debug.Log("AddTarget" + targets + ":" + pauseAtLastTarget);
+
+		if(this.targets.Count > 0 && this.targets[0] == new Vector3())
+		{
+			this.targets.RemoveAt(0);
+		}
+
+		if(pauseAtLastTarget)
+			targets.Add(new Vector3());
+
+		targets.AddRange(this.targets);
+		this.targets = targets;
+
+		// foreach(Vector3 t in targets)
+		// {
+		// 	Debug.Log(t);
+		// }
 	}
 }

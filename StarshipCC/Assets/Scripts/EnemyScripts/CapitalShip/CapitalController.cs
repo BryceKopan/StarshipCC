@@ -9,7 +9,8 @@ public class CapitalController : MonoBehaviour {
     public List<GameObject> MediumAttachmentPrefabs;
     public List<GameObject> LargeAttachmentPrefabs;
     public List<GameObject> ItemPrefabs;
-    public GameObject baseEdge, smallEdge, mediumEdge;
+    public GameObject baseEdge, smallEdge, mediumEdge, capitalPartShop;
+    public int capitalLength;
 
     private List<GameObject> turrets;
     private UnityEngine.UI.Text coinCounter;
@@ -36,13 +37,30 @@ public class CapitalController : MonoBehaviour {
     {
         CreateCapitalBase();
 
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < capitalLength; i++)
         {
             float r = Random.Range(0f, 100f);
-            if(r < 25)
-                CreateCapitalPart(smallEdge);
+
+            if(i < capitalLength / 2)
+            {
+                if(r < 5)
+                    CreateCapitalPart(capitalPartShop);
+                else if(r < 40)
+                    CreateCapitalPart(smallEdge);
+                else
+                    CreateCapitalPart(baseEdge);
+            }
             else
-                CreateCapitalPart(baseEdge);
+            {
+                if(r < 5)
+                    CreateCapitalPart(capitalPartShop);
+                else if(r < 20)
+                    CreateCapitalPart(mediumEdge);
+                else if (r < 55)
+                    CreateCapitalPart(smallEdge);
+                else
+                    CreateCapitalPart(baseEdge);
+            }
         }
 
         CreateAttachments(capitalParts);
@@ -61,18 +79,27 @@ public class CapitalController : MonoBehaviour {
 
         for(int i = 0; i < 5; i++)
         {
-            CreateCapitalPart(baseEdge);
+            if(i == 1)
+                CreateCapitalPart(capitalPartShop);
+            else
+                CreateCapitalPart(baseEdge);
         }
     }
 
     void CreateCapitalPart(GameObject capitalPartPrefab)
     {
-        Vector3 rightEdge = capitalParts[capitalParts.Count - 1].GetComponent<SpriteRenderer>().bounds.max;
-        Vector3 offSet = capitalPartPrefab.GetComponent<SpriteRenderer>().bounds.extents;
+        GameObject capitalPartChild;
 
-        Vector3 capitalPartPosition = rightEdge + offSet;
-        capitalPartPosition.y = gameObject.transform.position.y;
-        capitalPartPosition.z = gameObject.transform.position.z;
+        float rightEdge = capitalParts[capitalParts.Count - 1].GetComponentInChildren<SpriteRenderer>().bounds.max.x;
+        float xOffSet = capitalPartPrefab.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
+        float yOffSet = 0f;
+
+        Transform offSetObject = capitalPartPrefab.transform.Find("YOffSet");
+
+        if(offSetObject)
+            yOffSet = offSetObject.localPosition.y * offSetObject.lossyScale.y;
+
+        Vector3 capitalPartPosition = new Vector3(rightEdge + xOffSet, gameObject.transform.position.y - yOffSet, gameObject.transform.position.z);
 
         GameObject capitalPart = Instantiate(
                 capitalPartPrefab,
@@ -96,6 +123,17 @@ public class CapitalController : MonoBehaviour {
 
                     GameObject attachment = Instantiate(
                         SmallAttachmentPrefabs[r],
+                        child.transform.position,
+                        child.transform.rotation);
+
+                    attachment.transform.SetParent(gameObject.transform); 
+                }
+                else if(child.name == "MediumHardPoint")
+                {
+                    int r = Random.Range(0, MediumAttachmentPrefabs.Count);
+
+                    GameObject attachment = Instantiate(
+                        MediumAttachmentPrefabs[r],
                         child.transform.position,
                         child.transform.rotation);
 

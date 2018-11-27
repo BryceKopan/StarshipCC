@@ -17,6 +17,6 @@ public class HealthBar : MonoBehaviour {
 	void Update () {
 		maxHealth = gameObject.transform.parent.GetComponent<AccessibleHealth>().GetMaxHealth();
 		currentHealth = gameObject.transform.parent.GetComponent<AccessibleHealth>().GetCurrentHealth();
-		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(maxHealth, 0, currentHealth/2));
+		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(maxHealth, 0, currentHealth/2) + .0001f);
 	}
 }
