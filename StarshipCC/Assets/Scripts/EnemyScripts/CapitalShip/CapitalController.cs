@@ -147,7 +147,7 @@ public class CapitalController : MonoBehaviour {
     public void AddCoins(int coin)
     {
         coins += coin;
-        coinCounter.text = "Coin: " + coins;
+        coinCounter.text = ": " + coins;
     }
 
     public void SpawnItem(Vector3 postion)
