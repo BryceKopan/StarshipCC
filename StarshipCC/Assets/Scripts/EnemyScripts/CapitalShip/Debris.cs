@@ -5,7 +5,7 @@ using UnityEngine;
 public class Debris : MonoBehaviour, Hittable
 {
 	public float health;
-	public GameObject deathEffectPrefab;
+	public List<GameObject> deathPrefabList;
 
 	// Use this for initialization
 	void Start () {
@@ -19,10 +19,7 @@ public class Debris : MonoBehaviour, Hittable
 
 	protected virtual void Death()
 	{
-		Instantiate(
-                deathEffectPrefab,
-                transform.position,
-                transform.rotation);
+		SpawnDeathPrefabs();
 
 		Destroy(gameObject);
 	}
@@ -35,4 +32,15 @@ public class Debris : MonoBehaviour, Hittable
 
         p.Death();
     }
+
+	protected void SpawnDeathPrefabs()
+	{
+		foreach(GameObject deathPrefab in deathPrefabList)
+		{
+			Instantiate(
+					deathPrefab,
+					transform.position,
+					transform.rotation);
+		}
+	}
 }

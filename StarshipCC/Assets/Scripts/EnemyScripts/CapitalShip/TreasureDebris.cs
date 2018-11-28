@@ -8,10 +8,7 @@ public class TreasureDebris : Debris {
 	{
 		GameObject.Find("CapitalShip").GetComponent<CapitalController>().SpawnItem(transform.position);
 
-		Instantiate(
-                deathEffectPrefab,
-                transform.position,
-                transform.rotation);
+		SpawnDeathPrefabs();
 
 		Destroy(gameObject);
 	}

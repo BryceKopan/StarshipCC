@@ -13,10 +13,7 @@ public class CoinDebris : Debris {
 			SpawnCoin();
 		}
 
-		Instantiate(
-                deathEffectPrefab,
-                transform.position,
-                transform.rotation);
+		SpawnDeathPrefabs();
 
 		Destroy(gameObject);
 	}
@@ -30,7 +27,7 @@ public class CoinDebris : Debris {
 
 		float r1 = UnityEngine.Random.Range(-1000f,1000f);
 		float r2 = UnityEngine.Random.Range(-1000f,1000f);
-        Vector2 force = new Vector2(r1, r2);
-        coin.GetComponent<Rigidbody2D>().AddForce(force);
+		Vector2 force = new Vector2(r1, r2);
+		coin.GetComponent<Rigidbody2D>().AddForce(force);
 	}
 }
