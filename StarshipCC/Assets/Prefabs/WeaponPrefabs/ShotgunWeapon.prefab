@@ -228,8 +228,8 @@ MonoBehaviour:
   bulletSpawns: []
   fireCooldown: 0.5
   damage: 1
+  range: 50
   canFire: 1
   projectilePrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
     type: 2}
-  bulletSpeed: 50
-  bulletLife: 10
+  bulletSpeed: 120

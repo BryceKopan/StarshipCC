@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-    public float damage;
-    public float speed;
+    [HideInInspector]
+    public float damage, speed, range;
+    float distanceTraveled = 0;
+    [HideInInspector]
     public Vector3 moveVector;
 
     public GameObject DeathEffectPrefab;
@@ -18,7 +20,16 @@ public class Projectile : MonoBehaviour {
 
     public virtual void FixedUpdate()
     {
-        transform.position += moveVector * speed * Time.fixedDeltaTime;
+        if(distanceTraveled > range) 
+        {
+            Death();
+        }
+        else 
+        {
+            Vector3 movement = moveVector * speed * Time.fixedDeltaTime;
+            distanceTraveled += movement.magnitude;
+            transform.position += movement;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

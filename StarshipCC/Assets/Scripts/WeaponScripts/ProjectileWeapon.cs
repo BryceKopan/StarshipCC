@@ -25,6 +25,7 @@ public class ProjectileWeapon : Weapon {
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
                 projectileScript.damage = damage;
                 projectileScript.speed = bulletSpeed;
+                projectileScript.range = range;
 
                 //Add velocity to the bullet
                 projectileScript.moveVector = bulletSpawn.transform.up;

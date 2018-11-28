@@ -7,7 +7,8 @@ public abstract class Weapon : MonoBehaviour {
     public List<Transform> bulletSpawns;
 
     public float fireCooldown = 1f;
-    public float damage = 1f;
+    public float damage;
+    public float range;
 
     public bool canFire = true;
 
