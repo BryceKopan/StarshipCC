@@ -936,13 +936,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81231de08bd42d3ab3d3a0fc3bf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerSpawnPoint: {x: 120, y: -85, z: 0}
+  lowerSpawnPoint: {x: 120, y: -90, z: 0}
   upperSpawnPoint: {x: 120, y: -5, z: 0}
-  lowerSpawnInterval: 1
-  upperSpawnInterval: 2
+  lowerSpawnInterval: 2
+  upperSpawnInterval: 3
   lowerSize: 8
   upperSize: 12
   speed: 1000
+  density: 2
   debrisPrefabs:
   - {fileID: 1012593830852384, guid: 432138dbbbf514b77bd6a3fe404c5fc1, type: 2}
   - {fileID: 1632111552824208, guid: 65e9cca33f4b24f68bbcb7b015b5d001, type: 2}

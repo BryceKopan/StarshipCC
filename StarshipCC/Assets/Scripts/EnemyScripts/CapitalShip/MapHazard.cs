@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapHazard : MonoBehaviour {
 	public Vector3 lowerSpawnPoint, upperSpawnPoint;
-	public float lowerSpawnInterval, upperSpawnInterval, lowerSize, upperSize, speed;
+	public float lowerSpawnInterval, upperSpawnInterval, lowerSize, upperSize, speed, density;
 	public List<GameObject> debrisPrefabs;
 	public float treasureChance;
 	public List<GameObject> treasurePrefabs;
@@ -13,7 +13,10 @@ public class MapHazard : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnMapHazard();
+		for(int i = 0; i < density; i++)
+		{
+			SpawnMapHazard();
+		}
 	}
 	
 	// Update is called once per frame
