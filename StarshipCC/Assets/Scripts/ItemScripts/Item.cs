@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour {
 
+    public bool isInteractable = true;
+
 	// Use this for initialization
 	public virtual void Start () {
 		
@@ -17,13 +19,13 @@ public abstract class Item : MonoBehaviour {
     public abstract void OnEquip(PlayerController player);
     public abstract void OnUnequip(PlayerController player);
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        GameObject other = collision.gameObject;
+        GameObject other = collider.gameObject;
         if(other.tag == Tags.PLAYER)
         {
             PlayerController player = other.GetComponent<PlayerController>();
-            if(player)
+            if(player && isInteractable)
             {
                 this.OnEquip(player);
             }
