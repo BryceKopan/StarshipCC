@@ -111,9 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawns: []
   fireCooldown: 1
-  damage: 10
+  damage: 6
   canFire: 1
   projectilePrefab: {fileID: 1495939941620122, guid: e7135fb389ecb6f4fa18651093d4233a,
     type: 2}
-  bulletSpeed: 30
-  bulletLife: 10
+  bulletSpeed: 20
