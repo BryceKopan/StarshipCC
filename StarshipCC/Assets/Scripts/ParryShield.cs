@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ParryShield : MonoBehaviour, Hittable
 {
+    public float damageMultiplier = 10f;
+
     // Use this for initialization
     void Start ()
     {
@@ -20,12 +22,25 @@ public class ParryShield : MonoBehaviour, Hittable
     {
         if(p.tag == Tags.ENEMY_BULLET)
         {
-            p.tag = Tags.FRIENDLY_BULLET;
+            //If we parried a missile, make the missile explode
+            Missile missileScript = p.GetComponent<Missile>();
+            if(missileScript) 
+            {
+                missileScript.Death();
+                return;
+            }
+            else 
+            {
+                p.tag = Tags.FRIENDLY_BULLET;
+            }
         }
         else if(p.tag == Tags.FRIENDLY_BULLET)
         {
             p.tag = Tags.ENEMY_BULLET;
         }
+
+        //Increase damage of deflected projectile
+        p.damage *= damageMultiplier;
 
         //Deflect projectile
         //Since we aren't given a collision point, we must calculate it ourselves
