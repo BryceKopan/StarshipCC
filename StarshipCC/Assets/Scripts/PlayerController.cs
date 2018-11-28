@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     public float dashSpeed = 200f;
     public float turnSpeed = 5f;
 
+    public bool twinStick = false;
+    public float twinStickFireThreshold = 0.5f;
+
     public GameObject startingWeapon;
 
     public float maxHealth;
@@ -96,7 +99,23 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             dash = Input.GetButton("KeyboardDash");
             parry = Input.GetMouseButton(1);
         }
-        // Controller input
+        // Twin stick controller input
+        else if(twinStick) 
+        {
+            xMovementAxis = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            yMovementAxis = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+
+            xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
+            yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
+
+            Vector2 aimVector = new Vector2(xAimAxis, yAimAxis);
+            float aimMagnitude = aimVector.magnitude;
+            fire = aimMagnitude > twinStickFireThreshold;
+
+            dash = XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0;
+            parry = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0;
+        }
+        // Default Controller input
         else
         {
             xMovementAxis = XCI.GetAxis(XboxAxis.LeftStickX, controller);
