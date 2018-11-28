@@ -6,6 +6,6 @@ public class CapitalHull : MonoBehaviour, Hittable
 {
 	void Hittable.OnHit(Projectile p)
     {  
-        //p.Death();
+        p.Death();
     }
 }

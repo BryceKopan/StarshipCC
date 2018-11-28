@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  deathEffectPrefab: {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95,
-    type: 2}
+  deathPrefabList:
+  - {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95, type: 2}
 --- !u!114 &114947083333166486
 MonoBehaviour:
   m_ObjectHideFlags: 1

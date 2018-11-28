@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  deathEffectPrefab: {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69,
-    type: 2}
+  deathPrefabList:
+  - {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69, type: 2}
   coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   lowerCoinLimit: 0
   upperCoinLimit: 5
