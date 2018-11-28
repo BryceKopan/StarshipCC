@@ -14,7 +14,7 @@ public class CapitalController : MonoBehaviour {
 
     private List<GameObject> turrets;
     private UnityEngine.UI.Text coinCounter;
-    private float coins;
+    private int coins;
     private List<GameObject> capitalParts = new List<GameObject>();
 
 	void Start ()
@@ -45,7 +45,7 @@ public class CapitalController : MonoBehaviour {
             {
                 if(r < 5)
                     CreateCapitalPart(capitalPartShop);
-                else if(r < 40)
+                else if(r < 50)
                     CreateCapitalPart(smallEdge);
                 else
                     CreateCapitalPart(baseEdge);
@@ -56,7 +56,7 @@ public class CapitalController : MonoBehaviour {
                     CreateCapitalPart(capitalPartShop);
                 else if(r < 20)
                     CreateCapitalPart(mediumEdge);
-                else if (r < 55)
+                else if (r < 60)
                     CreateCapitalPart(smallEdge);
                 else
                     CreateCapitalPart(baseEdge);
@@ -150,11 +150,16 @@ public class CapitalController : MonoBehaviour {
         coinCounter.text = ": " + coins;
     }
 
-    public void SpawnItem(Vector3 postion)
+    public int GetCoins()
+    {
+        return coins;
+    }
+
+    public GameObject SpawnItem(Vector3 postion)
     {
         int r = Random.Range(0, ItemPrefabs.Count);
         
-        Instantiate(
+        return Instantiate(
                 ItemPrefabs[r],
                 postion,
                 Quaternion.identity);

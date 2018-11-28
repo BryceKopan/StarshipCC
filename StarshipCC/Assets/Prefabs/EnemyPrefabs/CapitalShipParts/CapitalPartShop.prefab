@@ -237,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383834941517836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 35, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700898511447130}
@@ -318,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1673004282399156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30, y: 35, z: 0}
+  m_LocalPosition: {x: -30, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700898511447130}
@@ -331,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072526957633126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: 35, z: 0}
+  m_LocalPosition: {x: 30, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4700898511447130}
@@ -357,7 +357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265661644177230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 189.80281, y: -88.98837, z: 0}
+  m_LocalPosition: {x: -41.599216, y: -9.727389, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4825402823896102}
@@ -511,6 +511,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc8fcdab7cd3481c8914ee15b6c2c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minCost: 5
+  maxCost: 10
+  coinDisplayPrefab: {fileID: 1335703429903156, guid: 4eb7bfd21b2eb433b88cd4df3f1f252e,
+    type: 2}
+  coinDisplayOffset: {x: 3, y: 7.5, z: 0}
 --- !u!212 &212149116552894830
 SpriteRenderer:
   m_ObjectHideFlags: 1

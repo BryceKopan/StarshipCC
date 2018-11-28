@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopController : MonoBehaviour {
+	public int minCost, maxCost;
+	public GameObject coinDisplayPrefab;
+	public Vector3 coinDisplayOffset;
 
 	CapitalController capitalController;
 
@@ -14,7 +17,13 @@ public class ShopController : MonoBehaviour {
 		{
 			if(child.name == "ItemSpawnPoint")
 			{
-				capitalController.SpawnItem(child.transform.position);
+				GameObject item = capitalController.SpawnItem(child.transform.position);
+
+				Cost cost = item.AddComponent<Cost>();
+				cost.minCost = minCost;
+				cost.maxCost = maxCost;
+				cost.coinDisplayPrefab = coinDisplayPrefab;
+				cost.coinDisplayeOffset = coinDisplayOffset;
 			}
 		}
 	}
