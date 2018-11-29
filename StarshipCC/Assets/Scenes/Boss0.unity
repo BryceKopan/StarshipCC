@@ -2941,4 +2941,6 @@ MonoBehaviour:
   mediumEdge: {fileID: 1048991214549206, guid: aafb1cd4ab0bf449caf3e8ae95daf01a, type: 2}
   capitalPartShop: {fileID: 1265661644177230, guid: 71178f29376904b5bb3f3dae29f84847,
     type: 2}
+  capitalPartHiddenRoom: {fileID: 1252361610022122, guid: 2ba0ca7d048134858a07914242283caa,
+    type: 2}
   capitalLength: 50
