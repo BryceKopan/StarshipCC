@@ -9,7 +9,7 @@ public class CapitalController : MonoBehaviour {
     public List<GameObject> MediumAttachmentPrefabs;
     public List<GameObject> LargeAttachmentPrefabs;
     public List<GameObject> ItemPrefabs;
-    public GameObject baseEdge, smallEdge, mediumEdge, capitalPartShop;
+    public GameObject baseEdge, smallEdge, mediumEdge, capitalPartShop, capitalPartHiddenRoom;
     public int capitalLength;
 
     private List<GameObject> turrets;
@@ -45,7 +45,9 @@ public class CapitalController : MonoBehaviour {
             {
                 if(r < 5)
                     CreateCapitalPart(capitalPartShop);
-                else if(r < 50)
+                else if(r < 10)
+                    CreateCapitalPart(capitalPartHiddenRoom);
+                else if(r < 55)
                     CreateCapitalPart(smallEdge);
                 else
                     CreateCapitalPart(baseEdge);
@@ -54,9 +56,11 @@ public class CapitalController : MonoBehaviour {
             {
                 if(r < 5)
                     CreateCapitalPart(capitalPartShop);
-                else if(r < 20)
+                else if(r < 10)
+                    CreateCapitalPart(capitalPartHiddenRoom);
+                else if(r < 25)
                     CreateCapitalPart(mediumEdge);
-                else if (r < 60)
+                else if (r < 65)
                     CreateCapitalPart(smallEdge);
                 else
                     CreateCapitalPart(baseEdge);
@@ -80,7 +84,7 @@ public class CapitalController : MonoBehaviour {
         for(int i = 0; i < 5; i++)
         {
             if(i == 1)
-                CreateCapitalPart(capitalPartShop);
+                CreateCapitalPart(capitalPartHiddenRoom);
             else
                 CreateCapitalPart(baseEdge);
         }
