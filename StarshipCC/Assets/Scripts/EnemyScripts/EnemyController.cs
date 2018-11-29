@@ -19,6 +19,8 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
     private DegradingSprite ds;
 
+    private bool isDead = false;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -45,6 +47,8 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
         List<GameObject> viableTargets;
         Vector3 attackPosition;
         SimpleTransform deltaTransform;
+
+        targets = FindTargets();
 
         viableTargets = TrimTargets(targets);
 
@@ -74,10 +78,16 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     protected virtual List<GameObject> FindTargets()
     {
         List<GameObject> targets;
-        GameObject[] targetsArray;
 
-        targetsArray = GameObject.FindGameObjectsWithTag("Player");
-        targets = new List<GameObject>(targetsArray);
+        targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+
+        for(int i = 0; i < targets.Count; i++)
+		{
+			if(targets[i].name != "Ship")
+			{
+				targets.RemoveAt(i);
+			}
+		}
 
         return targets;
     }
@@ -133,22 +143,26 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
     void Death()
     {
-        Instantiate(
-                deathEffectPrefab,
-                transform.position,
-                transform.rotation);
+        if(!isDead)
+        {
+            Instantiate(
+                    deathEffectPrefab,
+                    transform.position,
+                    transform.rotation);
 
-        GameObject coin = Instantiate(
-                coinPrefab,
-                transform.position,
-                transform.rotation);
+            GameObject coin = Instantiate(
+                    coinPrefab,
+                    transform.position,
+                    transform.rotation);
 
-        float r = UnityEngine.Random.Range(-1000f,1000f);
-        Vector2 force = new Vector2(r, -1000);
-        coin.GetComponent<Rigidbody2D>().AddForce(force);
+            float r = UnityEngine.Random.Range(-1000f,1000f);
+            Vector2 force = new Vector2(r, -1000);
+            coin.GetComponent<Rigidbody2D>().AddForce(force);
 
-        OnDeath();
-        Destroy(gameObject);
+            isDead = true;
+            OnDeath();
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void OnDeath(){}

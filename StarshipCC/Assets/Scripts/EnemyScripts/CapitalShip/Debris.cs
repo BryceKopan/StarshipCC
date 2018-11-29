@@ -7,6 +7,8 @@ public class Debris : MonoBehaviour, Hittable
 	public float health;
 	public List<GameObject> deathPrefabList;
 
+	protected bool isDead = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,9 +21,13 @@ public class Debris : MonoBehaviour, Hittable
 
 	protected virtual void Death()
 	{
-		SpawnDeathPrefabs();
+		if(!isDead)
+		{
+			SpawnDeathPrefabs();
 
-		Destroy(gameObject);
+			isDead = true;
+			Destroy(gameObject);
+		}
 	}
 
 	void Hittable.OnHit(Projectile p)

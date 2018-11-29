@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 
 		for(int i = 0; i < players.Count; i++)
 		{
-			if(players[i].name != "ship")
+			if(players[i].name != "Ship")
 			{
 				players.RemoveAt(i);
 			}
