@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d2fc811f1d992478bc16ee0d076194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 10
 --- !u!114 &114820168627578520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,6 +349,8 @@ MonoBehaviour:
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
+  twinStick: 0
+  twinStickFireThreshold: 0.5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}
   maxHealth: 3
@@ -355,7 +358,7 @@ MonoBehaviour:
   parryLength: 0.3
   invincibilityLength: 1
   dashCooldown: 2
-  parryCooldown: 0.1
+  parryCooldown: 0.6
   explosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
   SetActiveOnDeath: {fileID: 1927575990180782}
