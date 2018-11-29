@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerSpawner : MonoBehaviour {
+public class LobbySpawner : MonoBehaviour {
 
     bool gameCanStart = false;
     bool once0 = true;
@@ -20,8 +20,13 @@ public class PlayerSpawner : MonoBehaviour {
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-	
-	void Update () {
+
+    private void Start()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Update () {
         if (Input.GetKey("joystick 1 button 0") && once0)
         {
             GameObject player01 = (GameObject)Instantiate(player1, new Vector3(-75.0f, 25.0f, 0), Quaternion.identity);
@@ -67,7 +72,8 @@ public class PlayerSpawner : MonoBehaviour {
                 {
                     if (once3 || ready4)
                     {
-                        SceneManager.LoadScene("SampleScene");
+                        GameObject.Find("Persisting_Spawn").SendMessage("setPlayers", new bool[] { !once0, !once1, !once2, !once3});
+                        SceneManager.LoadScene(0);
                     }
                 }
             }
