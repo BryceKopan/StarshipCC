@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d833ad0f2f2405b91f4fbe0d41e5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 50
   activateOnDeath:
   - {fileID: 1810586180148116}
   - {fileID: 1214020550723466}

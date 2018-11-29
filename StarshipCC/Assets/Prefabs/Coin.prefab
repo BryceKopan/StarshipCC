@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4600459395711584}
   - component: {fileID: 212396382800791840}
+  - component: {fileID: 114864238350998136}
   m_Layer: 0
   m_Name: CoinSprite
   m_TagString: Untagged
@@ -55,7 +56,6 @@ GameObject:
   - component: {fileID: 114158280701858290}
   - component: {fileID: 60411820698017834}
   - component: {fileID: 50830995634205534}
-  - component: {fileID: 114354980536338114}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -164,17 +164,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cc178c3d1ef4263890ecdba1a3ca94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114354980536338114
+--- !u!114 &114864238350998136
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873637814858632}
+  m_GameObject: {fileID: 1629665644990686}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectToDestroy: {fileID: 1873637814858632}
 --- !u!198 &198338003170485404
 ParticleSystem:
   m_ObjectHideFlags: 1

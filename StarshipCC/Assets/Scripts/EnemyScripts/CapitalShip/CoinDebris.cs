@@ -7,15 +7,19 @@ public class CoinDebris : Debris {
 	public int lowerCoinLimit, upperCoinLimit;
 	protected override void Death()
 	{
-		int rCoinNum = Random.Range(lowerCoinLimit, upperCoinLimit);
-		for(int i = 0; i < rCoinNum; i++)
+		if(!isDead)
 		{
-			SpawnCoin();
+			int rCoinNum = Random.Range(lowerCoinLimit, upperCoinLimit);
+			for(int i = 0; i < rCoinNum; i++)
+			{
+				SpawnCoin();
+			}
+
+			SpawnDeathPrefabs();
+
+			isDead = true;
+			Destroy(gameObject);
 		}
-
-		SpawnDeathPrefabs();
-
-		Destroy(gameObject);
 	}
 
 	void SpawnCoin()

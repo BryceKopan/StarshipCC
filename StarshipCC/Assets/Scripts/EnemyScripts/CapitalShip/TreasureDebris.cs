@@ -6,10 +6,14 @@ public class TreasureDebris : Debris {
 
 	protected override void Death()
 	{
-		GameObject.Find("CapitalShip").GetComponent<CapitalController>().SpawnItem(transform.position);
+		if(!isDead)
+		{
+			GameObject.Find("CapitalShip").GetComponent<CapitalController>().SpawnItem(transform.position);
 
-		SpawnDeathPrefabs();
+			SpawnDeathPrefabs();
 
-		Destroy(gameObject);
+			isDead = true;
+			Destroy(gameObject);
+		}
 	}
 }
