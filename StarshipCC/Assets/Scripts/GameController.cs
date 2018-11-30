@@ -9,30 +9,40 @@ public class GameController : MonoBehaviour {
 
 	private List<GameObject> players;
 
+	private bool gameStarted = false;
 	private bool gameIsOver = false;
 
 	// Use this for initialization
 	void Start () {
-		players = new List<GameObject>(GameObject.FindGameObjectsWithTag(Tags.PLAYER));
-
-		for(int i = 0; i < players.Count; i++)
-		{
-			if(players[i].name != "Ship")
-			{
-				players.RemoveAt(i);
-			}
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!isAPlayerAlive())
+		if(!gameStarted)
+		{
+			players = new List<GameObject>(GameObject.FindGameObjectsWithTag(Tags.PLAYER));
+
+			for(int i = 0; i < players.Count; i++)
+			{
+				if(players[i].name != "Ship")
+				{
+					players.RemoveAt(i);
+				}
+			}
+
+			if(players.Count > 0)
+			{
+				gameStarted = true;
+			}
+		}
+
+		if(!isAPlayerAlive() && gameStarted)
 		{
 			GameOver();
 		}
 
-		if(gameIsOver)
+		if(gameIsOver && gameStarted)
 		{
 			if (Input.GetKey("joystick button 7") || Input.GetKey(KeyCode.Space))
 			{
