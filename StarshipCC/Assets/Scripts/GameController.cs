@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
 	public GameObject setActiveOnGameOver;
 
 	private List<GameObject> players;
+
+	private bool gameIsOver = false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +30,14 @@ public class GameController : MonoBehaviour {
 		if(!isAPlayerAlive())
 		{
 			GameOver();
+		}
+
+		if(gameIsOver)
+		{
+			if (Input.GetKey("joystick button 7") || Input.GetKey(KeyCode.Space))
+			{
+				SceneManager.LoadScene(2);
+			}
 		}
 	}
 
@@ -52,6 +63,7 @@ public class GameController : MonoBehaviour {
 
 	void GameOver()
 	{
+		gameIsOver = true;
 		setActiveOnGameOver.SetActive(true);
 	}
 }

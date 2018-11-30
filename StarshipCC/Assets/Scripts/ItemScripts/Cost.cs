@@ -25,8 +25,11 @@ public class Cost : MonoBehaviour {
 
 	void Update()
 	{
-		Vector3 uiPosition = Camera.main.WorldToScreenPoint(transform.position + coinDisplayeOffset);
-		ui.transform.position = uiPosition;
+		if(ui)
+		{
+			Vector3 uiPosition = Camera.main.WorldToScreenPoint(transform.position + coinDisplayeOffset);
+			ui.transform.position = uiPosition;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
