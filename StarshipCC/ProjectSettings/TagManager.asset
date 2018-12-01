@@ -8,6 +8,7 @@ TagManager:
   - FriendlyBullet
   - EnemyBullet
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
