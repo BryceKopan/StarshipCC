@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114533291413164766}
   - component: {fileID: 60059984951556398}
   - component: {fileID: 114108606379356226}
+  - component: {fileID: 114355262284039996}
   m_Layer: 0
   m_Name: LargeShotMediumTurret
   m_TagString: Enemy
@@ -292,6 +293,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7ab42bdf4c34bd9b3372c45e1362eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114355262284039996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577872750841516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d19792d602b4f838ae21154b18fb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
+  lowerCoinLimit: 3
+  upperCoinLimit: 8
+  lowerForceLimit: -1000
+  upperForceLimit: 1000
 --- !u!114 &114416495758600044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,7 +336,6 @@ MonoBehaviour:
   maxHealth: 100
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
-  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   numberOfShots: 1
   timeBetweenShots: 0.5
   pauseAfterShooting: 0.5

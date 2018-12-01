@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 60131260846203008}
   - component: {fileID: 50374821065745800}
   - component: {fileID: 114664984435464596}
-  - component: {fileID: 114540599336733538}
+  - component: {fileID: 114563817547821686}
+  - component: {fileID: 114278124980626216}
   m_Layer: 0
   m_Name: CoinDebris2
   m_TagString: Untagged
@@ -103,7 +104,7 @@ PolygonCollider2D:
       - {x: 0.24499999, y: -0.175}
       - {x: 0.465, y: 0.044999998}
       - {x: 0.465, y: 0.085}
---- !u!114 &114540599336733538
+--- !u!114 &114278124980626216
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,15 +112,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1233318688208344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d1cfe03842a4652a134c0c3a94861b, type: 3}
+  m_Script: {fileID: 11500000, guid: 15d19792d602b4f838ae21154b18fb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
+  lowerCoinLimit: 3
+  upperCoinLimit: 10
+  lowerForceLimit: -250
+  upperForceLimit: 250
+--- !u!114 &114563817547821686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233318688208344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd59be7220f542949c468c724c24aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
   deathPrefabList:
   - {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69, type: 2}
-  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
-  lowerCoinLimit: 0
-  upperCoinLimit: 5
 --- !u!114 &114664984435464596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectToDestroy: {fileID: 0}
 --- !u!212 &212950634847120018
 SpriteRenderer:
   m_ObjectHideFlags: 1

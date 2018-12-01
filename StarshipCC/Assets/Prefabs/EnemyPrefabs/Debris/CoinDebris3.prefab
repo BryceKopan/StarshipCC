@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 60021874605139350}
   - component: {fileID: 50852933671819282}
   - component: {fileID: 114440754081776858}
-  - component: {fileID: 114138915744487050}
+  - component: {fileID: 114845447957626694}
+  - component: {fileID: 114268507906075380}
   m_Layer: 0
   m_Name: CoinDebris3
   m_TagString: Untagged
@@ -107,7 +108,7 @@ PolygonCollider2D:
       - {x: 0.155, y: -0.345}
       - {x: 0.385, y: -0.325}
       - {x: 0.405, y: -0.285}
---- !u!114 &114138915744487050
+--- !u!114 &114268507906075380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,15 +116,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926434573964710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d1cfe03842a4652a134c0c3a94861b, type: 3}
+  m_Script: {fileID: 11500000, guid: 15d19792d602b4f838ae21154b18fb65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  deathPrefabList:
-  - {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69, type: 2}
   coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
-  lowerCoinLimit: 0
-  upperCoinLimit: 5
+  lowerCoinLimit: 3
+  upperCoinLimit: 10
+  lowerForceLimit: -250
+  upperForceLimit: 250
 --- !u!114 &114440754081776858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +135,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectToDestroy: {fileID: 0}
+--- !u!114 &114845447957626694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926434573964710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd59be7220f542949c468c724c24aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  deathPrefabList:
+  - {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69, type: 2}
 --- !u!212 &212911438480950982
 SpriteRenderer:
   m_ObjectHideFlags: 1

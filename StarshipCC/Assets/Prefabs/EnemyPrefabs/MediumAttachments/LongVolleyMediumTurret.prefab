@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 114586171131873074}
   - component: {fileID: 60620781962260610}
   - component: {fileID: 114322136419730138}
+  - component: {fileID: 114996525758919092}
   m_Layer: 0
   m_Name: LongVolleyMediumTurret
   m_TagString: Enemy
@@ -319,7 +320,6 @@ MonoBehaviour:
   maxHealth: 100
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 2}
-  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
   numberOfShots: 5
   timeBetweenShots: 0.5
   pauseAfterShooting: 1
@@ -327,6 +327,22 @@ MonoBehaviour:
   bulletMoveSpeed: 50
   attackPrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 2}
+--- !u!114 &114996525758919092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840043981717014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d19792d602b4f838ae21154b18fb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 2}
+  lowerCoinLimit: 3
+  upperCoinLimit: 8
+  lowerForceLimit: -1000
+  upperForceLimit: 1000
 --- !u!212 &212264340000709644
 SpriteRenderer:
   m_ObjectHideFlags: 1

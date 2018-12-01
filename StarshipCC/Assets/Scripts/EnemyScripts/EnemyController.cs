@@ -11,7 +11,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 {
     public float moveSpeed = 20f, rotationSpeed = 1f, maxHealth = 150;
     public GameObject deathEffectPrefab;
-    public GameObject coinPrefab;
     protected List<GameObject> targets;
     protected State currentState;
 
@@ -149,15 +148,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
                     deathEffectPrefab,
                     transform.position,
                     transform.rotation);
-
-            GameObject coin = Instantiate(
-                    coinPrefab,
-                    transform.position,
-                    transform.rotation);
-
-            float r = UnityEngine.Random.Range(-1000f,1000f);
-            Vector2 force = new Vector2(r, -1000);
-            coin.GetComponent<Rigidbody2D>().AddForce(force);
 
             isDead = true;
             OnDeath();
