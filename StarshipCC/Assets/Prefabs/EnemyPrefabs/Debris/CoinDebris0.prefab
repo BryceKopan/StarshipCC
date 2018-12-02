@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114251402234945566}
   - component: {fileID: 114990258377895818}
   - component: {fileID: 114831971092513978}
+  - component: {fileID: 114118123209126594}
   m_Layer: 0
   m_Name: CoinDebris0
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136530903590150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.766771, y: -65.68177, z: 0}
+  m_LocalPosition: {x: -158.53526, y: -79.8568, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,6 +112,23 @@ PolygonCollider2D:
       - {x: 0.085, y: -0.275}
       - {x: 0.265, y: -0.175}
       - {x: 0.265, y: -0.125}
+--- !u!114 &114118123209126594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136530903590150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce9463b3838f43868904827ad56a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 8a736050b942e40999fdfc2be7d63a81, type: 3}
+  - {fileID: 21300000, guid: b9348794f9a2d4da5a1984196310f11a, type: 3}
+  - {fileID: 21300000, guid: 480bf780cd33d4cf9b58e9b752f86195, type: 3}
+  - {fileID: 21300000, guid: 71601e950e613497a9cd028db9dee67a, type: 3}
+  - {fileID: 21300000, guid: b4536dd5d1d05445f898d92eeedefe98, type: 3}
 --- !u!114 &114251402234945566
 MonoBehaviour:
   m_ObjectHideFlags: 1
