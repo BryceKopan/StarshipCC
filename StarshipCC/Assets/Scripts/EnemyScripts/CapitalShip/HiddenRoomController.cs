@@ -11,7 +11,12 @@ public class HiddenRoomController : MonoBehaviour, Hittable
 	public GameObject spawnedItemPrefab;
 	public GameObject spawnedItemLocation;
 
+	public int lowerLootLimit, upperLootLimit;
+	public GameObject spawnedLootPrefab;
+	public List<GameObject> spawnedLootLocations;
+
 	private DegradingSprite degradingSprite;
+	private bool isDead = false;
 
 	void Start () 
 	{
@@ -26,17 +31,31 @@ public class HiddenRoomController : MonoBehaviour, Hittable
 
 	void Death()
 	{
-		foreach(GameObject go in activateOnDeath)
-		{
-			go.SetActive(true);
+		if(!isDead)
+        {
+			foreach(GameObject go in activateOnDeath)
+			{
+				go.SetActive(true);
+			}
+
+			Instantiate(
+				spawnedItemPrefab,
+				spawnedItemLocation.transform.position,
+				spawnedItemLocation.transform.rotation);
+
+			int rLoot = Random.Range(lowerLootLimit, upperLootLimit);
+			for(int i = 0; i < rLoot; i++)
+			{	
+				int rLocation = Random.Range(0, spawnedLootLocations.Count);
+				Instantiate(
+					spawnedLootPrefab,
+					spawnedLootLocations[rLocation].transform.position,
+					spawnedLootLocations[rLocation].transform.rotation);
+			}
+
+			isDead = true;
+			gameObject.SetActive(false);
 		}
-
-		Instantiate(
-            spawnedItemPrefab,
-			spawnedItemLocation.transform.position,
-			spawnedItemLocation.transform.rotation);
-
-		gameObject.SetActive(false);
 	}
 
 	void Hittable.OnHit(Projectile p)
