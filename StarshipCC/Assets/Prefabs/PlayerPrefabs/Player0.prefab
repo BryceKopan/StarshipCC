@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212380898527116860}
   - component: {fileID: 58686629606632880}
   - component: {fileID: 114452351753443652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParryShield
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4006143349994086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 212711002268224666}
   - component: {fileID: 114820168627578520}
   - component: {fileID: 114986383197378616}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4361943669111058}
   - component: {fileID: 58438985256597012}
   - component: {fileID: 114806693761563118}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CoinMagnetField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 114136619713920526}
   - component: {fileID: 212736532309472376}
   - component: {fileID: 58213951695573224}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bouy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4208723206475268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 50928418710584166}
   - component: {fileID: 114920168449999916}
   - component: {fileID: 95611528533773838}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
