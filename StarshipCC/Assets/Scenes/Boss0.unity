@@ -1122,20 +1122,12 @@ MonoBehaviour:
   density: 2
   debrisPrefabs:
   - {fileID: 1012593830852384, guid: 432138dbbbf514b77bd6a3fe404c5fc1, type: 2}
-  - {fileID: 1632111552824208, guid: 65e9cca33f4b24f68bbcb7b015b5d001, type: 2}
-  - {fileID: 1261375576761774, guid: e44adf872ce534950a0ca5d04a2b23d9, type: 2}
-  - {fileID: 1741942288551072, guid: 66080503fc2c2448990d86d657bb5736, type: 2}
-  - {fileID: 1368183307696434, guid: f2e3908c894f54208af8359ff6e4b8c1, type: 2}
   treasureChance: 0.025
   treasurePrefabs:
   - {fileID: 1226344448949012, guid: 75ad1a9df5f0a4dfda6d4a08b696086b, type: 2}
   coinChance: 0.05
   coinPrefabs:
   - {fileID: 1136530903590150, guid: 86506384800944b03bdee1fa2015e971, type: 2}
-  - {fileID: 1171451086559106, guid: faa7bd7786b0e472cb3882a2824447ba, type: 2}
-  - {fileID: 1233318688208344, guid: 444d721e5a4c9438193ff1d8d089f9bc, type: 2}
-  - {fileID: 1926434573964710, guid: 2dbde70cd758648ad8f2dd4b5c800090, type: 2}
-  - {fileID: 1919311984524646, guid: 10c84a97a66ed4046b8208664ac17f61, type: 2}
 --- !u!1 &900644845
 GameObject:
   m_ObjectHideFlags: 0
