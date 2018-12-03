@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour {
 	private List<Vector3> targets = new List<Vector3>();
 	private List<bool> waitForNewTarget;
 
-	// Use this for initialization
+	
+	
 	void Start () 
 	{
 		foreach(Transform child in gameObject.transform)
@@ -24,14 +25,17 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(targets[0] != new Vector3())
+		if(targets.Count > 0)
 		{
-			Vector3 targetPosition = targets[0];
-			targetPosition.z = transform.position.z;
-			transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+			if(targets[0] != new Vector3())
+			{
+				Vector3 targetPosition = targets[0];
+				targetPosition.z = transform.position.z;
+				transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-			if(transform.position == targetPosition)
-				targets.RemoveAt(0);
+				if(transform.position == targetPosition)
+					targets.RemoveAt(0);
+			}
 		}
 
 		// Debug.Log("Targets");

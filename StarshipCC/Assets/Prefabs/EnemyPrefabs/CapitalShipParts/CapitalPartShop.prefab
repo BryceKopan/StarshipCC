@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTrigger: {fileID: 1896834373970650}
-  activationDelayForNextTrigger: 8
+  activationDelayForNextTrigger: 15
   pauseAtLastTarget: 1
 --- !u!114 &114921079247326220
 MonoBehaviour:
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc8fcdab7cd3481c8914ee15b6c2c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCost: 5
-  maxCost: 10
+  minCost: 10
+  maxCost: 20
   coinDisplayPrefab: {fileID: 1335703429903156, guid: 4eb7bfd21b2eb433b88cd4df3f1f252e,
     type: 2}
   coinDisplayOffset: {x: 3, y: 7.5, z: 0}

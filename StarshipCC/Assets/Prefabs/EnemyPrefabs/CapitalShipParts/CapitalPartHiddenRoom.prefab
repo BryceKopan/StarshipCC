@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTrigger: {fileID: 1303464471327474}
-  activationDelayForNextTrigger: 8
+  activationDelayForNextTrigger: 15
   pauseAtLastTarget: 1
 --- !u!114 &114381005137771530
 MonoBehaviour:
