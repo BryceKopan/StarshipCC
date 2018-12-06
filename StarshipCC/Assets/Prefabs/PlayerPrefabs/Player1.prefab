@@ -390,7 +390,7 @@ MonoBehaviour:
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
-  twinStick: 0
+  twinStick: 1
   twinStickFireThreshold: 0.5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}

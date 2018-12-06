@@ -378,12 +378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a06ef4b040e74bc385590736cd4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: 2
+  PlayerNumber: 4
   joystickDeadzone: 0.1
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
-  twinStick: 0
+  twinStick: 1
   twinStickFireThreshold: 0.5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}
