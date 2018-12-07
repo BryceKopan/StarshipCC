@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50227250980818280}
   - component: {fileID: 114357736397587242}
   - component: {fileID: 95953971725003036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4121069855194144}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4262732270486274}
   - component: {fileID: 58688526559658616}
   - component: {fileID: 114283852188046822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CoinMagnetField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 212187383583548418}
   - component: {fileID: 114516986894875780}
   - component: {fileID: 114009111412203094}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 212762987958269000}
   - component: {fileID: 58593363034120382}
   - component: {fileID: 114334844986615792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParryShield
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4258579934318826}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 114618275178986176}
   - component: {fileID: 212304547140368380}
   - component: {fileID: 58434145202246634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bouy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ MonoBehaviour:
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
-  twinStick: 0
+  twinStick: 1
   twinStickFireThreshold: 0.5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}

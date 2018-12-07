@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50995089660878524}
   - component: {fileID: 114245175294045808}
   - component: {fileID: 95888574346593750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4650102200232622}
   - component: {fileID: 58047992307315842}
   - component: {fileID: 114466103433365450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CoinMagnetField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 212657687356177410}
   - component: {fileID: 58474529961591672}
   - component: {fileID: 114752961551115110}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParryShield
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 114051198929059900}
   - component: {fileID: 212709830988685464}
   - component: {fileID: 58356793140690976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bouy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4090970691582186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 212223947805479560}
   - component: {fileID: 114570463511401622}
   - component: {fileID: 114086730781814600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4373539437018790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,12 +378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a06ef4b040e74bc385590736cd4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: 2
+  PlayerNumber: 4
   joystickDeadzone: 0.1
   speed: 150
   dashSpeed: 300
   turnSpeed: 5
-  twinStick: 0
+  twinStick: 1
   twinStickFireThreshold: 0.5
   startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
     type: 2}
