@@ -1112,8 +1112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81231de08bd42d3ab3d3a0fc3bf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerSpawnPoint: {x: 120, y: -90, z: 0}
-  upperSpawnPoint: {x: 120, y: -5, z: 0}
+  lowerSpawnPoint: {x: 200, y: -90, z: 0}
+  upperSpawnPoint: {x: 200, y: -5, z: 0}
   lowerSpawnInterval: 2
   upperSpawnInterval: 3
   lowerSize: 8
