@@ -13,6 +13,8 @@ public class ProjectileWeapon : Weapon {
     {
         if (canFire)
         {
+            PlayFireSound();
+
             foreach (Transform bulletSpawn in bulletSpawns)
             {
                 var projectile = (GameObject)Instantiate(

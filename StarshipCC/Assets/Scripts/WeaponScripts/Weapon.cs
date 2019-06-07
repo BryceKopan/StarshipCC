@@ -12,6 +12,11 @@ public abstract class Weapon : MonoBehaviour {
 
     public bool canFire = true;
 
+    public float soundVolume = 1f;
+
+    private AudioSource audioSource;
+    public AudioClip fireSound;
+
 	// Use this for initialization
 	public virtual void Start ()
     {
@@ -23,6 +28,8 @@ public abstract class Weapon : MonoBehaviour {
                 bulletSpawns.Add(child);
             }
         }
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +41,14 @@ public abstract class Weapon : MonoBehaviour {
     public virtual void EnableFire()
     {
         canFire = true;
+    }
+
+    public virtual void PlayFireSound() 
+    {
+        if(fireSound) 
+        {
+            audioSource.PlayOneShot(fireSound, soundVolume);
+        }
     }
 
     public abstract void OnEquip(PlayerController player);
