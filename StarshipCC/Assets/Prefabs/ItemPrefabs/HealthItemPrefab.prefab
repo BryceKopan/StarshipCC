@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  soundVolume: 1
+  pickupSound: {fileID: 8300000, guid: eb929a3d06d49c145b2b361bcee0a809, type: 3}
   healthAdded: 3
 --- !u!212 &212584534708529946
 SpriteRenderer:

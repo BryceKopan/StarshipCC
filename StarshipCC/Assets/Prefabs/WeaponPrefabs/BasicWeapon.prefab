@@ -115,7 +115,7 @@ MonoBehaviour:
   range: 100
   canFire: 1
   soundVolume: 0.8
-  fireSound: {fileID: 8300000, guid: e07dc8ec22039ee4a89fc9bff0979fdc, type: 3}
+  fireSound: {fileID: 8300000, guid: a00927bd29c654d4ea3aac1166904ae2, type: 3}
   projectilePrefab: {fileID: 1282677256414914, guid: 6680e1c5e2a03470d9afc46ce25d1142,
     type: 2}
   bulletSpeed: 100

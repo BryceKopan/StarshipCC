@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  soundVolume: 1
+  pickupSound: {fileID: 8300000, guid: eb929a3d06d49c145b2b361bcee0a809, type: 3}
   weapon: {fileID: 1599500325109510, guid: a8482791a647ad545ab29749af25c222, type: 2}
 --- !u!212 &212444787408134422
 SpriteRenderer:
