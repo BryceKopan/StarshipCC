@@ -3,66 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-	public float speed;
 
-	private List<Vector3> cameraTargetPositions = new List<Vector3>();
-	private List<Vector3> targets = new List<Vector3>();
-	private List<bool> waitForNewTarget;
+    public float moveSpeed;
 
-	
-	
 	void Start () 
 	{
-		foreach(Transform child in gameObject.transform)
-        {
-			if(child.name == "CameraTargetPosition")
-				cameraTargetPositions.Add(child.transform.position);
-		}
-
-		AddTargets(cameraTargetPositions, false);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(targets.Count > 0)
-		{
-			if(targets[0] != new Vector3())
-			{
-				Vector3 targetPosition = targets[0];
-				targetPosition.z = transform.position.z;
-				transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        Vector2 avgPlayerPosition = Vector2.zero;
+        PlayerController[] players = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController player in players)
+        {
+            avgPlayerPosition += new Vector2(player.transform.position.x, player.transform.position.y);
+        }
 
-				if(transform.position == targetPosition)
-					targets.RemoveAt(0);
-			}
-		}
+        avgPlayerPosition /= players.Length;
 
-		// Debug.Log("Targets");
-		// foreach(Vector3 t in targets)
-		// {
-		// 	Debug.Log(t);
-		// }
-	}
-
-	public void AddTargets(List<Vector3> targets, bool pauseAtLastTarget)
-	{
-		//Debug.Log("AddTarget" + targets + ":" + pauseAtLastTarget);
-
-		if(this.targets.Count > 0 && this.targets[0] == new Vector3())
-		{
-			this.targets.RemoveAt(0);
-		}
-
-		if(pauseAtLastTarget)
-			targets.Add(new Vector3());
-
-		targets.AddRange(this.targets);
-		this.targets = targets;
-
-		// foreach(Vector3 t in targets)
-		// {
-		// 	Debug.Log(t);
-		// }
+        Vector2 moveVector = Vector2.MoveTowards(transform.position, avgPlayerPosition, moveSpeed * Time.deltaTime);
+        transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
 	}
 }
