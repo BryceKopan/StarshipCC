@@ -20,8 +20,12 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
     private bool isDead = false;
 
-	// Use this for initialization
-	void Start () 
+    public List<Weapon> weapons;
+
+    protected float longestWeaponFireTime = 0;
+
+    // Use this for initialization
+    void Start () 
     {
         targets = FindTargets();
         currentHealth = maxHealth;
@@ -187,5 +191,33 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 	public void SetCurrentHealth(float health)
     {
         currentHealth = health;
+    }
+
+    public void AddWeapon(Weapon weapon)
+    {
+        if (weapons != null)
+        {
+            weapons.Add(weapon);
+            weapon.tag = Tags.PLAYER;
+            weapon.transform.SetParent(transform);
+            weapon.transform.localPosition = new Vector2(0, 0);
+            weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            weapon.OnEquip(this);
+        }
+
+        float weaponFireTime = weapon.delayBetweenShots * weapon.numShots + weapon.fireCooldown;
+        if (longestWeaponFireTime < weaponFireTime)
+        {
+            longestWeaponFireTime = weaponFireTime;
+        }
+    }
+
+    public void RemoveWeapon(Weapon weapon)
+    {
+        if (weapons != null)
+        {
+            weapons.Remove(weapon);
+            weapon.OnUnequip(this);
+        }
     }
 }

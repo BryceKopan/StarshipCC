@@ -13,36 +13,54 @@ public class ProjectileWeapon : Weapon {
     {
         if (canFire)
         {
-            PlayFireSound();
-
-            foreach (Transform bulletSpawn in bulletSpawns)
+            for(int i = 0; i < numShots; i++) 
             {
-                var projectile = (GameObject)Instantiate(
-                        projectilePrefab,
-                        bulletSpawn.position,
-                        bulletSpawn.rotation);
-
-                projectile.tag = Tags.FRIENDLY_BULLET;
-
-                Projectile projectileScript = projectile.GetComponent<Projectile>();
-                projectileScript.damage = damage;
-                projectileScript.speed = bulletSpeed;
-                projectileScript.range = range;
-
-                //Add velocity to the bullet
-                projectileScript.moveVector = bulletSpawn.transform.up;
+                Invoke("LaunchProjectiles", i * delayBetweenShots);
             }
+            
+            Invoke("EnableFire", fireCooldown + delayBetweenShots * numShots);
             canFire = false;
-            Invoke("EnableFire", fireCooldown);
+        }
+    }
+
+    protected void LaunchProjectiles() 
+    {
+        PlayFireSound();
+
+        foreach (Transform bulletSpawn in bulletSpawns) 
+        {
+            var projectile = (GameObject)Instantiate(
+                    projectilePrefab,
+                    bulletSpawn.position,
+                    bulletSpawn.rotation);
+
+            if(gameObject.tag == Tags.PLAYER)
+            {
+                projectile.tag = Tags.FRIENDLY_BULLET;
+            }
+            else
+            {
+                projectile.tag = Tags.ENEMY_BULLET;
+            }
+
+            Projectile projectileScript = projectile.GetComponent<Projectile>();
+            projectileScript.damage = damage;
+            projectileScript.speed = bulletSpeed;
+            projectileScript.range = range;
+
+            //Add velocity to the bullet
+            projectileScript.moveVector = bulletSpawn.transform.up;
         }
     }
 
     public override void OnEquip(PlayerController player)
     {
+        base.OnEquip(player);
     }
 
     public override void OnUnequip(PlayerController player)
     {
+        base.OnUnequip(player);
     }
 
     public override void OnFireStart()

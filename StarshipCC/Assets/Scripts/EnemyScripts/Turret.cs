@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class Turret : EnemyController 
 {
-    public float numberOfShots, timeBetweenShots, pauseAfterShooting, 
-           shotScale, bulletMoveSpeed;
-    public GameObject attackPrefab;
-
-    private List<Transform> bulletSpawns;
+    public float pauseAfterShooting;
 
     protected override void OnStart()
     {
-        bulletSpawns = new List<Transform>();
-        foreach (Transform child in transform)
-        {
-            if(child.tag == Tags.BULLET_SPAWN)
-            {
-                bulletSpawns.Add(child);
-            }
-        }
+        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>());
     }
 
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
@@ -49,29 +38,11 @@ public class Turret : EnemyController
 
     protected override void Attack()
     {
-        for(int i = 0; i < numberOfShots; i++)
+        foreach (Weapon weapon in weapons) 
         {
-            Invoke("Fire", i * timeBetweenShots);
+            weapon.Fire();
         }
-        Invoke("DoneAttacking", (numberOfShots * timeBetweenShots) + pauseAfterShooting);
-    }
 
-    void Fire()
-    {
-        foreach(Transform bulletSpawn in bulletSpawns)
-        {
-            var bullet = (GameObject) Instantiate(
-                    attackPrefab,
-                    bulletSpawn.position,
-                    bulletSpawn.rotation);
-
-            bullet.transform.localScale = new Vector3(1 * shotScale, 1 * shotScale, 1);
-
-            bullet.tag = Tags.ENEMY_BULLET;
-
-            Projectile projectileScript = bullet.GetComponent<Projectile>();
-            projectileScript.moveVector = -bulletSpawn.up;
-            projectileScript.speed = bulletMoveSpeed;
-        }
+        Invoke("DoneAttacking", longestWeaponFireTime);
     }
 }

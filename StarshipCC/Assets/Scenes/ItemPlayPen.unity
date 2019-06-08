@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04fe5315cc1450409bd71bb22b45d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotgunWeapon: {fileID: 0}
 --- !u!1 &1360536159
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +399,11 @@ Prefab:
     - target: {fileID: 4861398164566456, guid: 3fc57150af221418e90413a171660c9c, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114196128573437156, guid: 3fc57150af221418e90413a171660c9c,
+        type: 2}
+      propertyPath: PlayerNumber
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc57150af221418e90413a171660c9c, type: 2}
