@@ -10,6 +10,7 @@ public class LoopingBackground : MonoBehaviour
     public List<Color> possibleColors;
 
     private List<SpriteRenderer> backgroundPart;
+    private bool sceneIsRendering = false;
 
     void Start()
     {
@@ -49,11 +50,24 @@ public class LoopingBackground : MonoBehaviour
         transform.Translate(movement);
 
         SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
+        if(firstChild.isVisible)
+        {
+            sceneIsRendering = true;
+        }
+
+        if(sceneIsRendering)
+            MoveSprite();
+    }
+
+    void MoveSprite()
+    {
+        SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
 
         if (firstChild != null)
         {
             if (firstChild.transform.position.x < Camera.main.transform.position.x)
             {
+                Debug.Log(firstChild.isVisible);
                 if (firstChild.isVisible == false)
                 {
                     SpriteRenderer lastChild = backgroundPart.LastOrDefault();
