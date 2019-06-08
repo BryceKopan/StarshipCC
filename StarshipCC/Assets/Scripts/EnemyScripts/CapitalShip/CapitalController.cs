@@ -13,8 +13,6 @@ public class CapitalController : MonoBehaviour {
     public int capitalLength;
 
     private List<GameObject> turrets;
-    private UnityEngine.UI.Text coinCounter;
-    private int coins;
     private List<GameObject> capitalParts = new List<GameObject>();
 
 	void Start ()
@@ -24,8 +22,6 @@ public class CapitalController : MonoBehaviour {
         GameObject[] turretsArray;
         turretsArray = GameObject.FindGameObjectsWithTag("Enemy");
         turrets = new List<GameObject>(turretsArray);
-
-        coinCounter = GameObject.Find("CoinCounter").GetComponent<UnityEngine.UI.Text>();
 	}
 	
 	void Update () 
@@ -145,18 +141,6 @@ public class CapitalController : MonoBehaviour {
                 }
             }
         }
-    }
-
-    //--Game General Use--
-    public void AddCoins(int coin)
-    {
-        coins += coin;
-        coinCounter.text = ": " + coins;
-    }
-
-    public int GetCoins()
-    {
-        return coins;
     }
 
     public GameObject SpawnItem(Vector3 postion)

@@ -11,9 +11,11 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 {
     public float moveSpeed = 20f, rotationSpeed = 1f, maxHealth = 150;
     public GameObject deathEffectPrefab;
+    public int ScoreValue = 50;
     protected List<GameObject> targets;
     protected State currentState;
 
+    private GameController controller;
     private float currentHealth;
 
     private DegradingSprite ds;
@@ -34,6 +36,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
         if(ds)
             ds.SetMaxHealth(maxHealth);
 
+        controller = GameObject.Find("GameController").GetComponent<GameController>();
         OnStart();
 	}
 
@@ -156,6 +159,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
             isDead = true;
             OnDeath();
             Destroy(gameObject);
+            controller.AddScore(ScoreValue);
         }
     }
 
