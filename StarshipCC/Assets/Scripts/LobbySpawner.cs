@@ -21,9 +21,11 @@ public class LobbySpawner : MonoBehaviour {
     public GameObject player3;
     public GameObject player4;
 
+    public AudioClip playerJoinSound;
+    public float soundVolume = 1.0f;
+
     private void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
     }
 
     void Update () {
@@ -32,21 +34,25 @@ public class LobbySpawner : MonoBehaviour {
             GameObject player01 = (GameObject)Instantiate(player1, new Vector3(-75.0f, 25.0f, 0), Quaternion.identity);
             once0 = false;
             gameCanStart = true;
+            PlayJoinSound();
         }
         if (Input.GetKey("joystick 2 button 0") && once1)
         {
             GameObject player02 = (GameObject)Instantiate(player2, new Vector3(75.0f, 25.0f, 0), Quaternion.identity);
             once1 = false;
+            PlayJoinSound();
         }
         if (Input.GetKey("joystick 3 button 0") && once2)
         {
             GameObject player03 = (GameObject)Instantiate(player3, new Vector3(-75.0f, -25.0f, 0), Quaternion.identity);
             once2 = false;
+            PlayJoinSound();
         }
         if (Input.GetKey("joystick 4 button 0") && once3)
         {
             GameObject player04 = (GameObject)Instantiate(player4, new Vector3(75.0f, -25.0f, 0), Quaternion.identity);
             once3 = false;
+            PlayJoinSound();
         }
         if (Input.GetKey("joystick 1 button 7") && !once0)
         {
@@ -78,6 +84,13 @@ public class LobbySpawner : MonoBehaviour {
                 }
             }
         }
+    }
 
+    protected void PlayJoinSound()
+    {
+        if(playerJoinSound)
+        {
+            AudioSource.PlayClipAtPoint(playerJoinSound, Camera.main.transform.position, soundVolume);
+        }
     }
 }

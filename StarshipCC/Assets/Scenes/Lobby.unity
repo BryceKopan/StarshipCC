@@ -1946,6 +1946,8 @@ MonoBehaviour:
   player2: {fileID: 1956185659789508, guid: 816165da3b6ee4d7280384499b830ac4, type: 3}
   player3: {fileID: 1865865277391532, guid: c9de76ba1d4994110a3a6408c0df7844, type: 3}
   player4: {fileID: 1900584006749128, guid: e34103aa2f5e841adb66f99fca2fb97f, type: 3}
+  playerJoinSound: {fileID: 8300000, guid: 5cd0c3a08e359eb4fad48b2e2186a930, type: 3}
+  soundVolume: 1
 --- !u!1 &1408186188
 GameObject:
   m_ObjectHideFlags: 0
