@@ -67,7 +67,6 @@ public class LoopingBackground : MonoBehaviour
         {
             if (firstChild.transform.position.x < Camera.main.transform.position.x)
             {
-                Debug.Log(firstChild.isVisible);
                 if (firstChild.isVisible == false)
                 {
                     SpriteRenderer lastChild = backgroundPart.LastOrDefault();

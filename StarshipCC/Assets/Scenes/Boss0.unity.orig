@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617b45db471a64bb7a5b2b5288f22345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 40
+  speed: 15
 --- !u!1 &1034693357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,11 +3582,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmallAttachmentPrefabs:
   - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 3}
+<<<<<<< HEAD
+  - {fileID: 1986490274335799319, guid: 4b8c0514edd49cb4fb9a5f306a1909ba, type: 3}
+=======
   - {fileID: 1556759983795304, guid: 41b572bd57b974ec6a03c14cfd074203, type: 3}
   - {fileID: 1050552598005886, guid: be2cddecb94c34be9994abeec80146ed, type: 3}
   - {fileID: 1807889170463352, guid: 1d5f93c3f596a4d15b3f7eea7eadceca, type: 3}
   - {fileID: 1242107570681986, guid: dafb382323cf84f16bd905da204517be, type: 3}
   - {fileID: 1491568756345530, guid: 6f217e5c329054d11a5bcbbaa98c4ea6, type: 3}
+>>>>>>> BryceFeature
   MediumAttachmentPrefabs:
   - {fileID: 1128243363848252, guid: 1c4f17c755cb140cc97d2b3d0b8429a5, type: 3}
   LargeAttachmentPrefabs: []
