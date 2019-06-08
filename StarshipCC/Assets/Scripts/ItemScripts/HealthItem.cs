@@ -8,6 +8,7 @@ public class HealthItem : Item {
 
     public override void OnEquip(PlayerController player)
     {
+        base.OnEquip(player);
         gameObject.SetActive(false);
         player.SetCurrentHealth(player.GetCurrentHealth() + healthAdded);
         Destroy(gameObject);
@@ -15,6 +16,7 @@ public class HealthItem : Item {
 
     public override void OnUnequip(PlayerController player)
     {
+        base.OnUnequip(player);
         //Since the object is single-use,
         //this should not be called
     }

@@ -6,18 +6,31 @@ public abstract class Item : MonoBehaviour {
 
     public bool isInteractable = true;
 
-	// Use this for initialization
-	public virtual void Start () {
-		
-	}
+    public float soundVolume = 1f;
+
+    public AudioClip pickupSound;
+
+    // Use this for initialization
+    public virtual void Start () 
+    {
+    }
 	
 	// Update is called once per frame
 	public virtual void Update () {
 		
 	}
 
-    public abstract void OnEquip(PlayerController player);
-    public abstract void OnUnequip(PlayerController player);
+    public virtual void OnEquip(PlayerController player) 
+    {
+        if (pickupSound) 
+        {
+            AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, soundVolume);
+        }
+    }
+
+    public virtual void OnUnequip(PlayerController player) 
+    {
+    }
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
