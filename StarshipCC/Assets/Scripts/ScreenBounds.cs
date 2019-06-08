@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraBounds : MonoBehaviour {
+public class ScreenBounds : MonoBehaviour {
 
     public Camera camera = null;
     EdgeCollider2D leftBound, rightBound, topBound, bottomBound;
