@@ -204,13 +204,13 @@ MonoBehaviour:
   damage: 1
   range: 200
   soundVolume: 0.8
-  numShots: 6
+  numShots: 2
   delayBetweenShots: 0.5
   canFire: 1
-  fireSound: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 700066db3e7ecec4cbcb340cff2a536b, type: 3}
   projectilePrefab: {fileID: 7475396911644241038, guid: 28a6fae0713c7d4468dbdb690c315f32,
     type: 3}
-  bulletSpeed: 100
+  bulletSpeed: 20
 --- !u!1 &8199160772437771749
 GameObject:
   m_ObjectHideFlags: 0
