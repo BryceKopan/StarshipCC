@@ -20,7 +20,10 @@ public class CameraController : MonoBehaviour {
             avgPlayerPosition += new Vector2(player.transform.position.x, player.transform.position.y);
         }
 
-        avgPlayerPosition /= players.Length;
+        if(players.Length > 0)
+        {
+            avgPlayerPosition /= players.Length;
+        }
 
         Vector2 moveVector = Vector2.MoveTowards(transform.position, avgPlayerPosition, moveSpeed * Time.deltaTime);
         transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
