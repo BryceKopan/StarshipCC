@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour {
-	CapitalController controller;
+	public int ScoreValue = 10;
+
+	GameController controller;
 
 	// Use this for initialization
 	void Start () {
-		controller = GameObject.Find("CapitalShip").GetComponent<CapitalController>();
+		controller = GameObject.Find("GameController").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,7 @@ public class Coin : MonoBehaviour {
         if(otherTag == Tags.PLAYER)
         { 
 			controller.AddCoins(1);
+			controller.AddScore(ScoreValue);
 			Destroy(gameObject);
         }
     }

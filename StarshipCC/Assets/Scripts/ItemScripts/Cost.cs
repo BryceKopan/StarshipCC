@@ -9,7 +9,7 @@ public class Cost : MonoBehaviour {
 	public Vector3 coinDisplayeOffset;
 	private Item item;
 	private int cost;
-	private CapitalController controller;
+	private GameController controller;
 	private GameObject ui;
 
 	void Start()
@@ -17,7 +17,7 @@ public class Cost : MonoBehaviour {
 		item = gameObject.GetComponent<Item>();
 		item.isInteractable = false;
 
-		controller = GameObject.Find("CapitalShip").GetComponent<CapitalController>();
+		controller = GameObject.Find("GameController").GetComponent<GameController>();
 
 		cost = Random.Range(minCost, maxCost);
 		CreateUIElement();

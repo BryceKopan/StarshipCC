@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
-
+public class GameController : MonoBehaviour 
+{
 	public GameObject setActiveOnGameOver;
+	public GameObject GameOverScoreText;
 
 	private List<GameObject> players;
-
 	private bool gameStarted = false;
 	private bool gameIsOver = false;
 
+	private int coins = 0;
+	private UnityEngine.UI.Text coinCounter;
+
+	private int score = 0;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		coinCounter = GameObject.Find("CoinCounter").GetComponent<UnityEngine.UI.Text>();
 	}
 	
 	// Update is called once per frame
@@ -75,5 +82,28 @@ public class GameController : MonoBehaviour {
 	{
 		gameIsOver = true;
 		setActiveOnGameOver.SetActive(true);
+		GameOverScoreText.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
 	}
+
+	public void AddScore(int newScore)
+	{
+		score += newScore;
+		Debug.Log(score);
+	}
+
+	public int GetScore()
+	{
+		return score;
+	}
+
+    public void AddCoins(int coin)
+    {
+        coins += coin;
+        coinCounter.text = ": " + coins;
+    }
+
+    public int GetCoins()
+    {
+        return coins;
+    }
 }
