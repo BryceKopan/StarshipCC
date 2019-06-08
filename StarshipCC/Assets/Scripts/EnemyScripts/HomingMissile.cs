@@ -35,12 +35,12 @@ public class HomingMissile : Missile
 
 	public override void FixedUpdate()
 	{
-		transform.position += -transform.up * speed * Time.fixedDeltaTime;
+		transform.position += transform.up * speed * Time.fixedDeltaTime;
 
 		if(target)
 		{
 			Vector3 vectorToTarget = target.transform.position - transform.position;
-			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg + 90;
+			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 			transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.fixedDeltaTime * rotationSpeed);
 		}

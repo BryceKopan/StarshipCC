@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class MissileTurret : EnemyController
 {
-    public float bulletMoveSpeed, timeBetweenShots, pauseAfterShooting;
-    public GameObject attackPrefab;
+    public float pauseAfterShooting;
 
-    public List<int> fireOrder;
-
-    private List<Transform> bulletSpawns;
     protected override void OnStart()
     {
-        bulletSpawns = new List<Transform>();
-        foreach (Transform child in transform)
-        {
-            if(child.tag == Tags.BULLET_SPAWN)
-            {
-                bulletSpawns.Add(child);
-            }
-        }
+        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>());
     }
 
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
@@ -49,26 +38,11 @@ public class MissileTurret : EnemyController
 
     protected override void Attack()
     {
-        StartCoroutine(Fire());
-        Invoke("DoneAttacking", pauseAfterShooting + (fireOrder.Count - 1) * timeBetweenShots);
-    }
-
-    IEnumerator Fire()
-    {
-        foreach(int bulletSpawn in fireOrder)
+        foreach (Weapon weapon in weapons)
         {
-            var bullet = (GameObject) Instantiate(
-                    attackPrefab,
-                    bulletSpawns[bulletSpawn].position,
-                    bulletSpawns[bulletSpawn].rotation);
-
-            bullet.tag = Tags.ENEMY_BULLET;
-
-            Projectile projectileScript = bullet.GetComponent<Projectile>();
-            projectileScript.moveVector = -bulletSpawns[bulletSpawn].up;
-            projectileScript.speed = bulletMoveSpeed;
-
-            yield return new WaitForSeconds(timeBetweenShots);
+            weapon.Fire();
         }
+
+        Invoke("DoneAttacking", longestWeaponFireTime);
     }
 }
