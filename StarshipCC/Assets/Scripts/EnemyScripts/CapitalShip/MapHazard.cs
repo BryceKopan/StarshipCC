@@ -20,8 +20,9 @@ public class MapHazard : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () 
+	{
+		transform.position = new Vector3(Camera.main.transform.position.x, transform.position.y, transform.position.z);	
 	}
 
 	void SpawnMapHazard()
