@@ -290,7 +290,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if (!invincible)
         {
             TakeDamage(p.damage);
-            p.Death();
             StartInvincibility();
         }
     }

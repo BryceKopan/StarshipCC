@@ -45,6 +45,7 @@ public class Projectile : MonoBehaviour {
             if (hittable != null)
             {
                 hittable.OnHit(this);
+                Death();
             }
         }
     }
@@ -58,6 +59,20 @@ public class Projectile : MonoBehaviour {
             gameObject.transform.position,
             gameObject.transform.rotation);
         }
+
+        //Detach particles so they won't immediately disappear
+        ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem ps in particles)
+        {
+            ps.transform.parent = null;
+            var emission = ps.emission;
+            emission.enabled = false;
+
+            float lifetime = ps.main.startLifetime.constantMax;
+
+            Destroy(ps, lifetime);
+        }
+
         Destroy(gameObject);
     }
 }

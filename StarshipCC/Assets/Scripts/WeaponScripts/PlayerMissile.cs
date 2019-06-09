@@ -10,7 +10,6 @@ public class PlayerMissile : Projectile, Hittable {
     {
         if(p.tag != Tags.FRIENDLY_BULLET && p.tag != Tags.PLAYER)
         {
-            p.Death();
             Death();
         }
     }

@@ -86,6 +86,5 @@ public class EnemyShipController : MonoBehaviour, Hittable {
     void Hittable.OnHit(Projectile p)
     {
         TakeDamage(p.damage);
-        Destroy(p.gameObject);
     }
 }
