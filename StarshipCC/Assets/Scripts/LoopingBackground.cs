@@ -62,31 +62,24 @@ public class LoopingBackground : MonoBehaviour
     void MoveSprite()
     {
         SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
+        SpriteRenderer lastChild = backgroundPart.LastOrDefault();
 
-        if (firstChild != null)
+        if (firstChild != null && firstChild.transform.position.x < Camera.main.transform.position.x && firstChild.isVisible == false)
         {
-            if (firstChild.transform.position.x < Camera.main.transform.position.x)
-            {
-                if (firstChild.isVisible == false)
-                {
-                    SpriteRenderer lastChild = backgroundPart.LastOrDefault();
+            Vector3 lastPosition = lastChild.transform.position;
+            Vector3 lastSize = (lastChild.bounds.max - lastChild.bounds.min);
 
-                    Vector3 lastPosition = lastChild.transform.position;
-                    Vector3 lastSize = (lastChild.bounds.max - lastChild.bounds.min);
+            firstChild.transform.position = new Vector3(lastPosition.x + lastSize.x, firstChild.transform.position.y, firstChild.transform.position.z);
 
-                    firstChild.transform.position = new Vector3(lastPosition.x + lastSize.x, firstChild.transform.position.y, firstChild.transform.position.z);
+            int spriteNum, colorNum;
+            spriteNum = Random.Range(0, possibleSprites.Count);
+            colorNum = Random.Range(0, possibleColors.Count);
 
-                    int spriteNum, colorNum;
-                    spriteNum = Random.Range(0, possibleSprites.Count);
-                    colorNum = Random.Range(0, possibleColors.Count);
+            firstChild.sprite = possibleSprites[spriteNum];
+            firstChild.color = possibleColors[colorNum];
 
-                    firstChild.sprite = possibleSprites[spriteNum];
-                    firstChild.color = possibleColors[colorNum];
-
-                    backgroundPart.Remove(firstChild);
-                    backgroundPart.Add(firstChild);
-                }
-            }
+            backgroundPart.Remove(firstChild);
+            backgroundPart.Add(firstChild);
         }
     }
 }
