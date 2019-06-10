@@ -12,6 +12,9 @@ public class LoopingBackground : MonoBehaviour
     private List<SpriteRenderer> backgroundPart;
     private bool sceneIsRendering = false;
 
+    private Vector3 cameraDirection;
+    private Vector3 oldCameraPosition;
+
     void Start()
     {
         backgroundPart = new List<SpriteRenderer>();
@@ -37,23 +40,28 @@ public class LoopingBackground : MonoBehaviour
         backgroundPart = backgroundPart.OrderBy(
                 t => t.transform.position.x
                 ).ToList();
+
+        oldCameraPosition = Camera.main.transform.position;
     }
 
     void Update()
     {
-        Vector3 movement = new Vector3(
-                speed.x * direction.x,
-                speed.y * direction.y,
-                0);
-
+        Vector3 movement = new Vector3(speed.x * direction.x, speed.y * direction.y, 0);
         movement *= Time.deltaTime;
-        transform.Translate(movement);
+
+        foreach(SpriteRenderer sprite in backgroundPart)
+        {
+            sprite.transform.Translate(movement);
+        }
 
         SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
         if(firstChild.isVisible)
         {
             sceneIsRendering = true;
         }
+
+        cameraDirection = Camera.main.transform.position - oldCameraPosition;
+        oldCameraPosition = Camera.main.transform.position;
 
         if(sceneIsRendering)
             MoveSprite();
@@ -64,7 +72,7 @@ public class LoopingBackground : MonoBehaviour
         SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
         SpriteRenderer lastChild = backgroundPart.LastOrDefault();
 
-        if (firstChild != null && firstChild.transform.position.x < Camera.main.transform.position.x && firstChild.isVisible == false)
+        if (cameraDirection.x > 0 && firstChild != null && firstChild.transform.position.x < Camera.main.transform.position.x && firstChild.isVisible == false)
         {
             Vector3 lastPosition = lastChild.transform.position;
             Vector3 lastSize = (lastChild.bounds.max - lastChild.bounds.min);
@@ -80,6 +88,23 @@ public class LoopingBackground : MonoBehaviour
 
             backgroundPart.Remove(firstChild);
             backgroundPart.Add(firstChild);
+        }
+        else if (cameraDirection.x < 0 && lastChild != null && lastChild.transform.position.x > Camera.main.transform.position.x && lastChild.isVisible == false)
+        {
+            Vector3 firstPosition = firstChild.transform.position;
+            Vector3 firstSize = (firstChild.bounds.max - firstChild.bounds.min);
+
+            lastChild.transform.position = new Vector3(firstPosition.x - firstSize.x, lastChild.transform.position.y, lastChild.transform.position.z);
+
+            int spriteNum, colorNum;
+            spriteNum = Random.Range(0, possibleSprites.Count);
+            colorNum = Random.Range(0, possibleColors.Count);
+
+            lastChild.sprite = possibleSprites[spriteNum];
+            lastChild.color = possibleColors[colorNum];
+
+            backgroundPart.Remove(lastChild);
+            backgroundPart.Insert(0, lastChild);
         }
     }
 }

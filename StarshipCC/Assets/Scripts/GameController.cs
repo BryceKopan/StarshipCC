@@ -88,7 +88,6 @@ public class GameController : MonoBehaviour
 	public void AddScore(int newScore)
 	{
 		score += newScore;
-		Debug.Log(score);
 	}
 
 	public int GetScore()
