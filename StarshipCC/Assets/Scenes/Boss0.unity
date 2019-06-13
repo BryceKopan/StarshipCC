@@ -3539,7 +3539,10 @@ MonoBehaviour:
     type: 3}
   capitalPartHiddenRoom: {fileID: 1252361610022122, guid: 2ba0ca7d048134858a07914242283caa,
     type: 3}
-  capitalLength: 100
+  capitalPartEntrance: {fileID: 6253366405453843528, guid: 50c110fa7c2fa4e47a5b2aef3a1dd997,
+    type: 3}
+  capitalLength: 10
+  capitalHeight: 50
 --- !u!1 &1988974007
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ public class CapitalController : MonoBehaviour {
     public List<GameObject> MediumAttachmentPrefabs;
     public List<GameObject> LargeAttachmentPrefabs;
     public List<GameObject> ItemPrefabs;
-    public GameObject baseEdge, smallEdge, mediumEdge, capitalPartShop, capitalPartHiddenRoom;
-    public int capitalLength;
+    public GameObject baseEdge, smallEdge, mediumEdge, capitalPartShop, capitalPartHiddenRoom, capitalPartEntrance;
+    public int capitalLength, capitalHeight;
 
     private List<GameObject> turrets;
     private List<GameObject> capitalParts = new List<GameObject>();
@@ -40,27 +40,46 @@ public class CapitalController : MonoBehaviour {
             if(i < capitalLength / 2)
             {
                 if(r < 5)
-                    CreateCapitalPart(capitalPartShop);
+                    CreateCapitalPartRight(capitalPartShop);
                 else if(r < 10)
-                    CreateCapitalPart(capitalPartHiddenRoom);
+                    CreateCapitalPartRight(capitalPartHiddenRoom);
                 else if(r < 55)
-                    CreateCapitalPart(smallEdge);
+                    CreateCapitalPartRight(smallEdge);
                 else
-                    CreateCapitalPart(baseEdge);
+                    CreateCapitalPartRight(baseEdge);
             }
             else
             {
                 if(r < 5)
-                    CreateCapitalPart(capitalPartShop);
+                    CreateCapitalPartRight(capitalPartShop);
                 else if(r < 10)
-                    CreateCapitalPart(capitalPartHiddenRoom);
+                    CreateCapitalPartRight(capitalPartHiddenRoom);
                 else if(r < 25)
-                    CreateCapitalPart(mediumEdge);
+                    CreateCapitalPartRight(mediumEdge);
                 else if (r < 65)
-                    CreateCapitalPart(smallEdge);
+                    CreateCapitalPartRight(smallEdge);
                 else
-                    CreateCapitalPart(baseEdge);
+                    CreateCapitalPartRight(baseEdge);
             }
+        }
+
+        CreateCapitalPartRight(capitalPartEntrance);
+        Vector3 leftEdge = capitalParts[capitalParts.Count - 1].transform.Find("TopLeftEdge").transform.position;
+        Vector3 rightEdge = capitalParts[capitalParts.Count - 1].transform.Find("TopRightEdge").transform.position;
+        CreateCapitalPartUp(baseEdge, leftEdge, rightEdge, 1);
+
+        for(int i = 0; i < capitalHeight; i++)
+        {
+            float r = Random.Range(0f, 100f);
+
+            if(r < 5)
+                CreateCapitalPartUp(capitalPartShop, leftEdge, rightEdge);
+            else if(r < 10)
+                CreateCapitalPartUp(capitalPartHiddenRoom, leftEdge, rightEdge);
+            else if(r < 55)
+                CreateCapitalPartUp(smallEdge, leftEdge, rightEdge);
+            else
+                CreateCapitalPartUp(baseEdge, leftEdge, rightEdge);
         }
 
         CreateAttachments(capitalParts);
@@ -80,13 +99,13 @@ public class CapitalController : MonoBehaviour {
         for(int i = 0; i < 5; i++)
         {
             if(i == 1)
-                CreateCapitalPart(capitalPartHiddenRoom);
+                CreateCapitalPartRight(capitalPartHiddenRoom);
             else
-                CreateCapitalPart(baseEdge);
+                CreateCapitalPartRight(baseEdge);
         }
     }
 
-    void CreateCapitalPart(GameObject capitalPartPrefab)
+    void CreateCapitalPartRight(GameObject capitalPartPrefab)
     {
         GameObject capitalPartChild;
 
@@ -109,6 +128,57 @@ public class CapitalController : MonoBehaviour {
         capitalPart.transform.SetParent(gameObject.transform); 
 
         capitalParts.Add(capitalPart);
+    }
+
+    void CreateCapitalPartUp(GameObject capitalPartPrefab, Vector3 leftEdge, Vector3 rightEdge, int i = 2)
+    {
+        //left
+        GameObject capitalPartChild;
+
+        float topEdge = capitalParts[capitalParts.Count - i].GetComponentInChildren<SpriteRenderer>().bounds.max.y;
+        float yOffSet = capitalPartPrefab.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
+        float xOffSet = 0f;
+
+        Transform offSetObject = capitalPartPrefab.transform.Find("YOffSet");
+
+        if(offSetObject)
+            yOffSet = offSetObject.localPosition.y * offSetObject.lossyScale.y;
+
+        Vector3 capitalPartPosition = new Vector3(leftEdge.x, topEdge + yOffSet, gameObject.transform.position.z);
+
+        GameObject capitalPart = Instantiate(
+                capitalPartPrefab,
+                capitalPartPosition,
+                gameObject.transform.rotation);
+
+        capitalPart.transform.Rotate(new Vector3(0, 0, 90));
+
+        capitalPart.transform.SetParent(gameObject.transform); 
+        
+        capitalParts.Add(capitalPart);
+        
+        //right
+        topEdge = capitalParts[capitalParts.Count - 2].GetComponentInChildren<SpriteRenderer>().bounds.max.y;
+        yOffSet = capitalPartPrefab.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
+        xOffSet = 0f;
+
+        offSetObject = capitalPartPrefab.transform.Find("YOffSet");
+
+        if(offSetObject)
+            yOffSet = offSetObject.localPosition.y * offSetObject.lossyScale.y;
+
+        capitalPartPosition = new Vector3(rightEdge.x, topEdge + yOffSet, gameObject.transform.position.z);
+
+        GameObject capitalPart2 = Instantiate(
+                capitalPartPrefab,
+                capitalPartPosition,
+                gameObject.transform.rotation);
+
+        capitalPart2.transform.Rotate(new Vector3(0, 0, -90));
+
+        capitalPart2.transform.SetParent(gameObject.transform); 
+
+        capitalParts.Add(capitalPart2);
     }
 
     void CreateAttachments(List<GameObject> capitalParts)
