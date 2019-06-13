@@ -35,8 +35,6 @@ public class Debris : MonoBehaviour, Hittable
 		health -= p.damage;
 		if(health <= 0)
 			Death();
-
-        p.Death();
     }
 
 	protected void SpawnDeathPrefabs()

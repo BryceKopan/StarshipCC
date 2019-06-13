@@ -3531,6 +3531,7 @@ MonoBehaviour:
   - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 3}
   - {fileID: 1420507362941186, guid: 4f1c47a8c6d5f7d4095af1666708a902, type: 3}
   - {fileID: 1076355341642580, guid: 6e11743cfba57764e93b6236e1186713, type: 3}
+  - {fileID: 3798055384489560241, guid: be1cf8fdd06464f43b5f1148a5fab2da, type: 3}
   baseEdge: {fileID: 1766235766332706, guid: 4df07fbfd6a574182986a1d8fa80ee95, type: 3}
   smallEdge: {fileID: 1637299718570656, guid: 40d81095c799c4b15bbf03da163a4e68, type: 3}
   mediumEdge: {fileID: 1048991214549206, guid: aafb1cd4ab0bf449caf3e8ae95daf01a, type: 3}

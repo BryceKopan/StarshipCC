@@ -175,8 +175,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
         if(currentHealth <= 0)
             Death();
-
-        p.Death();
     }
 
     public float GetMaxHealth()

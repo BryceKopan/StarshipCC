@@ -7,7 +7,6 @@ public class Missile : Projectile, Hittable {
 
     void Hittable.OnHit(Projectile p)
     {  
-        p.Death();
         Death();
     }
 

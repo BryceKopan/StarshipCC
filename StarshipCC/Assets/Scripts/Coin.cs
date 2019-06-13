@@ -5,6 +5,9 @@ using UnityEngine;
 public class Coin : MonoBehaviour {
 	public int ScoreValue = 10;
 
+    public AudioClip pickupSound;
+    public float soundVolume = 1f;
+
 	GameController controller;
 
 	// Use this for initialization
@@ -21,8 +24,13 @@ public class Coin : MonoBehaviour {
     {
         string otherTag = other.gameObject.tag;
         if(otherTag == Tags.PLAYER)
-        { 
-			controller.AddCoins(1);
+        {
+            if(pickupSound)
+            {
+                AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, soundVolume);
+            }
+
+            controller.AddCoins(1);
 			controller.AddScore(ScoreValue);
 			Destroy(gameObject);
         }

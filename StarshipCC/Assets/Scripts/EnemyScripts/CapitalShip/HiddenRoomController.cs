@@ -65,7 +65,5 @@ public class HiddenRoomController : MonoBehaviour, Hittable
 
 		if(health <= 0)
 			Death();
-
-        p.Death();
     }
 }
