@@ -8,7 +8,7 @@ public class PlayerMissile : Projectile, Hittable {
 
     void Hittable.OnHit(Projectile p)
     {
-        if(p.tag != Tags.FRIENDLY_BULLET && p.tag != Tags.PLAYER)
+        if(!(p.tag == Tags.FRIENDLY_BULLET || p.tag == Tags.PLAYER))
         {
             Death();
         }
