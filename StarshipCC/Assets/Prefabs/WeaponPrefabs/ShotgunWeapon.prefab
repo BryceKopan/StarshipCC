@@ -203,7 +203,7 @@ MonoBehaviour:
   fireCooldown: 0.5
   damage: 1
   range: 50
-  soundVolume: 1
+  soundVolume: 0.3
   numShots: 1
   delayBetweenShots: 0
   canFire: 1
