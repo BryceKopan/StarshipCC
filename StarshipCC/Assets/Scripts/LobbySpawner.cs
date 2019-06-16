@@ -79,7 +79,7 @@ public class LobbySpawner : MonoBehaviour {
                     if (once3 || ready4)
                     {
                         GameObject.Find("Persisting_Spawn").SendMessage("setPlayers", new bool[] { !once0, !once1, !once2, !once3});
-                        SceneManager.LoadScene(3);
+                        SceneManager.LoadScene("ConstructedShip0");
                     }
                 }
             }
