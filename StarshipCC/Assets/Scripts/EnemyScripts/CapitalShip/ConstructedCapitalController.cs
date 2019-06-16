@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConstructedCapitalController : MonoBehaviour
 {
     [SerializeField] List<GameObject> SmallAttachmentPrefabs;
+    [SerializeField] List<GameObject> ItemPrefabs;
 
     void Start()
     {
@@ -42,5 +43,15 @@ public class ConstructedCapitalController : MonoBehaviour
 
             attachment.transform.SetParent(gameObject.transform.Find("Enemies")); 
         }
+    }
+
+    public GameObject SpawnItem(Vector3 postion)
+    {
+        int r = Random.Range(0, ItemPrefabs.Count);
+        
+        return Instantiate(
+                ItemPrefabs[r],
+                postion,
+                Quaternion.identity);
     }
 }
