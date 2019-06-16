@@ -1079,53 +1079,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450781605}
   m_CullTransparentMesh: 0
---- !u!1 &524054363
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 524054364}
-  - component: {fileID: 524054365}
-  m_Layer: 0
-  m_Name: Persisting_Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &524054364
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524054363}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &524054365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524054363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3022cc73425f60d4da825fb87d9fe87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2, type: 3}
-  player2: {fileID: 1956185659789508, guid: 816165da3b6ee4d7280384499b830ac4, type: 3}
-  player3: {fileID: 1865865277391532, guid: c9de76ba1d4994110a3a6408c0df7844, type: 3}
-  player4: {fileID: 1900584006749128, guid: e34103aa2f5e841adb66f99fca2fb97f, type: 3}
 --- !u!1 &659352012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1851,7 @@ GameObject:
   - component: {fileID: 1350516715}
   - component: {fileID: 1350516717}
   m_Layer: 0
-  m_Name: Lobby_Spawner
+  m_Name: LobbySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1942,10 +1895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9940baa1a5195d049ae10b037ce4dbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2, type: 3}
-  player2: {fileID: 1956185659789508, guid: 816165da3b6ee4d7280384499b830ac4, type: 3}
-  player3: {fileID: 1865865277391532, guid: c9de76ba1d4994110a3a6408c0df7844, type: 3}
-  player4: {fileID: 1900584006749128, guid: e34103aa2f5e841adb66f99fca2fb97f, type: 3}
+  playerPrefab: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2,
+    type: 3}
   playerJoinSound: {fileID: 8300000, guid: 5cd0c3a08e359eb4fad48b2e2186a930, type: 3}
   soundVolume: 0.5
 --- !u!1 &1408186188

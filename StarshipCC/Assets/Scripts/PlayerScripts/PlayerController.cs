@@ -5,7 +5,7 @@ using XboxCtrlrInput;
 
 public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 {
-    public int PlayerNumber = 0;
+    public int PlayerNumber = 5;
     public float joystickDeadzone = 0.1f;
     public float speed = 80f;
     public float dashSpeed = 200f;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         bool parry;
 
         // Keyboard input
-        if(PlayerNumber == 0)
+        if(PlayerNumber == 5)
         {
             xMovementAxis = Input.GetAxis("KeyboardX");
             yMovementAxis = Input.GetAxis("KeyboardY");
@@ -188,8 +188,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     void InitInput()
     {
-        // 0 means keyboard, 1-4 means controller
-        if (PlayerNumber != 0)
+        // 1-4 means controller, 5 means keyboard 
+        if (PlayerNumber != 5)
         {
             switch (PlayerNumber)
             {
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
                     controller = XboxController.Fourth;
                     break;
                 default:
-                    Debug.LogError("Error: Invalid player number (must be 0-4)");
+                    Debug.LogError("Error: Invalid player number (must be 1-5)");
                     break;
             }
         }

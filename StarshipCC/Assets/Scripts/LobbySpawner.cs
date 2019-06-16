@@ -2,93 +2,139 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 public class LobbySpawner : MonoBehaviour {
 
-    bool gameCanStart = false;
-    bool once0 = true;
-    bool once1 = true;
-    bool once2 = true;
-    bool once3 = true;
+    bool[] playersJoined = new bool[] { false, false, false, false, false };
+    bool[] playersReady = new bool[] { false, false, false, false, false };
+    Vector3[] spawnPositions = new Vector3[5];
 
-    bool ready1 = false;
-    bool ready2 = false;
-    bool ready3 = false;
-    bool ready4 = false;
+    public GameObject playerPrefab;
 
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
-    public GameObject player4;
+    XboxController[] controllers = new XboxController[4];
 
     public AudioClip playerJoinSound;
     public float soundVolume = 1.0f;
 
     private void Start()
     {
+        // Init xbox controllers
+        controllers[0] = XboxController.First;
+        controllers[1] = XboxController.Second;
+        controllers[2] = XboxController.Third;
+        controllers[3] = XboxController.Fourth;
+
+        // Init spawn positions
+        spawnPositions[0] = new Vector3(-75f, 25f, 0f);
+        spawnPositions[1] = new Vector3(75f, 25f, 0f);
+        spawnPositions[2] = new Vector3(-75f, -25f, 0f);
+        spawnPositions[3] = new Vector3(75f, 25f, 0f);
+        spawnPositions[4] = new Vector3(0f, 0f, 0f);
     }
 
     void Update () {
-        if (Input.GetKey("joystick 1 button 0") && once0)
+
+        for(int i = 0; i < controllers.Length; i++)
         {
-            GameObject player01 = (GameObject)Instantiate(player1, new Vector3(-75.0f, 25.0f, 0), Quaternion.identity);
-            once0 = false;
-            gameCanStart = true;
-            PlayJoinSound();
-        }
-        if (Input.GetKey("joystick 2 button 0") && once1)
-        {
-            GameObject player02 = (GameObject)Instantiate(player2, new Vector3(75.0f, 25.0f, 0), Quaternion.identity);
-            once1 = false;
-            PlayJoinSound();
-        }
-        if (Input.GetKey("joystick 3 button 0") && once2)
-        {
-            GameObject player03 = (GameObject)Instantiate(player3, new Vector3(-75.0f, -25.0f, 0), Quaternion.identity);
-            once2 = false;
-            PlayJoinSound();
-        }
-        if (Input.GetKey("joystick 4 button 0") && once3)
-        {
-            GameObject player04 = (GameObject)Instantiate(player4, new Vector3(75.0f, -25.0f, 0), Quaternion.identity);
-            once3 = false;
-            PlayJoinSound();
-        }
-        if (Input.GetKey("joystick 1 button 7") && !once0)
-        {
-            ready1 = true;
-        }
-        if (Input.GetKey("joystick 2 button 7") && !once1)
-        {
-            ready2 = true;
-        }
-        if (Input.GetKey("joystick 3 button 7") && !once2)
-        {
-            ready3 = true;
-        }
-        if (Input.GetKey("joystick 4 button 7") && !once3)
-        {
-            ready4 = true;
-        }
-        if (gameCanStart && ready1)
-        {
-            if (once1 || ready2)
+            // If A is pressed on a controller, add that player to the game
+            if (XCI.GetButton(XboxButton.A, controllers[i]))
             {
-                if (once2 || ready3)
+                if(!playersJoined[i])
                 {
-                    if (once3 || ready4)
+                    SpawnPlayer(i);
+                }
+            }
+
+            // If start is pressed on a controller, toggle ready for that player
+            if (XCI.GetButton(XboxButton.Start, controllers[i]))
+            {
+                if (playersJoined[i])
+                {
+                    if(playersReady[i])
                     {
-                        GameObject.Find("Persisting_Spawn").SendMessage("setPlayers", new bool[] { !once0, !once1, !once2, !once3});
-                        SceneManager.LoadScene("ConstructedShip0");
+                        playersReady[i] = false;
+                        //TODO remove indication that player is ready
+                    }
+                    else
+                    {
+                        playersReady[i] = true;
+                        //TODO add indication that player is ready
                     }
                 }
             }
         }
+
+        // Check for keyboard player join
+        if(Input.GetButton("KeyboardJoin"))
+        {
+            if(!playersJoined[4])
+            {
+                SpawnPlayer(4);
+            }
+        }
+
+        // Check for keyboard player ready
+        if(Input.GetButton("KeyboardReady"))
+        {
+            if (playersJoined[4])
+            {
+                if (playersReady[4])
+                {
+                    playersReady[4] = false;
+                    //TODO remove indication that player is ready
+                }
+                else
+                {
+                    playersReady[4] = true;
+                    //TODO add indication that player is ready
+                }
+            }
+        }
+
+        // If everyone is ready, start game
+        if (CanStartGame())
+        {
+            Debug.Log("Starting game");
+            SceneManager.LoadScene("ConstructedShip0");
+        }
     }
 
-    protected void PlayJoinSound()
+    // Returns true if there is at least one player and all players are ready
+    protected bool CanStartGame()
     {
-        if(playerJoinSound)
+        bool canStartGame = true;
+        bool atLeastOnePlayer = false;
+        for (int i = 0; i < playersJoined.Length; i++)
+        {
+            if(playersJoined[i])
+            {
+                atLeastOnePlayer = true;
+                if(!playersReady[i])
+                {
+                    canStartGame = false;
+                }
+            }
+        }
+
+        if (!atLeastOnePlayer)
+        {
+            canStartGame = false;
+        }
+
+        return canStartGame;
+    }
+
+    protected void SpawnPlayer(int playerNum)
+    {
+        playersJoined[playerNum] = true;
+        GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPositions[playerNum], Quaternion.identity);
+        newPlayer.GetComponentInChildren<PlayerController>().PlayerNumber = playerNum + 1;
+
+        DontDestroyOnLoad(newPlayer);
+
+        // Play audio clip for player joining
+        if (playerJoinSound)
         {
             AudioSource.PlayClipAtPoint(playerJoinSound, Camera.main.transform.position, soundVolume);
         }
