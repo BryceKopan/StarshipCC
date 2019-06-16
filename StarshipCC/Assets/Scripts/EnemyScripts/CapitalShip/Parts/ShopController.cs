@@ -7,11 +7,11 @@ public class ShopController : MonoBehaviour {
 	public GameObject coinDisplayPrefab;
 	public Vector3 coinDisplayOffset;
 
-	CapitalController capitalController;
+	ConstructedCapitalController capitalController;
 
 	void Start () 
 	{
-		capitalController = GameObject.Find("CapitalShip").GetComponent<CapitalController>();
+		capitalController = GameObject.Find("CapitalShip").GetComponent<ConstructedCapitalController>();
 
 		foreach(Transform child in transform)
 		{
