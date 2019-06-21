@@ -310,4 +310,13 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         currentHealth = health;
     }
+
+    public void SetColor(Color color)
+    {
+        SpriteRenderer overlayRenderer = transform.Find("ColorOverlay").GetComponent<SpriteRenderer>();
+        if(overlayRenderer)
+        {
+            overlayRenderer.color = color;
+        }
+    }
 }
