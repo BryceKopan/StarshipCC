@@ -1895,6 +1895,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9940baa1a5195d049ae10b037ce4dbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.5820617, b: 0, a: 1}
+  - {r: 0.993973, g: 1, b: 0, a: 1}
+  - {r: 0.00126791, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.9452326, a: 1}
+  - {r: 0, g: 0.08628178, b: 1, a: 1}
+  - {r: 0.36112404, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.95985556, a: 1}
   playerPrefab: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2,
     type: 3}
   playerJoinSound: {fileID: 8300000, guid: 5cd0c3a08e359eb4fad48b2e2186a930, type: 3}
