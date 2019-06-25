@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
         // Equip the new class
         playerClass = Instantiate(pClass);
-        playerClass.SetPlayer(this);
+        playerClass.Equip(this);
         SetMaxHealth(playerClass.startingMaxHealth);
 
         foreach (Weapon weapon in playerClass.startingWeapons)
@@ -166,10 +166,10 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
             yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-            ability1 = XCI.GetButtonDown(XboxButton.A, controller);
-            ability2 = XCI.GetButtonDown(XboxButton.X, controller);
-            ability3 = XCI.GetButtonDown(XboxButton.Y, controller);
-            ability4 = XCI.GetButtonDown(XboxButton.B, controller);
+            ability1 = XCI.GetButton(XboxButton.A, controller);
+            ability2 = XCI.GetButton(XboxButton.X, controller);
+            ability3 = XCI.GetButton(XboxButton.Y, controller);
+            ability4 = XCI.GetButton(XboxButton.B, controller);
 
             // Twin stick mode
             if (twinStick)
@@ -239,9 +239,9 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     void ActivateAbility1()
     {
-        if(playerClass)
+        if (playerClass)
         {
-            if(playerClass.ability1)
+            if (playerClass.ability1)
             {
                 playerClass.ability1.Activate();
             }

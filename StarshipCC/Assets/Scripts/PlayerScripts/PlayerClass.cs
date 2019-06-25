@@ -31,18 +31,22 @@ public class PlayerClass : MonoBehaviour
         if(ability1)
         {
             ability1 = Instantiate(ability1);
+            ability1.transform.parent = this.transform;
         }
         if(ability2)
         {
             ability2 = Instantiate(ability2);
+            ability2.transform.parent = this.transform;
         }
         if(ability3)
         {
             ability3 = Instantiate(ability3);
+            ability3.transform.parent = this.transform;
         }
         if(ability4)
         {
             ability4 = Instantiate(ability4);
+            ability4.transform.parent = this.transform;
         }
     }
 
@@ -52,9 +56,10 @@ public class PlayerClass : MonoBehaviour
         
     }
 
-    public void SetPlayer(PlayerController player)
+    public void Equip(PlayerController player)
     {
         this.player = player;
+        this.transform.parent = player.transform.parent;
         if(ability1)
         {
             ability1.player = player;
@@ -71,6 +76,5 @@ public class PlayerClass : MonoBehaviour
         {
             ability4.player = player;
         }
-
     }
 }
