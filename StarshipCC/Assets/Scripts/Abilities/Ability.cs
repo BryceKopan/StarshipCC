@@ -10,7 +10,7 @@ public abstract class Ability : MonoBehaviour
     protected float activeLength;
     protected float cooldownLength;
 
-    protected PlayerController player;
+    public PlayerController player;
 
     // Start is called before the first frame update
     protected virtual void Start()

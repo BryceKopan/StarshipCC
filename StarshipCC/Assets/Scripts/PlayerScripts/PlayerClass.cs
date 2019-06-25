@@ -18,6 +18,8 @@ public class PlayerClass : MonoBehaviour
     public Sprite playerSprite;
     public Sprite colorMask;
 
+    private PlayerController player;
+
     void Awake()
     {
         for(int i = 0; i < startingWeapons.Count; i++)
@@ -26,11 +28,36 @@ public class PlayerClass : MonoBehaviour
             startingWeapons[i] = instance;
         }
 
+        if(ability1)
+        {
+            ability1 = Instantiate(ability1);
+        }
+        if(ability2)
+        {
+            ability2 = Instantiate(ability2);
+        }
+        if(ability3)
+        {
+            ability3 = Instantiate(ability3);
+        }
+        if(ability4)
+        {
+            ability4 = Instantiate(ability4);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        this.player = player;
+        ability1.player = player;
+        ability2.player = player;
+        ability3.player = player;
+        ability4.player = player;
     }
 }
