@@ -17,13 +17,11 @@ public class Dash : Ability
 
     protected override void OnActivate()
     {
-        Debug.Log("Dash activated player " + player.PlayerNumber);
         player.GetComponent<Rigidbody2D>().AddForce(player.moveDirection * dashSpeed, ForceMode2D.Impulse);
     }
 
     protected override void OnDeactivate()
     {
-        Debug.Log("Dash deactivated player " + player.PlayerNumber);
         player.GetComponent<Rigidbody2D>().velocity = player.GetComponent<Rigidbody2D>().velocity * 0.1f;
     }
 

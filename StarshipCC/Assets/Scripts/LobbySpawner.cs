@@ -13,6 +13,9 @@ public class LobbySpawner : MonoBehaviour {
     int[] colorIndices = new int[] {0, 0, 0, 0, 0};
     [SerializeField] Color[] possibleColors;
 
+    int[] classIndices = new int[] { 0, 0, 0, 0, 0 };
+    [SerializeField] PlayerClass[] possibleClasses;
+
     public GameObject playerPrefab;
 
     XboxController[] controllers = new XboxController[4];
@@ -72,19 +75,35 @@ public class LobbySpawner : MonoBehaviour {
                 }
             }
 
-            // If bumper is pressed on a controller, change color of that player
-            if (XCI.GetButtonDown(XboxButton.RightBumper, controllers[i]))
+            // If dpad up/down is pressed on a controller, change color of that player
+            if (XCI.GetButtonDown(XboxButton.DPadUp, controllers[i]))
             {
                 if(players[i])
                 {
                     SetPlayerColorNext(i);
                 }
             }
-            else if(XCI.GetButtonDown(XboxButton.LeftBumper, controllers[i]))
+            else if(XCI.GetButtonDown(XboxButton.DPadDown, controllers[i]))
             {
                 if (players[i])
                 {
                     SetPlayerColorPrevious(i);
+                }
+            }
+
+            // If dpad up/down is pressed on a controller, change class of that player
+            if (XCI.GetButtonDown(XboxButton.DPadRight, controllers[i]))
+            {
+                if (players[i])
+                {
+                    SetPlayerClassNext(i);
+                }
+            }
+            else if (XCI.GetButtonDown(XboxButton.DPadLeft, controllers[i]))
+            {
+                if (players[i])
+                {
+                    SetPlayerClassPrevious(i);
                 }
             }
         }
@@ -162,7 +181,9 @@ public class LobbySpawner : MonoBehaviour {
     protected void SpawnPlayer(int playerIndex)
     {
         GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPositions[playerIndex], Quaternion.identity);
-        newPlayer.GetComponentInChildren<PlayerController>().PlayerNumber = playerIndex + 1;
+        PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
+        playerController.PlayerNumber = playerIndex + 1;
+        playerController.SetPlayerClass(possibleClasses[0]);
 
         players[playerIndex] = newPlayer;
 
@@ -250,5 +271,61 @@ public class LobbySpawner : MonoBehaviour {
             }
         }
         return true;
+    }
+
+    protected void SetPlayerClassNext(int playerIndex)
+    {
+        // Make sure the player is valid and has joined
+        if (playerIndex < 0 || playerIndex >= players.Length)
+        {
+            return;
+        }
+
+        if (players[playerIndex])
+        {
+            PlayerController player = players[playerIndex].GetComponentInChildren<PlayerController>();
+            if (player)
+            {
+                // Change the player class
+                int numClasses = possibleClasses.Length;
+                int classIndex = classIndices[playerIndex];
+
+                classIndex = (classIndex + 1) % numClasses;
+
+                // Change the player's class to the one indicated by class index
+                player.SetPlayerClass(possibleClasses[classIndex]);
+                classIndices[playerIndex] = classIndex;
+            }
+        }
+    }
+
+    protected void SetPlayerClassPrevious(int playerIndex)
+    {
+        // Make sure the player is valid and has joined
+        if (playerIndex < 0 || playerIndex >= players.Length)
+        {
+            return;
+        }
+
+        if (players[playerIndex])
+        {
+            PlayerController player = players[playerIndex].GetComponentInChildren<PlayerController>();
+            if (player)
+            {
+                // Change the player class
+                int numClasses = possibleClasses.Length;
+                int classIndex = classIndices[playerIndex];
+
+                classIndex--;
+                if(classIndex < 0)
+                {
+                    classIndex = numClasses - 1;
+                }
+
+                // Change the player's class to the one indicated by class index
+                player.SetPlayerClass(possibleClasses[classIndex]);
+                classIndices[playerIndex] = classIndex;
+            }
+        }
     }
 }

@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     Rigidbody2D rigidbody;
 
-    Animator animator;
-
     public GameObject explosionPrefab;
     public GameObject SetActiveOnDeath;
     
@@ -45,10 +43,9 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     XboxController controller;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         parryShield = GetComponentInChildren<ParryShield>();
         parryShield.gameObject.SetActive(false);
 
@@ -88,14 +85,15 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         }
     }
 
-    void SetPlayerClass(PlayerClass pClass)
+    public void SetPlayerClass(PlayerClass pClass)
     {
         // If player class is already set, remove the existing weapons
         if(playerClass)
         {
-            foreach(Weapon weapon in weapons)
+            for(int i = 0; i < weapons.Count; i++)
             {
-                RemoveWeapon(weapon);
+                RemoveWeapon(weapons[i]);
+                i--;
             }
         }
 
@@ -108,6 +106,14 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         {
             AddWeapon(weapon);
         }
+
+        // Set the ship sprite to reflect the class
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = playerClass.playerSprite;
+
+        GameObject colorOverlay = transform.Find("ColorOverlay").gameObject;
+        colorOverlay.GetComponent<SpriteRenderer>().sprite = playerClass.colorMask;
+        colorOverlay.GetComponent<SpriteMask>().sprite = playerClass.colorMask;
     }
 
     // FixedUpdate is independent of framerate
@@ -304,13 +310,11 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     void StartInvincibility()
     {
         invincible = true;
-        animator.SetBool("Invincible", true);
         Invoke("EndInvincibility", invincibilityLength);
     }
 
     void EndInvincibility()
     {
-        animator.SetBool("Invincible", false);
         invincible = false;
     }
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 60827932229674726}
   - component: {fileID: 50227250980818280}
   - component: {fileID: 114357736397587242}
-  - component: {fileID: 95953971725003036}
   m_Layer: 9
   m_Name: Ship
   m_TagString: Player
@@ -149,43 +148,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a06ef4b040e74bc385590736cd4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultClass: {fileID: 8930679107898743794, guid: 180a77ca9cf000c46b46cb2f5e157d14,
+  defaultClass: {fileID: 4082214240141896146, guid: a66530f6021f1bf499a4e36a3842f8e6,
     type: 3}
   PlayerNumber: 5
   joystickDeadzone: 0.1
-  dashSpeed: 300
   playerClass: {fileID: 0}
   twinStick: 1
   twinStickFireThreshold: 0.5
-  dashLength: 0.1
   parryLength: 0.3
   invincibilityLength: 1
-  dashCooldown: 2
   parryCooldown: 0.6
   explosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 3}
   SetActiveOnDeath: {fileID: 1871314356990994}
   moveDirection: {x: 0, y: 0}
   aimDirection: {x: 0, y: 0}
---- !u!95 &95953971725003036
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110573726755082}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 001b96bb0833c234e8f5a56d221ff0e7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1144348001294558
 GameObject:
   m_ObjectHideFlags: 0

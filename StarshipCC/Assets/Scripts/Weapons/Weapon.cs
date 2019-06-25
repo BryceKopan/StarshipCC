@@ -59,13 +59,13 @@ public abstract class Weapon : MonoBehaviour {
 
     public void Unequip(PlayerController player)
     {
-        gameObject.tag = null;
+        gameObject.tag = Tags.UNTAGGED;
         OnUnequip(player);
     }
 
     public void Unequip(EnemyController enemy)
     {
-        gameObject.tag = null;
+        gameObject.tag = Tags.UNTAGGED;
         OnUnequip(enemy);
     }
 

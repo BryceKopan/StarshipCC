@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tags
 {
+    public static string UNTAGGED = "Untagged";
     public static string FRIENDLY_BULLET = "FriendlyBullet";
     public static string ENEMY_BULLET = "EnemyBullet";
     public static string BULLET_SPAWN = "BulletSpawn";
