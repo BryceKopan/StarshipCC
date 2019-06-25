@@ -207,7 +207,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
             weapon.OnEquip(this);
         }
 
-        float weaponFireTime = weapon.delayBetweenShots * weapon.numShots + weapon.fireCooldown;
+        float weaponFireTime = weapon.delayBetweenAttacks * weapon.numAttacks + weapon.cooldown;
         if (longestWeaponFireTime < weaponFireTime)
         {
             longestWeaponFireTime = weaponFireTime;
