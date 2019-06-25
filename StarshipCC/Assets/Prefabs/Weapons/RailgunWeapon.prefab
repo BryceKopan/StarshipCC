@@ -45,14 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawns: []
-  fireCooldown: 5
   damage: 10
   range: 400
+  cooldown: 1
   soundVolume: 0.6
-  numShots: 1
-  delayBetweenShots: 0
-  canFire: 1
-  fireSound: {fileID: 8300000, guid: 7ab9712e15a849948a420c460a666ca4, type: 3}
+  numAttacks: 1
+  delayBetweenAttacks: 0
+  canAttack: 1
+  isAttacking: 0
+  attackSound: {fileID: 8300000, guid: 7fc1256e29ecc5140984efdb7d0add3a, type: 3}
   projectilePrefab: {fileID: 626610936080815164, guid: ab5d6ff872f53084b8902c4f0b62c8fb,
     type: 3}
   bulletSpeed: 200

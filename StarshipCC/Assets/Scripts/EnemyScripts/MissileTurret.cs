@@ -40,7 +40,7 @@ public class MissileTurret : EnemyController
     {
         foreach (Weapon weapon in weapons)
         {
-            weapon.Fire();
+            weapon.Attack();
         }
 
         Invoke("DoneAttacking", longestWeaponFireTime);

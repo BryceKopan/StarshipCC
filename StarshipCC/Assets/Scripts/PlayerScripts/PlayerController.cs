@@ -5,26 +5,26 @@ using XboxCtrlrInput;
 
 public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 {
+    public PlayerClass defaultClass;
+
     public int PlayerNumber = 5;
     public float joystickDeadzone = 0.1f;
-    public float speed = 80f;
-    public float dashSpeed = 200f;
-    public float turnSpeed = 5f;
+
+    [HideInInspector]
+    public PlayerClass playerClass;
+
+    List<Weapon> weapons;
 
     public bool twinStick = false;
     public float twinStickFireThreshold = 0.5f;
 
-    public GameObject startingWeapon;
-
-    public float maxHealth;
+    private float maxHealth;
     private float currentHealth;
 
-    public float dashLength = 0.3f;
+    // TODO move all these into abilities
     public float parryLength = 0.3f;
     public float invincibilityLength = 1f;
-    public float dashCooldown = 1f;
     public float parryCooldown = 0.1f;
-    bool canDash = true;
     bool canParry = true;
     bool invincible = false;
 
@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     public GameObject explosionPrefab;
     public GameObject SetActiveOnDeath;
     
-    ParryShield parryShield;
+    ParryShield parryShield; // TODO make this an ability
 
-    List<Weapon> weapons;
-
-    Vector2 moveDirection;
-    Vector2 aimDirection;
+    [HideInInspector]
+    public Vector2 moveDirection;
+    [HideInInspector]
+    public Vector2 aimDirection;
 
     XboxController controller;
 
@@ -52,139 +52,15 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         parryShield = GetComponentInChildren<ParryShield>();
         parryShield.gameObject.SetActive(false);
 
-        // Attach starting weapon to the ship
         weapons = new List<Weapon>();
-        AddWeapon(GameObject.Instantiate(startingWeapon).GetComponent<Weapon>());
 
-        currentHealth = maxHealth;
+        // Set the player class, which determines weapons, abilities, etc
+        SetPlayerClass(defaultClass);
+
+        SetCurrentHealth(GetMaxHealth());
 
         InitInput();
 	}
-	
-	// FixedUpdate is independent of framerate
-	void FixedUpdate () 
-    {
-        HandleInput();
-
-        //Move Along moveDirection
-        rigidbody.AddForce(moveDirection * speed);
-        
-        //Rotate to face aimDirection
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
-        rigidbody.MoveRotation(Mathf.LerpAngle(rigidbody.rotation, angle, turnSpeed * Time.deltaTime));
-    }
-
-    void HandleInput()
-    {
-        float xMovementAxis;
-        float yMovementAxis;
-        float xAimAxis;
-        float yAimAxis;
-        bool fire;
-        bool dash;
-        bool parry;
-
-        // Keyboard input
-        if(PlayerNumber == 5)
-        {
-            xMovementAxis = Input.GetAxis("KeyboardX");
-            yMovementAxis = Input.GetAxis("KeyboardY");
-
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            xAimAxis = mousePos.x - transform.position.x;
-            yAimAxis = mousePos.y - transform.position.y;
-
-            fire = Input.GetMouseButton(0);
-            dash = Input.GetButton("KeyboardDash");
-            parry = Input.GetMouseButton(1);
-        }
-        // Twin stick controller input
-        else if(twinStick) 
-        {
-            xMovementAxis = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-            yMovementAxis = XCI.GetAxis(XboxAxis.LeftStickY, controller);
-
-            xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
-            yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
-
-            Vector2 aimVector = new Vector2(xAimAxis, yAimAxis);
-            float aimMagnitude = aimVector.magnitude;
-            fire = aimMagnitude > twinStickFireThreshold;
-
-            dash = XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0;
-            parry = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0;
-        }
-        // Default Controller input
-        else
-        {
-            xMovementAxis = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-            yMovementAxis = XCI.GetAxis(XboxAxis.LeftStickY, controller);
-
-            xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
-            yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
-
-            float fireAxis = XCI.GetAxis(XboxAxis.RightTrigger, controller);
-            fire = fireAxis > 0;
-
-            dash = XCI.GetButton(XboxButton.LeftBumper, controller);
-            parry = XCI.GetButton(XboxButton.RightBumper, controller);
-        }
-
-        moveDirection = new Vector2(xMovementAxis, yMovementAxis);
-
-        // Implement joystick deadzone
-        if (Mathf.Abs(xAimAxis) > joystickDeadzone || Mathf.Abs(yAimAxis) > joystickDeadzone)
-        {
-            aimDirection = new Vector2(xAimAxis, yAimAxis);
-        }
-        
-        if (fire)
-        {
-            Fire();
-        }
-
-        if (dash && canDash)
-        {
-            Dash();
-        }
-
-        if (parry && canParry)
-        {
-            Parry();
-        }
-    }
-
-    void Fire()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Fire();
-        }
-    }
-
-    void Dash()
-    {
-        rigidbody.AddForce(moveDirection * dashSpeed, ForceMode2D.Impulse);
-        canDash = false;
-        Invoke("EndDash", dashLength);
-        Invoke("EnableDash", dashLength + dashCooldown);
-    }
-
-    void Parry()
-    {
-        canParry = false;
-        Invoke("EndParry", parryLength);
-        Invoke("EnableParry", parryLength + parryCooldown);
-        parryShield.gameObject.SetActive(true);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-            Death();
-    }
 
     void InitInput()
     {
@@ -212,9 +88,211 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         }
     }
 
-    void EndDash()
+    void SetPlayerClass(PlayerClass pClass)
     {
-        rigidbody.velocity = rigidbody.velocity * 0.1f;
+        // If player class is already set, remove the existing weapons
+        if(playerClass)
+        {
+            foreach(Weapon weapon in weapons)
+            {
+                RemoveWeapon(weapon);
+            }
+        }
+
+        // Equip the new class
+        playerClass = Instantiate(pClass);
+        SetMaxHealth(playerClass.startingMaxHealth);
+
+        foreach (Weapon weapon in playerClass.startingWeapons)
+        {
+            AddWeapon(weapon);
+        }
+    }
+
+    // FixedUpdate is independent of framerate
+    void FixedUpdate () 
+    {
+        HandleInput();
+
+        //Move Along moveDirection
+        rigidbody.AddForce(moveDirection * playerClass.engine.moveSpeed);
+        
+        //Rotate to face aimDirection
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
+        rigidbody.MoveRotation(Mathf.LerpAngle(rigidbody.rotation, angle, playerClass.engine.turnSpeed * Time.deltaTime));
+    }
+
+    void HandleInput()
+    {
+        float xMovementAxis;
+        float yMovementAxis;
+        float xAimAxis;
+        float yAimAxis;
+        bool attack;
+        bool ability1;
+        bool ability2;
+        bool ability3;
+        bool ability4;
+
+        //TODO make these abilities
+        bool parry;
+
+        // Keyboard input
+        if(PlayerNumber == 5)
+        {
+            xMovementAxis = Input.GetAxis("KeyboardX");
+            yMovementAxis = Input.GetAxis("KeyboardY");
+
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            xAimAxis = mousePos.x - transform.position.x;
+            yAimAxis = mousePos.y - transform.position.y;
+
+            attack = Input.GetMouseButton(0);
+            parry = Input.GetMouseButton(1);
+
+            ability1 = Input.GetButtonDown("KeyboardAbility1");
+            ability2 = Input.GetButtonDown("KeyboardAbility2");
+            ability3 = Input.GetButtonDown("KeyboardAbility3");
+            ability4 = Input.GetButtonDown("KeyboardAbility4");
+        }
+        // Controller input
+        else 
+        {
+            xMovementAxis = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            yMovementAxis = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+
+            xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
+            yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
+
+            ability1 = XCI.GetButton(XboxButton.A, controller);
+            ability2 = XCI.GetButton(XboxButton.X, controller);
+            ability3 = XCI.GetButton(XboxButton.Y, controller);
+            ability4 = XCI.GetButton(XboxButton.B, controller);
+
+            // Twin stick mode
+            if (twinStick)
+            {
+                Vector2 aimVector = new Vector2(xAimAxis, yAimAxis);
+                float aimMagnitude = aimVector.magnitude;
+                attack = aimMagnitude > twinStickFireThreshold;
+
+                parry = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0;
+            }
+            // Normal stick mode
+            else
+            {
+                float fireAxis = XCI.GetAxis(XboxAxis.RightTrigger, controller);
+                attack = fireAxis > 0;
+
+                parry = XCI.GetButton(XboxButton.RightBumper, controller);
+            }
+        }
+
+        moveDirection = new Vector2(xMovementAxis, yMovementAxis);
+
+        // Implement joystick deadzone
+        if (Mathf.Abs(xAimAxis) > joystickDeadzone || Mathf.Abs(yAimAxis) > joystickDeadzone)
+        {
+            aimDirection = new Vector2(xAimAxis, yAimAxis);
+        }
+        
+        if (attack)
+        {
+            Attack();
+        }
+
+        if (ability1)
+        {
+            ActivateAbility1();
+        }
+
+        if (ability2)
+        {
+            ActivateAbility2();
+        }
+
+        if (ability3)
+        {
+            ActivateAbility3();
+        }
+
+        if (ability4)
+        {
+            ActivateAbility4();
+        }
+
+        if (parry && canParry)
+        {
+            Parry();
+        }
+    }
+
+    void Attack()
+    {
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.Attack();
+        }
+    }
+
+    void ActivateAbility1()
+    {
+        if(playerClass)
+        {
+            if(playerClass.ability1)
+            {
+                playerClass.ability1.Activate();
+            }
+        }
+    }
+
+    void ActivateAbility2()
+    {
+        if (playerClass)
+        {
+            if (playerClass.ability2)
+            {
+                playerClass.ability2.Activate();
+            }
+        }
+    }
+
+    void ActivateAbility3()
+    {
+        if (playerClass)
+        {
+            if (playerClass.ability3)
+            {
+                playerClass.ability3.Activate();
+            }
+        }
+    }
+
+    void ActivateAbility4()
+    {
+        if (playerClass)
+        {
+            if (playerClass.ability4)
+            {
+                playerClass.ability4.Activate();
+            }
+        }
+    }
+
+    void Parry()
+    {
+        canParry = false;
+        Invoke("EndParry", parryLength);
+        Invoke("EnableParry", parryLength + parryCooldown);
+        parryShield.gameObject.SetActive(true);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+            Death();
     }
 
     void EndParry()
@@ -233,11 +311,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         animator.SetBool("Invincible", false);
         invincible = false;
-    }
-
-    void EnableDash()
-    {
-        canDash = true;
     }
 
     void EnableParry()
@@ -264,24 +337,22 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     public void AddWeapon(Weapon weapon)
     {
-        if(weapons != null)
-        {
-            weapons.Add(weapon);
-            weapon.transform.SetParent(transform.Find("Weapons"));
-            weapon.transform.localPosition = new Vector2(0, 0);
-            weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            weapon.OnEquip(this);
-        }
+        weapons.Add(weapon);
+        weapon.transform.SetParent(transform.Find("Weapons"));
+        weapon.transform.localPosition = new Vector2(0, 0);
+        weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        weapon.Equip(this);
     }
 
-    public void RemoveWeapon(Weapon weapon)
+    public bool RemoveWeapon(Weapon weapon)
     {
-        if (weapons != null)
+        if(weapons.Contains(weapon))
         {
             weapons.Remove(weapon);
-
-            weapon.OnUnequip(this);
+            weapon.Unequip(this);
+            return true;
         }
+        return false;
     }
 
     //Interface Methods
@@ -293,10 +364,12 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             StartInvincibility();
         }
     }
+
     public float GetMaxHealth()
     {
         return maxHealth;
     }
+
 	public float GetCurrentHealth()
     {
         return currentHealth;
@@ -306,6 +379,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         maxHealth = health;
     }
+
 	public void SetCurrentHealth(float health)
     {
         currentHealth = health;
