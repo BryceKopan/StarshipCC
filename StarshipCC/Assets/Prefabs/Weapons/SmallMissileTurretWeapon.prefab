@@ -211,7 +211,7 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 700066db3e7ecec4cbcb340cff2a536b, type: 3}
   projectilePrefab: {fileID: 7475396911644241038, guid: 28a6fae0713c7d4468dbdb690c315f32,
     type: 3}
-  bulletSpeed: 40
+  bulletSpeed: 60
 --- !u!1 &8199160772437771749
 GameObject:
   m_ObjectHideFlags: 0
