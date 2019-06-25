@@ -21,12 +21,9 @@ public class ProjectileWeapon : Weapon {
 
     public override void OnAttackStart()
     {
-        if (canAttack)
+        for (int i = 0; i < numAttacks; i++)
         {
-            for (int i = 0; i < numAttacks; i++)
-            {
-                Invoke("LaunchProjectiles", i * delayBetweenAttacks);
-            }
+            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
         }
     }
 

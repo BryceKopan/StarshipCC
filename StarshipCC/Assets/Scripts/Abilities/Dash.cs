@@ -17,7 +17,6 @@ public class Dash : Ability
 
     protected override void OnActivate()
     {
-        Debug.Log("Activated dash");
         player.GetComponent<Rigidbody2D>().AddForce(player.moveDirection * dashSpeed, ForceMode2D.Impulse);
     }
 

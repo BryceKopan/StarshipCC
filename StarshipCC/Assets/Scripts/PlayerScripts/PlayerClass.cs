@@ -55,9 +55,22 @@ public class PlayerClass : MonoBehaviour
     public void SetPlayer(PlayerController player)
     {
         this.player = player;
-        ability1.player = player;
-        ability2.player = player;
-        ability3.player = player;
-        ability4.player = player;
+        if(ability1)
+        {
+            ability1.player = player;
+        }
+        if (ability2)
+        {
+            ability2.player = player;
+        }
+        if (ability3)
+        {
+            ability3.player = player;
+        }
+        if (ability4)
+        {
+            ability4.player = player;
+        }
+
     }
 }

@@ -15,8 +15,8 @@ public abstract class Weapon : MonoBehaviour {
     public int numAttacks = 1;
     public float delayBetweenAttacks = 0;
 
-    public bool canAttack = true;
-    public bool isAttacking = false;
+    public bool canAttack;
+    public bool isAttacking;
 
     private AudioSource audioSource;
     public AudioClip attackSound;
@@ -34,6 +34,9 @@ public abstract class Weapon : MonoBehaviour {
         }
 
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        canAttack = true;
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -68,10 +71,13 @@ public abstract class Weapon : MonoBehaviour {
 
     public void Attack()
     {
-        canAttack = false;
-        isAttacking = true;
-        Invoke("EndAttack", numAttacks * delayBetweenAttacks);
-        OnAttackStart();
+        if(canAttack)
+        {
+            canAttack = false;
+            isAttacking = true;
+            Invoke("EndAttack", numAttacks * delayBetweenAttacks);
+            OnAttackStart();
+        }
     }
 
     public void EndAttack()
