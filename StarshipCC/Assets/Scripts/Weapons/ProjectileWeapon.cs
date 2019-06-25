@@ -9,32 +9,40 @@ public class ProjectileWeapon : Weapon {
 
     public float bulletSpeed = 40f;
 
-    public override void Fire()
+    public override void OnEquip(EnemyController enemy)
     {
-        if (canFire)
+        throw new NotImplementedException();
+    }
+
+    public override void OnUnequip(EnemyController player)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void OnAttackStart()
+    {
+        for (int i = 0; i < numAttacks; i++)
         {
-            for(int i = 0; i < numShots; i++) 
-            {
-                Invoke("LaunchProjectiles", i * delayBetweenShots);
-            }
-            
-            Invoke("EnableFire", fireCooldown + delayBetweenShots * numShots);
-            canFire = false;
+            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
         }
     }
 
-    protected void LaunchProjectiles() 
-    {
-        PlayFireSound();
+    public override void OnAttackEnd() { }
 
-        foreach (Transform bulletSpawn in bulletSpawns) 
+    public override void OnCanAttack() { }
+
+    protected void LaunchProjectiles()
+    {
+        PlayAttackSound();
+
+        foreach (Transform bulletSpawn in bulletSpawns)
         {
             var projectile = (GameObject)Instantiate(
                     projectilePrefab,
                     bulletSpawn.position,
                     bulletSpawn.rotation);
 
-            if(gameObject.tag == Tags.PLAYER)
+            if (gameObject.tag == Tags.PLAYER)
             {
                 projectile.tag = Tags.FRIENDLY_BULLET;
             }
@@ -53,21 +61,7 @@ public class ProjectileWeapon : Weapon {
         }
     }
 
-    public override void OnEquip(PlayerController player)
-    {
-        base.OnEquip(player);
-    }
+    public override void OnEquip(PlayerController player) { }
 
-    public override void OnUnequip(PlayerController player)
-    {
-        base.OnUnequip(player);
-    }
-
-    public override void OnFireStart()
-    {
-    }
-
-    public override void OnFireEnd()
-    {
-    }
+    public override void OnUnequip(PlayerController player) { }
 }

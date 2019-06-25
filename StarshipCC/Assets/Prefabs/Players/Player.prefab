@@ -149,16 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a06ef4b040e74bc385590736cd4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultClass: {fileID: 8930679107898743794, guid: 180a77ca9cf000c46b46cb2f5e157d14,
+    type: 3}
   PlayerNumber: 5
   joystickDeadzone: 0.1
-  speed: 150
   dashSpeed: 300
-  turnSpeed: 5
+  playerClass: {fileID: 0}
   twinStick: 1
   twinStickFireThreshold: 0.5
-  startingWeapon: {fileID: 1689189574388330, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887,
-    type: 3}
-  maxHealth: 3
   dashLength: 0.1
   parryLength: 0.3
   invincibilityLength: 1
@@ -167,6 +165,8 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 3}
   SetActiveOnDeath: {fileID: 1871314356990994}
+  moveDirection: {x: 0, y: 0}
+  aimDirection: {x: 0, y: 0}
 --- !u!95 &95953971725003036
 Animator:
   serializedVersion: 3
