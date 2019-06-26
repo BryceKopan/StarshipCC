@@ -55,9 +55,12 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         SetPlayerClass(defaultClass);
 
         SetCurrentHealth(GetMaxHealth());
-
-        InitInput();
 	}
+
+    void Start()
+    {
+        InitInput();
+    }
 
     void InitInput()
     {
