@@ -72,7 +72,7 @@ public class LoopingBackground : MonoBehaviour
         SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
         SpriteRenderer lastChild = backgroundPart.LastOrDefault();
 
-        if (cameraDirection.x > 0 && firstChild != null && firstChild.transform.position.x < Camera.main.transform.position.x && firstChild.isVisible == false)
+        if (cameraDirection.x >= 0 && firstChild != null && firstChild.transform.position.x < Camera.main.transform.position.x && firstChild.isVisible == false)
         {
             Vector3 lastPosition = lastChild.transform.position;
             Vector3 lastSize = (lastChild.bounds.max - lastChild.bounds.min);
