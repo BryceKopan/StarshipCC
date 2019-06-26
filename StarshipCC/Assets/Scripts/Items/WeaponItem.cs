@@ -15,15 +15,11 @@ public class WeaponItem : Item {
 
     public override void OnEquip(PlayerController player)
     {
-        base.OnEquip(player);
-        gameObject.SetActive(false);
         player.AddWeapon(weaponScript);
     }
 
     public override void OnUnequip(PlayerController player)
     {
-        base.OnUnequip(player);
-        gameObject.SetActive(true);
         player.RemoveWeapon(weaponScript);
     }
 }
