@@ -28,6 +28,9 @@ public class PlayerClass : MonoBehaviour
             startingWeapons[i] = instance;
         }
 
+        engine = Instantiate(engine);
+        shield = Instantiate(shield);
+
         if(ability1)
         {
             ability1 = Instantiate(ability1);
