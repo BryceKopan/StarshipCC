@@ -6,8 +6,9 @@ using XboxCtrlrInput;
 
 public class LobbySpawner : MonoBehaviour {
 
+    public GameObject missionStartZone;
+
     GameObject[] players = new GameObject[5];
-    bool[] playersReady = new bool[] { false, false, false, false, false };
     Vector3[] spawnPositions = new Vector3[5];
 
     int[] colorIndices = new int[] {0, 0, 0, 0, 0};
@@ -57,24 +58,6 @@ public class LobbySpawner : MonoBehaviour {
                 }
             }
 
-            // If start is pressed on a controller, toggle ready for that player
-            if (XCI.GetButtonDown(XboxButton.Start, controllers[i]))
-            {
-                if (players[i])
-                {
-                    if (playersReady[i])
-                    {
-                        playersReady[i] = false;
-                        //TODO remove indication that player is ready
-                    }
-                    else
-                    {
-                        playersReady[i] = true;
-                        //TODO add indication that player is ready
-                    }
-                }
-            }
-
             // If dpad up/down is pressed on a controller, change color of that player
             if (XCI.GetButtonDown(XboxButton.DPadUp, controllers[i]))
             {
@@ -119,36 +102,30 @@ public class LobbySpawner : MonoBehaviour {
 
         if(players[4])
         {
-            // If Q or E is pressed, change color of the keyboard player
+            // If Q or E is pressed, change class of the keyboard player
             if (Input.GetButtonDown("KeyboardScrollLeft"))
             {
-                SetPlayerColorNext(4);
+                SetPlayerClassNext(4);
             }
             else if (Input.GetButtonDown("KeyboardScrollRight"))
             {
-                SetPlayerColorPrevious(4);
+                SetPlayerClassPrevious(4);
             }
 
-            // Check for keyboard player ready
-            if (Input.GetButtonDown("KeyboardReady"))
+            // If R or F is pressed, change color of the keyboard player
+            if (Input.GetButtonDown("KeyboardScrollUp"))
             {
-                if (playersReady[4])
-                {
-                    playersReady[4] = false;
-                    //TODO remove indication that player is ready
-                }
-                else
-                {
-                    playersReady[4] = true;
-                    //TODO add indication that player is ready
-                }
+                SetPlayerColorNext(4);
+            }
+            else if (Input.GetButtonDown("KeyboardScrollDown"))
+            {
+                SetPlayerColorPrevious(4);
             }
         }
 
         // If everyone is ready, start game
         if (CanStartGame())
         {
-            Debug.Log("Starting game");
             SceneManager.LoadScene("ConstructedShip0");
         }
     }
@@ -156,6 +133,13 @@ public class LobbySpawner : MonoBehaviour {
     // Returns true if there is at least one player and all players are ready
     protected bool CanStartGame()
     {
+        if(!missionStartZone)
+        {
+            return false;
+        }
+
+        Collider2D missionStartCollider = missionStartZone.GetComponent<Collider2D>(); 
+
         bool canStartGame = true;
         bool atLeastOnePlayer = false;
         for (int i = 0; i < players.Length; i++)
@@ -163,7 +147,10 @@ public class LobbySpawner : MonoBehaviour {
             if(players[i])
             {
                 atLeastOnePlayer = true;
-                if(!playersReady[i])
+
+                Collider2D shipCollider = players[i].GetComponentInChildren<Collider2D>();
+
+                if (!shipCollider.IsTouching(missionStartCollider))
                 {
                     canStartGame = false;
                 }
