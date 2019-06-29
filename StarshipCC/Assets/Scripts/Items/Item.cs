@@ -10,6 +10,11 @@ public abstract class Item : MonoBehaviour {
 
     public AudioClip pickupSound;
 
+    public PlayerController player;
+
+    bool isTimed = false;
+    float duration = 0;
+
     // Use this for initialization
     public virtual void Start () 
     {
@@ -20,17 +25,37 @@ public abstract class Item : MonoBehaviour {
 		
 	}
 
-    public virtual void OnEquip(PlayerController player) 
+    protected void Equip(PlayerController player)
     {
-        if (pickupSound) 
+        this.player = player;
+        this.transform.parent = player.transform;
+        gameObject.SetActive(false);
+
+        OnEquip(player);
+
+        if (pickupSound)
         {
             AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, soundVolume);
         }
+
+        if (isTimed)
+        {
+            Invoke("Unequip", duration);
+        }
     }
 
-    public virtual void OnUnequip(PlayerController player) 
+    protected void Unequip()
     {
+        gameObject.SetActive(true);
+        this.transform.parent = null;
+        this.player = null;
+
+        OnUnequip(player);
     }
+
+    public abstract void OnEquip(PlayerController player);
+
+    public abstract void OnUnequip(PlayerController player);
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
@@ -40,7 +65,7 @@ public abstract class Item : MonoBehaviour {
             PlayerController player = other.GetComponent<PlayerController>();
             if(player && isInteractable)
             {
-                this.OnEquip(player);
+                this.Equip(player);
             }
         }
     }
