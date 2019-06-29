@@ -10,8 +10,8 @@ public class Debris : MonoBehaviour, Hittable
 	protected bool isDead = false;
 
 	// Use this for initialization
-	void Start () {
-		
+	protected void Start () 
+	{
 	}
 	
 	// Update is called once per frame
@@ -33,6 +33,7 @@ public class Debris : MonoBehaviour, Hittable
 	void Hittable.OnHit(Projectile p)
     {
 		health -= p.damage;
+
 		if(health <= 0)
 			Death();
     }
