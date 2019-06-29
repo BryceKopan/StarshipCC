@@ -175,10 +175,10 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             xAimAxis = XCI.GetAxis(XboxAxis.RightStickX, controller);
             yAimAxis = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-            ability1 = XCI.GetButton(XboxButton.A, controller);
-            ability2 = XCI.GetButton(XboxButton.X, controller);
-            ability3 = XCI.GetButton(XboxButton.Y, controller);
-            ability4 = XCI.GetButton(XboxButton.B, controller);
+            ability1 = XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0.5;
+            ability2 = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0.5;
+            ability3 = XCI.GetButton(XboxButton.RightBumper, controller);
+            ability4 = XCI.GetButton(XboxButton.LeftBumper, controller);
 
             // Twin stick mode
             if (twinStick)
