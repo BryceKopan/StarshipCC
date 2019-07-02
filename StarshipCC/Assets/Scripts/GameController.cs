@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 	public GameObject setActiveOnGameOver;
 	public GameObject GameOverScoreText;
 
+	public List<GameObject> bosses = new List<GameObject>();
+
 	private List<GameObject> players;
 	private bool gameStarted = false;
 	private bool gameIsOver = false;
@@ -41,6 +43,15 @@ public class GameController : MonoBehaviour
 			if(players.Count > 0)
 			{
 				gameStarted = true;
+			}
+		}
+
+		if(gameStarted)
+		{
+			foreach(GameObject boss in bosses)
+			{
+				if(boss == null)
+					GameOver();
 			}
 		}
 
