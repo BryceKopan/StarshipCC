@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Engine : MonoBehaviour
+public abstract class Engine : MonoBehaviour
 {
-    public float moveSpeed = 80f;
-    public float turnSpeed = 5f;
+    public abstract float MoveSpeed();
+    public abstract float TurnSpeed();
 
     // Start is called before the first frame update
     void Start()

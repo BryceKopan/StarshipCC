@@ -126,12 +126,22 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         HandleInput();
 
+        float moveSpeed = playerClass.engine.MoveSpeed();
+
+        //Calculate how far the ship is rotated from forward, and scale the thrust speed accordingly
+        float angleSpeedModifier = Vector2.Angle(transform.up, moveDirection);
+        
+        if(angleSpeedModifier != 0)
+        {
+            moveSpeed = moveSpeed * ((180 - angleSpeedModifier) / moveSpeed);
+        }
+
         //Move Along moveDirection
-        rigidbody.AddForce(moveDirection * playerClass.engine.moveSpeed);
+        rigidbody.AddForce(moveDirection * moveSpeed);
         
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
-        rigidbody.MoveRotation(Mathf.LerpAngle(rigidbody.rotation, angle, playerClass.engine.turnSpeed * Time.deltaTime));
+        rigidbody.MoveRotation(Mathf.LerpAngle(rigidbody.rotation, angle, playerClass.engine.TurnSpeed() * Time.deltaTime));
     }
 
     void HandleInput()

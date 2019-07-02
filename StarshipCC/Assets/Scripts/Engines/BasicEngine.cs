@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class BasicEngine : Engine
 {
+    public override float MoveSpeed()
+    {
+        return 300;
+    }
+
+    public override float TurnSpeed()
+    {
+        return 2;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
