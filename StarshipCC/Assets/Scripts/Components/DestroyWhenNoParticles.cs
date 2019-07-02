@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class DestroyWhenNoParticles : MonoBehaviour
 {
-    private ParticleSystem ps;
+    private List<ParticleSystem> psList = new List<ParticleSystem>();
     
     void Start()
     {
-        ps = GetComponent<ParticleSystem>();
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+
+        if(ps != null)
+            psList.Add(ps);
+
+        psList.AddRange(GetComponentsInChildren<ParticleSystem>());
     }
 
     void Update()
     {
-        if(!ps.IsAlive())
+        bool particleSystemAlive = false;
+
+        foreach(ParticleSystem ps in psList)
+        {         
+            if(ps.IsAlive())
+                particleSystemAlive = true;
+        }
+
+        if(!particleSystemAlive)
             Destroy(gameObject);
     }
 }

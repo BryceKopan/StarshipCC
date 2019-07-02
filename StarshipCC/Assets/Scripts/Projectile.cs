@@ -71,7 +71,7 @@ public class Projectile : MonoBehaviour {
 
             float lifetime = ps.main.startLifetime.constantMax;
 
-            Destroy(ps, lifetime);
+            Destroy(ps.gameObject, lifetime);
         }
 
         Destroy(gameObject);
