@@ -28,28 +28,24 @@ public class PlayerClass : MonoBehaviour
             startingWeapons[i] = instance;
         }
 
-        engine = Instantiate(engine);
-        shield = Instantiate(shield);
+        engine = (Engine)gameObject.AddComponent(engine.GetType());
+        shield = (Shield)gameObject.AddComponent(shield.GetType());
 
         if(ability1)
         {
-            ability1 = Instantiate(ability1);
-            ability1.transform.parent = this.transform;
+            ability1 = (Ability)gameObject.AddComponent(ability1.GetType());
         }
         if(ability2)
         {
-            ability2 = Instantiate(ability2);
-            ability2.transform.parent = this.transform;
+            ability2 = (Ability)gameObject.AddComponent(ability2.GetType());
         }
         if(ability3)
         {
-            ability3 = Instantiate(ability3);
-            ability3.transform.parent = this.transform;
+            ability3 = (Ability)gameObject.AddComponent(ability3.GetType());
         }
         if(ability4)
         {
-            ability4 = Instantiate(ability4);
-            ability4.transform.parent = this.transform;
+            ability4 = (Ability)gameObject.AddComponent(ability4.GetType());
         }
     }
 

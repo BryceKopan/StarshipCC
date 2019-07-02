@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
                 RemoveWeapon(weapons[i]);
                 i--;
             }
+
+            Destroy(playerClass.gameObject);
         }
 
         // Equip the new class
