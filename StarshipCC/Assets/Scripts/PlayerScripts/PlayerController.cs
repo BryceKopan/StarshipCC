@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     void Start()
     {
         InitInput();
+        transform.localPosition = Vector3.zero;
     }
 
     void InitInput()

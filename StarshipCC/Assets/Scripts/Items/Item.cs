@@ -10,6 +10,7 @@ public abstract class Item : MonoBehaviour {
 
     public AudioClip pickupSound;
 
+    [ReadOnly]
     public PlayerController player;
 
     bool isTimed = false;
@@ -28,8 +29,12 @@ public abstract class Item : MonoBehaviour {
     protected void Equip(PlayerController player)
     {
         this.player = player;
-        this.transform.parent = player.transform;
-        gameObject.SetActive(false);
+        transform.parent = player.transform;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
 
         OnEquip(player);
 
@@ -46,11 +51,13 @@ public abstract class Item : MonoBehaviour {
 
     protected void Unequip()
     {
-        gameObject.SetActive(true);
+        OnUnequip(player);
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+
         this.transform.parent = null;
         this.player = null;
-
-        OnUnequip(player);
     }
 
     public abstract void OnEquip(PlayerController player);
