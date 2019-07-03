@@ -9,7 +9,7 @@ public class LobbySpawner : MonoBehaviour {
     public GameObject missionStartZone;
 
     GameObject[] players = new GameObject[5];
-    Vector3[] spawnPositions = new Vector3[5];
+    public Transform[] spawnPositions = new Transform[5];
 
     int[] colorIndices = new int[] {0, 0, 0, 0, 0};
     [SerializeField] Color[] possibleColors;
@@ -36,13 +36,6 @@ public class LobbySpawner : MonoBehaviour {
         controllers[1] = XboxController.Second;
         controllers[2] = XboxController.Third;
         controllers[3] = XboxController.Fourth;
-
-        // Init spawn positions
-        spawnPositions[0] = new Vector3(-75f, 25f, 0f);
-        spawnPositions[1] = new Vector3(75f, 25f, 0f);
-        spawnPositions[2] = new Vector3(-75f, -25f, 0f);
-        spawnPositions[3] = new Vector3(75f, 25f, 0f);
-        spawnPositions[4] = new Vector3(0f, 0f, 0f);
     }
 
     void Update() {
@@ -167,7 +160,13 @@ public class LobbySpawner : MonoBehaviour {
 
     protected void SpawnPlayer(int playerIndex)
     {
-        GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPositions[playerIndex], Quaternion.identity);
+        Vector3 spawnPos = Vector3.zero;
+        if(spawnPositions[playerIndex])
+        {
+            spawnPos = spawnPositions[playerIndex].position;
+        }
+
+        GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPos, Quaternion.identity);
         PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
         playerController.PlayerNumber = playerIndex + 1;
         playerController.SetPlayerClass(possibleClasses[0]);
