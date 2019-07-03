@@ -51,9 +51,12 @@ MonoBehaviour:
   soundVolume: 0.6
   numAttacks: 1
   delayBetweenAttacks: 0
+  recoilMagnitude: 20
   canAttack: 1
   isAttacking: 0
   attackSound: {fileID: 8300000, guid: 7fc1256e29ecc5140984efdb7d0add3a, type: 3}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
   projectilePrefab: {fileID: 626610936080815164, guid: 2d2f66a8bfa614a468331566107ac1dc,
     type: 3}
   bulletSpeed: 200
