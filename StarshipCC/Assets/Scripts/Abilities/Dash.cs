@@ -8,16 +8,20 @@ public class Dash : Ability
     public float dashLength = 0.3f;
     public float dashCooldown = 1f;
 
+    public ParticleSystem emitter;
+
     protected override void Start()
     {
         base.Start();
         activeLength = dashLength;
         cooldownLength = dashCooldown;
+        emitter = GetComponent<ParticleSystem>();
     }
 
     protected override void OnActivate()
     {
         player.GetComponent<Rigidbody2D>().AddForce(player.moveDirection * dashSpeed, ForceMode2D.Impulse);
+        EmitParticles();
     }
 
     protected override void OnDeactivate()
@@ -28,5 +32,13 @@ public class Dash : Ability
     protected override void OnReady()
     {
        
+    }
+
+    protected void EmitParticles()
+    {
+        if(emitter)
+        {
+            emitter.Play();
+        }
     }
 }

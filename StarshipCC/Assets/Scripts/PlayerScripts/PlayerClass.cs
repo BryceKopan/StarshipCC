@@ -5,12 +5,19 @@ using UnityEngine;
 public class PlayerClass : MonoBehaviour
 {
     public List<Weapon> startingWeapons;
-    public Engine engine;
-    public Shield shield;
 
+    [ReadOnly]
+    public Engine engine;
+    [ReadOnly]
+    public Shield shield;
+    
+    [ReadOnly]
     public Ability ability1;
+    [ReadOnly]
     public Ability ability2;
+    [ReadOnly]
     public Ability ability3;
+    [ReadOnly]
     public Ability ability4;
 
     public float startingMaxHealth;
@@ -28,24 +35,33 @@ public class PlayerClass : MonoBehaviour
             startingWeapons[i] = instance;
         }
 
-        engine = (Engine)gameObject.AddComponent(engine.GetType());
-        shield = (Shield)gameObject.AddComponent(shield.GetType());
+        // Engine and shield must be components on the class prefab
+        engine = gameObject.GetComponent<Engine>();
+        shield = gameObject.GetComponent<Shield>();
 
-        if(ability1)
+        Ability[] abilities = GetComponents<Ability>();
+        for(int i = 0; i < abilities.Length; i++)
         {
-            ability1 = (Ability)gameObject.AddComponent(ability1.GetType());
-        }
-        if(ability2)
-        {
-            ability2 = (Ability)gameObject.AddComponent(ability2.GetType());
-        }
-        if(ability3)
-        {
-            ability3 = (Ability)gameObject.AddComponent(ability3.GetType());
-        }
-        if(ability4)
-        {
-            ability4 = (Ability)gameObject.AddComponent(ability4.GetType());
+            if(i == 0)
+            {
+                ability1 = abilities[i];
+            }
+            else if(i == 1)
+            {
+                ability2 = abilities[i];
+            }
+            else if (i == 2)
+            {
+                ability3 = abilities[i];
+            }
+            else if (i == 4)
+            {
+                ability4 = abilities[i];
+            }
+            else
+            {
+                Debug.Log("Warning: player class has more than 4 abilities");
+            }
         }
     }
 
@@ -58,7 +74,8 @@ public class PlayerClass : MonoBehaviour
     public void Equip(PlayerController player)
     {
         this.player = player;
-        this.transform.parent = player.transform.parent;
+        this.transform.parent = player.transform;
+        this.transform.position = player.transform.position;
         if(ability1)
         {
             ability1.player = player;

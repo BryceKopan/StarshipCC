@@ -10,6 +10,7 @@ public abstract class Ability : MonoBehaviour
     protected float activeLength;
     protected float cooldownLength;
 
+    [HideInInspector]
     public PlayerController player;
 
     // Start is called before the first frame update

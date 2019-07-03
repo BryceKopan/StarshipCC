@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     // How far the user must move the stick before the ship will fire (0-1)
     public float twinStickFireThreshold = 0.5f;
 
+    public float fireConeWidth = 20;
+
     [HideInInspector]
     public PlayerClass playerClass;
 
@@ -192,7 +194,10 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             {
                 Vector2 aimVector = new Vector2(xAimAxis, yAimAxis);
                 float aimMagnitude = aimVector.magnitude;
-                attack = aimMagnitude > twinStickFireThreshold;
+
+                float angleBetweenAimAndJoystick = Vector2.Angle(transform.up, aimDirection);
+
+                attack = aimMagnitude > twinStickFireThreshold && angleBetweenAimAndJoystick < fireConeWidth / 2;
 
                 parry = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0;
             }
