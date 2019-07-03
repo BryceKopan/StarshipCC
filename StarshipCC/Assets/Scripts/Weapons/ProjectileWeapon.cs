@@ -59,6 +59,22 @@ public class ProjectileWeapon : Weapon {
             //Add velocity to the bullet
             projectileScript.moveVector = bulletSpawn.transform.up;
         }
+
+        ApplyRecoil();
+    }
+
+    protected virtual void ApplyRecoil()
+    {
+        Rigidbody2D rigidbody = null;
+        if (player)
+        {
+            rigidbody = player.GetComponent<Rigidbody2D>();
+        }
+
+        if (rigidbody)
+        {
+            rigidbody.AddForce(-player.transform.up * recoilMagnitude, ForceMode2D.Impulse);
+        }
     }
 
     public override void OnEquip(PlayerController player) { }

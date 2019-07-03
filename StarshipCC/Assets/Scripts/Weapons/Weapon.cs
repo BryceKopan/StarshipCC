@@ -15,11 +15,16 @@ public abstract class Weapon : MonoBehaviour {
     public int numAttacks = 1;
     public float delayBetweenAttacks = 0;
 
+    public float recoilMagnitude;
+
     public bool canAttack;
     public bool isAttacking;
 
     private AudioSource audioSource;
     public AudioClip attackSound;
+
+    public PlayerController player;
+    public EnemyController enemy;
 
     // Use this for initialization
     public virtual void Start()
@@ -48,24 +53,28 @@ public abstract class Weapon : MonoBehaviour {
     public void Equip(PlayerController player)
     {
         gameObject.tag = Tags.PLAYER;
+        this.player = player;
         OnEquip(player);
     }
 
     public void Equip(EnemyController enemy)
     {
         gameObject.tag = Tags.ENEMY;
+        this.enemy = enemy;
         OnEquip(enemy);
     }
 
     public void Unequip(PlayerController player)
     {
         gameObject.tag = Tags.UNTAGGED;
+        this.player = null;
         OnUnequip(player);
     }
 
     public void Unequip(EnemyController enemy)
     {
         gameObject.tag = Tags.UNTAGGED;
+        this.enemy = null;
         OnUnequip(enemy);
     }
 

@@ -6,12 +6,12 @@ public class BasicEngine : Engine
 {
     public override float MoveSpeed()
     {
-        return 300;
+        return 100;
     }
 
     public override float TurnSpeed()
     {
-        return 2;
+        return 3;
     }
 
     // Start is called before the first frame update

@@ -7,8 +7,14 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 {
     public PlayerClass defaultClass;
 
+    // Determines which controller will move the ship (1-4 = xbox, 5 = keyboard and mouse)
     public int PlayerNumber = 5;
+
+    // How far the user must move the stick before the ship will rotate (0-1)
     public float joystickDeadzone = 0.1f;
+
+    // How far the user must move the stick before the ship will fire (0-1)
+    public float twinStickFireThreshold = 0.5f;
 
     [HideInInspector]
     public PlayerClass playerClass;
@@ -16,7 +22,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     List<Weapon> weapons;
 
     public bool twinStick = false;
-    public float twinStickFireThreshold = 0.5f;
 
     private float maxHealth;
     private float currentHealth;
@@ -126,18 +131,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         HandleInput();
 
-        float moveSpeed = playerClass.engine.MoveSpeed();
-
-        //Calculate how far the ship is rotated from forward, and scale the thrust speed accordingly
-        float angleSpeedModifier = Vector2.Angle(transform.up, moveDirection);
-        
-        if(angleSpeedModifier != 0)
-        {
-            moveSpeed = moveSpeed * ((180 - angleSpeedModifier) / moveSpeed);
-        }
-
         //Move Along moveDirection
-        rigidbody.AddForce(moveDirection * moveSpeed);
+        rigidbody.AddForce(moveDirection * playerClass.engine.MoveSpeed());
         
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
@@ -213,10 +208,11 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
         moveDirection = new Vector2(xMovementAxis, yMovementAxis);
 
-        // Implement joystick deadzone
-        if (Mathf.Abs(xAimAxis) > joystickDeadzone || Mathf.Abs(yAimAxis) > joystickDeadzone)
+        // Joystick aiming deadzone (x and y are combined then normalized to create circular deadzone, not square)
+        Vector2 joystickPos = new Vector2(xAimAxis, yAimAxis);
+        if(joystickPos.magnitude > joystickDeadzone)
         {
-            aimDirection = new Vector2(xAimAxis, yAimAxis);
+            aimDirection = joystickPos;
         }
         
         if (attack)
