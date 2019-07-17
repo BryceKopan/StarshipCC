@@ -22,7 +22,7 @@ public class PlayerClass : MonoBehaviour
 
     public float startingMaxHealth;
 
-    public Sprite playerSprite;
+    public Sprite shipSprite;
     public Sprite colorMask;
 
     private PlayerController player;
@@ -76,7 +76,23 @@ public class PlayerClass : MonoBehaviour
         this.player = player;
         this.transform.parent = player.transform;
         this.transform.position = player.transform.position;
-        if(ability1)
+
+        player.SetMaxHealth(startingMaxHealth);
+
+        // Set the ship sprite to reflect the class
+        SpriteRenderer renderer = player.GetComponent<SpriteRenderer>();
+        renderer.sprite = shipSprite;
+
+        GameObject colorOverlay = player.transform.Find("ColorOverlay").gameObject;
+        colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
+        colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
+
+        foreach (Weapon weapon in startingWeapons)
+        {
+            player.AddWeapon(weapon);
+        }
+
+        if (ability1)
         {
             ability1.player = player;
         }
@@ -91,6 +107,21 @@ public class PlayerClass : MonoBehaviour
         if (ability4)
         {
             ability4.player = player;
+        }
+    }
+
+    public void Unequip()
+    {
+        if(player)
+        {
+            for (int i = 0; i < startingWeapons.Count; i++)
+            {
+                player.RemoveWeapon(startingWeapons[i]);
+            }
+
+            player = null;
+
+            Destroy(gameObject);
         }
     }
 }

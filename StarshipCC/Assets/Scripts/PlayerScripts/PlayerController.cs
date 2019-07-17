@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     public float fireConeWidth = 20;
 
-    [HideInInspector]
-    public PlayerClass playerClass;
+    [ReadOnly]
+    public PlayerClass playerClass = null;
 
     List<Weapon> weapons;
 
@@ -101,32 +101,12 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         // If player class is already set, remove the existing weapons
         if(playerClass)
         {
-            for(int i = 0; i < weapons.Count; i++)
-            {
-                RemoveWeapon(weapons[i]);
-                i--;
-            }
-
-            Destroy(playerClass.gameObject);
+            playerClass.Unequip();
         }
 
         // Equip the new class
         playerClass = Instantiate(pClass);
         playerClass.Equip(this);
-        SetMaxHealth(playerClass.startingMaxHealth);
-
-        foreach (Weapon weapon in playerClass.startingWeapons)
-        {
-            AddWeapon(weapon);
-        }
-
-        // Set the ship sprite to reflect the class
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.sprite = playerClass.playerSprite;
-
-        GameObject colorOverlay = transform.Find("ColorOverlay").gameObject;
-        colorOverlay.GetComponent<SpriteRenderer>().sprite = playerClass.colorMask;
-        colorOverlay.GetComponent<SpriteMask>().sprite = playerClass.colorMask;
     }
 
     // FixedUpdate is independent of framerate

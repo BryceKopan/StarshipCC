@@ -15,7 +15,6 @@ public class Dash : Ability
         base.Start();
         activeLength = dashLength;
         cooldownLength = dashCooldown;
-        emitter = GetComponent<ParticleSystem>();
     }
 
     protected override void OnActivate()

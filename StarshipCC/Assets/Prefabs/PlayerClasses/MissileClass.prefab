@@ -58,8 +58,10 @@ MonoBehaviour:
   ability3: {fileID: 0}
   ability4: {fileID: 0}
   startingMaxHealth: 4
-  playerSprite: {fileID: 21300000, guid: 5370b8e33f248d247b4703268a8f5230, type: 3}
+  shipSprite: {fileID: 21300000, guid: 5370b8e33f248d247b4703268a8f5230, type: 3}
   colorMask: {fileID: 21300000, guid: 721186baaa5267e4994af43a636bb4d7, type: 3}
+  shieldRenderer: {fileID: 0}
+  shieldColor: {r: 0, g: 0.7483809, b: 1, a: 0.8666667}
 --- !u!114 &817724500276953339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +102,7 @@ MonoBehaviour:
   dashSpeed: 200
   dashLength: 0.05
   dashCooldown: 1
-  emitter: {fileID: 0}
+  emitter: {fileID: -3328145434650838231}
 --- !u!199 &-934377677554226215
 ParticleSystemRenderer:
   serializedVersion: 6
