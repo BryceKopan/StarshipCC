@@ -35,7 +35,7 @@ public class LaserPointerItem : Item
         }
     }
 
-    public override void OnEquip(PlayerController player)
+    protected override void OnEquip(PlayerController player)
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
@@ -48,7 +48,7 @@ public class LaserPointerItem : Item
         lineRenderer.material = lineMaterial;
     }
 
-    public override void OnUnequip(PlayerController player)
+    protected override void OnUnequip(PlayerController player)
     {
         Destroy(lineRenderer);
         lineRenderer = null;

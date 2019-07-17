@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7455385300679803212}
   - component: {fileID: 237381847045446983}
   - component: {fileID: 1892700032520201121}
+  - component: {fileID: -9040186325564036063}
   m_Layer: 0
   m_Name: SniperClass
   m_TagString: Untagged
@@ -60,8 +61,6 @@ MonoBehaviour:
   startingMaxHealth: 4
   shipSprite: {fileID: 21300000, guid: ad06baaabd8f9fe4bada7d8ad5aac0b3, type: 3}
   colorMask: {fileID: 21300000, guid: 1c0822fde8a88474e874ebf05893526d, type: 3}
-  shieldRenderer: {fileID: 0}
-  shieldColor: {r: 0, g: 0.7483809, b: 1, a: 0.8666667}
 --- !u!114 &8177578835833933145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4823,3 +4822,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-9040186325564036063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941999557223814467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2892c8471d1136a4b82921154f440b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  soundVolume: 1
+  pickupSound: {fileID: 0}
+  player: {fileID: 0}

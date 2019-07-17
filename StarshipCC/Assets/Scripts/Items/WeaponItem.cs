@@ -13,12 +13,12 @@ public class WeaponItem : Item {
         weaponScript = Instantiate(weapon).GetComponent<Weapon>();
     }
 
-    public override void OnEquip(PlayerController player)
+    protected override void OnEquip(PlayerController player)
     {
         player.AddWeapon(weaponScript);
     }
 
-    public override void OnUnequip(PlayerController player)
+    protected override void OnUnequip(PlayerController player)
     {
         player.RemoveWeapon(weaponScript);
     }

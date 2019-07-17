@@ -26,16 +26,25 @@ public abstract class Item : MonoBehaviour {
 		
 	}
 
-    protected void Equip(PlayerController player)
+    public void Equip(PlayerController player)
     {
         this.player = player;
         transform.parent = player.transform;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
 
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (renderer)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
 
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+        if(collider)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+        
         OnEquip(player);
 
         if (pickupSound)
@@ -49,20 +58,29 @@ public abstract class Item : MonoBehaviour {
         }
     }
 
-    protected void Unequip()
+    public void Unequip()
     {
         OnUnequip(player);
 
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        gameObject.GetComponent<Collider2D>().enabled = true;
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (renderer)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+        if (collider)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }
 
         this.transform.parent = null;
         this.player = null;
     }
 
-    public abstract void OnEquip(PlayerController player);
+    protected abstract void OnEquip(PlayerController player);
 
-    public abstract void OnUnequip(PlayerController player);
+    protected abstract void OnUnequip(PlayerController player);
 
     public void OnTriggerEnter2D(Collider2D collider)
     {

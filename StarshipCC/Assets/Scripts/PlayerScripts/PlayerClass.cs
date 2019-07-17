@@ -7,6 +7,9 @@ public class PlayerClass : MonoBehaviour
     public List<Weapon> startingWeapons;
 
     [ReadOnly]
+    Item[] startingItems;
+
+    [ReadOnly]
     public Engine engine;
     [ReadOnly]
     public Shield shield;
@@ -63,6 +66,8 @@ public class PlayerClass : MonoBehaviour
                 Debug.Log("Warning: player class has more than 4 abilities");
             }
         }
+
+        startingItems = gameObject.GetComponents<Item>();
     }
 
     // Update is called once per frame
@@ -108,6 +113,11 @@ public class PlayerClass : MonoBehaviour
         {
             ability4.player = player;
         }
+
+        foreach (Item item in startingItems)
+        {
+            item.Equip(player);
+        }
     }
 
     public void Unequip()
@@ -117,6 +127,11 @@ public class PlayerClass : MonoBehaviour
             for (int i = 0; i < startingWeapons.Count; i++)
             {
                 player.RemoveWeapon(startingWeapons[i]);
+            }
+
+            foreach (Item item in startingItems)
+            {
+                item.Unequip();
             }
 
             player = null;
