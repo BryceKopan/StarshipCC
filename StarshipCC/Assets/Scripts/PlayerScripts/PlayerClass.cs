@@ -7,6 +7,9 @@ public class PlayerClass : MonoBehaviour
     public List<Weapon> startingWeapons;
 
     [ReadOnly]
+    Item[] startingItems;
+
+    [ReadOnly]
     public Engine engine;
     [ReadOnly]
     public Shield shield;
@@ -22,7 +25,8 @@ public class PlayerClass : MonoBehaviour
 
     public float startingMaxHealth;
 
-    public Sprite playerSprite;
+    public Sprite shipSprite;
+    public Sprite shieldSprite;
     public Sprite colorMask;
 
     private PlayerController player;
@@ -63,6 +67,13 @@ public class PlayerClass : MonoBehaviour
                 Debug.Log("Warning: player class has more than 4 abilities");
             }
         }
+
+        startingItems = gameObject.GetComponents<Item>();
+    }
+
+    public void Start()
+    {
+        shield.SetSprite(shieldSprite);
     }
 
     // Update is called once per frame
@@ -76,7 +87,27 @@ public class PlayerClass : MonoBehaviour
         this.player = player;
         this.transform.parent = player.transform;
         this.transform.position = player.transform.position;
-        if(ability1)
+        this.transform.localRotation = Quaternion.Euler(Vector3.zero); 
+        this.transform.localScale = new Vector3(1, 1, 1);
+
+        player.SetMaxHealth(startingMaxHealth);
+
+        // Set the ship sprite to reflect the class
+        SpriteRenderer renderer = player.GetComponent<SpriteRenderer>();
+        renderer.sprite = shipSprite;
+
+        GameObject colorOverlay = player.transform.Find("ColorOverlay").gameObject;
+        colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
+        colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
+
+        shield.Equip(player);
+
+        foreach (Weapon weapon in startingWeapons)
+        {
+            player.AddWeapon(weapon);
+        }
+
+        if (ability1)
         {
             ability1.player = player;
         }
@@ -91,6 +122,33 @@ public class PlayerClass : MonoBehaviour
         if (ability4)
         {
             ability4.player = player;
+        }
+
+        foreach (Item item in startingItems)
+        {
+            item.Equip(player);
+        }
+    }
+
+    public void Unequip()
+    {
+        if(player)
+        {
+            for (int i = 0; i < startingWeapons.Count; i++)
+            {
+                player.RemoveWeapon(startingWeapons[i]);
+            }
+
+            foreach (Item item in startingItems)
+            {
+                item.Unequip();
+            }
+
+            shield.Unequip();
+
+            player = null;
+
+            Destroy(gameObject);
         }
     }
 }
