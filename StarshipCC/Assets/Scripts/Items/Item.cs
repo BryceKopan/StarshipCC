@@ -10,6 +10,7 @@ public abstract class Item : MonoBehaviour {
 
     public AudioClip pickupSound;
 
+    [ReadOnly]
     public PlayerController player;
 
     bool isTimed = false;
@@ -25,12 +26,25 @@ public abstract class Item : MonoBehaviour {
 		
 	}
 
-    protected void Equip(PlayerController player)
+    public void Equip(PlayerController player)
     {
         this.player = player;
-        this.transform.parent = player.transform;
-        gameObject.SetActive(false);
+        transform.parent = player.transform;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
 
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (renderer)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+        if(collider)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+        
         OnEquip(player);
 
         if (pickupSound)
@@ -44,18 +58,29 @@ public abstract class Item : MonoBehaviour {
         }
     }
 
-    protected void Unequip()
+    public void Unequip()
     {
-        gameObject.SetActive(true);
+        OnUnequip(player);
+
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        if (renderer)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+        if (collider)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }
+
         this.transform.parent = null;
         this.player = null;
-
-        OnUnequip(player);
     }
 
-    public abstract void OnEquip(PlayerController player);
+    protected abstract void OnEquip(PlayerController player);
 
-    public abstract void OnUnequip(PlayerController player);
+    protected abstract void OnUnequip(PlayerController player);
 
     public void OnTriggerEnter2D(Collider2D collider)
     {

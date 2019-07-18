@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3800987669637062943}
   - component: {fileID: 3910195821064623341}
   - component: {fileID: 3783021021891678853}
-  - component: {fileID: 3829990569202307771}
+  - component: {fileID: 5426625425383059865}
   m_Layer: 0
-  m_Name: RailgunItemPrefab
+  m_Name: LaserPointerItemPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.27
---- !u!114 &3829990569202307771
+--- !u!114 &5426625425383059865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,10 +106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3798055384489560241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c7c7180681d61428c4bc6d8c8eecc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2892c8471d1136a4b82921154f440b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
   soundVolume: 1
   pickupSound: {fileID: 8300000, guid: eb929a3d06d49c145b2b361bcee0a809, type: 3}
-  weapon: {fileID: 1680036598287899896, guid: 0c679762320979748a58bc8a4202347b, type: 3}
+  player: {fileID: 0}
