@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class Shield : MonoBehaviour
 {
+    abstract public float MaxCharge { get; set; }
+    abstract public float RechargeDelay { get; set; }
+    abstract public float RechargeAmount { get; set; }
+
     public SpriteRenderer shieldRenderer;
 
     public float currentCharge = 0;
@@ -14,7 +18,7 @@ public abstract class Shield : MonoBehaviour
     // Start is called before the first frame update
     public void Awake()
     {
-        currentCharge = MaxCharge();
+        currentCharge = MaxCharge;
 
         GameObject spriteObj = new GameObject("Shield Sprite");
         spriteObj.transform.localPosition = Vector3.zero;
@@ -46,10 +50,10 @@ public abstract class Shield : MonoBehaviour
         shieldRenderer.enabled = true;
         player.GetComponent<SpriteRenderer>().color = Color.cyan;
 
-        currentCharge = Mathf.Min(MaxCharge(), currentCharge + RechargeAmount());
-        if(currentCharge < MaxCharge())
+        currentCharge = Mathf.Min(MaxCharge, currentCharge + RechargeAmount);
+        if(currentCharge < MaxCharge)
         {
-            Invoke("Recharge", RechargeDelay());
+            Invoke("Recharge", RechargeDelay);
         }
 
         OnRecharge();
@@ -79,7 +83,7 @@ public abstract class Shield : MonoBehaviour
             TakeDamageFrom(p);
 
             CancelInvoke("Recharge");
-            Invoke("Recharge", RechargeDelay());
+            Invoke("Recharge", RechargeDelay);
 
             if (!HasCharge())
             {
@@ -95,9 +99,6 @@ public abstract class Shield : MonoBehaviour
         OnDisabled();
     }
 
-    public abstract float MaxCharge();
-    public abstract float RechargeDelay();
-    public abstract float RechargeAmount();
     protected abstract void TakeDamageFrom(Projectile p);
     protected abstract void OnEquip(PlayerController p);
     protected abstract void OnUnequip(PlayerController p);

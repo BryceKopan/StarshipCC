@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class BasicShield : Shield
 {
-    public override float MaxCharge()
+    public override float MaxCharge
     {
-        return 1;
+        get
+        {
+            return 1;
+        }
+        set{}
     }
 
-    public override float RechargeDelay()
+    public override float RechargeDelay
     {
-        return 8;
+        get
+        {
+            return 8;
+        }
+        set { }
     }
 
-    public override float RechargeAmount()
+    public override float RechargeAmount
     {
-        return 1;
+        get
+        {
+            return 1;
+        }
+        set { }
     }
 
     protected override void OnRecharge()

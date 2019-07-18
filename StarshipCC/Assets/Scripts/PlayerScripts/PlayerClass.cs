@@ -130,6 +130,21 @@ public class PlayerClass : MonoBehaviour
         }
     }
 
+    public void SetShield(Shield newShield)
+    {
+        if(shield != null)
+        {
+            shield.Unequip();
+            shield.shieldRenderer.enabled = false;
+        }
+
+        shield = newShield;
+        if(newShield != null)
+        {
+            newShield.Equip(player);
+        }
+    }
+
     public void Unequip()
     {
         if(player)

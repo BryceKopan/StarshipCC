@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     [ReadOnly]
     public PlayerClass playerClass = null;
 
-    List<Weapon> weapons;
+    public List<Weapon> weapons;
 
     public bool twinStick = false;
 
@@ -364,15 +364,20 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         {
             float damageBlocked = 0;
             // First try to block damage with shield
-            if(playerClass.shield.HasCharge())
+            if (playerClass.shield != null)
             {
-                damageBlocked = Mathf.Min(playerClass.shield.currentCharge, p.damage);
-                playerClass.shield.Hit(p);
+                if (playerClass.shield.HasCharge())
+                {
+                    damageBlocked = Mathf.Min(playerClass.shield.currentCharge, p.damage);
+                    playerClass.shield.Hit(p);
+                }
             }
-            // If shield is down, take hull damage
-            if(!playerClass.shield.HasCharge())
+
+            float damageDealt = p.damage - damageBlocked;
+            TakeDamage(p.damage - damageBlocked);
+
+            if (damageDealt > 0)
             {
-                TakeDamage(p.damage - damageBlocked);
                 StartInvincibility();
             }
         }
