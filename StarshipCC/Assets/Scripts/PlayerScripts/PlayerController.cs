@@ -362,8 +362,19 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         if (!invincible)
         {
-            TakeDamage(p.damage);
-            StartInvincibility();
+            float damageBlocked = 0;
+            // First try to block damage with shield
+            if(playerClass.shield.HasCharge())
+            {
+                damageBlocked = Mathf.Min(playerClass.shield.currentCharge, p.damage);
+                playerClass.shield.Hit(p);
+            }
+            // If shield is down, take hull damage
+            if(!playerClass.shield.HasCharge())
+            {
+                TakeDamage(p.damage - damageBlocked);
+                StartInvincibility();
+            }
         }
     }
 

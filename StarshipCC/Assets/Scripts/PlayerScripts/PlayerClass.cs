@@ -26,6 +26,7 @@ public class PlayerClass : MonoBehaviour
     public float startingMaxHealth;
 
     public Sprite shipSprite;
+    public Sprite shieldSprite;
     public Sprite colorMask;
 
     private PlayerController player;
@@ -70,6 +71,11 @@ public class PlayerClass : MonoBehaviour
         startingItems = gameObject.GetComponents<Item>();
     }
 
+    public void Start()
+    {
+        shield.SetSprite(shieldSprite);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -81,6 +87,8 @@ public class PlayerClass : MonoBehaviour
         this.player = player;
         this.transform.parent = player.transform;
         this.transform.position = player.transform.position;
+        this.transform.localRotation = Quaternion.Euler(Vector3.zero); 
+        this.transform.localScale = new Vector3(1, 1, 1);
 
         player.SetMaxHealth(startingMaxHealth);
 
@@ -91,6 +99,8 @@ public class PlayerClass : MonoBehaviour
         GameObject colorOverlay = player.transform.Find("ColorOverlay").gameObject;
         colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
         colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
+
+        shield.Equip(player);
 
         foreach (Weapon weapon in startingWeapons)
         {
@@ -133,6 +143,8 @@ public class PlayerClass : MonoBehaviour
             {
                 item.Unequip();
             }
+
+            shield.Unequip();
 
             player = null;
 

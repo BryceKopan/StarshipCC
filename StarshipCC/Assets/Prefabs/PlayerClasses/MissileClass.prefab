@@ -59,9 +59,8 @@ MonoBehaviour:
   ability4: {fileID: 0}
   startingMaxHealth: 4
   shipSprite: {fileID: 21300000, guid: 5370b8e33f248d247b4703268a8f5230, type: 3}
+  shieldSprite: {fileID: 21300000, guid: 043ec4314115ab54a88c1a7d77d96dad, type: 3}
   colorMask: {fileID: 21300000, guid: 721186baaa5267e4994af43a636bb4d7, type: 3}
-  shieldRenderer: {fileID: 0}
-  shieldColor: {r: 0, g: 0.7483809, b: 1, a: 0.8666667}
 --- !u!114 &817724500276953339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eead22326c7cc4c81d3f9ecfa3ebfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCharge: 0
+  timeSinceLastHit: 0
+  player: {fileID: 0}
 --- !u!114 &-5173022952616880756
 MonoBehaviour:
   m_ObjectHideFlags: 0
