@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
 		{
 			if (Input.GetKey("joystick button 7") || Input.GetKey(KeyCode.Space))
 			{
-				SceneManager.LoadScene(2);
+				SceneManager.LoadScene("Lobby");
 			}
 		}
 	}
