@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawns: []
-  damage: 10
+  damage: 12
   range: 400
   cooldown: 1
   soundVolume: 0.6
@@ -59,7 +59,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   projectilePrefab: {fileID: 626610936080815164, guid: 2d2f66a8bfa614a468331566107ac1dc,
     type: 3}
-  bulletSpeed: 200
+  bulletSpeed: 220
 --- !u!1 &1680857852220447092
 GameObject:
   m_ObjectHideFlags: 0

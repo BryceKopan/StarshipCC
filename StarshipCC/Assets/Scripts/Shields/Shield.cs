@@ -44,8 +44,10 @@ public abstract class Shield : MonoBehaviour
     public IEnumerable Recharge()
     {
         shieldRenderer.enabled = true;
+        player.GetComponent<SpriteRenderer>().color = Color.cyan;
+
         currentCharge = Mathf.Min(MaxCharge(), currentCharge + RechargeAmount());
-        if(currentCharge >= MaxCharge())
+        if(currentCharge < MaxCharge())
         {
             Invoke("Recharge", RechargeDelay());
         }
@@ -66,6 +68,7 @@ public abstract class Shield : MonoBehaviour
             shieldRenderer.transform.localScale = new Vector3(1, 1, 1);
             shieldRenderer.sprite = sprite;
             shieldRenderer.enabled = true;
+            player.GetComponent<SpriteRenderer>().color = Color.cyan;
         }
     }
 
@@ -88,6 +91,7 @@ public abstract class Shield : MonoBehaviour
     public void Disable()
     {
         shieldRenderer.enabled = false;
+        player.GetComponent<SpriteRenderer>().color = Color.white;
         OnDisabled();
     }
 

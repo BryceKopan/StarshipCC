@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9155650670460996904}
   - component: {fileID: 4082214240141896146}
   - component: {fileID: -630280091794065349}
-  - component: {fileID: 3578600153070171419}
   - component: {fileID: 5391869549094977188}
   - component: {fileID: -2721163812024614840}
   - component: {fileID: 5476159603169910332}
+  - component: {fileID: 2442071813607901495}
   m_Layer: 0
   m_Name: AssaultClass
   m_TagString: Untagged
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingWeapons:
   - {fileID: 114342664500156800, guid: 36d8eae8260efa1409e9876dac01829e, type: 3}
-  engine: {fileID: 2279273012967311031, guid: 1d3919b35d06c604ba86dc2d42c479f3, type: 3}
-  shield: {fileID: 4820358831269179572, guid: 5c3e975af9f1cb14f9d9e0d8f188a8eb, type: 3}
+  engine: {fileID: 0}
+  shield: {fileID: 0}
   ability1: {fileID: -5295277093386582323, guid: 45cc3ebd74b89714a8e5c171338bfbf1,
     type: 3}
   ability2: {fileID: 0}
@@ -73,21 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8c3408eb20a3e4aba062f3864d8f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3578600153070171419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3274142738638057663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46eead22326c7cc4c81d3f9ecfa3ebfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldRenderer: {fileID: 0}
-  currentCharge: 0
-  player: {fileID: 0}
 --- !u!114 &5391869549094977188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,3 +4810,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2442071813607901495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274142738638057663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823c37326eaea384bb9861b6bb3d6c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 0}
+  currentCharge: 0
+  player: {fileID: 0}
