@@ -160,13 +160,17 @@ public class LobbySpawner : MonoBehaviour {
 
     protected void SpawnPlayer(int playerIndex)
     {
-        Vector3 spawnPos = Vector3.zero;
+        Transform spawnPos;
         if(spawnPositions[playerIndex])
         {
-            spawnPos = spawnPositions[playerIndex].position;
+            spawnPos = spawnPositions[playerIndex];
+        }
+        else
+        {
+            spawnPos = new GameObject().transform;
         }
 
-        GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+        GameObject newPlayer = (GameObject)Instantiate(playerPrefab, spawnPos.position, spawnPos.rotation);
         PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
         playerController.PlayerNumber = playerIndex + 1;
         playerController.SetPlayerClass(possibleClasses[0]);

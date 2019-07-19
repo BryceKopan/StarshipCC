@@ -6,6 +6,14 @@ public class AttackSpeedItem : Item
 {
     public float modifier = 2;
 
+    public override string Description
+    {
+        get
+        {
+            return "Attack Speed x" + (int)modifier;
+        }
+    }
+
     protected override void OnEquip(PlayerController player)
     {
         foreach(Weapon w in player.weapons)

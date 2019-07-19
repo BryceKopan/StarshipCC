@@ -5559,7 +5559,7 @@ PrefabInstance:
     - target: {fileID: 9006240956638659318, guid: 1045c0da442064364b25305ba62c675d,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: ScreenSpaceCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 9006240956638659319, guid: 1045c0da442064364b25305ba62c675d,
         type: 3}
@@ -5671,6 +5671,11 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9006240956638659314, guid: 1045c0da442064364b25305ba62c675d,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1961322958}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1045c0da442064364b25305ba62c675d, type: 3}
 --- !u!1 &786734562 stripped

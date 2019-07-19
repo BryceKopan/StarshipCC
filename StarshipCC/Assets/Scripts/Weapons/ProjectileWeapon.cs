@@ -45,6 +45,7 @@ public class ProjectileWeapon : Weapon {
             if (gameObject.tag == Tags.PLAYER)
             {
                 projectile.tag = Tags.FRIENDLY_BULLET;
+                projectile.layer = Layers.FRIENDLY_ATTACK;
             }
             else
             {

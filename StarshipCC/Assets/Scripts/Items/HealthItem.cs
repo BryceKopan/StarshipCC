@@ -6,6 +6,14 @@ public class HealthItem : Item {
 
     public float healthAdded = 3;
 
+    public override string Description
+    {
+        get
+        {
+            return "Health +" + (int)healthAdded;
+        }
+    }
+
     protected override void OnEquip(PlayerController player)
     {
         player.SetCurrentHealth(player.GetCurrentHealth() + healthAdded);

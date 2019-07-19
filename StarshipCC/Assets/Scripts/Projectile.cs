@@ -61,19 +61,6 @@ public class Projectile : MonoBehaviour {
             gameObject.transform.rotation);
         }
 
-        //Detach particles so they won't immediately disappear
-        ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>();
-        foreach(ParticleSystem ps in particles)
-        {
-            ps.transform.parent = null;
-            var emission = ps.emission;
-            emission.enabled = false;
-
-            float lifetime = ps.main.startLifetime.constantMax;
-
-            Destroy(ps.gameObject, lifetime);
-        }
-
         Destroy(gameObject);
     }
 }

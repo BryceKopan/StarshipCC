@@ -7,6 +7,14 @@ public class WeaponItem : Item {
     public GameObject weapon;
     private Weapon weaponScript;
 
+    public override string Description
+    {
+        get
+        {
+            return "New Weapon";
+        }
+    }
+
     public override void Start()
     {
         base.Start();

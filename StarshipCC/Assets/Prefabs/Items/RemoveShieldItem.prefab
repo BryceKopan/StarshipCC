@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  displayItemText: 1
+  itemTextPrefab: {fileID: 5065159280009786252, guid: 7bbb169555e438b4caf5ac9bb85fc563,
+    type: 3}
   soundVolume: 1
   pickupSound: {fileID: 8300000, guid: 64f12f67a00598b4e99c09cfc8ac4c5b, type: 3}
   player: {fileID: 0}

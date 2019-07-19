@@ -5,6 +5,12 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour {
 
     public bool isInteractable = true;
+    public bool displayItemText = true;
+
+    public TextMesh itemTextPrefab = null;
+    public int itemTextYOffset = -8;
+
+    abstract public string Description {get;}
 
     public float soundVolume = 1f;
 
@@ -56,6 +62,11 @@ public abstract class Item : MonoBehaviour {
         {
             Invoke("Unequip", duration);
         }
+
+        if(displayItemText)
+        {
+            DisplayItemText();
+        }
     }
 
     public void Unequip()
@@ -92,6 +103,16 @@ public abstract class Item : MonoBehaviour {
             {
                 this.Equip(player);
             }
+        }
+    }
+
+    public void DisplayItemText()
+    {
+        if(itemTextPrefab != null)
+        {
+            TextMesh textObj = Instantiate(itemTextPrefab);
+            textObj.text = Description;
+            textObj.gameObject.transform.position = transform.position + new Vector3(0, itemTextYOffset, 0);
         }
     }
 }

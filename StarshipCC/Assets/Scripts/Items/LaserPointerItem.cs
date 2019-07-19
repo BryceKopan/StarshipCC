@@ -8,6 +8,14 @@ public class LaserPointerItem : Item
     Color lineColor = Color.green;
     int length = 200;
 
+    public override string Description
+    {
+        get
+        {
+            return "Laser Pointer";
+        }
+    }
+
     public override void Update()
     {
         base.Update();

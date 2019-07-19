@@ -58,7 +58,7 @@ public class Cost : MonoBehaviour {
 			uiPosition,
 			transform.rotation);
 
-		ui.transform.SetParent(GameObject.Find("Canvas").transform);
+		ui.transform.SetParent(GameObject.Find("ScreenSpaceCanvas").transform);
 		ui.GetComponent<UnityEngine.UI.Text>().text = ": " + cost;
 	}
 }

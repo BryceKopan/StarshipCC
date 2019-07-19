@@ -7,6 +7,14 @@ public class RemoveShieldItem : Item
     float oldMaxCharge;
     float oldRechargeAmount;
 
+    public override string Description
+    {
+        get
+        {
+            return "Shield Disabled";
+        }
+    }
+
     protected override void OnEquip(PlayerController player)
     {
         oldMaxCharge = player.playerClass.shield.MaxCharge;

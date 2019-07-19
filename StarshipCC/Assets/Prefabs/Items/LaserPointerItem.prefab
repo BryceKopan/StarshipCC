@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3783021021891678853}
   - component: {fileID: 5426625425383059865}
   m_Layer: 0
-  m_Name: LaserPointerItemPrefab
+  m_Name: LaserPointerItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractable: 1
+  displayItemText: 1
+  itemTextPrefab: {fileID: 5065159280009786252, guid: 7bbb169555e438b4caf5ac9bb85fc563,
+    type: 3}
   soundVolume: 1
   pickupSound: {fileID: 8300000, guid: eb929a3d06d49c145b2b361bcee0a809, type: 3}
   player: {fileID: 0}
