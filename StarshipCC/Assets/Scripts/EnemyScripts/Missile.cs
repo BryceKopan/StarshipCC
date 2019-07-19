@@ -16,6 +16,7 @@ public class Missile : Projectile, Hittable {
                     DeathEffectPrefab,
                     gameObject.transform.position,
                     gameObject.transform.rotation);
+
         Instantiate(
                     explosionPrefab,
                     gameObject.transform.position,

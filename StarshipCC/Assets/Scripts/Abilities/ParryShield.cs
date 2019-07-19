@@ -20,23 +20,16 @@ public class ParryShield : MonoBehaviour, Hittable
 
     void Hittable.OnHit(Projectile p)
     {
-        if(p.tag == Tags.ENEMY_BULLET)
+        //If we parried a missile, make the missile explode
+        Missile missileScript = p.GetComponent<Missile>();
+        if(missileScript) 
         {
-            //If we parried a missile, make the missile explode
-            Missile missileScript = p.GetComponent<Missile>();
-            if(missileScript) 
-            {
-                missileScript.Death();
-                return;
-            }
-            else 
-            {
-                p.tag = Tags.FRIENDLY_BULLET;
-            }
+            missileScript.Death();
+            return;
         }
-        else if(p.tag == Tags.FRIENDLY_BULLET)
+        else 
         {
-            p.tag = Tags.ENEMY_BULLET;
+            p.gameObject.layer = Layers.FRIENDLY_ATTACK;
         }
 
         //Increase damage of deflected projectile

@@ -34,20 +34,12 @@ public class Projectile : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        string thisTag = gameObject.tag;
-        string otherTag = other.gameObject.tag;
-        if(!((thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY) || 
-            (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.PLAYER) || 
-            (thisTag == Tags.ENEMY_BULLET && otherTag == Tags.ENEMY_BULLET) ||
-            (thisTag == Tags.FRIENDLY_BULLET && otherTag == Tags.FRIENDLY_BULLET)))
-        { 
-            Hittable hittable = other.gameObject.GetComponent<Hittable>();
+        Hittable hittable = other.gameObject.GetComponent<Hittable>();
 
-            if (hittable != null)
-            {
-                hittable.OnHit(this);
-                Death();
-            }
+        if (hittable != null)
+        {
+            hittable.OnHit(this);
+            Death();
         }
     }
 

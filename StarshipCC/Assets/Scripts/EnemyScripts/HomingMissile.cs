@@ -8,7 +8,9 @@ public class HomingMissile : Missile
 	GameObject target;
 
 	public override void OnStart()
-	{	
+	{
+        gameObject.layer = Layers.ENEMY;
+
 		List<GameObject> targets;
         GameObject[] targetsArray;
 

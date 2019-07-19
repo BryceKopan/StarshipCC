@@ -53,6 +53,7 @@ public abstract class Weapon : MonoBehaviour {
     public void Equip(PlayerController player)
     {
         gameObject.tag = Tags.PLAYER;
+        gameObject.layer = Layers.PLAYER;
         this.player = player;
         OnEquip(player);
     }
@@ -60,6 +61,7 @@ public abstract class Weapon : MonoBehaviour {
     public void Equip(EnemyController enemy)
     {
         gameObject.tag = Tags.ENEMY;
+        gameObject.layer = Layers.ENEMY;
         this.enemy = enemy;
         OnEquip(enemy);
     }
@@ -67,6 +69,7 @@ public abstract class Weapon : MonoBehaviour {
     public void Unequip(PlayerController player)
     {
         gameObject.tag = Tags.UNTAGGED;
+        gameObject.layer = Layers.DEFAULT;
         this.player = null;
         OnUnequip(player);
     }
@@ -74,6 +77,7 @@ public abstract class Weapon : MonoBehaviour {
     public void Unequip(EnemyController enemy)
     {
         gameObject.tag = Tags.UNTAGGED;
+        gameObject.layer = Layers.DEFAULT;
         this.enemy = null;
         OnUnequip(enemy);
     }

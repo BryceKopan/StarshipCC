@@ -21,14 +21,11 @@ public class Explosion : MonoBehaviour {
         string thisTag = gameObject.tag;
         string otherTag = other.gameObject.tag;
 
-        if (thisTag.Equals(Tags.ENEMY_BULLET) && otherTag.Equals(Tags.PLAYER))
-        {
-            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-            if(player)
-            {
-                player.TakeDamage(Damage);
-            }
+        if (player)
+        {
+            player.TakeDamage(Damage);
         }
     }
 }

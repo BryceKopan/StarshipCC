@@ -42,14 +42,18 @@ public class ProjectileWeapon : Weapon {
                     bulletSpawn.position,
                     bulletSpawn.rotation);
 
-            if (gameObject.tag == Tags.PLAYER)
+            if (gameObject.layer == Layers.PLAYER)
             {
-                projectile.tag = Tags.FRIENDLY_BULLET;
                 projectile.layer = Layers.FRIENDLY_ATTACK;
             }
+            else if(gameObject.layer == Layers.ENEMY)
+            {
+                projectile.layer = Layers.ENEMY_ATTACK;
+            }
+
             else
             {
-                projectile.tag = Tags.ENEMY_BULLET;
+                projectile.layer = Layers.ENEMY_ATTACK;
             }
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();

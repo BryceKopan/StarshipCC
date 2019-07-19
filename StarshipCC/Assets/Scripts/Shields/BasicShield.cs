@@ -41,7 +41,8 @@ public class BasicShield : Shield
 
     protected override bool ShouldHit(Projectile p)
     {
-        return p.tag == Tags.ENEMY_BULLET || p.tag == Tags.ENEMY;
+        // Could be used to allow certain weapons to bypass shields
+        return true;
     }
 
     protected override void TakeDamageFrom(Projectile p)

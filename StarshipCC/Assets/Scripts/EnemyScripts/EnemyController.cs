@@ -29,6 +29,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     // Use this for initialization
     void Start () 
     {
+        gameObject.layer = Layers.ENEMY;
         targets = FindTargets();
         currentHealth = maxHealth;
 

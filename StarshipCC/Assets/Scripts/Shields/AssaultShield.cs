@@ -41,7 +41,7 @@ public class AssaultShield : Shield
 
     protected override bool ShouldHit(Projectile p)
     {
-        return p.tag == Tags.ENEMY_BULLET || p.tag == Tags.ENEMY;
+        return true;
     }
 
     protected override void TakeDamageFrom(Projectile p)
