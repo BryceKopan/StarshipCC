@@ -5,6 +5,7 @@ using UnityEngine;
 public class Layers
 {
     public static int DEFAULT = 0;
+    public static int UI = 5;
     public static int PLAYER_BOUNDS = 8;
     public static int PLAYER = 9;
     public static int CAMERA_BOUNDS = 10;

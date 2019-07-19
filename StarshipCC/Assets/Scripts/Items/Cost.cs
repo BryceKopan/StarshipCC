@@ -5,10 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Item))]
 public class Cost : MonoBehaviour {
 	public int minCost, maxCost;
-	public GameObject coinDisplayPrefab;
-	public Vector3 coinDisplayeOffset;
 	private Item item;
-	private int cost;
+	private int cost = -1;
 	private GameController controller;
 	private GameObject ui;
 
@@ -18,18 +16,10 @@ public class Cost : MonoBehaviour {
 		item.isInteractable = false;
 
 		controller = GameObject.Find("GameController").GetComponent<GameController>();
-
-		cost = Random.Range(minCost, maxCost);
-		CreateUIElement();
 	}
 
 	void Update()
 	{
-		if(ui)
-		{
-			Vector3 uiPosition = Camera.main.WorldToScreenPoint(transform.position + coinDisplayeOffset);
-			ui.transform.position = uiPosition;
-		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -49,16 +39,14 @@ public class Cost : MonoBehaviour {
         }
 	}
 
-	public void CreateUIElement()
-	{
-		Vector3 uiPosition = Camera.main.WorldToScreenPoint(transform.position + coinDisplayeOffset);
+    public int GetCost()
+    {
+        // Cost is lazily instantiated because otherwise it causes weird errors
+        if(cost == -1)
+        {
+            cost = Random.Range(minCost, maxCost);
+        }
 
-		ui = Instantiate(
-			coinDisplayPrefab,
-			uiPosition,
-			transform.rotation);
-
-		ui.transform.SetParent(GameObject.Find("ScreenSpaceCanvas").transform);
-		ui.GetComponent<UnityEngine.UI.Text>().text = ": " + cost;
-	}
+        return cost;
+    }
 }

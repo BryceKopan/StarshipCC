@@ -18,9 +18,6 @@ public class Explosion : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        string thisTag = gameObject.tag;
-        string otherTag = other.gameObject.tag;
-
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
         if (player)
