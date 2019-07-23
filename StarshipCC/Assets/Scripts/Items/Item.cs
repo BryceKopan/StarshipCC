@@ -9,12 +9,16 @@ public abstract class Item : MonoBehaviour {
 
     public TextMesh itemTextPrefab = null;
     public int itemTextYOffset = -8;
+    private float itemTextVisibleDuration = 1.5f;
+    private float itemTextFadeDuration = 0.5f;
 
     abstract public string Description {get;}
 
     public float soundVolume = 1f;
 
     public AudioClip pickupSound;
+
+    protected TextMesh textObj;
 
     [ReadOnly]
     public PlayerController player;
@@ -110,10 +114,20 @@ public abstract class Item : MonoBehaviour {
     {
         if(itemTextPrefab != null)
         {
-            TextMesh textObj = Instantiate(itemTextPrefab);
+            textObj = Instantiate(itemTextPrefab);
             textObj.text = Description;
             textObj.gameObject.transform.position = transform.position + new Vector3(0, itemTextYOffset, 0);
+
+            Invoke("FadeOutText", itemTextVisibleDuration);
         }
+    }
+
+    IEnumerator FadeOutText()
+    {
+        FadeOutDelete fod = textObj.gameObject.AddComponent<FadeOutDelete>();
+        fod.fadeDuration = itemTextFadeDuration;
+        fod.Delete();
+        return null;
     }
 }
 
