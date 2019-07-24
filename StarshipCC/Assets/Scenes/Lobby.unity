@@ -575,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 1423746458697269479, guid: 5d54e5e1740354ea2a17bcc6eea4534a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1423746458697269479, guid: 5d54e5e1740354ea2a17bcc6eea4534a,
         type: 3}
@@ -802,7 +802,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1350516717
 MonoBehaviour:
@@ -837,6 +837,7 @@ MonoBehaviour:
   - {fileID: 4082214240141896146, guid: a66530f6021f1bf499a4e36a3842f8e6, type: 3}
   - {fileID: 5149361501373749483, guid: 1e71b0b5d84840e4fbb9eb4b9d0d2034, type: 3}
   - {fileID: 8430281712103896359, guid: bdc14c2edd7565e4781bc65852a63c43, type: 3}
+  - {fileID: 6106874743504966022, guid: df4972b3abd00ca46a73dabdd3eae1e2, type: 3}
   playerPrefab: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2,
     type: 3}
   playerJoinSound: {fileID: 8300000, guid: 5cd0c3a08e359eb4fad48b2e2186a930, type: 3}

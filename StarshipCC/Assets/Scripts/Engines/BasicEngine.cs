@@ -14,15 +14,19 @@ public class BasicEngine : Engine
         return 3;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnEquip(PlayerController player)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnStartThrusting()
     {
-        
+    }
+
+    protected override void OnStopThrusting()
+    {
+    }
+
+    protected override void OnUnequip()
+    {
     }
 }

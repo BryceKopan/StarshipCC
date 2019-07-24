@@ -19,7 +19,11 @@ public class DropCoinsOnDeath : MonoBehaviour {
 			{
 				SpawnCoin();
 			}
-		}
+
+            float rItem = Random.value;
+            if(rItem < .1)
+                GameObject.Find("CapitalShip").GetComponent<ConstructedCapitalController>().SpawnItem(transform.position);
+        }
 	}
 
 	void SpawnCoin()

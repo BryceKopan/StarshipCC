@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4468830987661318}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1519664277503650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.8, y: 3.8999996, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4754140974833478}
   m_RootOrder: 1
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawns: []
+  attackSpawns: []
   damage: 6
   range: 200
   cooldown: 1
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4625975556452016}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 1655646423918066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8, y: 3.9, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4754140974833478}
   m_RootOrder: 0
