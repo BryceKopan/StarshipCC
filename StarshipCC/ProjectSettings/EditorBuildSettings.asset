@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConstructedShip0.unity
     guid: 98a53e06fc8424a448012e22648da6c9
+  - enabled: 1
+    path: Assets/Scenes/TileCapitalShip.unity
+    guid: cd0157ee7ad53422a80a66e36e4aa4c7
   m_configObjects: {}

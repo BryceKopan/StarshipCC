@@ -119,7 +119,7 @@ public class LobbySpawner : MonoBehaviour {
         // If everyone is ready, start game
         if (CanStartGame())
         {
-            SceneManager.LoadScene("ConstructedShip0");
+            SceneManager.LoadScene("TileCapitalShip");
         }
     }
 
