@@ -11,12 +11,12 @@ public class ProjectileWeapon : Weapon {
 
     public override void OnEquip(EnemyController enemy)
     {
-        throw new NotImplementedException();
+
     }
 
     public override void OnUnequip(EnemyController player)
     {
-        throw new NotImplementedException();
+
     }
 
     public override void OnAttackStart()
@@ -35,7 +35,7 @@ public class ProjectileWeapon : Weapon {
     {
         PlayAttackSound();
 
-        foreach (Transform bulletSpawn in bulletSpawns)
+        foreach (Transform bulletSpawn in attackSpawns)
         {
             var projectile = (GameObject)Instantiate(
                     projectilePrefab,
@@ -78,7 +78,7 @@ public class ProjectileWeapon : Weapon {
 
         if (rigidbody)
         {
-            rigidbody.AddForce(-player.transform.up * recoilMagnitude, ForceMode2D.Impulse);
+            rigidbody.AddForce((Quaternion.Euler(avgAttackDirection.x, avgAttackDirection.y, avgAttackDirection.z) * -transform.up ) * recoilMagnitude, ForceMode2D.Impulse);
         }
     }
 

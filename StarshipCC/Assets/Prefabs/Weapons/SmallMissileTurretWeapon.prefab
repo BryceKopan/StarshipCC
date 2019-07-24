@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2972462625932297639}
   m_Layer: 0
   m_Name: BulletSpawn (5)
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2303154724875776691}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0.515, y: -0.213, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 5
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 7591848766961483817}
   m_Layer: 0
   m_Name: BulletSpawn
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 4112846193432646928}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -0.512, y: -0.216, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 9068420494941613246}
   m_Layer: 0
   m_Name: BulletSpawn (1)
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 5192724378171209992}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -0.356, y: -0.208, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 1
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4142437731203904677}
   m_Layer: 0
   m_Name: BulletSpawn (3)
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 6572656258229264777}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0.224, y: -0.205, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 3
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 546474464918609986}
   m_Layer: 0
   m_Name: BulletSpawn (4)
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 7736579025765351879}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0.373, y: -0.213, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 4
@@ -199,16 +199,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawns: []
+  attackSpawns: []
   damage: 1
   range: 200
   cooldown: 1
   soundVolume: 0.6
   numAttacks: 1
   delayBetweenAttacks: 0
+  recoilMagnitude: 0
   canAttack: 1
   isAttacking: 0
   attackSound: {fileID: 8300000, guid: 700066db3e7ecec4cbcb340cff2a536b, type: 3}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
   projectilePrefab: {fileID: 7475396911644241038, guid: 395bdda6123b1452881702155097ba77,
     type: 3}
   bulletSpeed: 60
@@ -223,7 +226,7 @@ GameObject:
   - component: {fileID: 7949572760400973580}
   m_Layer: 0
   m_Name: BulletSpawn (2)
-  m_TagString: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 8199160772437771749}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: -0.21, y: -0.22, z: -1.3241686}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7981764759606885604}
   m_RootOrder: 2

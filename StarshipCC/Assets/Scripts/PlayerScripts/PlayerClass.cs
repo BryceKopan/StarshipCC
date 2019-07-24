@@ -9,9 +9,8 @@ public class PlayerClass : MonoBehaviour
     [ReadOnly]
     Item[] startingItems;
 
-    [ReadOnly]
     public Engine engine;
-    [ReadOnly]
+
     public Shield shield;
     
     [ReadOnly]
@@ -40,8 +39,15 @@ public class PlayerClass : MonoBehaviour
         }
 
         // Engine and shield must be components on the class prefab
-        engine = gameObject.GetComponent<Engine>();
-        shield = gameObject.GetComponent<Shield>();
+        if(!engine)
+        {
+            engine = gameObject.GetComponent<Engine>();
+        }
+        
+        if(!shield)
+        {
+            shield = gameObject.GetComponent<Shield>();
+        }
 
         Ability[] abilities = GetComponents<Ability>();
         for(int i = 0; i < abilities.Length; i++)
@@ -101,6 +107,7 @@ public class PlayerClass : MonoBehaviour
         colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
 
         shield.Equip(player);
+        engine.Equip(player);
 
         foreach (Weapon weapon in startingWeapons)
         {
@@ -160,6 +167,7 @@ public class PlayerClass : MonoBehaviour
             }
 
             shield.Unequip();
+            engine.Unequip();
 
             player = null;
 

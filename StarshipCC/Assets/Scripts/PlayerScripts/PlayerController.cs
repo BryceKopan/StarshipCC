@@ -11,13 +11,19 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     public int PlayerNumber = 5;
 
     // How far the user must move the stick before the ship will rotate (0-1)
-    public float joystickDeadzone = 0.1f;
+    public float joystickAimDeadzone = 0.1f;
+
+    // How far the user must move the stick before the ship will move (0-1)
+    public float joystickMoveDeadzone = 0.1f;
 
     // How far the user must move the stick before the ship will fire (0-1)
     public float twinStickFireThreshold = 0.5f;
 
     public float fireConeWidth = 20;
 
+    [ReadOnly]
+    public float thrustLevel = 0f;
+    
     [ReadOnly]
     public PlayerClass playerClass = null;
 
@@ -113,9 +119,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     void FixedUpdate () 
     {
         HandleInput();
-
-        //Move Along moveDirection
-        rigidbody.AddForce(moveDirection * playerClass.engine.MoveSpeed());
         
         //Rotate to face aimDirection
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90;
@@ -192,13 +195,27 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             }
         }
 
-        moveDirection = new Vector2(xMovementAxis, yMovementAxis);
+        // Joystick moving deadzone (x and y are combined then normalized to create circular deadzone, not square)
+        Vector2 moveJoystickPos = new Vector2(xMovementAxis, yMovementAxis);
+        if (moveJoystickPos.magnitude > joystickMoveDeadzone)
+        {
+            thrustLevel = moveJoystickPos.magnitude / (1 - joystickMoveDeadzone);
+
+            moveDirection = moveJoystickPos.normalized;
+        }
+        else
+        {
+            thrustLevel = 0;
+        }
+
+        moveDirection = new Vector2(xMovementAxis, yMovementAxis).normalized;
+
 
         // Joystick aiming deadzone (x and y are combined then normalized to create circular deadzone, not square)
-        Vector2 joystickPos = new Vector2(xAimAxis, yAimAxis);
-        if(joystickPos.magnitude > joystickDeadzone)
+        Vector2 aimJoystickPos = new Vector2(xAimAxis, yAimAxis);
+        if(aimJoystickPos.magnitude > joystickAimDeadzone)
         {
-            aimDirection = joystickPos;
+            aimDirection = aimJoystickPos.normalized;
         }
         
         if (attack)

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour {
 
-    public List<Transform> bulletSpawns;
+    public List<Transform> attackSpawns;
+
+    public Vector3 avgAttackDirection;
 
     public float damage;
     public float range;
@@ -29,14 +31,22 @@ public abstract class Weapon : MonoBehaviour {
     // Use this for initialization
     public virtual void Start()
     {
-        bulletSpawns = new List<Transform>();
+        attackSpawns = new List<Transform>();
         foreach (Transform child in transform)
         {
-            if (child.tag == Tags.BULLET_SPAWN)
+            if (child.tag == Tags.ATTACK_SPAWN)
             {
-                bulletSpawns.Add(child);
+                attackSpawns.Add(child);
             }
         }
+
+        Vector3 sumDir = Vector3.zero;
+        foreach(Transform attack in attackSpawns)
+        {
+            sumDir += attack.up;
+        }
+
+        avgAttackDirection = sumDir.normalized;
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
