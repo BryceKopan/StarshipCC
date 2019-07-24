@@ -6,6 +6,7 @@ public abstract class Weapon : MonoBehaviour {
 
     public List<Transform> attackSpawns;
 
+    [ReadOnly]
     public Vector3 avgAttackDirection;
 
     public float damage;
