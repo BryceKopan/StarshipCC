@@ -6,7 +6,7 @@ public class WeaponDash : Dash
 {
     public Weapon weapon;
 
-    protected override void Start()
+    public override void Start()
     {
         base.Start();
 
@@ -24,5 +24,19 @@ public class WeaponDash : Dash
         Vector3 aimDirection = new Vector3(-player.moveDirection.x, -player.moveDirection.y, 0);
         weapon.transform.up = aimDirection;
         weapon.Attack();
+    }
+
+    protected override void OnEquip(PlayerController player)
+    {
+        base.OnEquip(player);
+
+        weapon.Equip(player);
+    }
+
+    protected override void OnUnequip()
+    {
+        base.OnUnequip();
+
+        weapon.Unequip(player);
     }
 }

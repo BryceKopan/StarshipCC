@@ -6,7 +6,6 @@ public abstract class Weapon : MonoBehaviour {
 
     public List<Transform> attackSpawns;
 
-    [ReadOnly]
     public Vector3 avgAttackDirection;
 
     public float damage;
@@ -43,13 +42,7 @@ public abstract class Weapon : MonoBehaviour {
             }
         }
 
-        Vector3 sumDir = Vector3.zero;
-        foreach(Transform attack in attackSpawns)
-        {
-            sumDir += attack.up;
-        }
-
-        avgAttackDirection = sumDir.normalized;
+        CalculateAttackDirection();
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -124,6 +117,32 @@ public abstract class Weapon : MonoBehaviour {
         if (attackSound)
         {
             audioSource.PlayOneShot(attackSound, soundVolume);
+        }
+    }
+
+    protected void CalculateAttackDirection()
+    {
+        Vector3 sumDir = Vector3.zero;
+        foreach (Transform attack in attackSpawns)
+        {
+            sumDir += attack.up;
+        }
+
+        avgAttackDirection = sumDir.normalized;
+    }
+
+    public void AddAttackSpawn(Transform t)
+    {
+        attackSpawns.Add(t);
+        CalculateAttackDirection();
+    }
+
+    public void RemoveAttackSpawn(Transform t)
+    {
+        if(attackSpawns.Contains(t))
+        {
+            attackSpawns.Remove(t);
+            CalculateAttackDirection();
         }
     }
 

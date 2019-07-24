@@ -116,19 +116,19 @@ public class PlayerClass : MonoBehaviour
 
         if (ability1)
         {
-            ability1.player = player;
+            ability1.Equip(player);
         }
         if (ability2)
         {
-            ability2.player = player;
+            ability2.Equip(player);
         }
         if (ability3)
         {
-            ability3.player = player;
+            ability3.Equip(player);
         }
         if (ability4)
         {
-            ability4.player = player;
+            ability4.Equip(player);
         }
 
         foreach (Item item in startingItems)

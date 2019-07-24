@@ -10,11 +10,25 @@ public class Dash : Ability
 
     public ParticleSystem emitter;
 
-    protected override void Start()
+    public override float Duration
+    {
+        get
+        {
+            return dashLength;
+        }
+    }
+
+    public override float Cooldown
+    {
+        get
+        {
+            return dashCooldown;
+        }
+    }
+
+    public override void Start()
     {
         base.Start();
-        activeLength = dashLength;
-        cooldownLength = dashCooldown;
     }
 
     protected override void OnActivate()
@@ -39,5 +53,13 @@ public class Dash : Ability
         {
             emitter.Play();
         }
+    }
+
+    protected override void OnEquip(PlayerController player)
+    {
+    }
+
+    protected override void OnUnequip()
+    {
     }
 }
