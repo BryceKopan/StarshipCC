@@ -42,7 +42,9 @@ public class ProjectileWeapon : Weapon {
                     bulletSpawn.position,
                     bulletSpawn.rotation);
 
-            projectile.gameObject.transform.localScale = new Vector3(attackScaleModifier, attackScaleModifier, 1);
+            Vector3 localScale = projectile.transform.localScale;
+
+            projectile.transform.localScale = new Vector3(localScale.x * attackScaleModifier, localScale.y * attackScaleModifier, localScale.z);
 
             if (gameObject.layer == Layers.PLAYER)
             {
