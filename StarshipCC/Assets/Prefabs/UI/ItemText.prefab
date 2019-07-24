@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1939034558962507403}
   - component: {fileID: 8621826080906019716}
   - component: {fileID: 5065159280009786252}
-  - component: {fileID: -8177037749805691387}
   - component: {fileID: 3705909522482368859}
   m_Layer: 0
   m_Name: ItemText
@@ -93,19 +92,6 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!114 &-8177037749805691387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278898046466779513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103fe65aac3f49f2a224c59f0524f6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeUntilDestruction: 2
 --- !u!114 &3705909522482368859
 MonoBehaviour:
   m_ObjectHideFlags: 0
