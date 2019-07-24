@@ -17,6 +17,8 @@ public abstract class Weapon : MonoBehaviour {
     public int numAttacks = 1;
     public float delayBetweenAttacks = 0;
 
+    public float attackScaleModifier = 1f;
+
     public float recoilMagnitude;
 
     public bool canAttack;

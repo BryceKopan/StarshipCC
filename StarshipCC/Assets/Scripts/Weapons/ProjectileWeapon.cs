@@ -42,6 +42,8 @@ public class ProjectileWeapon : Weapon {
                     bulletSpawn.position,
                     bulletSpawn.rotation);
 
+            projectile.gameObject.transform.localScale = new Vector3(attackScaleModifier, attackScaleModifier, 1);
+
             if (gameObject.layer == Layers.PLAYER)
             {
                 projectile.layer = Layers.FRIENDLY_ATTACK;

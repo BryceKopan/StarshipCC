@@ -2,38 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackSpeedItem : Item
+public class AttackSizeItem : Item
 {
-    public float modifier = 1.5f;
+    public float sizeModifier = 1.5f;
 
-    List<Weapon> affectedWeapons;
+    public List<Weapon> affectedWeapons;
 
     public override string Description
     {
         get
         {
-            return "Attack Speed x" + modifier.ToString("F1");
+            return "Attack Size x" + sizeModifier.ToString("F1");
         }
     }
 
     protected override void OnEquip(PlayerController player)
     {
+        // Keep track of affected weapons so only these weapons are changed on unequip
         affectedWeapons = new List<Weapon>();
 
-        foreach(Weapon w in player.weapons)
+        foreach (Weapon w in player.weapons)
         {
-            w.cooldown = w.cooldown / modifier;
+            w.attackScaleModifier *= sizeModifier;
             affectedWeapons.Add(w);
         }
     }
 
     protected override void OnUnequip(PlayerController player)
     {
+        // Only remove buff from affected weapons
         foreach (Weapon w in player.weapons)
         {
             if(affectedWeapons.Contains(w))
             {
-                w.cooldown = w.cooldown * modifier;
+                w.attackScaleModifier /= sizeModifier;
             }
         }
     }
