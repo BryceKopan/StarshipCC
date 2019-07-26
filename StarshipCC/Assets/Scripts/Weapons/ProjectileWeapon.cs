@@ -21,13 +21,9 @@ public class ProjectileWeapon : Weapon {
 
     public override void OnAttackStart()
     {
-        for (int i = 0; i < numAttacks; i++)
-        {
-            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
-        }
     }
 
-    public override void OnAttackEnd() { }
+    public override void OnAttackStop() { }
 
     public override void OnCanAttack() { }
 
@@ -89,4 +85,15 @@ public class ProjectileWeapon : Weapon {
     public override void OnEquip(PlayerController player) { }
 
     public override void OnUnequip(PlayerController player) { }
+
+    public override void OnAttack()
+    {
+        for(int i = 0; i < numAttacks; i++)
+        {
+            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
+        }
+
+        canAttack = false;
+        Invoke("EnableAttack", delayBetweenAttacks * numAttacks + cooldown);
+    }
 }

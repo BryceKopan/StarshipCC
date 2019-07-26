@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BeamWeapon : Weapon {
+    public override void OnAttack()
+    {
+        throw new NotImplementedException();
+    }
 
     public override void OnAttackStart()
     {
         throw new NotImplementedException();
     }
 
-    public override void OnAttackEnd()
+    public override void OnAttackStop()
     {
         throw new NotImplementedException();
     }

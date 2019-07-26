@@ -51,9 +51,12 @@ public abstract class Weapon : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public virtual void Update()
+    public virtual void FixedUpdate()
     {
-
+        if(isAttacking && canAttack)
+        {
+            OnAttack();
+        }
     }
 
     public void Equip(PlayerController player)
@@ -88,28 +91,26 @@ public abstract class Weapon : MonoBehaviour {
         OnUnequip(enemy);
     }
 
-    public void Attack()
+    public void StartAttack()
     {
-        if(canAttack)
-        {
-            canAttack = false;
-            isAttacking = true;
-            Invoke("EndAttack", numAttacks * delayBetweenAttacks);
-            OnAttackStart();
-        }
+        isAttacking = true;
+
+        OnAttackStart();
+        OnAttack();
     }
 
-    public void EndAttack()
+    public void StopAttack()
     {
         isAttacking = false;
-        OnAttackEnd();
+        OnAttackStop();
         Invoke("EnableAttack", cooldown);
     }
 
-    private void EnableAttack()
+    public IEnumerator EnableAttack()
     {
         canAttack = true;
         OnCanAttack();
+        return null;
     }
 
     public virtual void PlayAttackSound()
@@ -146,11 +147,15 @@ public abstract class Weapon : MonoBehaviour {
         }
     }
 
+    // Once StartAttack is called, OnAttack is called every frame until StopAttack is called
+    // Thus OnAttack can be treated like an Update() that's only called while attacking
+    public abstract void OnAttack();
+
     public abstract void OnEquip(PlayerController player);
     public abstract void OnEquip(EnemyController enemy); 
     public abstract void OnUnequip(PlayerController player);
     public abstract void OnUnequip(EnemyController player);
     public abstract void OnAttackStart();
-    public abstract void OnAttackEnd();
+    public abstract void OnAttackStop();
     public abstract void OnCanAttack();
 }

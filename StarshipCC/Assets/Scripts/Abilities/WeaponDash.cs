@@ -23,7 +23,7 @@ public class WeaponDash : Dash
 
         Vector3 aimDirection = new Vector3(-player.moveDirection.x, -player.moveDirection.y, 0);
         weapon.transform.up = aimDirection;
-        weapon.Attack();
+        weapon.OnAttackStart();
     }
 
     protected override void OnEquip(PlayerController player)

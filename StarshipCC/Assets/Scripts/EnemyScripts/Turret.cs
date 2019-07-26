@@ -44,7 +44,7 @@ public class Turret : EnemyController
     {
         foreach (Weapon weapon in weapons) 
         {
-            weapon.Attack();
+            weapon.StartAttack();
         }
 
         Invoke("DoneAttacking", longestWeaponFireTime);

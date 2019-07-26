@@ -45,7 +45,9 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     public GameObject explosionPrefab;
     public GameObject SetActiveOnDeath;
-    
+
+    public bool isAttacking = false;
+
     ParryShield parryShield; // TODO make this an ability
 
     [HideInInspector]
@@ -218,9 +220,23 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             aimDirection = aimJoystickPos.normalized;
         }
         
-        if (attack)
+        if (attack && !isAttacking)
         {
-            Attack();
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.StartAttack();
+            }
+
+            isAttacking = true;
+        }
+        else if(!attack && isAttacking)
+        {
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.StopAttack();
+            }
+
+            isAttacking = false;
         }
 
         if (ability1)
@@ -246,14 +262,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if (parry && canParry)
         {
             Parry();
-        }
-    }
-
-    void Attack()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Attack();
         }
     }
 
