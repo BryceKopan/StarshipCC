@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2076334095556681398}
   - component: {fileID: 2076334095556681397}
   - component: {fileID: 2076334095556681392}
-  m_Layer: 0
-  m_Name: CapitalTileBase
+  m_Layer: 16
+  m_Name: TileBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,3 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed02cc258b6f34ff48561c0abfc4e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  minChunkAmount: 4
+  maxChunkAmount: 8
+  chunkPrefab: {fileID: 0}
