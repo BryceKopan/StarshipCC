@@ -15,6 +15,8 @@ public class WeaponDash : Dash
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         weapon.transform.localScale = new Vector3(1, 1, 1);
+        weapon.gameObject.SetActive(true);
+        weapon.canAttack = true;
     }
 
     protected override void OnActivate()
@@ -23,7 +25,7 @@ public class WeaponDash : Dash
 
         Vector3 aimDirection = new Vector3(-player.moveDirection.x, -player.moveDirection.y, 0);
         weapon.transform.up = aimDirection;
-        weapon.OnAttackStart();
+        weapon.OnAttack();
     }
 
     protected override void OnEquip(PlayerController player)
