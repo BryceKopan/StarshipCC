@@ -375,6 +375,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         if(weapons.Contains(weapon))
         {
+            weapon.transform.parent = null;
             weapons.Remove(weapon);
             weapon.Unequip(this);
             return true;

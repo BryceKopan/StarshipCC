@@ -31,7 +31,7 @@ public abstract class Weapon : MonoBehaviour {
     public EnemyController enemy;
 
     // Use this for initialization
-    public virtual void Start()
+    public virtual void Awake()
     {
         attackSpawns = new List<Transform>();
         foreach (Transform child in transform)
@@ -48,6 +48,8 @@ public abstract class Weapon : MonoBehaviour {
 
         canAttack = true;
         isAttacking = false;
+
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,6 +66,7 @@ public abstract class Weapon : MonoBehaviour {
         gameObject.tag = Tags.PLAYER;
         gameObject.layer = Layers.PLAYER;
         this.player = player;
+        gameObject.SetActive(true);
         OnEquip(player);
     }
 
@@ -72,6 +75,7 @@ public abstract class Weapon : MonoBehaviour {
         gameObject.tag = Tags.ENEMY;
         gameObject.layer = Layers.ENEMY;
         this.enemy = enemy;
+        gameObject.SetActive(true);
         OnEquip(enemy);
     }
 
@@ -80,6 +84,7 @@ public abstract class Weapon : MonoBehaviour {
         gameObject.tag = Tags.UNTAGGED;
         gameObject.layer = Layers.DEFAULT;
         this.player = null;
+        gameObject.SetActive(false);
         OnUnequip(player);
     }
 
@@ -87,16 +92,20 @@ public abstract class Weapon : MonoBehaviour {
     {
         gameObject.tag = Tags.UNTAGGED;
         gameObject.layer = Layers.DEFAULT;
+        gameObject.SetActive(false);
         this.enemy = null;
         OnUnequip(enemy);
     }
 
     public void StartAttack()
     {
-        isAttacking = true;
+        if(canAttack)
+        {
+            isAttacking = true;
 
-        OnAttackStart();
-        OnAttack();
+            OnAttackStart();
+            OnAttack();
+        }
     }
 
     public void StopAttack()

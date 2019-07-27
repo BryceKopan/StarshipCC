@@ -9,10 +9,24 @@ public class ChargedProjectileWeapon : ProjectileWeapon
     public float chargeRate = 0.01f;
     public float sizeModifier = 2f;
 
+    public ParticleSystem chargeParticles;
+
+    public void Start()
+    {
+        if(chargeParticles)
+        {
+            chargeParticles.Stop();
+        }
+    }
+
     public override void OnAttackStart()
     {
         base.OnAttackStart();
         charging = true;
+        if(chargeParticles)
+        {
+            chargeParticles.Play();
+        }
     }
 
     public override void OnAttack()
@@ -26,6 +40,10 @@ public class ChargedProjectileWeapon : ProjectileWeapon
         charging = false;
         LaunchChargedProjectiles();
         chargePercentage = 0;
+        if(chargeParticles)
+        {
+            chargeParticles.Stop();
+        }
     }
 
     public void LaunchChargedProjectiles()

@@ -36,6 +36,8 @@ public class PlayerClass : MonoBehaviour
         {
             Weapon instance = Instantiate(startingWeapons[i]);
             startingWeapons[i] = instance;
+            instance.transform.parent = transform;
+            instance.transform.localScale = new Vector3(1, 1, 1);
         }
 
         // Engine and shield must be components on the class prefab
@@ -159,6 +161,7 @@ public class PlayerClass : MonoBehaviour
             for (int i = 0; i < startingWeapons.Count; i++)
             {
                 player.RemoveWeapon(startingWeapons[i]);
+                startingWeapons[i].transform.parent = transform;
             }
 
             foreach (Item item in startingItems)

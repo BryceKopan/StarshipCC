@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2967788757058599036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingWeapons:
   - {fileID: 114418963446897652, guid: a8482791a647ad545ab29749af25c222, type: 3}
-  engine: {fileID: 2279273012967311031, guid: 1d3919b35d06c604ba86dc2d42c479f3, type: 3}
-  shield: {fileID: 4820358831269179572, guid: 5c3e975af9f1cb14f9d9e0d8f188a8eb, type: 3}
+  engine: {fileID: 0}
+  shield: {fileID: 0}
   ability1: {fileID: -5295277093386582323, guid: 45cc3ebd74b89714a8e5c171338bfbf1,
     type: 3}
   ability2: {fileID: 0}
@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8c3408eb20a3e4aba062f3864d8f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isThrusting: 0
+  player: {fileID: 0}
 --- !u!114 &3432037795918787478
 MonoBehaviour:
   m_ObjectHideFlags: 0

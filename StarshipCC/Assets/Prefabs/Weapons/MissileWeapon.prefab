@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519664277503650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 3.8999996, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4754140974833478}
@@ -76,12 +76,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpawns: []
+  avgAttackDirection: {x: 0, y: 0, z: 0}
   damage: 6
   range: 200
   cooldown: 1
   soundVolume: 0.4
   numAttacks: 1
   delayBetweenAttacks: 0
+  attackScaleModifier: 1
   recoilMagnitude: 5
   canAttack: 1
   isAttacking: 0
@@ -115,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655646423918066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 3.9, z: 0}
+  m_LocalPosition: {x: -0.55, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4754140974833478}
