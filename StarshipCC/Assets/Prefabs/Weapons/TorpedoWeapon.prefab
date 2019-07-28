@@ -77,7 +77,7 @@ MonoBehaviour:
   attackSpawns: []
   avgAttackDirection: {x: 0, y: 0, z: 0}
   damage: 1
-  range: 200
+  range: 100
   cooldown: 1
   soundVolume: 0.4
   numAttacks: 1

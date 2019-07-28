@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6316441696713703391}
   - component: {fileID: 8697287062476429162}
   - component: {fileID: 1381070654507787964}
+  - component: {fileID: 90035552268309220}
   m_Layer: 0
   m_Name: BasicClass
   m_TagString: Untagged
@@ -4827,3 +4828,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &90035552268309220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836569433302908582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f9f628ccce9ab458a541c2c2290f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  torpedoWeapon: {fileID: 1225266866608492188, guid: 9b3af98dde55e4044a90d397e4cd4c9b,
+    type: 3}

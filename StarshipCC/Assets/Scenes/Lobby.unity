@@ -838,7 +838,6 @@ MonoBehaviour:
   - {fileID: 5149361501373749483, guid: 1e71b0b5d84840e4fbb9eb4b9d0d2034, type: 3}
   - {fileID: 8430281712103896359, guid: bdc14c2edd7565e4781bc65852a63c43, type: 3}
   - {fileID: 9102206499993842479, guid: a69297848c2a345448e914a8f646b15c, type: 3}
-  - {fileID: 7215138945623517784, guid: aeb08f9751df9814f801134c04de4c4d, type: 3}
   playerPrefab: {fileID: 1823757361782288, guid: 0ab00fb541f1e4262893a5ec6a864af2,
     type: 3}
   playerJoinSound: {fileID: 8300000, guid: 5cd0c3a08e359eb4fad48b2e2186a930, type: 3}
