@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExploding: 0
   Damage: 1
-  Radius: 25
+  Radius: 15
   Duration: 1
   effect: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7, type: 3}
