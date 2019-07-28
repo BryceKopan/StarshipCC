@@ -108,6 +108,7 @@ public class PlayerClass : MonoBehaviour
         colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
         colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
 
+
         shield.Equip(player);
         engine.Equip(player);
 

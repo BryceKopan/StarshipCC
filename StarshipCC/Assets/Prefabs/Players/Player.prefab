@@ -157,6 +157,7 @@ MonoBehaviour:
   twinStickFireThreshold: 0.9
   thrustLevel: 0
   movementSpeedModifier: 1
+  lightObj: {fileID: 1985585163415045025}
   playerClass: {fileID: 0}
   weapons: []
   twinStick: 1
@@ -774,6 +775,12 @@ PrefabInstance:
 --- !u!4 &1985585163415045024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5587442104136412762, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6198259113210637818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1985585163415045025 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5587442104136412763, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
     type: 3}
   m_PrefabInstance: {fileID: 6198259113210637818}
   m_PrefabAsset: {fileID: 0}

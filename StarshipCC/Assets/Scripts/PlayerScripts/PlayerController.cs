@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     public float movementSpeedModifier = 1f;
 
+    public Light lightObj;
+
     [ReadOnly]
     public PlayerClass playerClass = null;
 
@@ -397,6 +399,11 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if(overlayRenderer)
         {
             overlayRenderer.color = color;
+        }
+
+        if(lightObj)
+        {
+            lightObj.color = color;
         }
     }
 }
