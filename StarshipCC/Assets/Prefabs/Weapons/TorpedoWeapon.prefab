@@ -91,4 +91,4 @@ MonoBehaviour:
   enemy: {fileID: 0}
   projectilePrefab: {fileID: 2071679016182078194, guid: a2cba0f3bc0cd2540a15f72dc11d33a4,
     type: 3}
-  bulletSpeed: 40
+  bulletSpeed: 80
