@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChargedProjectileWeapon : ProjectileWeapon
 {
+    public float movementSpeedPenalty = 0.2f;
     [ReadOnly]
     public bool charging = false;
     public float chargePercentage = 0f;
@@ -28,6 +29,8 @@ public class ChargedProjectileWeapon : ProjectileWeapon
         {
             chargeParticles.Play();
         }
+
+        player.movementSpeedModifier -= movementSpeedPenalty;
     }
 
     public override void OnAttack()
@@ -45,6 +48,8 @@ public class ChargedProjectileWeapon : ProjectileWeapon
         {
             chargeParticles.Stop();
         }
+
+        player.movementSpeedModifier += movementSpeedPenalty;
     }
 
     public void LaunchChargedProjectiles()

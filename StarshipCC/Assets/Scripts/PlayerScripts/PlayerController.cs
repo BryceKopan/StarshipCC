@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
     [ReadOnly]
     public float thrustLevel = 0f;
-    
+
+    public float movementSpeedModifier = 1f;
+
     [ReadOnly]
     public PlayerClass playerClass = null;
 
@@ -33,10 +35,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     private float currentHealth;
 
     // TODO move all these into abilities
-    public float parryLength = 0.3f;
     public float invincibilityLength = 1f;
-    public float parryCooldown = 0.1f;
-    bool canParry = true;
     bool invincible = false;
 
     Rigidbody2D rigidbody;
@@ -306,11 +305,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     void EndInvincibility()
     {
         invincible = false;
-    }
-
-    void EnableParry()
-    {
-        canParry = true;
     }
 
     void Death()
