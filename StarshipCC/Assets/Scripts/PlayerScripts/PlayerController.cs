@@ -208,21 +208,21 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         
         if (attack && !isAttacking)
         {
+            isAttacking = true;
+
             foreach (Weapon weapon in weapons)
             {
                 weapon.StartAttack();
             }
-
-            isAttacking = true;
         }
         else if(!attack && isAttacking)
         {
+            isAttacking = false;
+
             foreach (Weapon weapon in weapons)
             {
                 weapon.StopAttack();
             }
-
-            isAttacking = false;
         }
 
         if (ability1)
