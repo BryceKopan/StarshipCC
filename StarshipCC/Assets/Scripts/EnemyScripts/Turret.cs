@@ -8,7 +8,7 @@ public class Turret : EnemyController
 
     protected override void OnStart()
     {
-        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>());
+        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         foreach (Weapon weapon in weapons)
         {
             weapon.Equip(this);
