@@ -46,7 +46,7 @@ public abstract class Weapon : MonoBehaviour {
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
-        canAttack = true;
+        canAttack = false;
         isAttacking = false;
 
         gameObject.SetActive(false);
@@ -62,12 +62,13 @@ public abstract class Weapon : MonoBehaviour {
     }
 
     public void Equip(PlayerController player)
-    {
+    { 
         gameObject.tag = Tags.PLAYER;
         gameObject.layer = Layers.PLAYER;
         this.player = player;
         gameObject.SetActive(true);
         OnEquip(player);
+        canAttack = true;
     }
 
     public void Equip(EnemyController enemy)
@@ -77,6 +78,7 @@ public abstract class Weapon : MonoBehaviour {
         this.enemy = enemy;
         gameObject.SetActive(true);
         OnEquip(enemy);
+        canAttack = true;
     }
 
     public void Unequip(PlayerController player)
@@ -86,6 +88,7 @@ public abstract class Weapon : MonoBehaviour {
         this.player = null;
         gameObject.SetActive(false);
         OnUnequip(player);
+        canAttack = false;
     }
 
     public void Unequip(EnemyController enemy)
@@ -95,24 +98,19 @@ public abstract class Weapon : MonoBehaviour {
         gameObject.SetActive(false);
         this.enemy = null;
         OnUnequip(enemy);
+        canAttack = false;
     }
 
     public void StartAttack()
     {
-        if(canAttack)
-        {
-            isAttacking = true;
-
-            OnAttackStart();
-            OnAttack();
-        }
+        isAttacking = true;
+        OnAttackStart();
     }
 
     public void StopAttack()
     {
         isAttacking = false;
         OnAttackStop();
-        Invoke("EnableAttack", cooldown);
     }
 
     public IEnumerator EnableAttack()

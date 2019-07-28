@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParryShield : MonoBehaviour, Hittable
+public class ReflectProjectiles : MonoBehaviour, Hittable
 {
     public float damageMultiplier = 10f;
 
@@ -29,7 +29,14 @@ public class ParryShield : MonoBehaviour, Hittable
         }
         else 
         {
-            p.gameObject.layer = Layers.FRIENDLY_ATTACK;
+            if(gameObject.layer == Layers.PLAYER)
+            {
+                p.gameObject.layer = Layers.FRIENDLY_ATTACK;
+            }
+            else
+            {
+                p.gameObject.layer = Layers.ENEMY_ATTACK;
+            }
         }
 
         //Increase damage of deflected projectile
