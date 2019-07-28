@@ -47,10 +47,9 @@ public class Projectile : MonoBehaviour {
     {
         if(DeathEffectPrefab)
         {
-            Instantiate(
-            DeathEffectPrefab,
-            gameObject.transform.position,
-            gameObject.transform.rotation);
+            GameObject effectInstance = Instantiate(DeathEffectPrefab);
+            effectInstance.transform.position = transform.position;
+            effectInstance.transform.rotation = transform.rotation;
         }
 
         Destroy(gameObject);

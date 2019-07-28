@@ -11,8 +11,6 @@ public class HullExplosion : MonoBehaviour
     public float Duration = 1f;
     public GameObject effect;
 
-    private Projectile projectile;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,15 +30,12 @@ public class HullExplosion : MonoBehaviour
     {
         isExploding = true;
 
-        projectile = gameObject.AddComponent<Projectile>();
-        projectile.damage = Damage;
-        projectile.moveVector = Vector2.zero;
-        projectile.speed = 0;
-        projectile.range = float.PositiveInfinity; // Doesn't matter because it's not moving
-
         CircleCollider2D collider = gameObject.AddComponent<CircleCollider2D>();
         collider.radius = Radius;
         collider.isTrigger = true;
+
+        Rigidbody2D rigidbody = gameObject.AddComponent<Rigidbody2D>();
+
         Invoke("Death", Duration);
 
         if (effect)
@@ -50,13 +45,13 @@ public class HullExplosion : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        Hittable hittable = other.gameObject.GetComponent<Hittable>();
+        CapitalHull hull = collider.gameObject.GetComponent<CapitalHull>();
 
-        if(hittable != null)
+        if (hull != null)
         {
-            hittable.OnHit(projectile);
+            hull.TakeDamage(Damage);
         }
     }
 

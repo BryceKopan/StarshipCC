@@ -12,12 +12,16 @@ public class CapitalHull : MonoBehaviour, Hittable
 
 	void Hittable.OnHit(Projectile p)
     {  
-        health -= p.damage;
-
-        if(health <= 0)
-            Death();
-
         p.Death();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Death();
+        }
     }
 
     private void Death()
