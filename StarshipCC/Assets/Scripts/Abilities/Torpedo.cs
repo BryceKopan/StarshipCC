@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorpedoAbility : Ability
+public class Torpedo : Ability
 {
     public Weapon torpedoWeapon;
     protected Weapon weaponInstance;
