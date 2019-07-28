@@ -48,8 +48,6 @@ public class ChargedProjectileWeapon : ProjectileWeapon
 
     public void LaunchChargedProjectiles()
     {
-        Debug.Log("Charge percentage: " + chargePercentage);
-
         PlayAttackSound();
 
         foreach (Transform bulletSpawn in attackSpawns)
