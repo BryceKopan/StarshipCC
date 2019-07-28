@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChargedProjectileWeapon : ProjectileWeapon
 {
+    [ReadOnly]
     public bool charging = false;
     public float chargePercentage = 0f;
     public float chargeRate = 0.01f;
@@ -79,6 +80,7 @@ public class ChargedProjectileWeapon : ProjectileWeapon
             projectileScript.damage = damage * chargePercentage;
             projectileScript.speed = bulletSpeed;
             projectileScript.range = range;
+            projectileScript.isPenetrating = isPenetrating;
 
             //Add velocity to the bullet
             projectileScript.moveVector = bulletSpawn.transform.up;

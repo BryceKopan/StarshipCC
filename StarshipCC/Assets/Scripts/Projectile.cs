@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
+
+    public bool isPenetrating = false;
+
     [HideInInspector]
     public float damage, speed, range;
     float distanceTraveled = 0;
@@ -39,7 +42,10 @@ public class Projectile : MonoBehaviour {
         if (hittable != null)
         {
             hittable.OnHit(this);
-            Death();
+            if(!isPenetrating)
+            {
+                Death();
+            }
         }
     }
 

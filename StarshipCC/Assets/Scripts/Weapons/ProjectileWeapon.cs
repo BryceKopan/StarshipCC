@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ProjectileWeapon : Weapon {
 
+    public bool isPenetrating = false;
+
     public GameObject projectilePrefab;
 
     public float bulletSpeed = 40f;
@@ -57,12 +59,20 @@ public class ProjectileWeapon : Weapon {
             }
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
-            projectileScript.damage = damage;
-            projectileScript.speed = bulletSpeed;
-            projectileScript.range = range;
+            if(projectileScript)
+            {
+                projectileScript.damage = damage;
+                projectileScript.speed = bulletSpeed;
+                projectileScript.range = range;
+                projectileScript.isPenetrating = isPenetrating;
 
-            //Add velocity to the bullet
-            projectileScript.moveVector = bulletSpawn.transform.up;
+                //Add velocity to the bullet
+                projectileScript.moveVector = bulletSpawn.transform.up;
+            }
+            else
+            {
+                Debug.LogError("Projectile script does not exist!");
+            }
         }
 
         ApplyRecoil();

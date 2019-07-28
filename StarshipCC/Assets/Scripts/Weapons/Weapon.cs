@@ -22,6 +22,7 @@ public abstract class Weapon : MonoBehaviour {
     public float recoilMagnitude;
 
     public bool canAttack;
+    [ReadOnly]
     public bool isAttacking;
 
     private AudioSource audioSource;

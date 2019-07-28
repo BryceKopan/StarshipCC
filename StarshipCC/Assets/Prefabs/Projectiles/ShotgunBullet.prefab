@@ -4764,8 +4764,8 @@ GameObject:
   - component: {fileID: 8270567795357497714}
   - component: {fileID: 8188548377242626294}
   - component: {fileID: 1447977410421581797}
-  - component: {fileID: 1991038864258627706}
   - component: {fileID: -6142909636477810357}
+  - component: {fileID: 1902102262155642869}
   m_Layer: 0
   m_Name: ShotgunBullet
   m_TagString: FriendlyBullet
@@ -4865,24 +4865,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &1991038864258627706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084254962676609374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ddea4f0f51422143b406002e1164328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  range: 0
-  moveVector: {x: 0, y: 0, z: 0}
-  DeathEffectPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
-    type: 3}
 --- !u!50 &-6142909636477810357
 Rigidbody2D:
   serializedVersion: 4
@@ -4904,3 +4886,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1902102262155642869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084254962676609374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f5d1856bd75954b881c0de49a0ea6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPenetrating: 0
+  damage: 0
+  speed: 0
+  range: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  DeathEffectPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
+    type: 3}
