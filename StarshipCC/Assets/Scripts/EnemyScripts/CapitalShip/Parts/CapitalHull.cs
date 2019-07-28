@@ -28,10 +28,10 @@ public class CapitalHull : MonoBehaviour, Hittable
     {
         Destroy(gameObject);
 
-        /*int numberOfChunks = Random.Range(minChunkAmount, maxChunkAmount);
+        int numberOfChunks = Random.Range(minChunkAmount, maxChunkAmount);
         for(int i = 0; i < numberOfChunks; i++)
         {
             Instantiate(chunkPrefab, transform.position, Quaternion.identity);
-        }*/
+        }
     }
 }
