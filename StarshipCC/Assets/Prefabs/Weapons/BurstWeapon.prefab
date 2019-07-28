@@ -113,7 +113,7 @@ MonoBehaviour:
   soundVolume: 0.3
   numAttacks: 3
   delayBetweenAttacks: 0.08
-  attackScaleModifier: 1.5
+  attackScaleModifier: 1.8
   recoilMagnitude: 2
   canAttack: 1
   isAttacking: 0
