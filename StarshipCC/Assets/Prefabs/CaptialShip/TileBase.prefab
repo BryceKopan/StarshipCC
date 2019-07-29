@@ -121,6 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   minChunkAmount: 0
-  maxChunkAmount: 2
+  maxChunkAmount: 1
   chunkPrefab: {fileID: 2718129999307589873, guid: 2e2797ea0760f4c1b89827d1e297cac0,
     type: 3}
