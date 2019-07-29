@@ -7262,6 +7262,7 @@ Transform:
   - {fileID: 590225784}
   - {fileID: 1375348221}
   - {fileID: 5670551657117746069}
+  - {fileID: 7105163418103504334}
   - {fileID: 2043872892}
   - {fileID: 495766896}
   - {fileID: 280991743}
@@ -7269,7 +7270,6 @@ Transform:
   - {fileID: 1839022861}
   - {fileID: 1108508850}
   - {fileID: 1279856458}
-  - {fileID: 7105163418103504334}
   - {fileID: 217472562}
   - {fileID: 531747945}
   - {fileID: 2086930776}
@@ -7635,7 +7635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617b45db471a64bb7a5b2b5288f22345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 45
+  moveSpeed: 60
 --- !u!81 &1851080633
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11023,7 +11023,7 @@ Transform:
   - {fileID: 382365442}
   - {fileID: 1842587940}
   m_Father: {fileID: 1768538179}
-  m_RootOrder: 14
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7125353786388368125
 PrefabInstance:
