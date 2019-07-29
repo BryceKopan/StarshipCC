@@ -6,6 +6,7 @@ public class TileShipGenerator : MonoBehaviour
 {
     public GameObject wallPrefab;
     public GameObject backgroundPrefab;
+    public GameObject turretPrefab;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class TileShipGenerator : MonoBehaviour
             level.GenerateRoomOnEntrance();
         }
 
+        PrintMap(level);
         BuildMap(level);
     }
 
@@ -41,21 +43,44 @@ public class TileShipGenerator : MonoBehaviour
             {
                 Vector3 position = new Vector3((y * wallPrefabSR.bounds.size.x) + transform.position.x, x * wallPrefabSR.bounds.size.y + transform.position.y, 1);
 
-                if(map.cells[x, y] == new char())
+                switch(map.cells[x, y])
                 {
-                    Instantiate(wallPrefab, position, Quaternion.identity);   
-                }
-                else if(map.cells[x, y] == '#')
-                {
-                    Instantiate(wallPrefab, position, Quaternion.identity);   
-                }    
-                else if(map.cells[x, y] == ' ')
-                {
-                    Instantiate(backgroundPrefab, position, Quaternion.identity);   
+                    case (char)Tile.NorthTurret:
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 0));
+                        break;
+                    case (char)Tile.EastTurret:
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 90));
+                        break;
+                    case (char)Tile.SouthTurret:
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 180));
+                        break;
+                    case (char)Tile.WestTurret:
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, -90));
+                        break;
+                    case (char)Tile.Wall:
+                    case new char():
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        Instantiate(wallPrefab, position, Quaternion.identity);   
+                        break;
+                    case (char)Tile.NorthEdge:
+                    case (char)Tile.EastEdge:
+                    case (char)Tile.SouthEdge:
+                    case (char)Tile.WestEdge:
+                    case (char)Tile.Empty:
+                        Instantiate(backgroundPrefab, position, Quaternion.identity);
+                        break;
+                    case (char)Tile.NoBackground:
+                        break;
                 }   
             }
         }
     }
+
+    private 
 
     void PrintMap(Map map)
     {
@@ -66,7 +91,7 @@ public class TileShipGenerator : MonoBehaviour
             for(int y=0; y<map.cells.GetLength(1); y++)
             {
                 if(map.cells[x, y] == new char())
-                    drawnMap += ' ';
+                    drawnMap += '_';
                 else
                     drawnMap += map.cells[x, y];         
             }

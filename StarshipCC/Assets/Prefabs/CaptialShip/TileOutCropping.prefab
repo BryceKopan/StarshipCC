@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2769674443367612910}
   - component: {fileID: 6281396098406441253}
   m_Layer: 0
-  m_Name: CapitalTileOutCropping
+  m_Name: TileOutCropping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7662781188411038340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -143,3 +144,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed02cc258b6f34ff48561c0abfc4e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6882415030710221598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7662781188411038340}
+  - component: {fileID: 7030246544391485028}
+  m_Layer: 0
+  m_Name: SmallHardPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7662781188411038340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882415030710221598}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.461, z: -1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2361119282682964246}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7030246544391485028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882415030710221598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b7c0290afeb459082a0941f8495483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmallAttachmentPrefabs:
+  - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 3}
+  - {fileID: 7228072199516643952, guid: e8b500d18b5aa44ac83533b59c884dd0, type: 3}

@@ -17,7 +17,8 @@ public class Map
 
     public void GenerateRoomOnEntrance()
     {
-        List<int[]> entrances = this.GetEntrances(new char[]{'n', 'e', 'w', 's'});
+        char[] entranceTypes = new char[]{(char)Tile.NorthEdge, (char)Tile.EastEdge, (char)Tile.SouthEdge, (char)Tile.WestEdge};
+        List<int[]> entrances = this.GetEntrances(entranceTypes);
         System.Random rnd = new System.Random();
 
         bool roomPlaced = false;
@@ -30,27 +31,32 @@ public class Map
 
             int[] rEntrance = entrances[r];
             Map room = RoomManager.GetRandomCenterRoom();
-            room.Rotate90Clockwise(rnd.Next(0,4));
+
+            int rotateAmount = rnd.Next(0,4);
+            for(int i = 0; i < rotateAmount; i++)
+            {
+                room.RotateCounterClockwise();
+            }
 
             List<int[]> roomEntrances = new List<int[]>();
             int[] offSet = new int[]{0, 0};
 
             switch(cells[rEntrance[0], rEntrance[1]])
             {
-                case 'n':
-                    roomEntrances = room.GetEntrances(new char[]{'s'});
+                case (char)Tile.NorthEdge:
+                    roomEntrances = room.GetEntrances((char)Tile.SouthEdge);
                     offSet[0] = -1;
                     break;
-                case 'e':
-                    roomEntrances = room.GetEntrances(new char[]{'w'});
+                case (char)Tile.EastEdge:
+                    roomEntrances = room.GetEntrances((char)Tile.WestEdge);
                     offSet[1] = 1;
                     break;
-                case 's':
-                    roomEntrances = room.GetEntrances(new char[]{'n'});
+                case (char)Tile.SouthEdge:
+                    roomEntrances = room.GetEntrances((char)Tile.NorthEdge);
                     offSet[0] = 1;
                     break;
-                case 'w':
-                    roomEntrances = room.GetEntrances(new char[]{'e'});
+                case (char)Tile.WestEdge:
+                    roomEntrances = room.GetEntrances((char)Tile.EastEdge);
                     offSet[1] = -1;
                     break;
             }
@@ -63,15 +69,20 @@ public class Map
 
                 if(PlaceMap(room, roomOriginPosition[0], roomOriginPosition[1]))
                 {
-                    cells[rEntrance[0], rEntrance[1]] = ' ';
-                    cells[rEntrance[0] + offSet[0], rEntrance[1] + offSet[1]] = ' ';
+                    cells[rEntrance[0], rEntrance[1]] = (char)Tile.Empty;
+                    cells[rEntrance[0] + offSet[0], rEntrance[1] + offSet[1]] = (char)Tile.Empty;
                     roomPlaced = true;
                 }
             }
         }
     }
 
-    private List<int[]> GetEntrances(char[] directions)
+    private List<int[]> GetEntrances(char type)
+    {
+        return GetEntrances(new char[]{type});
+    }
+
+    private List<int[]> GetEntrances(char[] types)
     {
         List<int[]> entrances = new List<int[]>();
 
@@ -79,9 +90,9 @@ public class Map
         {
             for(int y=0; y<cells.GetLength(1); y++)
             {
-                foreach(char direction in directions)
+                foreach(char type in types)
                 {
-                    if(cells[x, y] == direction)
+                    if(cells[x, y] == type)
                         entrances.Add(new int[]{x, y});
                 }
             }
@@ -123,39 +134,52 @@ public class Map
         return true;
     }
 
-    private void Rotate90Clockwise(int numberOfRotations)
+    private char[,] RotateCounterClockwise()
     {
-        for(int i=0; i<numberOfRotations; i++)
+        char[,] oldMatrix = cells;
+        char[,] newMatrix = new char[oldMatrix.GetLength(1), oldMatrix.GetLength(0)];
+        int newColumn, newRow = 0;
+        for (int oldColumn = oldMatrix.GetLength(1) - 1; oldColumn >= 0; oldColumn--)
         {
-            char[,] newMap = new char[cells.GetLength(1), cells.GetLength(0)];
-
-            for(int x=0; x<cells.GetLength(0); x++)
+            newColumn = 0;
+            for (int oldRow = 0; oldRow < oldMatrix.GetLength(0); oldRow++)
             {
-                for(int y=0; y<cells.GetLength(1); y++)
+                switch(oldMatrix[oldRow, oldColumn])
                 {
-                    switch(cells[x, y])
-                    {
-                        case 'n':
-                            newMap[y, x] = 'e';
-                            break;
-                        case 'e':
-                            newMap[y, x] = 's';
-                            break;
-                        case 's':
-                            newMap[y, x] = 'w';
-                            break;
-                        case 'w':
-                            newMap[y, x] = 'n';
-                            break;
-                        default:
-                            newMap[y, x] = cells[x, y];
-                            break;
-                    }
+                    case (char)Tile.NorthEdge:
+                        newMatrix[newRow, newColumn] = (char)Tile.EastEdge;
+                        break;
+                    case (char)Tile.EastEdge:
+                        newMatrix[newRow, newColumn] = (char)Tile.SouthEdge;
+                        break;
+                    case (char)Tile.SouthEdge:
+                        newMatrix[newRow, newColumn] = (char)Tile.WestEdge;
+                        break;
+                    case (char)Tile.WestEdge:
+                        newMatrix[newRow, newColumn] = (char)Tile.NorthEdge;
+                        break;
+                    case (char)Tile.NorthTurret:
+                        newMatrix[newRow, newColumn] = (char)Tile.EastTurret;
+                        break;
+                    case (char)Tile.EastTurret:
+                        newMatrix[newRow, newColumn] = (char)Tile.SouthTurret;
+                        break;
+                    case (char)Tile.SouthTurret:
+                        newMatrix[newRow, newColumn] = (char)Tile.WestTurret;
+                        break;
+                    case (char)Tile.WestTurret:
+                        newMatrix[newRow, newColumn] = (char)Tile.NorthTurret;
+                        break;
+                    default:
+                        newMatrix[newRow, newColumn] = oldMatrix[oldRow, oldColumn];
+                        break;
                 }
+                newMatrix[newRow, newColumn] = oldMatrix[oldRow, oldColumn];
+                newColumn++;
             }
-
-            cells = newMap;
+            newRow++;
         }
+        return newMatrix;
     }
 
     private void IncreaseDimensions(int newX, int newY)
