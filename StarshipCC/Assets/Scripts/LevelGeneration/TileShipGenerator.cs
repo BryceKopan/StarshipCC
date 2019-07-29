@@ -5,7 +5,6 @@ using UnityEngine;
 public class TileShipGenerator : MonoBehaviour
 {
     public GameObject wallPrefab;
-    public GameObject backgroundPrefab;
     public GameObject turretPrefab;
 
     void Start()
@@ -46,32 +45,20 @@ public class TileShipGenerator : MonoBehaviour
                 switch(map.cells[x, y])
                 {
                     case (char)Tile.NorthTurret:
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 0));
                         break;
                     case (char)Tile.EastTurret:
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 90));
                         break;
                     case (char)Tile.SouthTurret:
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 180));
                         break;
                     case (char)Tile.WestTurret:
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, -90));
                         break;
                     case (char)Tile.Wall:
                     case new char():
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         Instantiate(wallPrefab, position, Quaternion.identity);   
-                        break;
-                    case (char)Tile.NorthEdge:
-                    case (char)Tile.EastEdge:
-                    case (char)Tile.SouthEdge:
-                    case (char)Tile.WestEdge:
-                    case (char)Tile.Empty:
-                        Instantiate(backgroundPrefab, position, Quaternion.identity);
                         break;
                     case (char)Tile.NoBackground:
                         break;
