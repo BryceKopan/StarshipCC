@@ -556,6 +556,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2134922569}
     m_Modifications:
+    - target: {fileID: 5597145860863737752, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Red Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597145860863737752, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -1066880961450342566, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -576,16 +586,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597145860863737752, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Small Red Light
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597145860863737752, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597145860863737831, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
         type: 3}
@@ -1139,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionStartZone: {fileID: 1052798440}
+  gameSceneName: GeneratedTileLevel
   spawnPositions:
   - {fileID: 1071116745}
   - {fileID: 1877705384}
@@ -1194,11 +1195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bf1ef8c90eeed4f90cb2bcb2cabf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycleDuration: 1
-  minAlpha: 0
-  maxAlpha: 1
-  renderer: {fileID: 1590441664}
-  targetAlpha: 0
 --- !u!114 &1590441666
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TileCapitalShip.unity
     guid: cd0157ee7ad53422a80a66e36e4aa4c7
+  - enabled: 1
+    path: Assets/Scenes/GeneratedTileLevel.unity
+    guid: 38cd6540b70894695be370f4e2ec7f39
   m_configObjects: {}

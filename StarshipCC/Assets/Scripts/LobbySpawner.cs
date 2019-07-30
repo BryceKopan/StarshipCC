@@ -8,6 +8,8 @@ public class LobbySpawner : MonoBehaviour {
 
     public GameObject missionStartZone;
 
+    public string gameSceneName;
+
     GameObject[] players = new GameObject[5];
     public Transform[] spawnPositions = new Transform[5];
 
@@ -119,7 +121,7 @@ public class LobbySpawner : MonoBehaviour {
         // If everyone is ready, start game
         if (CanStartGame())
         {
-            SceneManager.LoadScene("TileCapitalShip");
+            SceneManager.LoadScene(gameSceneName);
         }
     }
 
