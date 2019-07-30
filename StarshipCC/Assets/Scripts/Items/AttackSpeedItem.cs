@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class AttackSpeedItem : Item
 {
-    public float modifier = 2;
+    public float modifier = 1.5f;
+
+    List<Weapon> affectedWeapons;
 
     public override string Description
     {
         get
         {
-            return "Attack Speed x" + (int)modifier;
+            return "Attack Speed x" + modifier.ToString("F1");
         }
     }
 
     protected override void OnEquip(PlayerController player)
     {
+        affectedWeapons = new List<Weapon>();
+
         foreach(Weapon w in player.weapons)
         {
             w.cooldown = w.cooldown / modifier;
+            affectedWeapons.Add(w);
         }
     }
 
@@ -26,7 +31,10 @@ public class AttackSpeedItem : Item
     {
         foreach (Weapon w in player.weapons)
         {
-            w.cooldown = w.cooldown * modifier;
+            if(affectedWeapons.Contains(w))
+            {
+                w.cooldown = w.cooldown * modifier;
+            }
         }
     }
 }

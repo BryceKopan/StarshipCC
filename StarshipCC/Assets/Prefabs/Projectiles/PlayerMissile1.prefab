@@ -653,7 +653,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 20
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4872,6 +4872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369eb07a9affae45b10fad3e2af9e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPenetrating: 0
   damage: 0
   speed: 0
   range: 0

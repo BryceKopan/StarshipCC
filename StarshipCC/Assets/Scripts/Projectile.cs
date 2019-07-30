@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
+
+    public bool isPenetrating = false;
+
     [HideInInspector]
     public float damage, speed, range;
     float distanceTraveled = 0;
@@ -39,7 +42,10 @@ public class Projectile : MonoBehaviour {
         if (hittable != null)
         {
             hittable.OnHit(this);
-            Death();
+            if(!isPenetrating)
+            {
+                Death();
+            }
         }
     }
 
@@ -47,10 +53,9 @@ public class Projectile : MonoBehaviour {
     {
         if(DeathEffectPrefab)
         {
-            Instantiate(
-            DeathEffectPrefab,
-            gameObject.transform.position,
-            gameObject.transform.rotation);
+            GameObject effectInstance = Instantiate(DeathEffectPrefab);
+            effectInstance.transform.position = transform.position;
+            effectInstance.transform.rotation = transform.rotation;
         }
 
         Destroy(gameObject);

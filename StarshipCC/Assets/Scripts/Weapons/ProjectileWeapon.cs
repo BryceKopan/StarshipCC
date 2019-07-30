@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ProjectileWeapon : Weapon {
 
+    public bool isPenetrating = false;
+
     public GameObject projectilePrefab;
 
     public float bulletSpeed = 40f;
@@ -21,13 +23,9 @@ public class ProjectileWeapon : Weapon {
 
     public override void OnAttackStart()
     {
-        for (int i = 0; i < numAttacks; i++)
-        {
-            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
-        }
     }
 
-    public override void OnAttackEnd() { }
+    public override void OnAttackStop() { }
 
     public override void OnCanAttack() { }
 
@@ -41,6 +39,10 @@ public class ProjectileWeapon : Weapon {
                     projectilePrefab,
                     bulletSpawn.position,
                     bulletSpawn.rotation);
+
+            Vector3 localScale = projectile.transform.localScale;
+
+            projectile.transform.localScale = new Vector3(localScale.x * attackScaleModifier, localScale.y * attackScaleModifier, localScale.z);
 
             if (gameObject.layer == Layers.PLAYER)
             {
@@ -57,12 +59,20 @@ public class ProjectileWeapon : Weapon {
             }
 
             Projectile projectileScript = projectile.GetComponent<Projectile>();
-            projectileScript.damage = damage;
-            projectileScript.speed = bulletSpeed;
-            projectileScript.range = range;
+            if(projectileScript)
+            {
+                projectileScript.damage = damage;
+                projectileScript.speed = bulletSpeed;
+                projectileScript.range = range;
+                projectileScript.isPenetrating = isPenetrating;
 
-            //Add velocity to the bullet
-            projectileScript.moveVector = bulletSpawn.transform.up;
+                //Add velocity to the bullet
+                projectileScript.moveVector = bulletSpawn.transform.up;
+            }
+            else
+            {
+                Debug.LogError("Projectile script does not exist!");
+            }
         }
 
         ApplyRecoil();
@@ -85,4 +95,15 @@ public class ProjectileWeapon : Weapon {
     public override void OnEquip(PlayerController player) { }
 
     public override void OnUnequip(PlayerController player) { }
+
+    public override void OnAttack()
+    {
+        for(int i = 0; i < numAttacks; i++)
+        {
+            Invoke("LaunchProjectiles", i * delayBetweenAttacks);
+        }
+
+        canAttack = false;
+        Invoke("EnableAttack", delayBetweenAttacks * numAttacks + cooldown);
+    }
 }

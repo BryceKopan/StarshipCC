@@ -14,4 +14,6 @@ public class Layers
     public static int FRIENDLY_ATTACK = 13;
     public static int ENEMY_ATTACK = 14;
     public static int ENEMY = 15;
+    public static int HULL = 16;
+    public static int HULL_DAMAGE = 17;
 }

@@ -7,14 +7,14 @@ public abstract class Ability : MonoBehaviour
     protected bool isReady;
     protected bool isActive;
 
-    protected float activeLength;
-    protected float cooldownLength;
-
-    [HideInInspector]
+    [ReadOnly]
     public PlayerController player;
 
+    abstract public float Duration { get; }
+    abstract public float Cooldown { get; }
+
     // Start is called before the first frame update
-    protected virtual void Start()
+    public virtual void Start()
     {
         isReady = true;
         isActive = false;
@@ -26,13 +26,25 @@ public abstract class Ability : MonoBehaviour
         
     }
 
+    public void Equip(PlayerController player)
+    {
+        this.player = player;
+        OnEquip(player);
+    }
+
+    public void Unequip()
+    {
+        OnUnequip();
+        this.player = null;
+    }
+
     public void Activate()
     {
         if(isReady)
         {
             isReady = false;
             isActive = true;
-            Invoke("Deactivate", activeLength);
+            Invoke("Deactivate", Duration);
             OnActivate();
         }
     }
@@ -41,7 +53,7 @@ public abstract class Ability : MonoBehaviour
     {
         if(isActive)
         {
-            Invoke("MakeReady", cooldownLength);
+            Invoke("MakeReady", Cooldown);
             isActive = false;
         }
         OnDeactivate();
@@ -53,6 +65,8 @@ public abstract class Ability : MonoBehaviour
         OnReady();
     }
 
+    protected abstract void OnEquip(PlayerController player);
+    protected abstract void OnUnequip();
     protected abstract void OnActivate();
     protected abstract void OnDeactivate();
     protected abstract void OnReady();

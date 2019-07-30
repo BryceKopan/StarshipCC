@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 9155650670460996904}
   - component: {fileID: 4082214240141896146}
   - component: {fileID: -630280091794065349}
-  - component: {fileID: 5391869549094977188}
   - component: {fileID: -2721163812024614840}
   - component: {fileID: 5476159603169910332}
+  - component: {fileID: -1167701998890785313}
   - component: {fileID: 2442071813607901495}
+  - component: {fileID: -5857219803986680393}
+  - component: {fileID: 2683645643913890101}
   m_Layer: 0
   m_Name: AssaultClass
   m_TagString: Untagged
@@ -31,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 3274142738638057663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,8 +54,7 @@ MonoBehaviour:
   - {fileID: 114342664500156800, guid: 36d8eae8260efa1409e9876dac01829e, type: 3}
   engine: {fileID: 0}
   shield: {fileID: 0}
-  ability1: {fileID: -5295277093386582323, guid: 45cc3ebd74b89714a8e5c171338bfbf1,
-    type: 3}
+  ability1: {fileID: 0}
   ability2: {fileID: 0}
   ability3: {fileID: 0}
   ability4: {fileID: 0}
@@ -73,23 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8c3408eb20a3e4aba062f3864d8f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5391869549094977188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3274142738638057663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa18288028350446a681d5030f1e8e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isThrusting: 0
   player: {fileID: 0}
-  dashSpeed: 200
-  dashLength: 0.05
-  dashCooldown: 1
-  emitter: {fileID: 5476159603169910332}
 --- !u!199 &-2721163812024614840
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4810,6 +4796,24 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-1167701998890785313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274142738638057663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798c2bc9f4cfca94f8f0ed9fa4881d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  dashSpeed: 200
+  dashLength: 0.05
+  dashCooldown: 1
+  emitter: {fileID: 5476159603169910332}
+  weapon: {fileID: 6852687786292542998, guid: 03f24bdd1268e2046aaac3d5a8f8dffe, type: 3}
 --- !u!114 &2442071813607901495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,3 +4829,34 @@ MonoBehaviour:
   shieldRenderer: {fileID: 0}
   currentCharge: 0
   player: {fileID: 0}
+--- !u!114 &-5857219803986680393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274142738638057663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f9f628ccce9ab458a541c2c2290f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  torpedoWeapon: {fileID: 1225266866608492188, guid: 9b3af98dde55e4044a90d397e4cd4c9b,
+    type: 3}
+--- !u!114 &2683645643913890101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274142738638057663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4eaaec754ac22d4eb0f3e5a0e8dc9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  parryShield: {fileID: 1206764033139860, guid: 864dc7e75f3af7447961e50c2ef2517f,
+    type: 3}
+  damageMultiplier: 10

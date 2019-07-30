@@ -6,7 +6,7 @@ public class BasicEngine : Engine
 {
     public override float MoveSpeed()
     {
-        return 100;
+        return 100 * player.movementSpeedModifier;
     }
 
     public override float TurnSpeed()

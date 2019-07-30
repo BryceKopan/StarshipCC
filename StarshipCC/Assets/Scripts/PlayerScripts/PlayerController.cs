@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     // How far the user must move the stick before the ship will fire (0-1)
     public float twinStickFireThreshold = 0.5f;
 
-    public float fireConeWidth = 20;
-
     [ReadOnly]
     public float thrustLevel = 0f;
-    
+
+    public float movementSpeedModifier = 1f;
+
+    public Light lightObj;
+
     [ReadOnly]
     public PlayerClass playerClass = null;
 
@@ -35,18 +37,15 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     private float currentHealth;
 
     // TODO move all these into abilities
-    public float parryLength = 0.3f;
     public float invincibilityLength = 1f;
-    public float parryCooldown = 0.1f;
-    bool canParry = true;
     bool invincible = false;
 
     Rigidbody2D rigidbody;
 
     public GameObject explosionPrefab;
     public GameObject SetActiveOnDeath;
-    
-    ParryShield parryShield; // TODO make this an ability
+
+    public bool isAttacking = false;
 
     [HideInInspector]
     public Vector2 moveDirection;
@@ -59,8 +58,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 	void Awake () 
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        parryShield = GetComponentInChildren<ParryShield>();
-        parryShield.gameObject.SetActive(false);
 
         weapons = new List<Weapon>();
 
@@ -137,9 +134,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         bool ability3;
         bool ability4;
 
-        //TODO make these abilities
-        bool parry;
-
         // Keyboard input
         if(PlayerNumber == 5)
         {
@@ -152,7 +146,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             yAimAxis = mousePos.y - transform.position.y;
 
             attack = Input.GetMouseButton(0);
-            parry = Input.GetMouseButton(1);
 
             ability1 = Input.GetButtonDown("KeyboardAbility1");
             ability2 = Input.GetButtonDown("KeyboardAbility2");
@@ -181,17 +174,13 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
 
                 float angleBetweenAimAndJoystick = Vector2.Angle(transform.up, aimDirection);
 
-                attack = aimMagnitude > twinStickFireThreshold && angleBetweenAimAndJoystick < fireConeWidth / 2;
-
-                parry = XCI.GetAxis(XboxAxis.LeftTrigger, controller) > 0;
+                attack = aimMagnitude > twinStickFireThreshold;
             }
             // Normal stick mode
             else
             {
                 float fireAxis = XCI.GetAxis(XboxAxis.RightTrigger, controller);
                 attack = fireAxis > 0;
-
-                parry = XCI.GetButton(XboxButton.RightBumper, controller);
             }
         }
 
@@ -218,9 +207,23 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
             aimDirection = aimJoystickPos.normalized;
         }
         
-        if (attack)
+        if (attack && !isAttacking)
         {
-            Attack();
+            isAttacking = true;
+
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.StartAttack();
+            }
+        }
+        else if(!attack && isAttacking)
+        {
+            isAttacking = false;
+
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.StopAttack();
+            }
         }
 
         if (ability1)
@@ -241,19 +244,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if (ability4)
         {
             ActivateAbility4();
-        }
-
-        if (parry && canParry)
-        {
-            Parry();
-        }
-    }
-
-    void Attack()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Attack();
         }
     }
 
@@ -301,24 +291,11 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         }
     }
 
-    void Parry()
-    {
-        canParry = false;
-        Invoke("EndParry", parryLength);
-        Invoke("EnableParry", parryLength + parryCooldown);
-        parryShield.gameObject.SetActive(true);
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
             Death();
-    }
-
-    void EndParry()
-    {
-        parryShield.gameObject.SetActive(false);
     }
 
     void StartInvincibility()
@@ -330,11 +307,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     void EndInvincibility()
     {
         invincible = false;
-    }
-
-    void EnableParry()
-    {
-        canParry = true;
     }
 
     void Death()
@@ -367,6 +339,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     {
         if(weapons.Contains(weapon))
         {
+            weapon.transform.parent = null;
             weapons.Remove(weapon);
             weapon.Unequip(this);
             return true;
@@ -426,6 +399,11 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if(overlayRenderer)
         {
             overlayRenderer.color = color;
+        }
+
+        if(lightObj)
+        {
+            lightObj.color = color;
         }
     }
 }

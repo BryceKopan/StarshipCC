@@ -36,6 +36,8 @@ public class PlayerClass : MonoBehaviour
         {
             Weapon instance = Instantiate(startingWeapons[i]);
             startingWeapons[i] = instance;
+            instance.transform.parent = transform;
+            instance.transform.localScale = new Vector3(1, 1, 1);
         }
 
         // Engine and shield must be components on the class prefab
@@ -106,6 +108,7 @@ public class PlayerClass : MonoBehaviour
         colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
         colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
 
+
         shield.Equip(player);
         engine.Equip(player);
 
@@ -116,19 +119,19 @@ public class PlayerClass : MonoBehaviour
 
         if (ability1)
         {
-            ability1.player = player;
+            ability1.Equip(player);
         }
         if (ability2)
         {
-            ability2.player = player;
+            ability2.Equip(player);
         }
         if (ability3)
         {
-            ability3.player = player;
+            ability3.Equip(player);
         }
         if (ability4)
         {
-            ability4.player = player;
+            ability4.Equip(player);
         }
 
         foreach (Item item in startingItems)
@@ -159,6 +162,7 @@ public class PlayerClass : MonoBehaviour
             for (int i = 0; i < startingWeapons.Count; i++)
             {
                 player.RemoveWeapon(startingWeapons[i]);
+                startingWeapons[i].transform.parent = transform;
             }
 
             foreach (Item item in startingItems)

@@ -12,6 +12,8 @@ public class Debris : MonoBehaviour, Hittable
 	// Use this for initialization
 	protected void Start () 
 	{
+		Destroy(GetComponent<PolygonCollider2D>());
+ 		gameObject.AddComponent<PolygonCollider2D>();
 	}
 	
 	// Update is called once per frame

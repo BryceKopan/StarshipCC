@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6316441696713703391}
   - component: {fileID: 8697287062476429162}
   - component: {fileID: 1381070654507787964}
+  - component: {fileID: 90035552268309220}
+  - component: {fileID: -3805715044208821311}
   m_Layer: 0
   m_Name: BasicClass
   m_TagString: Untagged
@@ -31,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 6836569433302908582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,10 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingWeapons:
   - {fileID: 114614172202256250, guid: d5ab38a9a8b81ce4bb4c0a4c92afd887, type: 3}
-  engine: {fileID: 2279273012967311031, guid: 1d3919b35d06c604ba86dc2d42c479f3, type: 3}
-  shield: {fileID: 4820358831269179572, guid: 5c3e975af9f1cb14f9d9e0d8f188a8eb, type: 3}
-  ability1: {fileID: -5295277093386582323, guid: 45cc3ebd74b89714a8e5c171338bfbf1,
-    type: 3}
+  engine: {fileID: 0}
+  shield: {fileID: 0}
+  ability1: {fileID: 0}
   ability2: {fileID: 0}
   ability3: {fileID: 0}
   ability4: {fileID: 0}
@@ -73,8 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eead22326c7cc4c81d3f9ecfa3ebfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 0}
   currentCharge: 0
-  timeSinceLastHit: 0
   player: {fileID: 0}
 --- !u!114 &-7774614078798973662
 MonoBehaviour:
@@ -88,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8c3408eb20a3e4aba062f3864d8f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isThrusting: 0
+  player: {fileID: 0}
 --- !u!114 &6316441696713703391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,3 +4828,34 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &90035552268309220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836569433302908582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f9f628ccce9ab458a541c2c2290f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  torpedoWeapon: {fileID: 1225266866608492188, guid: 9b3af98dde55e4044a90d397e4cd4c9b,
+    type: 3}
+--- !u!114 &-3805715044208821311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836569433302908582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4eaaec754ac22d4eb0f3e5a0e8dc9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  parryShield: {fileID: 1206764033139860, guid: 864dc7e75f3af7447961e50c2ef2517f,
+    type: 3}
+  damageMultiplier: 10

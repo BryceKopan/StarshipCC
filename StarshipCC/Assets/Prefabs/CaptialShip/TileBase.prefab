@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2076334095556681398}
   - component: {fileID: 2076334095556681397}
   - component: {fileID: 2076334095556681392}
-  m_Layer: 0
-  m_Name: CapitalTileBase
+  m_Layer: 16
+  m_Name: TileBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5162758776b36264e8c7510545090a55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,3 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed02cc258b6f34ff48561c0abfc4e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  minChunkAmount: 0
+  maxChunkAmount: 1
+  chunkPrefab: {fileID: 2718129999307589873, guid: 2e2797ea0760f4c1b89827d1e297cac0,
+    type: 3}

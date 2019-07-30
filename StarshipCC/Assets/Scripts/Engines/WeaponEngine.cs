@@ -55,7 +55,7 @@ public class WeaponEngine : Engine
     {
         if(weapon)
         {
-            weapon.Attack();
+            weapon.StartAttack();
             Invoke("FireWeapon", (weapon.numAttacks * weapon.delayBetweenAttacks) + weapon.cooldown);
         }
 
