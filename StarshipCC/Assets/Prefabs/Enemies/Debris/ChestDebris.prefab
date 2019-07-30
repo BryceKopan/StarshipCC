@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 212684839973485312}
   - component: {fileID: 50025574805480898}
   - component: {fileID: 114730357346970710}
-  - component: {fileID: 114542068713518250}
   - component: {fileID: 5971881274820650593}
   m_Layer: 0
   m_Name: ChestDebris
@@ -124,19 +123,6 @@ MonoBehaviour:
   deathPrefabList:
   - {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95, type: 3}
   - {fileID: 1527606015615494, guid: 398f1fbad229f49478be6cbb9e353e6b, type: 3}
---- !u!114 &114542068713518250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226344448949012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectToDestroy: {fileID: 0}
 --- !u!60 &5971881274820650593
 PolygonCollider2D:
   m_ObjectHideFlags: 0

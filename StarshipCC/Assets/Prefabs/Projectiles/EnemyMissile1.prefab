@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7312477205124149004}
   - component: {fileID: 7425121483481716146}
   - component: {fileID: 7453351171462472236}
-  - component: {fileID: 7363305300300132846}
   m_Layer: 0
   m_Name: EnemyMissile1
   m_TagString: EnemyBullet
@@ -4883,19 +4882,6 @@ PolygonCollider2D:
       - {x: 0.032004867, y: -0.06776867}
       - {x: 0.03448817, y: 0.109669566}
       - {x: -0.005219587, y: 0.18786788}
---- !u!114 &7363305300300132846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7475396911644241038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c834b0c795754e446a86a22d08a0ba4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectToDestroy: {fileID: 0}
 --- !u!1001 &9140658863801762978
 PrefabInstance:
   m_ObjectHideFlags: 0
