@@ -19,16 +19,13 @@ public class TileShipGenerator : MonoBehaviour
             Map room = RoomManager.GetRandomEdgeRoom();
             level.PlaceMap(room, 0, leadingEdgeX);
             leadingEdgeX += room.cells.GetLength(1);
-
-
         }
 
-        for(int i=0; i<60; i++)
+        for(int i=0; i<30; i++)
         {
             level.GenerateRoomOnEntrance();
         }
 
-        PrintMap(level);
         BuildMap(level);
     }
 

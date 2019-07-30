@@ -126,7 +126,6 @@ public static class RoomManager
         edgeRooms.Add(edgeRoom0);
         edgeRooms.Add(edgeRoom1);
 
-        centerRooms.Add(centerRoom0);
         centerRooms.Add(centerRoom1);
         centerRooms.Add(centerRoom2);
         centerRooms.Add(centerRoom3);

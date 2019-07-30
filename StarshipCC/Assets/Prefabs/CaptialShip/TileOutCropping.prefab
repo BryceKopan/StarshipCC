@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b7c0290afeb459082a0941f8495483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chanceForTurret: 0.5
   SmallAttachmentPrefabs:
   - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 3}
-  - {fileID: 7228072199516643952, guid: e8b500d18b5aa44ac83533b59c884dd0, type: 3}
+  - {fileID: 1986490274335799319, guid: e8b500d18b5aa44ac83533b59c884dd0, type: 3}

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1989985992717646347}
   - component: {fileID: 1830327980899243551}
   - component: {fileID: 1954920674396693233}
-  - component: {fileID: 1874860383775331705}
   - component: {fileID: 1964837209516015969}
   - component: {fileID: 1874693081528717899}
   - component: {fileID: 1875121281847730577}
+  - component: {fileID: 6104281659360314214}
   m_Layer: 0
-  m_Name: SmallMissileTurret 1
+  m_Name: SmallMissileTurret
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,26 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1874860383775331705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986490274335799319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d121a5e6efc8448aaba850bb18fa6126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 20
-  rotationSpeed: 1
-  maxHealth: 50
-  deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
-    type: 3}
-  ScoreValue: 50
-  weapons: []
-  pauseAfterShooting: 0.5
 --- !u!60 &1964837209516015969
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -198,6 +178,26 @@ MonoBehaviour:
   upperCoinLimit: 5
   lowerForceLimit: -1000
   upperForceLimit: 1000
+--- !u!114 &6104281659360314214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986490274335799319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9562bb35b056040688c2b557813a7073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  rotationSpeed: 1
+  maxHealth: 50
+  deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
+    type: 3}
+  ScoreValue: 50
+  weapons: []
+  pauseAfterShooting: 1
 --- !u!1 &1987821009701809207
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,11 +310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1989985992717646347}
     m_Modifications:
-    - target: {fileID: 5587442104136412709, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
-      objectReference: {fileID: 0}
     - target: {fileID: 5587442104136412762, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,6 +364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587442104136412709, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
       objectReference: {fileID: 0}
     - target: {fileID: 5587442104136412763, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
         type: 3}
