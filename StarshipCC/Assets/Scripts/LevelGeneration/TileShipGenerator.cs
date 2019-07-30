@@ -7,6 +7,7 @@ public class TileShipGenerator : MonoBehaviour
     public GameObject wallPrefab;
     public GameObject turretPrefab;
     public GameObject chestPrefab;
+    public GameObject backgroundPrefab;
 
     void Start()
     {
@@ -32,13 +33,18 @@ public class TileShipGenerator : MonoBehaviour
 
     void BuildMap(Map map)
     {
-        SpriteRenderer wallPrefabSR = wallPrefab.GetComponent<SpriteRenderer>();
+        Vector3 wallSize = wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
 
+        //Instatiate and size background
+        GameObject background = Instantiate(backgroundPrefab, new Vector3(map.cells.GetLength(1)/2 * wallSize.x + transform.position.x, map.cells.GetLength(0)/2 * wallSize.y + transform.position.y, transform.position.z), Quaternion.identity);
+        background.transform.localScale = new Vector3(background.transform.localScale.x * map.cells.GetLength(1), background.transform.localScale.x * map.cells.GetLength(0), 1);
+
+        //Construct Map
         for(int x=0; x<map.cells.GetLength(0); x++)
         {
             for(int y=0; y<map.cells.GetLength(1); y++)
             {
-                Vector3 position = new Vector3((y * wallPrefabSR.bounds.size.x) + transform.position.x, x * wallPrefabSR.bounds.size.y + transform.position.y, 1);
+                Vector3 position = new Vector3((y * wallSize.x) + transform.position.x, x * wallSize.y + transform.position.y, 1);
 
                 switch(map.cells[x, y])
                 {
