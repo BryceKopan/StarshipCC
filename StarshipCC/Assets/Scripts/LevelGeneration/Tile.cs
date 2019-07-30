@@ -11,4 +11,5 @@ public enum Tile
     EastTurret = '2',
     SouthTurret = '3',
     WestTurret = '4',
+    Treasure = 'T'
 }

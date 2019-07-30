@@ -6,6 +6,7 @@ public class TileShipGenerator : MonoBehaviour
 {
     public GameObject wallPrefab;
     public GameObject turretPrefab;
+    public GameObject chestPrefab;
 
     void Start()
     {
@@ -41,6 +42,9 @@ public class TileShipGenerator : MonoBehaviour
 
                 switch(map.cells[x, y])
                 {
+                    case (char)Tile.Treasure:
+                        Instantiate(chestPrefab, position, Quaternion.Euler(0, 0, 0));
+                        break;
                     case (char)Tile.NorthTurret:
                         Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 0));
                         break;
