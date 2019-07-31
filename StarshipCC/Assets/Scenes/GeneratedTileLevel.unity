@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 1423746458697269479, guid: 5d54e5e1740354ea2a17bcc6eea4534a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1423746458697269479, guid: 5d54e5e1740354ea2a17bcc6eea4534a,
         type: 3}
@@ -639,6 +639,8 @@ MonoBehaviour:
   chestPrefab: {fileID: 1527606015615494, guid: 398f1fbad229f49478be6cbb9e353e6b,
     type: 3}
   backgroundPrefab: {fileID: 6584893735109466590, guid: 8e103682fe8a1409f87ba6be7680f85e,
+    type: 3}
+  shopPrefab: {fileID: 3371867887806191986, guid: 9dac7ddfcb3524a2d864c4cfb7b20852,
     type: 3}
 --- !u!114 &1374255787
 MonoBehaviour:
@@ -849,5 +851,5 @@ Transform:
   - {fileID: 1365171473}
   - {fileID: 1506000765}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

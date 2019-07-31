@@ -8,6 +8,7 @@ public class TileShipGenerator : MonoBehaviour
     public GameObject turretPrefab;
     public GameObject chestPrefab;
     public GameObject backgroundPrefab;
+    public GameObject shopPrefab;
 
     void Start()
     {
@@ -48,6 +49,9 @@ public class TileShipGenerator : MonoBehaviour
 
                 switch(map.cells[x, y])
                 {
+                    case (char)Tile.Shop:
+                        Instantiate(shopPrefab, position, Quaternion.Euler(0, 0, 0));
+                        break;
                     case (char)Tile.Treasure:
                         Instantiate(chestPrefab, position, Quaternion.Euler(0, 0, 0));
                         break;
