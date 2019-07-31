@@ -36,7 +36,7 @@ public class TileShipGenerator : MonoBehaviour
         Vector3 wallSize = wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
 
         //Instatiate and size background
-        GameObject background = Instantiate(backgroundPrefab, new Vector3(map.cells.GetLength(1)/2 * wallSize.x + transform.position.x, map.cells.GetLength(0)/2 * wallSize.y + transform.position.y, transform.position.z), Quaternion.identity);
+        GameObject background = Instantiate(backgroundPrefab, new Vector3(map.cells.GetLength(1)/2 * wallSize.x + transform.position.x, map.cells.GetLength(0)/2 * wallSize.y + transform.position.y, 10), Quaternion.identity);
         background.transform.localScale = new Vector3(background.transform.localScale.x * map.cells.GetLength(1), background.transform.localScale.x * map.cells.GetLength(0), 1);
 
         //Construct Map
