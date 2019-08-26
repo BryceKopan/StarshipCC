@@ -10,6 +10,8 @@ public class TileShipGenerator : MonoBehaviour
     public GameObject backgroundPrefab;
     public GameObject shopPrefab;
 
+	public int chunkSize = 20;
+
     void Start()
     {
         RoomManager.LoadMaps();
@@ -40,10 +42,13 @@ public class TileShipGenerator : MonoBehaviour
         GameObject background = Instantiate(backgroundPrefab, new Vector3(map.cells.GetLength(1)/2 * wallSize.x + transform.position.x, map.cells.GetLength(0)/2 * wallSize.y + transform.position.y, 10), Quaternion.identity);
         background.transform.localScale = new Vector3(background.transform.localScale.x * map.cells.GetLength(1), background.transform.localScale.x * map.cells.GetLength(0), 1);
 
-        //Construct Map
-        for(int x=0; x<map.cells.GetLength(0); x++)
+		//Construct Map
+		int mapMaxX = map.cells.GetLength(0);
+		int mapMaxY = map.cells.GetLength(1);
+		GameObject[,] chunks = new GameObject[0, 0];
+		for(int x=0; x<mapMaxX; x++)
         {
-            for(int y=0; y<map.cells.GetLength(1); y++)
+            for(int y=0; y<mapMaxY; y++)
             {
                 Vector3 position = new Vector3((y * wallSize.x) + transform.position.x, x * wallSize.y + transform.position.y, 1);
 
@@ -76,26 +81,5 @@ public class TileShipGenerator : MonoBehaviour
                 }   
             }
         }
-    }
-
-    private 
-
-    void PrintMap(Map map)
-    {
-        string drawnMap = "";
-        
-        for(int x=0; x<map.cells.GetLength(0); x++)
-        {
-            for(int y=0; y<map.cells.GetLength(1); y++)
-            {
-                if(map.cells[x, y] == new char())
-                    drawnMap += '_';
-                else
-                    drawnMap += map.cells[x, y];         
-            }
-            drawnMap += '\n';
-        }
-
-        Debug.Log(drawnMap);
     }
 }
