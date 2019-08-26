@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 114485554213458392}
   - component: {fileID: 114557085038769448}
   m_Layer: 0
-  m_Name: DualShotSmallTurret
+  m_Name: Turret
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,8 @@ Transform:
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children:
   - {fileID: 4734350903612822}
-  - {fileID: 8966947370516899872}
   - {fileID: 3206417764938082242}
+  - {fileID: 8517066448015447839}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 5587442104136412762, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5587442104136412762, guid: f9a428fdf011cfb49b14e1a6b0c208bd,
         type: 3}
@@ -389,7 +389,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7058810797685623192}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8970988990431012892
+--- !u!1001 &8519991513902946083
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -398,7 +398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1793312478232032, guid: 434b00339ba473845952c69d828ffaac, type: 3}
       propertyPath: m_Name
-      value: DualShotSmallTurretWeapon
+      value: TurretWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 4404554357325884, guid: 434b00339ba473845952c69d828ffaac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4404554357325884, guid: 434b00339ba473845952c69d828ffaac, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4404554357325884, guid: 434b00339ba473845952c69d828ffaac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -444,11 +444,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114567414540920310, guid: 434b00339ba473845952c69d828ffaac,
+        type: 3}
+      propertyPath: delayBetweenAttacks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114567414540920310, guid: 434b00339ba473845952c69d828ffaac,
+        type: 3}
+      propertyPath: cooldown
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 434b00339ba473845952c69d828ffaac, type: 3}
---- !u!4 &8966947370516899872 stripped
+--- !u!4 &8517066448015447839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4404554357325884, guid: 434b00339ba473845952c69d828ffaac,
     type: 3}
-  m_PrefabInstance: {fileID: 8970988990431012892}
+  m_PrefabInstance: {fileID: 8519991513902946083}
   m_PrefabAsset: {fileID: 0}
