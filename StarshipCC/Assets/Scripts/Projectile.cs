@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour {
 
     public GameObject DeathEffectPrefab;
 
+    public bool orphanParticlesOnDeath = true; 
+
     public void Start()
     {
         OnStart();
@@ -56,6 +58,17 @@ public class Projectile : MonoBehaviour {
             GameObject effectInstance = Instantiate(DeathEffectPrefab);
             effectInstance.transform.position = transform.position;
             effectInstance.transform.rotation = transform.rotation;
+        }
+
+        if(orphanParticlesOnDeath)
+        {
+            ParticleSystem[] childParticles = GetComponentsInChildren<ParticleSystem>(); 
+            foreach(ParticleSystem particles in childParticles)
+            {
+                particles.transform.SetParent(null);
+                particles.gameObject.AddComponent<DestroyWhenNoParticles>();
+                particles.Stop();
+            }
         }
 
         Destroy(gameObject);

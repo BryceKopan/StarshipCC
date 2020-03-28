@@ -140,6 +140,7 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   DeathEffectPrefab: {fileID: 1641391757864590, guid: 9209938bbf441456e899283514df293d,
     type: 3}
+  orphanParticlesOnDeath: 1
 --- !u!1 &2609252259616333461
 GameObject:
   m_ObjectHideFlags: 0
