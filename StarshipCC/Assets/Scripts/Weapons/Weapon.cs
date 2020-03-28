@@ -25,7 +25,7 @@ public abstract class Weapon : MonoBehaviour {
     [ReadOnly]
     public bool isAttacking;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip attackSound;
 
     public PlayerController player;
@@ -45,7 +45,10 @@ public abstract class Weapon : MonoBehaviour {
 
         CalculateAttackDirection();
 
-        audioSource = gameObject.AddComponent<AudioSource>();
+        if (!audioSource)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         canAttack = false;
         isAttacking = false;
@@ -125,7 +128,7 @@ public abstract class Weapon : MonoBehaviour {
     {
         if (attackSound)
         {
-            audioSource.PlayOneShot(attackSound, soundVolume);
+            audioSource.PlayOneShot(attackSound, soundVolume); 
         }
     }
 

@@ -91,6 +91,7 @@ MonoBehaviour:
   recoilMagnitude: 0
   canAttack: 1
   isAttacking: 0
+  audioSource: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 7ab9712e15a849948a420c460a666ca4, type: 3}
   player: {fileID: 0}
   enemy: {fileID: 0}
