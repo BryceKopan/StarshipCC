@@ -6,22 +6,48 @@ public class CameraController : MonoBehaviour {
 
     public float moveSpeed;
 
+    public int numFramesBetweenPositionUpdates = 2;
+
+    private int framesSinceLastUpdate = 0;
+
+    public Vector2 targetPosition;
+
+    public PlayerController[] players;
+
+    public CapitalController capitalShip;
+
 	void Start () 
 	{
-	}
+        players = FindObjectsOfType<PlayerController>();
+        capitalShip = FindObjectOfType<CapitalController>();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
+        framesSinceLastUpdate++;
+
+        if(framesSinceLastUpdate == numFramesBetweenPositionUpdates)
+        {
+            framesSinceLastUpdate = 0;
+            updateTargetPosition();
+        }
+
+        // Move towards target position
+        Vector2 moveVector = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
+    }
+
+    public void updateTargetPosition()
+    {
         Vector2 avgPlayerPosition = Vector2.zero;
-        PlayerController[] players = FindObjectsOfType<PlayerController>();
 
         int numPositionsAveraged = 0;
-        CapitalController capitalShip = FindObjectOfType<CapitalController>();
+
         Vector2 capitalShipPosition = Vector2.zero;
-        if(capitalShip)
+        if (capitalShip)
         {
-            capitalShipPosition = FindObjectOfType<CapitalController>().transform.position;
+            capitalShipPosition = capitalShip.transform.position;
         }
 
         foreach (PlayerController player in players)
@@ -29,11 +55,11 @@ public class CameraController : MonoBehaviour {
             avgPlayerPosition += new Vector2(player.transform.position.x, player.transform.position.y);
             numPositionsAveraged++;
 
-            if(capitalShip)
+            if (capitalShip)
             {
                 avgPlayerPosition += new Vector2(player.transform.position.x, capitalShipPosition.y);
                 numPositionsAveraged++;
-            }   
+            }
         }
 
         if (avgPlayerPosition != Vector2.zero)
@@ -41,7 +67,6 @@ public class CameraController : MonoBehaviour {
             avgPlayerPosition /= numPositionsAveraged;
         }
 
-        Vector2 moveVector = Vector2.MoveTowards(transform.position, avgPlayerPosition, moveSpeed * Time.deltaTime);
-        transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
-	}
+        targetPosition = avgPlayerPosition;
+    }
 }
