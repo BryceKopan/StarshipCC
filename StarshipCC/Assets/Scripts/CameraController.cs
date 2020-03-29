@@ -6,10 +6,6 @@ public class CameraController : MonoBehaviour {
 
     public float moveSpeed;
 
-    public int numFramesBetweenPositionUpdates = 2;
-
-    private int framesSinceLastUpdate = 0;
-
     public Vector2 targetPosition;
 
     public PlayerController[] players;
@@ -25,13 +21,7 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-        framesSinceLastUpdate++;
-
-        if(framesSinceLastUpdate == numFramesBetweenPositionUpdates)
-        {
-            framesSinceLastUpdate = 0;
-            updateTargetPosition();
-        }
+        updateTargetPosition();
 
         // Move towards target position
         Vector2 moveVector = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
