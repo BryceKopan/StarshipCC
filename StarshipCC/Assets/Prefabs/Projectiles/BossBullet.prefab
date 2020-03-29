@@ -55,6 +55,7 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   DeathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 3}
+  orphanParticlesOnDeath: 1
 --- !u!212 &212597242109937256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -309,7 +310,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -948,7 +949,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 4
+      value: 1.5
       mode: 0
       spread: 0
       speed:
@@ -1184,7 +1185,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.6987457
           inSlope: -2
           outSlope: -2
           tangentMode: 0
