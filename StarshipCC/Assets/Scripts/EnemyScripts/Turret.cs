@@ -8,11 +8,7 @@ public class Turret : EnemyController
 
     protected override void OnStart()
     {
-        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Equip(this);
-        }
+        EquipAllChildWeapons();
     }
 
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
