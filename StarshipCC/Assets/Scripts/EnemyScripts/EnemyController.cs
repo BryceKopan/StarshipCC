@@ -15,6 +15,10 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     protected List<GameObject> targets;
     protected State currentState;
 
+    Vector3 attackPosition;
+
+    public Vector3 moveVector;
+
     private GameController controller;
     private float currentHealth;
 
@@ -25,6 +29,7 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     public List<Weapon> weapons;
 
     protected float longestWeaponFireTime = 0;
+    protected float longestWeaponRange = 0;
 
     // Use this for initialization
     void Start () 
@@ -37,7 +42,13 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
         if(ds)
             ds.SetMaxHealth(maxHealth);
 
-        controller = GameObject.Find("GameController").GetComponent<GameController>();
+        GameObject gameControllerObj = GameObject.Find("GameController");
+
+        if (gameControllerObj)
+        {
+            controller = gameControllerObj.GetComponent<GameController>();
+        }
+
         OnStart();
 	}
 
@@ -52,7 +63,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     void FixedUpdate()
     {
         List<GameObject> viableTargets;
-        Vector3 attackPosition;
         SimpleTransform deltaTransform;
 
         targets = FindTargets();
@@ -81,6 +91,15 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     }
 
     protected virtual void OnFixedUpdate(){}
+
+    protected virtual void EquipAllChildWeapons()
+    {
+        foreach (Weapon weapon in GetComponentsInChildren<Weapon>(true))
+        {
+            Debug.Log("Weapon found");
+            AddWeapon(weapon);
+        }
+    }
 
     protected virtual List<GameObject> FindTargets()
     {
@@ -160,7 +179,10 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
             isDead = true;
             OnDeath();
             Destroy(gameObject);
-            controller.AddScore(ScoreValue);
+            if(controller)
+            {
+                controller.AddScore(ScoreValue);
+            }   
         }
     }
 
@@ -201,17 +223,22 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
         if (weapons != null)
         {
             weapons.Add(weapon);
-            weapon.tag = Tags.PLAYER;
+            weapon.tag = Tags.ENEMY;
             weapon.transform.SetParent(transform);
             weapon.transform.localPosition = new Vector2(0, 0);
             weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            weapon.OnEquip(this);
+            weapon.Equip(this);
         }
 
         float weaponFireTime = weapon.delayBetweenAttacks * weapon.numAttacks + weapon.cooldown;
         if (longestWeaponFireTime < weaponFireTime)
         {
             longestWeaponFireTime = weaponFireTime;
+        }
+
+        if (longestWeaponRange < weapon.range)
+        {
+            longestWeaponRange = weapon.range;
         }
     }
 
@@ -220,7 +247,9 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
         if (weapons != null)
         {
             weapons.Remove(weapon);
-            weapon.OnUnequip(this);
+            weapon.Unequip(this);
         }
+
+        // TODO update longestWeaponFireTime and range
     }
 }

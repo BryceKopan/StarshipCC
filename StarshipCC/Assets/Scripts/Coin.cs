@@ -12,7 +12,11 @@ public class Coin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		controller = GameObject.Find("GameController").GetComponent<GameController>();
+        GameObject gameControllerObj = GameObject.Find("GameController");
+        if(gameControllerObj)
+        {
+            controller = gameControllerObj.GetComponent<GameController>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -30,8 +34,12 @@ public class Coin : MonoBehaviour {
                 AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, soundVolume);
             }
 
-            controller.AddCoins(1);
-			controller.AddScore(ScoreValue);
+            if(controller)
+            {
+                controller.AddCoins(1);
+                controller.AddScore(ScoreValue);
+            }
+
 			Destroy(gameObject);
         }
     }
