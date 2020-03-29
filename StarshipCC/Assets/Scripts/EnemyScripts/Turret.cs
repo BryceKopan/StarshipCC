@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Turret : EnemyController 
 {
-    public float pauseAfterShooting;
-
     protected override void OnStart()
     {
         EquipAllChildWeapons();

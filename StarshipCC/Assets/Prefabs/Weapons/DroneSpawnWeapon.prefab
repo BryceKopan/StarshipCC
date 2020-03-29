@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5842955427701672809
+--- !u!1 &5024787256440046644
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,69 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5845267436342653535}
-  - component: {fileID: 5802722872984348281}
-  - component: {fileID: 8058554332454068398}
+  - component: {fileID: 5022127855490727198}
   m_Layer: 0
-  m_Name: EnemyDrone1Weapon
-  m_TagString: Player
+  m_Name: BulletSpawn
+  m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5845267436342653535
+--- !u!4 &5022127855490727198
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5842955427701672809}
+  m_GameObject: {fileID: 5024787256440046644}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.455, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5022124342944025972}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &5024840236000473256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5022124342944025972}
+  - component: {fileID: 4911888859124623550}
+  - component: {fileID: -1093362775259082632}
+  - component: {fileID: 4838179028975703488}
+  m_Layer: 0
+  m_Name: DroneSpawnWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5022124342944025972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024840236000473256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5845217774320823737}
+  - {fileID: 5022127855490727198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5802722872984348281
+--- !u!114 &4911888859124623550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5842955427701672809}
+  m_GameObject: {fileID: 5024840236000473256}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd4b29c3bd222ab4e951ae3cbbc23c0b, type: 3}
@@ -48,36 +79,66 @@ MonoBehaviour:
   attackSpawns: []
   avgAttackDirection: {x: 0, y: 0, z: 0}
   damage: 1
-  range: 100
-  cooldown: 1
-  soundVolume: 0.3
+  range: 200
+  cooldown: 4
+  soundVolume: 0.8
   numAttacks: 1
-  delayBetweenAttacks: 0
-  attackScaleModifier: 0.4
-  recoilMagnitude: 2
+  delayBetweenAttacks: 3
+  attackScaleModifier: 1
+  recoilMagnitude: 0
   canAttack: 1
   isAttacking: 0
-  audioSource: {fileID: 0}
-  attackSound: {fileID: 8300000, guid: a00927bd29c654d4ea3aac1166904ae2, type: 3}
+  audioSource: {fileID: 4838179028975703488}
+  attackSound: {fileID: 8300000, guid: 7ab9712e15a849948a420c460a666ca4, type: 3}
   player: {fileID: 0}
   enemy: {fileID: 0}
   isPenetrating: 0
   projectilePrefab: {fileID: 1829289955052274, guid: 7830764ca27d745b58145ffb2fad20a2,
     type: 3}
-  bulletSpeed: 200
---- !u!82 &8058554332454068398
+  bulletSpeed: 100
+--- !u!114 &-1093362775259082632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024840236000473256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012f4dad29b3e7d44bde6b6033a8bd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpawns: []
+  avgAttackDirection: {x: 0, y: 0, z: 0}
+  damage: 0
+  range: 0
+  cooldown: 1
+  soundVolume: 1
+  numAttacks: 1
+  delayBetweenAttacks: 0
+  attackScaleModifier: 1
+  recoilMagnitude: 0
+  canAttack: 1
+  isAttacking: 0
+  audioSource: {fileID: 0}
+  attackSound: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  dronePrefab: {fileID: 295504350867519121, guid: 334cc09a0617200418ddbe6b3dfb1772,
+    type: 3}
+--- !u!82 &4838179028975703488
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5842955427701672809}
+  m_GameObject: {fileID: 5024840236000473256}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 700066db3e7ecec4cbcb340cff2a536b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -86,9 +147,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 200
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -121,7 +182,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -161,33 +222,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &5843114554086347235
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5845217774320823737}
-  m_Layer: 0
-  m_Name: BulletSpawn
-  m_TagString: AttackSpawn
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5845217774320823737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5843114554086347235}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5845267436342653535}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8503496073521652632}
   - component: {fileID: 6758107559495669083}
   - component: {fileID: 6913814475818439382}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: EnemyDrone1
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 295504350867519121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 9148996621432120344}
   - {fileID: 9116462499069691379}
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 3}
-  lowerCoinLimit: 1
-  upperCoinLimit: 5
+  lowerCoinLimit: 0
+  upperCoinLimit: 1
   lowerForceLimit: -1000
   upperForceLimit: 1000
 --- !u!114 &6913814475818439382
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   rotationSpeed: 2
-  maxHealth: 40
-  deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
+  maxHealth: 2
+  deathEffectPrefab: {fileID: 1473331523037874, guid: 0b8673a7cec38490e858b74ef0db0ff7,
     type: 3}
   ScoreValue: 50
   moveVector: {x: 0, y: 0, z: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9148996621432120344}
   - component: {fileID: 6885161740582834989}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8916940703298602630}
   - component: {fileID: 6910158882819554542}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7725360702977834607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4408741897896228333}
@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 5842955427701672809, guid: bffa4bf77d3c91b4e97e0c47790480b8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5845267436342653535, guid: bffa4bf77d3c91b4e97e0c47790480b8,
         type: 3}
@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 5843114554086347235, guid: bffa4bf77d3c91b4e97e0c47790480b8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5845217774320823737, guid: bffa4bf77d3c91b4e97e0c47790480b8,
         type: 3}
