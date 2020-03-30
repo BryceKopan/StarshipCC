@@ -111,10 +111,11 @@ public abstract class Weapon : MonoBehaviour {
         OnAttackStart();
     }
 
-    public void StopAttack()
+    public IEnumerable StopAttack()
     {
         isAttacking = false;
         OnAttackStop();
+        return null;
     }
 
     public IEnumerator EnableAttack()

@@ -5,16 +5,25 @@ using UnityEngine;
 public class DroneSpawner : EnemyController
 {
     public float spawnRange = 40;
+    public int numLivingDrones = 0;
+    public int maxDrones = 5;
 
     protected override void Attack()
     {
-        // Weapons should all be drone spawn weapons;
-        foreach (Weapon weapon in weapons)
+        if(numLivingDrones < maxDrones)
         {
-            weapon.StartAttack();
-        }
+            // Weapons should all be drone spawn weapons;
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.StartAttack();
+            }
 
-        Invoke("DoneAttacking", longestWeaponFireTime);
+            Invoke("DoneAttacking", longestWeaponFireTime);
+        }
+        else
+        {
+            Invoke("DoneAttacking", 0);
+        }
     }
 
     protected override SimpleTransform GetTransformToAttack(Vector3 attackPosition)
@@ -31,5 +40,15 @@ public class DroneSpawner : EnemyController
     protected override void OnStart()
     {
         EquipAllChildWeapons();
+    }
+
+    public void OnDroneSpawned()
+    {
+        numLivingDrones++;
+    }
+
+    public void OnDroneDestroyed()
+    {
+        numLivingDrones--;
     }
 }

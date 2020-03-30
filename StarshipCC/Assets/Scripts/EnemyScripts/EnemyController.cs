@@ -164,6 +164,11 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
     protected void DoneAttacking()
     {
+        foreach(Weapon weapon in weapons)
+        {
+            weapon.StopAttack();
+        }
+
         currentState = State.Moving;
     }
 

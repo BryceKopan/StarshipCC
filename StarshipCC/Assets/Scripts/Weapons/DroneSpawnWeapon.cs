@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class DroneSpawnWeapon : Weapon
 {
+    public DroneSpawner spawner;
+
     public GameObject dronePrefab;
 
-    public override void OnEquip(EnemyController enemy) { }
+    public override void OnEquip(EnemyController enemy)
+    {
+        spawner = enemy.GetComponent<DroneSpawner>();
+    }
 
-    public override void OnUnequip(EnemyController player) { }
+    public override void OnUnequip(EnemyController player)
+    {
+        spawner = null;
+    }
 
-    public override void OnEquip(PlayerController player) { }
+    public override void OnEquip(PlayerController player)
+    {
+        spawner = player.GetComponent<DroneSpawner>();
+    }
 
-    public override void OnUnequip(PlayerController player) { }
+    public override void OnUnequip(PlayerController player)
+    {
+        spawner = null;
+    }
 
     public override void OnAttackStart() { }
 
@@ -46,6 +60,18 @@ public class DroneSpawnWeapon : Weapon
             else
             {
                 drone.layer = Layers.ENEMY_ATTACK;
+            }
+
+            //TODO refactor to allow for player drones
+            EnemyDrone enemyDrone = drone.GetComponent<EnemyDrone>();
+            if(enemyDrone)
+            {
+                enemyDrone.spawner = spawner;
+            }
+
+            if(spawner)
+            {
+                spawner.OnDroneSpawned();
             }
         }
     }

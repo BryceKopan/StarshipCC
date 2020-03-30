@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyDrone : EnemyController
 {
+    public DroneSpawner spawner;
+
     protected override void OnStart()
     {
         EquipAllChildWeapons();
@@ -68,4 +70,14 @@ public class EnemyDrone : EnemyController
     {
         gameObject.GetComponent<Rigidbody2D>().AddForce(moveVector * moveSpeed);
     }
+
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        if (spawner)
+        {
+            spawner.OnDroneDestroyed();
+        }
+    }
+
 }
