@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 21187852222391495}
   - component: {fileID: 2224925105599918391}
   - component: {fileID: 8503496073521652632}
-  - component: {fileID: 6758107559495669083}
   - component: {fileID: 6913814475818439382}
   m_Layer: 0
   m_Name: EnemyDrone1
@@ -88,23 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392ef91773ed441d69887edfe1356ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6758107559495669083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295504350867519121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d19792d602b4f838ae21154b18fb65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 1873637814858632, guid: 9bb56841a6e384434b8d465bf4f8746d, type: 3}
-  lowerCoinLimit: 0
-  upperCoinLimit: 1
-  lowerForceLimit: -1000
-  upperForceLimit: 1000
 --- !u!114 &6913814475818439382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +107,7 @@ MonoBehaviour:
   ScoreValue: 50
   moveVector: {x: 0, y: 0, z: 0}
   weapons: []
+  spawner: {fileID: 0}
 --- !u!1 &1556823383241307307
 GameObject:
   m_ObjectHideFlags: 0

@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966342410811042779}
   - component: {fileID: 1096673821568526650}
+  - component: {fileID: 3558699652778820880}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -337,6 +338,22 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3558699652778820880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967656222835747440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab6b210a5b605942939fa453e33e283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 1096673821568526650}
+  cycleDuration: 2
+  maxIntensity: 0
+  minIntensity: 0
 --- !u!1 &7492308150909179649
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,13 +365,14 @@ GameObject:
   - component: {fileID: 4464051563526068376}
   - component: {fileID: 5538506093123764933}
   - component: {fileID: 3908140412906736572}
+  - component: {fileID: 2562159540908404217}
   m_Layer: 0
   m_Name: Glow Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4464051563526068376
 Transform:
   m_ObjectHideFlags: 0
@@ -406,8 +424,8 @@ SpriteRenderer:
   m_SortingLayerID: -1010788245
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e0efe77611aa3449a94ca14de589b67, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.9425912, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 11c9889649ab7174faf275de5c60fb23, type: 3}
+  m_Color: {r: 0.8721447, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -454,7 +472,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e0efe77611aa3449a94ca14de589b67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11c9889649ab7174faf275de5c60fb23, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -464,3 +482,19 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2562159540908404217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492308150909179649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b367b3bdace514282cb22a741cc570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 5538506093123764933}
+  cycleDuration: 2
+  maxAlpha: 1
+  minAlpha: 0

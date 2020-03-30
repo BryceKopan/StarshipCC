@@ -1177,24 +1177,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 617509366}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &1590441664 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: -1066880961450342566, guid: acb0d437a5c38ef4581bbd9eb10a69f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 617509366}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1590441665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590441662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7bf1ef8c90eeed4f90cb2bcb2cabf8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1590441666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,12 +1190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 1152401353}
-  renderer: {fileID: 1590441664}
   cycleDuration: 1
   maxIntensity: 10
   minIntensity: 0
-  maxAlpha: 1
-  minAlpha: 0
 --- !u!4 &1734200864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5587442104136412762, guid: f9a428fdf011cfb49b14e1a6b0c208bd,

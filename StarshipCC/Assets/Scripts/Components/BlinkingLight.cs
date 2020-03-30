@@ -5,7 +5,6 @@ using UnityEngine;
 public class BlinkingLight : MonoBehaviour
 {
     public Light light;
-    public SpriteRenderer renderer;
 
     public float cycleDuration = 1f;
 
@@ -14,10 +13,6 @@ public class BlinkingLight : MonoBehaviour
 
     public float minIntensity = 0f;
     protected float targetIntensity;
-
-    public float maxAlpha = 1;
-    public float minAlpha = 0;
-    protected float targetAlpha;
 
     // Start is called before the first frame update
     void Start()
