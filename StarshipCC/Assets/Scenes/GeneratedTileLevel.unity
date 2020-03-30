@@ -153,8 +153,8 @@ MonoBehaviour:
   upperSpawnPoint: {x: 200, y: -5, z: 0}
   lowerSpawnInterval: 2
   upperSpawnInterval: 5
-  lowerSize: 8
-  upperSize: 12
+  minRandomScale: 0.8
+  maxRandomScale: 1.2
   speed: 1000
   density: 2
   debrisPrefabs:

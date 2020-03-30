@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MapHazard : MonoBehaviour {
 	public Vector3 lowerSpawnPoint, upperSpawnPoint;
-	public float lowerSpawnInterval, upperSpawnInterval, lowerSize, upperSize, speed, density;
-	public List<GameObject> debrisPrefabs;
+	public float lowerSpawnInterval, upperSpawnInterval, speed, density;
+    public float minRandomScale = 0.8f;
+    public float maxRandomScale = 1.2f;
+    public List<GameObject> debrisPrefabs;
 	public float treasureChance;
 	public List<GameObject> treasurePrefabs;
 	public float coinChance;
@@ -60,8 +62,8 @@ public class MapHazard : MonoBehaviour {
 			position,
 			Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
 
-		float rSize = Random.Range(lowerSize, upperSize);
-		debris.transform.localScale = new Vector3(rSize, rSize, 1);
+		float rSize = Random.Range(minRandomScale, maxRandomScale);
+		debris.transform.localScale = new Vector3(debris.transform.localScale.x * rSize, debris.transform.localScale.y * rSize, 1);
 
 		debris.GetComponent<Rigidbody2D>().AddForce(new Vector3 (-speed, 0, 0));
 	}
