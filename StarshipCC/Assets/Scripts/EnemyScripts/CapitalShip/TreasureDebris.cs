@@ -8,7 +8,11 @@ public class TreasureDebris : Debris {
 	{
 		if(!isDead)
 		{
-			GameObject.Find("CapitalShip").GetComponent<ConstructedCapitalController>().SpawnItem(transform.position);
+            GameObject capitalShip = GameObject.Find("CapitalShip");
+            if(capitalShip)
+            {
+                capitalShip.GetComponent<ConstructedCapitalController>().SpawnItem(transform.position);
+            }
 
 			SpawnDeathPrefabs();
 
