@@ -56,10 +56,12 @@ public class DroneSpawnWeapon : Weapon
             else if (gameObject.layer == Layers.ENEMY)
             {
                 drone.layer = Layers.ENEMY_ATTACK;
+                Debug.Log("Obj is enemy, setting drone layer to enemy attack");
             }
             else
             {
                 drone.layer = Layers.ENEMY_ATTACK;
+                Debug.Log("Obj is unknnown, setting drone layer to enemy attack");
             }
 
             //TODO refactor to allow for player drones
