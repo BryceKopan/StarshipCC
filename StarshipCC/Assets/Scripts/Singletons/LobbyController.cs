@@ -10,7 +10,7 @@ public class LobbyController : MonoBehaviour {
 
     public string levelSceneName;
 
-    public SceneChangeManager sceneChanger;
+    public SceneChangeController sceneChanger;
 
     GameObject[] players = new GameObject[5];
     public Transform[] spawnPositions = new Transform[5];
@@ -41,7 +41,7 @@ public class LobbyController : MonoBehaviour {
         controllers[2] = XboxController.Third;
         controllers[3] = XboxController.Fourth;
 
-        sceneChanger = GameObject.FindObjectOfType<SceneChangeManager>();
+        sceneChanger = GameObject.FindObjectOfType<SceneChangeController>();
         if(!sceneChanger)
         {
             Debug.LogError("No scene change manager found in lobby");

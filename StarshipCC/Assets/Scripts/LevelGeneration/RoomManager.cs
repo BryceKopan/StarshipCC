@@ -3,6 +3,22 @@ using System.Collections.Generic;
 
 public static class RoomManager
 {
+    /*
+    NoBackground = '0',
+    Empty = ' ',
+    Wall = '#',
+    NorthEdge = 'n',
+    EastEdge = 'e',
+    SouthEdge = 's',
+    WestEdge = 'w',
+    NorthTurret = '1',
+    EastTurret = '2',
+    SouthTurret = '3',
+    WestTurret = '4',
+    Treasure = 'T',
+    Shop = 'S'
+     */
+
     static System.Random rnd = new System.Random();
     static List<char[,]> edgeRooms = new List<char[,]>();
     static List<char[,]> centerRooms = new List<char[,]>();

@@ -10,6 +10,8 @@ public class TileShipGenerator : MonoBehaviour
     public GameObject backgroundPrefab;
     public GameObject shopPrefab;
 
+    private int numEdgeRooms = 8;
+
     void Start()
     {
         RoomManager.LoadMaps();
@@ -17,7 +19,7 @@ public class TileShipGenerator : MonoBehaviour
         Map level = new Map();
 
         int leadingEdgeX = 0;
-        for(int i=0; i<8; i++)
+        for(int i = 0; i < numEdgeRooms; i++)
         {
             Map room = RoomManager.GetRandomEdgeRoom();
             level.PlaceMap(room, 0, leadingEdgeX);
@@ -41,35 +43,35 @@ public class TileShipGenerator : MonoBehaviour
         background.transform.localScale = new Vector3(background.transform.localScale.x * map.cells.GetLength(1), background.transform.localScale.x * map.cells.GetLength(0), 1);
 
         //Construct Map
-        for(int x=0; x<map.cells.GetLength(0); x++)
+        for (int y = 0; y < map.cells.GetLength(1); y++)
         {
-            for(int y=0; y<map.cells.GetLength(1); y++)
+            for(int x = 0; x < map.cells.GetLength(0); x++)
             {
                 Vector3 position = new Vector3((y * wallSize.x) + transform.position.x, x * wallSize.y + transform.position.y, 1);
 
                 switch(map.cells[x, y])
                 {
                     case (char)Tile.Shop:
-                        Instantiate(shopPrefab, position, Quaternion.Euler(0, 0, 0));
+                        Instantiate(shopPrefab, position, Quaternion.Euler(0, 0, 0), transform);
                         break;
                     case (char)Tile.Treasure:
-                        Instantiate(chestPrefab, position, Quaternion.Euler(0, 0, 0));
+                        Instantiate(chestPrefab, position, Quaternion.Euler(0, 0, 0), transform);
                         break;
                     case (char)Tile.NorthTurret:
-                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 0));
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 0), transform);
                         break;
                     case (char)Tile.EastTurret:
-                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 90));
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 90), transform);
                         break;
                     case (char)Tile.SouthTurret:
-                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 180));
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, 180), transform);
                         break;
                     case (char)Tile.WestTurret:
-                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, -90));
+                        Instantiate(turretPrefab, position, Quaternion.Euler(0, 0, -90), transform);
                         break;
                     case (char)Tile.Wall:
                     case new char():
-                        Instantiate(wallPrefab, position, Quaternion.identity);   
+                        Instantiate(wallPrefab, position, Quaternion.identity, transform);   
                         break;
                     case (char)Tile.NoBackground:
                         break;

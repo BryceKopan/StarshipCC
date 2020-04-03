@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChangeManager : MonoBehaviour
+public class SceneChangeController : MonoBehaviour
 {
     public string loadingSceneName = "LoadingScene";
 
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ChangeSceneImmediatelyTo(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ChangeSceneTo(string sceneName)
