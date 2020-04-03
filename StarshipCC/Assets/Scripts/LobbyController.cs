@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
 
-public class LobbySpawner : MonoBehaviour {
+public class LobbyController : MonoBehaviour {
 
     public GameObject missionStartZone;
 
-    public string gameSceneName;
+    public string levelSceneName;
+
+    public SceneChangeManager sceneChanger;
 
     GameObject[] players = new GameObject[5];
     public Transform[] spawnPositions = new Transform[5];
@@ -38,6 +40,12 @@ public class LobbySpawner : MonoBehaviour {
         controllers[1] = XboxController.Second;
         controllers[2] = XboxController.Third;
         controllers[3] = XboxController.Fourth;
+
+        sceneChanger = GameObject.FindObjectOfType<SceneChangeManager>();
+        if(!sceneChanger)
+        {
+            Debug.LogError("No scene change manager found in lobby");
+        }
     }
 
     void Update() {
@@ -121,7 +129,7 @@ public class LobbySpawner : MonoBehaviour {
         // If everyone is ready, start game
         if (CanStartGame())
         {
-            SceneManager.LoadScene(gameSceneName);
+            sceneChanger.ChangeSceneTo(levelSceneName);
         }
     }
 

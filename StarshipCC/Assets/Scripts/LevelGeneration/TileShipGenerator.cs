@@ -29,10 +29,10 @@ public class TileShipGenerator : MonoBehaviour
             level.GenerateRoomOnEntrance();
         }
 
-        BuildMap(level);
+        StartCoroutine(BuildMap(level));
     }
 
-    void BuildMap(Map map)
+    IEnumerator BuildMap(Map map)
     {
         Vector3 wallSize = wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
 
@@ -73,14 +73,13 @@ public class TileShipGenerator : MonoBehaviour
                         break;
                     case (char)Tile.NoBackground:
                         break;
-                }   
+                }
+                yield return null;
             }
         }
     }
 
-    private 
-
-    void PrintMap(Map map)
+    private void PrintMap(Map map)
     {
         string drawnMap = "";
         
