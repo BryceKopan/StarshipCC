@@ -96,7 +96,6 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     {
         foreach (Weapon weapon in GetComponentsInChildren<Weapon>(true))
         {
-            Debug.Log("Weapon found");
             AddWeapon(weapon);
         }
     }

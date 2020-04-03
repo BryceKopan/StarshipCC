@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4093323832427540}
   - component: {fileID: 212179070156349422}
   - component: {fileID: 50777787101555768}
-  - component: {fileID: 114917192896329872}
   - component: {fileID: 60475559840674498}
+  - component: {fileID: 7138325924167269400}
+  - component: {fileID: -3809593286654283497}
   m_Layer: 0
   m_Name: TreasureDebris
   m_TagString: Untagged
@@ -105,21 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &114917192896329872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527606015615494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c22d19aa4d64186bfb16f948ca34df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  deathPrefabList:
-  - {fileID: 1023235064179008, guid: 2204c3516f6e04e9f9ce5dfdd6daad69, type: 3}
 --- !u!60 &60475559840674498
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -154,6 +140,38 @@ PolygonCollider2D:
       - {x: 1.4668287, y: 1.0952954}
       - {x: 1.0543298, y: 1.4896225}
       - {x: 0.043822736, y: 1.484242}
+--- !u!114 &7138325924167269400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527606015615494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596f092a4f1210e4d831d959ab4d333a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 1
+  guaranteeEpicItem: 0
+  guaranteeRareItem: 0
+  guaranteeCommonItem: 0
+  numItems: 1
+--- !u!114 &-3809593286654283497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527606015615494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd59be7220f542949c468c724c24aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  deathPrefabList:
+  - {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95, type: 3}
 --- !u!1 &8340264953948271790
 GameObject:
   m_ObjectHideFlags: 0

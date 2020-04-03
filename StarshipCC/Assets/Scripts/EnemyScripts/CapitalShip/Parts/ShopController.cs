@@ -9,11 +9,11 @@ public class ShopController : MonoBehaviour {
 
 	public Vector3 costDisplayOffset;
 
-	ConstructedCapitalController capitalController;
+	ItemSpawnController itemSpawner;
 
 	void Start () 
 	{
-		capitalController = GameObject.Find("CapitalShip").GetComponent<ConstructedCapitalController>();
+        itemSpawner = GameObject.FindObjectOfType<ItemSpawnController>();
 
 		foreach(Transform child in transform)
 		{
@@ -28,7 +28,7 @@ public class ShopController : MonoBehaviour {
 
                         GameObject uiPosition = grandchild.gameObject;
 
-                        GameObject item = capitalController.SpawnItem(child.transform.position);
+                        GameObject item = itemSpawner.SpawnRandomItem(child.transform.position);
 
                         Cost cost = item.AddComponent<Cost>();
                         cost.minCost = minCost;

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 2547321077443843128}
   - component: {fileID: 2547249620012249288}
   - component: {fileID: 2750357822526312162}
+  - component: {fileID: -8791598343656571914}
   m_Layer: 0
   m_Name: DroneSpawner
   m_TagString: Enemy
@@ -290,6 +291,25 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   weapons: []
   spawnRange: 200
+  numLivingDrones: 0
+  maxDrones: 5
+--- !u!114 &-8791598343656571914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506970568396471134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596f092a4f1210e4d831d959ab4d333a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 0.1
+  guaranteeEpicItem: 0
+  guaranteeRareItem: 0
+  guaranteeCommonItem: 0
+  numItems: 1
 --- !u!1 &4178185256432324917
 GameObject:
   m_ObjectHideFlags: 0

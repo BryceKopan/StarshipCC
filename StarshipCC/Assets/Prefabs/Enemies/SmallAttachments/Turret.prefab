@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 114834340904729442}
   - component: {fileID: 114485554213458392}
   - component: {fileID: 114557085038769448}
+  - component: {fileID: 8762767277857507000}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -273,8 +274,8 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 1399890945509150, guid: 3b5077c0356fb44dfa0b9ee0a3ef0d99,
     type: 3}
   ScoreValue: 50
+  moveVector: {x: 0, y: 0, z: 0}
   weapons: []
-  pauseAfterShooting: 1
 --- !u!114 &114485554213458392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +305,23 @@ MonoBehaviour:
   upperCoinLimit: 5
   lowerForceLimit: -1000
   upperForceLimit: 1000
+--- !u!114 &8762767277857507000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644269249511102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596f092a4f1210e4d831d959ab4d333a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 0.1
+  guaranteeEpicItem: 0
+  guaranteeRareItem: 0
+  guaranteeCommonItem: 0
+  numItems: 1
 --- !u!1001 &7058810797685623192
 PrefabInstance:
   m_ObjectHideFlags: 0

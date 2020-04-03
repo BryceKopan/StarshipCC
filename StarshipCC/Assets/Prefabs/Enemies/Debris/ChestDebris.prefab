@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 50025574805480898}
   - component: {fileID: 114730357346970710}
   - component: {fileID: 5971881274820650593}
+  - component: {fileID: -2731357983905723406}
   m_Layer: 0
   m_Name: ChestDebris
   m_TagString: Untagged
@@ -120,7 +121,6 @@ MonoBehaviour:
   health: 10
   deathPrefabList:
   - {fileID: 1430877760342140, guid: f9c1949ff6db04d4eb3a2495a420bc95, type: 3}
-  - {fileID: 1527606015615494, guid: 398f1fbad229f49478be6cbb9e353e6b, type: 3}
 --- !u!60 &5971881274820650593
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -169,6 +169,23 @@ PolygonCollider2D:
       - {x: 1.4349804, y: -0.41271544}
       - {x: 1.48, y: 1.13}
       - {x: 1.4546337, y: 1.4359288}
+--- !u!114 &-2731357983905723406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226344448949012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596f092a4f1210e4d831d959ab4d333a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 1
+  guaranteeEpicItem: 0
+  guaranteeRareItem: 0
+  guaranteeCommonItem: 0
+  numItems: 1
 --- !u!1 &1546688443015682885
 GameObject:
   m_ObjectHideFlags: 0

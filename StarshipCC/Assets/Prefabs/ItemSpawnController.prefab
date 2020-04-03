@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2216500678905815343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7535600888350818660}
+  - component: {fileID: 3256336160312252012}
+  m_Layer: 0
+  m_Name: ItemSpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7535600888350818660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216500678905815343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.88556, y: 8.953362, z: -54.0625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3256336160312252012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216500678905815343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3c7d74f9eca0b4eaf69445bfceff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonItems:
+  - {fileID: 1420507362941186, guid: 4f1c47a8c6d5f7d4095af1666708a902, type: 3}
+  rareItems:
+  - {fileID: 6575425577253154161, guid: 741c4d2a379a7b64790ec4e39dd5560e, type: 3}
+  - {fileID: 6889504508238606761, guid: 0c85a3ce86038184f8438c0bc7c8b3d5, type: 3}
+  - {fileID: 3798055384489560241, guid: be1cf8fdd06464f43b5f1148a5fab2da, type: 3}
+  - {fileID: 2461218142455994637, guid: 1d3d6354d7265084faf11b77323df674, type: 3}
+  epicItems:
+  - {fileID: 1076355341642580, guid: 6e11743cfba57764e93b6236e1186713, type: 3}
+  - {fileID: 1559072985481644, guid: 06d8d293b637b70428800757a72f5010, type: 3}
+  - {fileID: 5854596783266755416, guid: 95e680626ac027f4b91b7dc2144b62bf, type: 3}
+  epicSpawnChance: 0.1
+  rareSpawnChance: 0.3
