@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commonItems:
   - {fileID: 1420507362941186, guid: 4f1c47a8c6d5f7d4095af1666708a902, type: 3}
+  - {fileID: 2171863731971863311, guid: 9dc740eb6a2b55b4c94a26a5303a3e93, type: 3}
   rareItems:
   - {fileID: 6575425577253154161, guid: 741c4d2a379a7b64790ec4e39dd5560e, type: 3}
   - {fileID: 6889504508238606761, guid: 0c85a3ce86038184f8438c0bc7c8b3d5, type: 3}

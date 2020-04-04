@@ -218,8 +218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102.6, y: 5.5}
-  m_SizeDelta: {x: 39.6, y: 6.21}
+  m_AnchoredPosition: {x: 100.25, y: 5.5825}
+  m_SizeDelta: {x: 50, y: 11.165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244174585
 MonoBehaviour:
@@ -248,7 +248,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 1052798443}
   - component: {fileID: 1052798442}
   - component: {fileID: 1052798441}
+  - component: {fileID: 1052798444}
   m_Layer: 0
   m_Name: MissionStartZone
   m_TagString: Untagged
@@ -1046,6 +1047,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052798444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052798440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b367b3bdace514282cb22a741cc570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 1052798442}
+  cycleDuration: 3
+  maxAlpha: 0.6
+  minAlpha: 0.3
 --- !u!1 &1071116744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1534,7 @@ Transform:
   - {fileID: 34346139}
   - {fileID: 908766745}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1951600929 stripped
 Transform:
@@ -1976,7 +1993,7 @@ PrefabInstance:
     - target: {fileID: 7535600888350818660, guid: b8160e88e39e3b543b8aa883e46247c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7535600888350818660, guid: b8160e88e39e3b543b8aa883e46247c4,
         type: 3}

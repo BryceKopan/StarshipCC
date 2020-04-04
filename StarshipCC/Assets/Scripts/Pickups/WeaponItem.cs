@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WeaponItem : Item {
     public GameObject weapon;
-    private Weapon weaponScript;
+    protected Weapon weaponScript;
 
     public override string Description
     {

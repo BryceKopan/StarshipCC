@@ -892,7 +892,6 @@ MonoBehaviour:
   moveSpeed: 60
   targetPosition: {x: 0, y: 0}
   players: []
-  capitalShip: {fileID: 0}
 --- !u!81 &1935819661
 AudioListener:
   m_ObjectHideFlags: 0

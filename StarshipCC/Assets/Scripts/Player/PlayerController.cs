@@ -332,6 +332,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         weapon.transform.SetParent(transform.Find("Weapons"));
         weapon.transform.localPosition = new Vector2(0, 0);
         weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        weapon.gameObject.SetActive(true);
         weapon.Equip(this);
     }
 

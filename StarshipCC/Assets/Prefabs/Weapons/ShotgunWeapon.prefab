@@ -203,7 +203,7 @@ MonoBehaviour:
   avgAttackDirection: {x: 0, y: 0, z: 0}
   damage: 2
   range: 50
-  cooldown: 1
+  cooldown: 0.8
   soundVolume: 0.3
   numAttacks: 2
   delayBetweenAttacks: 0.05
@@ -211,6 +211,7 @@ MonoBehaviour:
   recoilMagnitude: 10
   canAttack: 1
   isAttacking: 0
+  audioSource: {fileID: 0}
   attackSound: {fileID: 8300000, guid: 7ab9712e15a849948a420c460a666ca4, type: 3}
   player: {fileID: 0}
   enemy: {fileID: 0}

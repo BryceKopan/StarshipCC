@@ -66,7 +66,7 @@ public abstract class Weapon : MonoBehaviour {
     }
 
     public void Equip(PlayerController player)
-    { 
+    {
         gameObject.tag = Tags.PLAYER;
         gameObject.layer = Layers.PLAYER;
         this.player = player;

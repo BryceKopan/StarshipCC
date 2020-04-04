@@ -23,8 +23,8 @@ public abstract class Item : MonoBehaviour {
     [ReadOnly]
     public PlayerController player;
 
-    bool isTimed = false;
-    float duration = 0;
+    public bool isTimed = false;
+    public float duration = 0;
 
     // Use this for initialization
     public virtual void Start () 
