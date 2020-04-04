@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructedCapitalController : MonoBehaviour
+public class CapitalShipController : MonoBehaviour
 {
     [SerializeField] public List<GameObject> SmallAttachmentPrefabs;
 }

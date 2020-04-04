@@ -5,15 +5,14 @@ using UnityEngine;
 public class DynamicShipPart : MonoBehaviour
 {
     [SerializeField] List<GameObject> possibleParts = new List<GameObject>();
-    List<GameObject> SmallAttachmentPrefabs = new List<GameObject>();
 
     private Transform enemies;
 
+    CapitalShipController capitalShip;
+
     void Start()
     {
-        GameObject capitalShip = GameObject.Find("CapitalShip");
-        enemies = capitalShip.transform.Find("Enemies");
-        SmallAttachmentPrefabs = capitalShip.GetComponent<ConstructedCapitalController>().SmallAttachmentPrefabs;
+        CapitalShipController capitalShip = GameObject.FindObjectOfType<CapitalShipController>();
 
         GameObject newPart = Randomize();
 
@@ -34,13 +33,13 @@ public class DynamicShipPart : MonoBehaviour
 
     void CreateAttachment(Transform hardPoint)
     {
-        int r = Random.Range(0, SmallAttachmentPrefabs.Count);
+        int r = Random.Range(0, capitalShip.SmallAttachmentPrefabs.Count);
 
         GameObject attachment = Instantiate(
-            SmallAttachmentPrefabs[r],
+            capitalShip.SmallAttachmentPrefabs[r],
             hardPoint.transform.position,
             hardPoint.transform.rotation);
 
-        attachment.transform.SetParent(enemies); 
+        attachment.transform.SetParent(capitalShip.transform); 
     }
 }

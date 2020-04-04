@@ -10,12 +10,9 @@ public class CameraController : MonoBehaviour {
 
     public PlayerController[] players;
 
-    public CapitalController capitalShip;
-
 	void Start () 
 	{
         players = FindObjectsOfType<PlayerController>();
-        capitalShip = FindObjectOfType<CapitalController>();
     }
 	
 	// Update is called once per frame
@@ -34,22 +31,10 @@ public class CameraController : MonoBehaviour {
 
         int numPositionsAveraged = 0;
 
-        Vector2 capitalShipPosition = Vector2.zero;
-        if (capitalShip)
-        {
-            capitalShipPosition = capitalShip.transform.position;
-        }
-
         foreach (PlayerController player in players)
         {
             avgPlayerPosition += new Vector2(player.transform.position.x, player.transform.position.y);
             numPositionsAveraged++;
-
-            if (capitalShip)
-            {
-                avgPlayerPosition += new Vector2(player.transform.position.x, capitalShipPosition.y);
-                numPositionsAveraged++;
-            }
         }
 
         if (avgPlayerPosition != Vector2.zero)
