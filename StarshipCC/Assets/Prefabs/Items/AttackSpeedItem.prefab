@@ -117,4 +117,4 @@ MonoBehaviour:
   soundVolume: 1
   pickupSound: {fileID: 8300000, guid: eb929a3d06d49c145b2b361bcee0a809, type: 3}
   player: {fileID: 0}
-  modifier: 1.4
+  modifier: 1.2
