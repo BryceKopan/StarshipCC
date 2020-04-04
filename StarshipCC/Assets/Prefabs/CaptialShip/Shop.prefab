@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc8fcdab7cd3481c8914ee15b6c2c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCost: 20
-  maxCost: 50
+  minCost: 10
+  maxCost: 40
   shopUIPrefab: {fileID: 646733452744153874, guid: 788b6c587653bdb43835a9b235776e30,
     type: 3}
   costDisplayOffset: {x: 0, y: 2, z: 0}
