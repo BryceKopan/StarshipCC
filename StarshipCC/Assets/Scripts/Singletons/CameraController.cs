@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour {
 
     public PlayerController[] players;
 
+    public bool freezeCamera = true;
+
 	void Start () 
 	{
         players = FindObjectsOfType<PlayerController>();
@@ -18,11 +20,14 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-        updateTargetPosition();
+        if(!freezeCamera)
+        {
+            updateTargetPosition();
 
-        // Move towards target position
-        Vector2 moveVector = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
+            // Move towards target position
+            Vector2 moveVector = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.position = new Vector3(moveVector.x, moveVector.y, transform.position.z);
+        }
     }
 
     public void updateTargetPosition()

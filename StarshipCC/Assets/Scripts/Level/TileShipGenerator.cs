@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileShipGenerator : MonoBehaviour
+public class TileShipGenerator : LevelGenerator
 {
     public GameObject wallPrefab;
     public GameObject turretPrefab;
@@ -16,6 +16,11 @@ public class TileShipGenerator : MonoBehaviour
 
     void Start()
     {
+
+    }
+
+    public override void GenerateLevel()
+    {
         hullTiles = new GameObject("HullTiles");
         hullTiles.transform.SetParent(transform);
 
@@ -24,14 +29,14 @@ public class TileShipGenerator : MonoBehaviour
         Map level = new Map();
 
         int leadingEdgeX = 0;
-        for(int i = 0; i < numEdgeRooms; i++)
+        for (int i = 0; i < numEdgeRooms; i++)
         {
             Map room = RoomManager.GetRandomEdgeRoom();
             level.PlaceMap(room, 0, leadingEdgeX);
             leadingEdgeX += room.cells.GetLength(1);
         }
 
-        for(int i=0; i<30; i++)
+        for (int i = 0; i < 30; i++)
         {
             level.GenerateRoomOnEntrance();
         }
@@ -83,6 +88,12 @@ public class TileShipGenerator : MonoBehaviour
                 }
                 yield return null;
             }
+        }
+
+        LevelController levelController = GameObject.FindObjectOfType<LevelController>();
+        if(levelController)
+        {
+            levelController.DoneBuildingLevel();
         }
     }
 
