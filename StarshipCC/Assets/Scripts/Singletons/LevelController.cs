@@ -78,7 +78,7 @@ public class LevelController : MonoBehaviour
         cameraController.transform.position = new Vector3(PlayerSpawn.position.x,
             PlayerSpawn.position.y,
             cameraController.transform.position.z);
-        cameraController.freezeCamera = true;
+        cameraController.freezeCamera = false;
 
         LoadingArea.gameObject.SetActive(false);
     }

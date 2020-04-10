@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileShipGenerator : LevelGenerator
 {
+    public int numColumnsToLoadBeforeStart = 30;
+
     public GameObject wallPrefab;
     public GameObject turretPrefab;
     public GameObject chestPrefab;
@@ -88,13 +90,19 @@ public class TileShipGenerator : LevelGenerator
                 }
                 yield return null;
             }
+
+            if(y == numColumnsToLoadBeforeStart || y == map.cells.GetLength(1))
+            {
+                Debug.Log("Starting level");
+                LevelController levelController = GameObject.FindObjectOfType<LevelController>();
+                if (levelController)
+                {
+                    levelController.DoneBuildingLevel();
+                }
+            }
         }
 
-        LevelController levelController = GameObject.FindObjectOfType<LevelController>();
-        if(levelController)
-        {
-            levelController.DoneBuildingLevel();
-        }
+        Debug.Log("Done building level");
     }
 
     private void PrintMap(Map map)
