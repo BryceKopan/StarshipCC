@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Map
 {
-    public char[,] cells = new char[0,0];
+    public char[,] cells = new char[0, 0];
 
     public Map()
     {
@@ -17,31 +18,31 @@ public class Map
 
     public void GenerateRoomOnEntrance()
     {
-        char[] entranceTypes = new char[]{(char)Tile.NorthEdge, (char)Tile.EastEdge, (char)Tile.SouthEdge, (char)Tile.WestEdge};
+        char[] entranceTypes = new char[] { (char)Tile.NorthEdge, (char)Tile.EastEdge, (char)Tile.SouthEdge, (char)Tile.WestEdge };
         List<int[]> entrances = this.GetEntrances(entranceTypes);
         System.Random rnd = new System.Random();
 
         bool roomPlaced = false;
         int attemptCount = 0, attemptMax = 40;
-        while(!roomPlaced && attemptCount <= attemptMax)
+        while (!roomPlaced && attemptCount <= attemptMax)
         {
-            attemptCount ++;
+            attemptCount++;
 
             int r = rnd.Next(entrances.Count);
 
             int[] rEntrance = entrances[r];
             Map room = RoomManager.GetRandomCenterRoom();
 
-            int rotateAmount = rnd.Next(0,4);
-            for(int i = 0; i < rotateAmount; i++)
+            int rotateAmount = rnd.Next(0, 4);
+            for (int i = 0; i < rotateAmount; i++)
             {
                 room.RotateCounterClockwise();
             }
 
             List<int[]> roomEntrances = new List<int[]>();
-            int[] offSet = new int[]{0, 0};
+            int[] offSet = new int[] { 0, 0 };
 
-            switch(cells[rEntrance[0], rEntrance[1]])
+            switch (cells[rEntrance[0], rEntrance[1]])
             {
                 case (char)Tile.NorthEdge:
                     roomEntrances = room.GetEntrances((char)Tile.SouthEdge);
@@ -61,13 +62,13 @@ public class Map
                     break;
             }
 
-            if(roomEntrances.Count > 0)
+            if (roomEntrances.Count > 0)
             {
                 int[] rRoomEntrance = roomEntrances[rnd.Next(roomEntrances.Count)];
 
-                int[] roomOriginPosition = new int[]{rEntrance[0] + offSet[0] - rRoomEntrance[0], rEntrance[1] + offSet[1] - rRoomEntrance[1]};
+                int[] roomOriginPosition = new int[] { rEntrance[0] + offSet[0] - rRoomEntrance[0], rEntrance[1] + offSet[1] - rRoomEntrance[1] };
 
-                if(PlaceMap(room, roomOriginPosition[0], roomOriginPosition[1]))
+                if (PlaceMap(room, roomOriginPosition[0], roomOriginPosition[1]))
                 {
                     cells[rEntrance[0], rEntrance[1]] = (char)Tile.Empty;
                     cells[rEntrance[0] + offSet[0], rEntrance[1] + offSet[1]] = (char)Tile.Empty;
@@ -79,21 +80,21 @@ public class Map
 
     private List<int[]> GetEntrances(char type)
     {
-        return GetEntrances(new char[]{type});
+        return GetEntrances(new char[] { type });
     }
 
     private List<int[]> GetEntrances(char[] types)
     {
         List<int[]> entrances = new List<int[]>();
 
-        for(int x=0; x<cells.GetLength(0); x++)
+        for (int x = 0; x < cells.GetLength(0); x++)
         {
-            for(int y=0; y<cells.GetLength(1); y++)
+            for (int y = 0; y < cells.GetLength(1); y++)
             {
-                foreach(char type in types)
+                foreach (char type in types)
                 {
-                    if(cells[x, y] == type)
-                        entrances.Add(new int[]{x, y});
+                    if (cells[x, y] == type)
+                        entrances.Add(new int[] { x, y });
                 }
             }
         }
@@ -103,31 +104,31 @@ public class Map
 
     public bool PlaceMap(Map newMap, int targetX, int targetY)
     {
-        int xMax = targetX + newMap.cells.GetLength(0);
-        int yMax = targetY + newMap.cells.GetLength(1);
+        int xMax = targetX + newMap.GetWidth();
+        int yMax = targetY + newMap.GetHeight();
 
-        if(xMax > cells.GetLength(0) || yMax > cells.GetLength(1))
+        if (xMax > GetWidth() || yMax > GetHeight())
             this.IncreaseDimensions(xMax, yMax);
 
-        for(int x=0; x<newMap.cells.GetLength(0); x++)
+        for (int x = 0; x < newMap.GetWidth(); x++)
         {
-            for(int y=0; y<newMap.cells.GetLength(1); y++)
+            for (int y = 0; y < newMap.GetHeight(); y++)
             {
-                if(targetX + x < 0 || targetY + y < 0)
+                if (targetX + x < 0 || targetY + y < 0)
                     return false;
 
-                if(cells[targetX + x, targetY + y] != new char())
+                if (cells[targetX + x, targetY + y] != new char())
                 {
                     return false;
                 }
             }
         }
 
-        for(int x=0; x<newMap.cells.GetLength(0); x++)
+        for (int x = 0; x < newMap.GetWidth(); x++)
         {
-            for(int y=0; y<newMap.cells.GetLength(1); y++)
+            for (int y = 0; y < newMap.GetHeight(); y++)
             {
-                cells[targetX + x, targetY + y] = newMap.cells[x,y];
+                cells[targetX + x, targetY + y] = newMap.cells[x, y];
             }
         }
 
@@ -144,7 +145,7 @@ public class Map
             newColumn = 0;
             for (int oldRow = 0; oldRow < oldMatrix.GetLength(0); oldRow++)
             {
-                switch(oldMatrix[oldRow, oldColumn])
+                switch (oldMatrix[oldRow, oldColumn])
                 {
                     case (char)Tile.NorthEdge:
                         newMatrix[newRow, newColumn] = (char)Tile.EastEdge;
@@ -184,21 +185,44 @@ public class Map
 
     private void IncreaseDimensions(int newX, int newY)
     {
-        if(newX < cells.GetLength(0))
-            newX = cells.GetLength(0);
-        if(newY < cells.GetLength(1))
-            newY = cells.GetLength(1);
-        
-        char[,] newCells = new char[newX,newY]; 
+        if (newX < GetWidth())
+            newX = GetWidth();
+        if (newY < GetHeight())
+            newY = GetHeight();   
 
-        for(int x=0; x<cells.GetLength(0); x++)
+        char[,] newCells = new char[newX, newY];
+        
+        for (int x = 0; x < GetWidth(); x++)
         {
-            for(int y=0; y<cells.GetLength(1); y++)
+            for (int y = 0; y < GetHeight(); y++)
             {
                 newCells[x, y] = cells[x, y];
             }
         }
 
         cells = newCells;
-    } 
+    }
+
+    public int GetWidth()
+    {
+        return cells.GetLength(0);
+    }
+
+    public int GetHeight()
+    {
+        return cells.GetLength(1);
+    }
+
+    public Map GetSubset(int xStart, int xEnd, int yStart, int yEnd)
+    {
+        int subsetWidth = xEnd - xStart + 1;
+        int subsetHeight = yEnd - yStart + 1;
+        char[,] subsetArray = new char[subsetWidth, subsetHeight];
+        for (int i = 0; i < subsetWidth; i++)
+        {
+            Array.Copy(cells, (i + xStart) * GetHeight() + yStart, subsetArray, i * subsetHeight, subsetHeight);
+        }
+
+        return new Map(subsetArray);
+    }
 }
