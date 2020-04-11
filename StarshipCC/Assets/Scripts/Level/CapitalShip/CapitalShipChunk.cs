@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CapitalShipChunk : MonoBehaviour
 {
+    public float chunkLoadingDistance = 300f;
+
+    public float distanceToCamera;
+
     public int width;
     public int height;
 
@@ -13,15 +17,34 @@ public class CapitalShipChunk : MonoBehaviour
 
     public TileShipGenerator shipGenerator;
 
+    public bool initialized = false;
+    public bool notGenerated = true;
+
+    Camera mainCamera;
+
+    Vector3 tileSize;
+    Vector3 centerPos;
+
     public void init(Map map, TileShipGenerator shipGenerator)
     {
         this.map = map;
         this.width = map.GetWidth();
         this.height = map.GetHeight();
         this.shipGenerator = shipGenerator;
+
+        mainCamera = Camera.main;
+        centerPos = GetCenterPos();
+        tileSize = shipGenerator.wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
+        initialized = true;
     }
 
     public void GenerateChunk()
+    {
+        notGenerated = false;
+        StartCoroutine(GenerateChunkAsync());
+    }
+
+    IEnumerator GenerateChunkAsync()
     {
         tiles = new GameObject("Tiles");
         if(tiles == null)
@@ -34,13 +57,11 @@ public class CapitalShipChunk : MonoBehaviour
         }
         tiles.transform.SetParent(transform);
 
-        Vector3 wallSize = shipGenerator.wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
-
         for (int y = 0; y < map.GetHeight(); y++)
         {
             for (int x = 0; x < map.GetWidth(); x++)
             {
-                Vector3 position = new Vector3((x * wallSize.x) + transform.position.x, y * wallSize.y + transform.position.y, 1);
+                Vector3 position = new Vector3((x * tileSize.x) + transform.position.x, y * tileSize.y + transform.position.y, 1);
 
                 switch (map.cells[x, y])
                 {
@@ -69,6 +90,7 @@ public class CapitalShipChunk : MonoBehaviour
                     case (char)Tile.NoBackground:
                         break;
                 }
+                yield return null;
             }
         }
     }
@@ -76,12 +98,33 @@ public class CapitalShipChunk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(initialized)
+        {
+            if (notGenerated)
+            {
+                distanceToCamera = Vector2.Distance(mainCamera.gameObject.transform.position,
+                                                            centerPos);
+                if (distanceToCamera <= chunkLoadingDistance)
+                {
+                    GenerateChunk();
+                }
+            }
+        }
+    }
+
+    Vector3 GetCenterPos()
+    {
+        Vector3 center = new Vector3();
+        center.x = transform.position.x + (tileSize.x * width / 2);
+        center.y = transform.position.y + (tileSize.y * height / 2);
+        center.z = transform.position.z;
+
+        return center;
     }
 }

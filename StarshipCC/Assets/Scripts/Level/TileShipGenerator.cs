@@ -20,6 +20,8 @@ public class TileShipGenerator : LevelGenerator
     CapitalShipChunk[,] chunks;
     private GameObject chunksObj;
 
+    public Vector3 tileSize;
+
     void Start()
     {
 
@@ -27,8 +29,11 @@ public class TileShipGenerator : LevelGenerator
 
     public override void GenerateLevel()
     {
+        Debug.Log("GenerateLevel");
         chunksObj = new GameObject("Chunks");
         chunksObj.transform.SetParent(transform);
+
+        tileSize = wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
 
         RoomManager.LoadMaps();
 
@@ -78,41 +83,14 @@ public class TileShipGenerator : LevelGenerator
                 chunkObj.transform.SetParent(chunksObj.transform);
 
                 CapitalShipChunk chunk = chunkObj.AddComponent<CapitalShipChunk>();
+                chunk.transform.position = new Vector3((tileSize.x * chunkWidth) * x + transform.position.x
+                                                    , (tileSize.y * chunkHeight) * y + transform.position.y
+                                                    , 0);
                 chunk.init(chunkMap, this);
                 chunks[x, y] = chunk;
             }
         }
-
-        
-        Debug.Log("Full level:");
-        PrintMap(level);
-        
-
-        StartCoroutine(BuildMap(level));
-    }
-
-    IEnumerator BuildMap(Map map)
-    {
-        Vector3 wallSize = wallPrefab.GetComponent<SpriteRenderer>().bounds.size;
-
-        //Instatiate and size background
-        GameObject background = Instantiate(backgroundPrefab, new Vector3(map.GetWidth() * wallSize.x / 2 + transform.position.x, map.GetHeight() * wallSize.y / 2 + transform.position.y, 10), Quaternion.identity);
-        background.transform.localScale = new Vector3(background.transform.localScale.x * map.GetWidth(), background.transform.localScale.x * map.GetHeight(), 1);
-
-        //Construct Map
-        for (int x = 0; x < chunks.GetLength(0); x++)
-        {
-            for (int y = 0; y < chunks.GetLength(1); y++)
-            {
-                chunks[x, y].transform.position = new Vector3((wallSize.x * chunkWidth) * x + transform.position.x
-                                                    , (wallSize.y * chunkHeight) * y + transform.position.y
-                                                    , 0);
-                chunks[x, y].GenerateChunk();
-                yield return null;
-            }
-        }
-
-        Debug.Log("Done building level");
+        BuildBackground(level);
 
         Debug.Log("Starting level");
         LevelController levelController = GameObject.FindObjectOfType<LevelController>();
@@ -120,6 +98,13 @@ public class TileShipGenerator : LevelGenerator
         {
             levelController.DoneBuildingLevel();
         }
+    }
+
+    public void BuildBackground(Map map)
+    {
+        //Instatiate and size background
+        GameObject background = Instantiate(backgroundPrefab, new Vector3(map.GetWidth() * tileSize.x / 2 + transform.position.x, map.GetHeight() * tileSize.y / 2 + transform.position.y, 10), Quaternion.identity);
+        background.transform.localScale = new Vector3(background.transform.localScale.x * map.GetWidth(), background.transform.localScale.x * map.GetHeight(), 1);
     }
 
     private void PrintMap(Map map)
