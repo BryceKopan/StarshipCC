@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
     private float maxHealth;
     private float currentHealth;
 
-    // TODO move all these into abilities
+    // TODO move these into abilities
     public float invincibilityLength = 1f;
     bool invincible = false;
 
@@ -400,11 +400,6 @@ public class PlayerController : MonoBehaviour, Hittable, AccessibleHealth
         if(overlayRenderer)
         {
             overlayRenderer.color = color;
-        }
-
-        if(lightObj)
-        {
-            lightObj.color = color;
         }
     }
 }

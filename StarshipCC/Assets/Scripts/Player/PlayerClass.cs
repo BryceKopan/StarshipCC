@@ -100,14 +100,13 @@ public class PlayerClass : MonoBehaviour
 
         player.SetMaxHealth(startingMaxHealth);
 
-        // Set the ship sprite to reflect the class
-        SpriteRenderer renderer = player.GetComponent<SpriteRenderer>();
-        renderer.sprite = shipSprite;
-
         GameObject colorOverlay = player.transform.Find("ColorOverlay").gameObject;
         colorOverlay.GetComponent<SpriteRenderer>().sprite = colorMask;
         colorOverlay.GetComponent<SpriteMask>().sprite = colorMask;
 
+        // Set the ship sprite to reflect the class
+        SpriteRenderer renderer = player.GetComponent<SpriteRenderer>();
+        renderer.sprite = shipSprite;
 
         shield.Equip(player);
         engine.Equip(player);
