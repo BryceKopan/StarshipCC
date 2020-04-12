@@ -31,6 +31,9 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
     protected float longestWeaponFireTime = 0;
     protected float longestWeaponRange = 0;
 
+    public float cameraShakeAmountOnDeath = 0;
+    public float cameraShakeDurationOnDeath = 0;
+
     // Use this for initialization
     void Start () 
     {
@@ -182,11 +185,18 @@ public abstract class EnemyController : MonoBehaviour, Hittable, AccessibleHealt
 
             isDead = true;
             OnDeath();
-            Destroy(gameObject);
-            if(controller)
+            if (controller)
             {
                 controller.AddScore(ScoreValue);
-            }   
+            }
+
+            CameraShakeController camShakeController = GameObject.FindObjectOfType<CameraShakeController>();
+            if(camShakeController)
+            {
+                camShakeController.Shake(cameraShakeAmountOnDeath, cameraShakeDurationOnDeath);
+            }
+
+            Destroy(gameObject);
         }
     }
 

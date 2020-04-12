@@ -290,6 +290,8 @@ MonoBehaviour:
   ScoreValue: 50
   moveVector: {x: 0, y: 0, z: 0}
   weapons: []
+  cameraShakeAmountOnDeath: 2
+  cameraShakeDurationOnDeath: 0.5
   spawnRange: 200
   numLivingDrones: 0
   maxDrones: 5
