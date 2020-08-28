@@ -5284,11 +5284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d42fe2aa8bda549accde472adb3740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
-  shakeAmount: 10
-  shakeDuration: 1
-  smooth: 1
-  smoothAmount: 1
+  shakeFrequency: 20
+  decreaseOverTimeMultiplier: 1
 --- !u!4 &744366698
 Transform:
   m_ObjectHideFlags: 0
@@ -5676,7 +5673,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1374255788}
   - component: {fileID: 1374255786}
-  - component: {fileID: 1374255787}
   m_Layer: 0
   m_Name: CapitalShip
   m_TagString: Untagged
@@ -5708,23 +5704,11 @@ MonoBehaviour:
     type: 3}
   shopPrefab: {fileID: 3371867887806191986, guid: 9dac7ddfcb3524a2d864c4cfb7b20852,
     type: 3}
-  tileSize: {x: 0, y: 0, z: 0}
---- !u!114 &1374255787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374255785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022ec8a3fb8b6d543b9e84f7dcefe81f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   SmallAttachmentPrefabs:
   - {fileID: 2506970568396471134, guid: 46c41de139b171a4c90f3f8204a314f1, type: 3}
   - {fileID: 1986490274335799319, guid: e8b500d18b5aa44ac83533b59c884dd0, type: 3}
   - {fileID: 1644269249511102, guid: b3d2f5b50c6da4ddfb9ffa7d69e58242, type: 3}
+  tileSize: {x: 0, y: 0, z: 0}
 --- !u!4 &1374255788
 Transform:
   m_ObjectHideFlags: 0

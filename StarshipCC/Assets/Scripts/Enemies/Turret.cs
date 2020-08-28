@@ -13,7 +13,7 @@ public class Turret : EnemyController
     {
         SimpleTransform deltaTransform = new SimpleTransform();
 
-        Vector3 rotationVector = transform.position - attackPosition;
+        Vector3 rotationVector = attackPosition - transform.position;
         float angle = Mathf.Atan2(rotationVector.y, rotationVector.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 
@@ -24,7 +24,7 @@ public class Turret : EnemyController
 
     protected override bool IsInRange(Vector3 attackPosition)
     {
-        Vector3 rotationVector = transform.position - attackPosition;
+        Vector3 rotationVector = attackPosition - transform.position;
         float angle = Mathf.Atan2(rotationVector.y, rotationVector.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 

@@ -72,16 +72,16 @@ public class CapitalShipChunk : MonoBehaviour
                         Instantiate(shipGenerator.chestPrefab, position, Quaternion.Euler(0, 0, 0), tiles.transform);
                         break;
                     case (char)Tile.NorthTurret:
-                        Instantiate(shipGenerator.turretPrefab, position, Quaternion.Euler(0, 0, 0), tiles.transform);
+                        Instantiate(shipGenerator.getRandomSmallAttachment(), position, Quaternion.Euler(0, 0, 90), tiles.transform);
                         break;
                     case (char)Tile.EastTurret:
-                        Instantiate(shipGenerator.turretPrefab, position, Quaternion.Euler(0, 0, 90), tiles.transform);
+                        Instantiate(shipGenerator.getRandomSmallAttachment(), position, Quaternion.Euler(0, 0, 0), tiles.transform);
                         break;
                     case (char)Tile.SouthTurret:
-                        Instantiate(shipGenerator.turretPrefab, position, Quaternion.Euler(0, 0, 180), tiles.transform);
+                        Instantiate(shipGenerator.getRandomSmallAttachment(), position, Quaternion.Euler(0, 0, -90), tiles.transform);
                         break;
                     case (char)Tile.WestTurret:
-                        Instantiate(shipGenerator.turretPrefab, position, Quaternion.Euler(0, 0, -90), tiles.transform);
+                        Instantiate(shipGenerator.getRandomSmallAttachment(), position, Quaternion.Euler(0, 0, 180), tiles.transform);
                         break;
                     case (char)Tile.Wall:
                     case new char():

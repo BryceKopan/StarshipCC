@@ -10,6 +10,6 @@ public class IgnoreParentRotation : MonoBehaviour {
 	}
 	void LateUpdate()
 	{
-			transform.rotation = rotation;
+		transform.rotation = rotation;
 	}
 }

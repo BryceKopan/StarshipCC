@@ -13,6 +13,8 @@ public class TileShipGenerator : LevelGenerator
     public GameObject backgroundPrefab;
     public GameObject shopPrefab;
 
+    [SerializeField] public List<GameObject> SmallAttachmentPrefabs;
+
     private int numEdgeRooms = 2;
 
     Map level;
@@ -124,5 +126,11 @@ public class TileShipGenerator : LevelGenerator
         }
 
         Debug.Log(drawnMap);
+    }
+
+    public GameObject getRandomSmallAttachment()
+    {
+        int r = Random.Range(0, SmallAttachmentPrefabs.Count);
+        return SmallAttachmentPrefabs[r];
     }
 }
