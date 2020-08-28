@@ -107,6 +107,8 @@ MonoBehaviour:
   ScoreValue: 50
   moveVector: {x: 0, y: 0, z: 0}
   weapons: []
+  cameraShakeAmountOnDeath: 0
+  cameraShakeDurationOnDeath: 0
   spawner: {fileID: 0}
 --- !u!1 &1556823383241307307
 GameObject:
@@ -417,11 +419,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDrone1Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 5842955427701672809, guid: bffa4bf77d3c91b4e97e0c47790480b8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 5845267436342653535, guid: bffa4bf77d3c91b4e97e0c47790480b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -476,16 +473,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845217774320823737, guid: bffa4bf77d3c91b4e97e0c47790480b8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 5843114554086347235, guid: bffa4bf77d3c91b4e97e0c47790480b8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffa4bf77d3c91b4e97e0c47790480b8, type: 3}

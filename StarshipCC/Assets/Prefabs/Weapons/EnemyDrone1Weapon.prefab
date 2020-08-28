@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5845267436342653535}
   - component: {fileID: 5802722872984348281}
   - component: {fileID: 8058554332454068398}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: EnemyDrone1Weapon
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
   soundVolume: 0.3
   numAttacks: 1
   delayBetweenAttacks: 0
-  attackScaleModifier: 0.4
+  attackScaleModifier: 0.25
   recoilMagnitude: 2
   canAttack: 1
   isAttacking: 0
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845217774320823737}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BulletSpawn
   m_TagString: AttackSpawn
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5843114554086347235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5845267436342653535}
